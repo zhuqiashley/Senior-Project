@@ -31,10 +31,9 @@ h1, h2, h3, h4, h5, h6 {
 ----------------------------*/
 #header {
   padding: 15px 0;
-}
-#header.header-scrolled, #header.header-inner-pages {
   background: rgba(12, 34, 71, 0.9);
 }
+
 #header .logo {
   font-size: 30px;
   margin: 0;
@@ -177,6 +176,47 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*---------------------------
+    PAGE TITLE
+----------------------------*/
+.page-title {
+  text-align: center;
+  padding-bottom: 30px;
+  padding-top: 150px;
+  background: #20ad85;
+  width:100%;
+}
+
+.page-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #ddd;
+}
+.page-title h2::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+.page-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #044c6d;
+  bottom: 0;
+  left: calc(50% - 20px);
+}
+
+/*---------------------------
     SECTION PARTITIONING
 ----------------------------*/
 section {
@@ -192,6 +232,7 @@ section {
   text-align: center;
   padding-bottom: 30px;
 }
+
 .section-title h2 {
   font-size: 32px;
   font-weight: bold;
