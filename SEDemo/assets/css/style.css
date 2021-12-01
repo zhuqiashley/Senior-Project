@@ -255,7 +255,7 @@ section {
 .badges{
   display: grid;
   grid-gap: 50px;
-  grid-template-columns: 200px 200px 200px;
+  grid-template-columns: 500px 500px 500px;
   border-top:rgba(127, 137, 161, 0.25);
 }
 
