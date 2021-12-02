@@ -112,12 +112,14 @@
   }
 /* END SECTION FROM GITHUB TEMPLATE FOR NAVBAR FUNCTIONALITY */
 
-// Progress Bar 
+/**
+ * Progress Bar
+ *  */ 
 var i = 0;
-function move() {
+function progress() {
   if (i == 0) {
     i = 1;
-    var elem = document.getElementById("myBar");
+    var elem = document.getElementById("progressBar");
     var width = 10;
     var id = setInterval(frame, 10);
     function frame() {
@@ -132,3 +134,46 @@ function move() {
     }
   }
 } 
+
+/**
+ * Achivement Class
+ */
+ function achievement(name, text, checkFunction){
+  this.name = name;
+  this.text = text;
+  this.checkFunction = checkFunction;
+}
+
+/**
+ * Add Achivements 
+ */
+// Test achivement
+ function initClickHandling() {
+
+  var numClicks = 0;
+
+  achievement.push(new achievement(
+        "Clicktastic", 
+        "You clicked 1000 times!", 
+        function() {
+            return numClicks > 1000;
+        })
+  );
+  window.onclick = function() {
+       numClicks++;
+  }
+}
+
+// Welcome Badge
+//When users first register to create an account on your site, they are awarded this badge.
+//Required Steps: In the required steps manager select “Register to the website” as a trigger.
+
+
+/**
+ * Check Achievements
+ */
+ achievement.forEach(function(achievement) {
+  if (achievement.checkFunction()) {
+        // award the achievement to user
+  }
+});
