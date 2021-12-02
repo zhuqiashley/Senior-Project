@@ -145,6 +145,15 @@ function progress() {
 }
 
 /**
+ * Level Class
+ */
+function level(name, text, checkFunction) {
+  this.name; 
+  this.text; 
+  this.checkFunction = checkFunction;
+}
+
+/**
  * Add Achivements 
  */
 // Test achivement
