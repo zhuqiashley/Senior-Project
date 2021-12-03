@@ -37,7 +37,7 @@ function submitAnswers(){
     var result = document.getElementById('results');
     results.innerHTML = '<h3>You scored <span>'+score+'</span> out of <span>' +total+ '</span>!';
 
-    alert('You scored ' + score + ' out of ' + total);
+    alert('You score is ' + score + ' out of ' + total);
 
     return false; //we're not actually submitting a form
     //when submitting a form it will usually go to a PHP file or some kind of server side file that can actually process it
