@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 ----------------------------*/
 #header {
   padding: 15px 0;
-  background: rgba(12, 34, 71, 0.9);
+  background: rgb(12, 34, 71);
 }
 
 #header .logo {
@@ -74,7 +74,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 15px;
   font-weight: 500;
   color: #fff;
-  white-space: nowrap;
   transition: 0.3s;
 }
 .navbar a i, .navbar a:focus i {
@@ -131,7 +130,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #47b2e4;
 }
 .navbar .dropdown:hover > ul {
-  opacity: 1;
   top: 100%;
   visibility: visible;
 }
@@ -141,7 +139,6 @@ h1, h2, h3, h4, h5, h6 {
   visibility: hidden;
 }
 .navbar .dropdown .dropdown:hover > ul {
-  opacity: 1;
   top: 0;
   left: 100%;
   visibility: visible;
@@ -194,7 +191,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
-  color: #ddd;
+  color: #fff;
 }
 .page-title h2::before {
   content: "";
@@ -202,7 +199,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   width: 120px;
   height: 1px;
-  background: #ddd;
+  background: #fff;
   bottom: 1px;
   left: calc(50% - 60px);
 }
