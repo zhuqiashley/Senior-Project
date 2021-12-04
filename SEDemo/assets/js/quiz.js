@@ -40,7 +40,6 @@ function submitAnswers(){
     alert('You score is ' + score + ' out of ' + total);
 
     return false; //we're not actually submitting a form
-    //when submitting a form it will usually go to a PHP file or some kind of server side file that can actually process it
     //when using javascript we are catching that submission before it actually goes through
 
 
