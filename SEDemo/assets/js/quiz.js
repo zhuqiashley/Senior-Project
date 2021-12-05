@@ -18,7 +18,7 @@ function submitAnswers(){
     for (i=1; i<=total; i++) {
 
         if(eval('q'+i)==null || eval('q'+i)===''){
-            alert('You have not selected anything for question'+i+'!');
+            alert('You haven not chosen to answer all the questions');
             return false; //does not allow the form to submit
         }
 
