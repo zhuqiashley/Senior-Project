@@ -186,3 +186,7 @@ function level(name, text, checkFunction) {
         // award the achievement to user
   }
 });
+
+function myFunction() {
+  alert("Successfully Registered!");
+}
