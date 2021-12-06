@@ -265,8 +265,10 @@ section {
 }
 
 /*---------------------------
-        TEAM SECTION
+        BOX PARTITION
 ----------------------------*/
+/* note - used to be used for just team section */
+
 .team .member {
   position: relative;
   box-shadow: 0px 2px 5px #7f94b9;
