@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up Signin Form Template Example</title>
+    <title>Master CS - Sign Up</title>
     <link rel="stylesheet" href="./style.css">
 
     <link
@@ -25,24 +25,21 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto" href="./index.html">Home</a></li>
-                <li><a class="nav-link scrollto" href="./courses.html">Courses</a></li>
-                <li><a class="nav-link scrollto" href="./index.html#about">About</a></li>
-                <li><a class="nav-link scrollto" href="./index.html#team">Team</a></li>
-                <!--
-                <li class="dropdown"><a href="#"><span>My Profile</span> <i class="bi-chevron-down"></i></a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li><a href="..\SEDemo\myachievements.html">My Achievements</a></li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                    </ul>
-                </li>
-                <li><a class="getstarted" href="#">Sign Up</a></li>
-                -->
+              <li><a class="nav-link scrollto" href="./index.html">Home</a></li>
+              <li><a class="nav-link scrollto" href="./courses.html">Courses</a></li>
+              <li><a class="nav-link scrollto" href="./events.html">Events</a></li>
+              <li class="dropdown"><a href="#"><span>My Profile</span> <i class="bi-chevron-down"></i></a>
+                <ul>
+                    <li><a href="#">My Profile</a></li>
+                    <li><a href="./myachievements.html">My Achievements</a></li>
+                    <li><a href="#">My Courses</a></li>
+                    <li><a href="#">Log Out</a></li>
+                </ul>
+              </li>
+              <li><a class="getstarted" href="./signup.html">Sign Up</a></li>
             </ul>
-
-        </nav><!-- .navbar -->
+    
+          </nav><!-- .navbar -->
 
     </div>
 </header>
@@ -55,20 +52,15 @@
 </head>
 
 <body>
-<div class="page-title">
-    <h2></h2>
-</div>
+    <div class="page-title">
+        <h2>Sign Up</h2>
+      </div>
 <div id="form">
     <div class="container">
-        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
+        <div class="mt-5 col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
             <div id="userform">
-                <ul class="nav nav-tabs nav-justified" role="tablist">
-                    <!--<li class="active"><a href="#signup"  role="tab" data-toggle="tab">Sign up</a></li>-->
-                    <li><a class="nav-link scrollto" href="./signup_login.html">Log In</a></li>
-                </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade active in" id="signup">
-                        <h2 class="text-uppercase text-center"> Sign Up</h2>
                         <form id="signup">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6">
@@ -121,17 +113,16 @@
                                 <input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password" autocomplete="off">
                                 <p class="help-block text-danger"></p>
                             </div>
-                            <div class="mrgn-30-top">
-                                <button type="submit" onclick="window.location.href='./signup_login.html'" class="btn btn-larger btn-block"/>
-                                Log in
-                                </button>
-                            </div>
+                          
+                                
+   
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <p style="text-align:center"> <a href="./signup_login.html">Already have an account? Log In</a> </p>
     <!-- /.container -->
 </div>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
