@@ -187,6 +187,7 @@ function level(name, text, checkFunction) {
   }
 });
 
-function myFunction() {
+function registrationButton() {
+  document.getElementById('eventRegistration').value  = "Unregister";
   alert("Successfully Registered!");
 }
