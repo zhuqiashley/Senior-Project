@@ -308,12 +308,13 @@ section {
 
 .badge .badge-info {
   padding-left: 30px;
-  color: black; 
+  color: #47b2e4;
 }
 
 .badge p {
   margin: 10px 0 0 0;
   font-size: 14px;
+  color: black;
 }
 
 #myProgress {
