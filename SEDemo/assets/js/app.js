@@ -187,7 +187,13 @@ function level(name, text, checkFunction) {
   }
 });
 
-function registrationButton() {
-  document.getElementById('eventRegistration').value  = "Unregister";
-  alert("Successfully Registered!");
+function registrationButton(id) {
+  if (document.getElementById(id).value == "Register") {
+    document.getElementById(id).value  = "Unregister";
+    alert("Successfully Registered!");
+  } 
+  else {
+    document.getElementById(id).value = "Register";
+    alert("Successfully Unregistered!");
+  }
 }
