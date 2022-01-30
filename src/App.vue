@@ -1,8 +1,6 @@
+<!-- Navbar -->
+
 <template>
-  <!-- <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div> -->
 	<nav class="navbar" aria-label="navigation">
 		<div class="container d-flex align-items-center">
 			<router-link to="/">
@@ -10,23 +8,38 @@
 			</router-link>
 			<ul> 
 				<router-link to="/"> Home </router-link>
-				<router-link to="/about"> About </router-link>
 				<router-link to="/courses"> Courses </router-link>
-				<li><a class="nav-link scrollto" href="./events.html">Events</a></li>
+				<router-link to="/events"> Events </router-link>
 				<li class="dropdown"><a href="#"><span>My Profile</span> <i class="bi-chevron-down"></i></a>
 				<ul>
 					<li><a href="#">My Profile</a></li>
-					<li><a href="./myachievements.html">My Achievements</a></li>
+					<router-link to="/achievements"> Achievements </router-link>
 					<li><a href="#">My Courses</a></li>
 					<li><a href="#">Log Out</a></li>
 				</ul>
 				</li>
-				<li><a class="getstarted" href="./signup.html">Sign Up</a></li>
+				<router-link to="Login">
+					<custom-button title="Login"></custom-button>
+				</router-link>
 			</ul>
 		</div>
-	</nav><!-- .navbar -->
+	</nav>
 	<router-view/>
 </template>
+
+<script>
+import CustomButton from './components/Button.vue'
+export default {
+	components: {
+		CustomButton
+	},
+	setup() {
+		return {
+			
+		}
+	},
+}
+</script>
 
 <style>
 .logo {
@@ -75,21 +88,6 @@
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
   color: #47b2e4;
-}
-
-/* SIGN UP BUTTON */
-.navbar .getstarted, .navbar .getstarted:focus {
-  padding: 8px 20px;
-  margin-left: 30px;
-  border-radius: 50px;
-  color: #fff;
-  font-size: 14px;
-  border: 2px solid #47b2e4;
-  font-weight: 600;
-}
-.navbar .getstarted:hover, .navbar .getstarted:focus:hover {
-  color: #fff;
-  background: #31a9e1;
 }
 
 .navbar .dropdown ul {

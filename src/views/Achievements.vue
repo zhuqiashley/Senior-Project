@@ -1,6 +1,6 @@
 <template>
-  <div class="courses">
-    <custom-header title="Courses"></custom-header>
+  <div class="achievements">
+    <custom-header title="Achievements"></custom-header>
   </div>
 </template>
 
