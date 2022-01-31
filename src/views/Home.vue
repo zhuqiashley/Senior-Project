@@ -1,22 +1,20 @@
 <template>
-  <div class="home">
-    <!-- ======= HomePage Section ======= -->
-  <section id="HomePage" class="d-flex align-items-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1">
-          <h1>Master CS</h1>
-          <h2>Learn at your own pace with courses tailored to you.</h2>
-        </div>
-        <div class="col-lg-6 order-1 order-lg-2 HomePage-img">
-          <img src="../assets/img/hp-img.png" class="img-fluid animated" alt="">
-        </div>
-      </div>
-    </div>
-
-  </section>
-  <!-- End HomePage -->
-  </div>
+<!-- ======= HomePage Section ======= -->
+	<div class="home">
+		<section id="HomePage" class="d-flex align-items-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1">
+						<h1>Master CS</h1>
+						<h2>Learn at your own pace with courses tailored to you.</h2>
+					</div>
+				<div class="col-lg-6 order-1 order-lg-2 HomePage-img">
+					<img src="../assets/img/hp-img.png" class="img-fluid animated" alt="">
+				</div>
+				</div>
+			</div>
+		</section>
+	</div>
 
 <!-- ======= About Section ======= -->
 <section id="about">
@@ -239,5 +237,9 @@ section {
 .team .member p {
   margin: 10px 0 0 0;
   font-size: 14px;
+}
+
+#about {
+  background-color: white;
 }
 </style>

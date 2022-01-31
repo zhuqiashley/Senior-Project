@@ -43,7 +43,7 @@ export default {
 
 <style>
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color:white;
   margin: 0;
   padding: 0;
@@ -77,7 +77,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 500;
   color: #fff;
 }
