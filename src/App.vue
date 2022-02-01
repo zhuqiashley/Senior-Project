@@ -10,12 +10,11 @@
 				<router-link to="/"> Home </router-link>
 				<router-link to="/courses"> Courses </router-link>
 				<router-link to="/events"> Events </router-link>
-				<li class="dropdown"><a href="#"><span>My Profile</span> <i class="bi-chevron-down"></i></a>
+				<li class="dropdown">My Profile <i class="bi-chevron-down"></i>
 				<ul>
-					<li><a href="#">My Profile</a></li>
+					<router-link to="/profile"> Profile </router-link>
 					<router-link to="/achievements"> Achievements </router-link>
-					<li><a href="#">My Courses</a></li>
-					<li><a href="#">Log Out</a></li>
+					<router-link to=/MyCourses> My Courses </router-link>
 				</ul>
 				</li>
 				<router-link to="Login">
@@ -52,9 +51,7 @@ export default {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-.logo a {
-  color: #fff;
-}
+
 .logo img {
   max-height: 40px;
 }
@@ -71,6 +68,13 @@ export default {
 }
 .navbar li {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
 }
 .navbar a, .navbar a:focus {
   display: flex;
@@ -79,13 +83,9 @@ export default {
   padding: 10px 0 10px 30px;
   font-size: 1rem;
   font-weight: 500;
-  color: #fff;
+  color: white;
 }
-.navbar a i, .navbar a:focus i {
-  font-size: 12px;
-  line-height: 0;
-  margin-left: 5px;
-}
+
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
   color: #47b2e4;
 }
@@ -93,29 +93,24 @@ export default {
 .navbar .dropdown ul {
   display: block;
   position: absolute;
-  left: 14px;
+  left: 0;
   top: calc(100% + 30px);
-  padding: 10px 0;
+  padding: .75rem 0;
   visibility: hidden;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  background: white;
   transition: 0.3s;
   border-radius: 4px;
   z-index: 99;
 }
-.navbar .dropdown ul li {
-  min-width: 200px;
-}
+
 .navbar .dropdown ul a {
-  padding: 10px 20px;
+  padding: 10px 3rem;
   font-size: 14px;
   text-transform: none;
   font-weight: 500;
   color: #0c3c53;
 }
-.navbar .dropdown ul a i {
-  font-size: 12px;
-}
+
 .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
   color: #47b2e4;
 }
@@ -123,15 +118,6 @@ export default {
   top: 100%;
   visibility: visible;
 }
-.navbar .dropdown .dropdown ul {
-  top: 0;
-  left: calc(100% - 30px);
-  visibility: hidden;
-}
-.navbar .dropdown .dropdown:hover > ul {
-  top: 0;
-  left: 100%;
-  visibility: visible;
-}
+
 
 </style>

@@ -1,3 +1,4 @@
+<!-- ======= TEMPLATE ======= -->
 <template>
 	<div class="login container mt-4">
 		<card>
@@ -18,6 +19,7 @@
 	</div>
 </template>
 
+<!-- ======= SCRIPT ======= -->
 <script>
 import Card from '../components/Card.vue'
 import { ref } from 'vue'
@@ -42,7 +44,7 @@ export default {
 }
 </script>
 
-
+<!-- ======= STYLE ======= -->
 <style scoped>
 .login {
 	width: 30rem;

@@ -1,3 +1,4 @@
+<!-- ======= TEMPLATE ======= -->
 <template>
 	<custom-header title="Courses"></custom-header>
 	<div class="parent">
@@ -20,6 +21,7 @@
 	</div>
 </template>
 
+<!-- ======= SCRIPT ======= -->
 <script>
 import CustomHeader from '../components/Header.vue'
 import Card from '../components/Card.vue'
@@ -93,7 +95,7 @@ export default {
 }
 </script>
 
-
+<!-- ======= STYLE ======= -->
 <style scoped>
 .card {
 	width: 34rem;
