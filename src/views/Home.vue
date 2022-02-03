@@ -176,10 +176,6 @@ export default {
 	overflow: hidden;
 	}
 
-	.section-bg {
-	background-color: #f3f5fa;
-	}
-
 	.section-title {
 	text-align: center;
 	padding-bottom: 30px;
@@ -215,9 +211,6 @@ export default {
 	background: #47b2e4;
 	bottom: 0;
 	left: calc(50% - 20px);
-	}
-	.section-title p {
-	margin-bottom: 0;
 	}
 
 	#about {
