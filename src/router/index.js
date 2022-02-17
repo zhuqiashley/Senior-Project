@@ -8,6 +8,12 @@ import Events from '../views/Events.vue'
 import Login from '../views/Login.vue'
 import Profile from '../views/Profile.vue'
 import MyCourses from '../views/UserCourses.vue'
+import CyberSecurityCourse from '../views/CyberSecurityCourse.vue'
+import BigDataCourse from '../views/BigDataCourse.vue'
+import DataScienceCourse from '../views/DataScienceCourse.vue'
+import MachineLearningAICourse from '../views/MachineLearningAICourse.vue'
+import WebDevCourse from '../views/WedDevCourse.vue'
+import MetaverseCourse from '../views/MetaverseCourse.vue'
 
 const routes = [
 	{
