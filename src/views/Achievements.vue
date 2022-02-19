@@ -47,32 +47,68 @@ export default {
                 unlocked: true,
             },
             {
-                title: "Welcome to the Class",
-                description: "Earned when you first registered.",
+                title: "E-Learning Newbie!",
+                description: "Earned upon completing your first lesson.",
                 image: {
-                    src: "img/badges/Cup_Badge_Color.png",
-                    alt: "Welcome to the Class",
-                },
-                unlocked: true,
-            },
-            {
-                title: "Welcome to the Class",
-                description: "Earned when you first registered.",
-                image: {
-                    src: "img/badges/Cup_Badge_Color.png",
-                    alt: "Welcome to the Class",
+                    src: "img/badges/Growth_Badge_Color.png",
+                    alt: "E-Learning Newbie",
                 },
                 unlocked: false,
             },
             {
-                title: "Welcome to the Class",
-                description: "Earned when you first registered.",
+                title: "Brainiac in the Making!",
+                description: "Earned when you ace your first quiz.",
                 image: {
-                    src: "img/badges/Cup_Badge_Color.png",
-                    alt: "Welcome to the Class",
+                    src: "img/badges/Idea_Badge_Color.png",
+                    alt: "Brainiac in the Making",
                 },
                 unlocked: false,
-            }
+            },
+            {
+                title: "Baby Steps!",
+                description: "Earned when you complete you complete your first topic.",
+                image: {
+                    src: "img/badges/Like_Badge_Color.png",
+                    alt: "Baby Steps",
+                },
+                unlocked: false,
+            },
+            {
+              title: "Knowledge Knight",
+              description: "Earned when you complete your first course.",
+              image: {
+                  src: "img/badges/Medal_Badge_Color.png",
+                  alt: "Knowledge Knight",
+              },
+              unlocked: false,
+            },
+          {
+            title: "On a Roll!",
+            description: "Earned when you complete 10 lessons.",
+            image: {
+                src: "img/badges/Monitor_Badge_Color.png",
+                alt: "On a Roll",
+            },
+            unlocked: false,
+          },
+          {
+            title: "First Streak!",
+            description: "Earned when you learn for 3 days straight.",
+            image: {
+              src: "img/badges/Shuttle_Badge_Color.png",
+              alt: "First Streak",
+            },
+            unlocked: false,
+          },
+          {
+            title: "Overachiever!",
+            description: "Earned when you complete all courses available.",
+            image: {
+              src: "img/badges/Star_Badge_Color.png",
+              alt: "Overachiever",
+            },
+            unlocked: false,
+          }
         ];
 
 
