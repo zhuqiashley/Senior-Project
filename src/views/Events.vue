@@ -12,9 +12,9 @@
                         </div>
                         
                         <div class="info">
-                            <h1> {{event.title}} </h1>
-                            <p> Instructors: {{event.instructors}} </p>
-                            <p> {{event.date}} </p>
+                            <h1> {{event.EventTitle}} </h1>
+                            <p> Instructors: {{event.EventInstructor}} </p>
+                            <p> {{event.EventDate}} </p>
                         </div>
                     </div>
                 </template>
@@ -27,6 +27,8 @@
 <script>
 import CustomHeader from '../components/Header.vue'
 import Card from '../components/Card.vue'
+import { ref, onBeforeMount } from "vue";
+import axios from 'axios';
 
 export default {
   components:
@@ -35,18 +37,30 @@ export default {
     Card
   },
   setup() {
-    const events = [
-      {
-        title: 'Git & Github',
-        instructors: 'Sergiu Dascalu and Vinh Le',
-        date: 'January 31st @ 2:00 pm',
-      },
-      {
-        title: 'Event 1',
-        instructors: 'Sergiu Dascalu and Vinh Le',
-        date: 'January 31st @ 2:00 pm',
-      },
-    ]
+    // const events = [
+    //   {
+    //     title: 'Git & Github',
+    //     instructors: 'Sergiu Dascalu and Vinh Le',
+    //     date: 'January 31st @ 2:00 pm',
+    //   },
+    //   {
+    //     title: 'Event 1',
+    //     instructors: 'Sergiu Dascalu and Vinh Le',
+    //     date: 'January 31st @ 2:00 pm',
+    //   },
+    // ]
+
+    const events = ref([])
+
+    onBeforeMount(async () => {
+      await axios.get('http://localhost:3001/api/test')
+            .then(response => {
+                events.value = response.data;
+
+            }).catch(err => {
+                console.error(err);
+            });
+    })
     return {
       events
     }
