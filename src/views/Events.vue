@@ -13,8 +13,11 @@
                         
                         <div class="info">
                             <h1> {{event.EventTitle}} </h1>
-                            <p> Instructors: {{event.EventInstructor}} </p>
                             <p> {{event.EventDate}} </p>
+                            <p> Instructors: {{event.EventInstructor}} </p>
+                            <p> Description: {{event.EventDescription}} </p>
+                            <p> Spots Left: {{event.EventSpots}} </p>
+                            <p><button class="btn btn-success" type="button" @click="register">Register</button></p>
                         </div>
                     </div>
                 </template>
@@ -29,6 +32,9 @@ import CustomHeader from '../components/Header.vue'
 import Card from '../components/Card.vue'
 import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
+
+let eventDB = 'http://localhost:3001/api/event'
+// let userDB = 'http://localhost:3001/api/user'
 
 export default {
   components:
@@ -53,7 +59,7 @@ export default {
     const events = ref([])
 
     onBeforeMount(async () => {
-      await axios.get('http://localhost:3001/api/test')
+      await axios.get(eventDB)
             .then(response => {
                 events.value = response.data;
 
