@@ -13,7 +13,7 @@
                         
                         <div class="info">
                             <h1> {{event.EventTitle}} </h1>
-                            <p> {{event.EventDate}} </p>
+                            <p> Date: {{formatDate(event.EventDate)}} </p>
                             <p> Instructors: {{event.EventInstructor}} </p>
                             <p> Description: {{event.EventDescription}} </p>
                             <p> Spots Left: {{event.EventSpots}} </p>
@@ -37,12 +37,14 @@ let eventDB = 'http://localhost:3001/api/event'
 // let userDB = 'http://localhost:3001/api/user'
 
 export default {
+
   components:
   {
     CustomHeader,
     Card
   },
   setup() {
+    
     // const events = [
     //   {
     //     title: 'Git & Github',
@@ -58,6 +60,11 @@ export default {
 
     const events = ref([])
 
+    function formatDate(d){
+      const date = new Date(d)
+      return date.toLocaleString()
+    }
+
     onBeforeMount(async () => {
       await axios.get(eventDB)
             .then(response => {
@@ -68,6 +75,7 @@ export default {
             });
     })
     return {
+      formatDate,
       events
     }
   },
