@@ -34,6 +34,7 @@ import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
 
 let eventDB = 'http://localhost:3001/api/event'
+//let eventDB = 'http://192.168.1.3:8080/'
 // let userDB = 'http://localhost:3001/api/user'
 
 export default {

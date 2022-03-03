@@ -8,6 +8,7 @@ import Events from '../views/Events.vue'
 import Login from '../views/Login.vue'
 import Profile from '../views/Profile.vue'
 import MyCourses from '../views/UserCourses.vue'
+import Signup from "../views/Signup";
 
 const routes = [
 	{
@@ -64,6 +65,14 @@ const routes = [
 		component: MyCourses,
 		meta: {
 			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/Signup',
+		name: 'Signup',
+		component: Signup,
+		meta: {
+			title: 'Master CS | Sign Up'
 		}
 	}
 ]
