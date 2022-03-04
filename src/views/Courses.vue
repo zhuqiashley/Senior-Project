@@ -13,7 +13,7 @@
 				<template #end>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-right">
 						<button class="btn btn-success" > View Course </button>
-						<button class="btn btn-primary" > Quiz </button>
+						<button class="btn btn-primary" @click="toQuiz(course.title,course.id)" > Quiz </button>
 					</div>
 				</template>
 			</card>
@@ -32,64 +32,77 @@ export default {
 		CustomHeader,
 		Card
 	},
-	setup() {
-		const courses = [
-			{
-				title: 'Cyber Security',
-				description: 'Complete the video course and complete the quiz exercises. Good luck!',
-				image: {
-					src: 'img/Courses/Cyber-Security.jpg',
-					alt: 'Cyber Security',
-				}
+	// setup() {
+	// 	const courses = [
+	// 		{
+	// 			title: 'Cyber Security',
+	// 			description: 'Complete the video course and complete the quiz exercises. Good luck!',
+	// 			image: {
+	// 				src: 'img/Courses/Cyber-Security.jpg',
+	// 				alt: 'Cyber Security',
+	// 			}
 				
-			},
-			{
-				title: 'Data Science',
-				description: 'Complete the video course and complete the quiz exercises. Good luck!',
-				image: {
-					src: 'img/Courses/data_science.jpg',
-					alt: 'Data Science',
-				}
+	// 		},
+	// 		{
+	// 			title: 'Data Science',
+	// 			description: 'Complete the video course and complete the quiz exercises. Good luck!',
+	// 			image: {
+	// 				src: 'img/Courses/data_science.jpg',
+	// 				alt: 'Data Science',
+	// 			}
 				
-			},
-			{
-				title: 'Big Data',
-				description: 'Complete the video course and complete the quiz exercises. Good luck!',
-				image: {
-					src: 'img/Courses/big_data.jpeg',
-					alt: 'Big Data',
-				}
+	// 		},
+	// 		{
+	// 			title: 'Big Data',
+	// 			description: 'Complete the video course and complete the quiz exercises. Good luck!',
+	// 			image: {
+	// 				src: 'img/Courses/big_data.jpeg',
+	// 				alt: 'Big Data',
+	// 			}
 				
-			},
-			{
-				title: 'Machine Learning and AI',
-				description: 'Complete the video course and complete the quiz exercises. Good luck!',
-				image: {
-					src: 'img/Courses/ml-ai.jpg',
-					alt: 'Data Science',
-				}
+	// 		},
+	// 		{
+	// 			title: 'Machine Learning and AI',
+	// 			description: 'Complete the video course and complete the quiz exercises. Good luck!',
+	// 			image: {
+	// 				src: 'img/Courses/ml-ai.jpg',
+	// 				alt: 'Data Science',
+	// 			}
 				
-			},
-			{
-				title: 'Web Development',
-				description: 'Complete the video course and complete the quiz exercises. Good luck!',
-				image: {
-					src: 'img/Courses/webdev.jpg',
-					alt: 'Big Data',
-				}
+	// 		},
+	// 		{
+	// 			title: 'Web Development',
+	// 			description: 'Complete the video course and complete the quiz exercises. Good luck!',
+	// 			image: {
+	// 				src: 'img/Courses/webdev.jpg',
+	// 				alt: 'Big Data',
+	// 			}
 				
-			},
-			{
-				title: "Metaverse",
-				description: 'Complete the video course and complete the quiz exercises. Good luck!',
-				image: {
-					src: 'img/Courses/Metaverse.jpg',
-					alt: 'Metaverse',
-				}
-			}
-		]
+	// 		},
+	// 		{
+	// 			title: "Metaverse",
+	// 			description: 'Complete the video course and complete the quiz exercises. Good luck!',
+	// 			image: {
+	// 				src: 'img/Courses/Metaverse.jpg',
+	// 				alt: 'Metaverse',
+	// 			}
+	// 		}
+	// 	]
+	// 	return {
+	// 		courses
+	// 	}
+	// },
+	methods: {
+		toQuiz(title,id) {
+			this.$router.push({
+			name: "Quiz",
+			query: {title: title,id:id}
+			})
+		}
+	},
+	data() {
 		return {
-			courses
+			courses:this.$store.state.courses
 		}
 	},
 }
