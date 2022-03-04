@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-left: 20px;">
+  <div style="margin-left: 20%;margin-right: 20%;">
     <h1>ch{{ Number(index) + 1 }}</h1>
     <div v-for="(pro,idx) in this.$store.state.current" :key="pro.id">
       <p class="content">{{ idx + 1 }}. {{ pro.content }}</p>
@@ -42,7 +42,7 @@
       <hr>
     </div>
   </div>
-  <div style="margin-bottom: 20px; margin-left: 30px;">
+  <div style="margin-left: 20%;margin-right: 20%;">
     <button v-if="!this.$store.state.isSubmit" type="button" class="btn btn-primary" style="margin-bottom: 20px;"
             @click="submit">Submit
     </button>
@@ -85,7 +85,7 @@ export default {
       let list = this.getRandomArrayElements(this.$store.state.problems[this.id][this.index], 5)
       this.$store.commit('setCurrent', list)
       for (let i = 0; i < this.checkedValue.length; i++) {
-        this.checkedValue[i] = false
+        this.checkedValue[i] = 4
       }
       // this.$root.reload()
     },

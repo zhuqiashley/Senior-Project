@@ -2,113 +2,137 @@
   <div>
     <custom-header :title="'Introduction Quiz'"></custom-header>
     <div style="margin-left:20px;">
-      <h1>What Type of Learner Are You?</h1>
-      <div v-for="(pro,idx) in list" :key="pro.id">
-        <p class="content">{{ idx + 1 }}. {{ pro.content }}</p>
-        <label>
-          <div class="item">
-            <input style="margin-right: 8px;" type="radio" :name="pro.id" :value=0 v-model="checkedValue[idx]">
-            A. {{ pro.A }}
-          </div>
-        </label>
-        <br>
-        <label>
-          <div class="item">
-            <input style="margin-right: 8px;" type="radio" :name="pro.id" :value=1 v-model="checkedValue[idx]">
-            B. {{ pro.B }}
-          </div>
-        </label>
-        <br>
-        <label>
-          <div class="item">
-            <input style="margin-right: 8px;" type="radio" :name="pro.id" :value=2 v-model="checkedValue[idx]">
-            C. {{ pro.C }}
-          </div>
-        </label>
-        <br>
-        <hr>
+      <div v-if="this.result===0" style="margin-left: 20%;margin-right: 20%;">
+        <h1>What Type of Learner Are You?</h1>
+        <img src="../assets/img/quiz/introQuiz.png"
+             style="text-align:center;margin-right: 15%;margin-bottom: 15px;margin-top: 15px" height="300">
+        <div v-for="(pro,idx) in list" :key="pro.id">
+          <p class="content">{{ idx + 1 }}. {{ pro.content }}</p>
+          <label>
+            <div class="item">
+              <input style="margin-right: 8px;" type="radio" :name="pro.id" :value=0 v-model="checkedValue[idx]">
+              A. {{ pro.A }}
+            </div>
+          </label>
+          <br>
+          <label>
+            <div class="item">
+              <input style="margin-right: 8px;" type="radio" :name="pro.id" :value=1 v-model="checkedValue[idx]">
+              B. {{ pro.B }}
+            </div>
+          </label>
+          <br>
+          <label>
+            <div class="item">
+              <input style="margin-right: 8px;" type="radio" :name="pro.id" :value=2 v-model="checkedValue[idx]">
+              C. {{ pro.C }}
+            </div>
+          </label>
+          <br>
+          <hr>
+        </div>
+        <div>
+          <p class="content">Additional: When you visit a website for the first time, what is the first thing you look
+            at?</p>
+          <label>
+            <div class="item">
+              <input style="margin-right: 8px;" type="radio" name="add" :value=0 v-model="add">
+              A. If the website has implemented data security best practices.
+            </div>
+          </label>
+          <br>
+          <label>
+            <div class="item">
+              <input style="margin-right: 8px;" type="radio" name="add" :value=1 v-model="add">
+              B. Looking at the advertisements and wonder how the tracking works.
+            </div>
+          </label>
+          <br>
+          <label>
+            <div class="item">
+              <input style="margin-right: 8px;" type="radio" name="add" :value=2 v-model="add">
+              C. Why did they choose a 3 column layout while so many other great choices exist.
+            </div>
+          </label>
+          <br>
+          <label>
+            <div class="item">
+              <input style="margin-right: 8px;" type="radio" name="add" :value=3 v-model="add">
+              D. What would this look like in virtual reality.
+            </div>
+          </label>
+          <br>
+          <hr>
+        </div>
+        <button type="button" class="btn btn-primary" style="margin-bottom: 20px;margin-left:10px;"
+                @click="submit">Submit
+        </button>
       </div>
-      <div>
-        <p class="content">Additional: When you visit a website for the first time, what is the first thing you look
-          at?</p>
-        <label>
-          <div class="item">
-            <input style="margin-right: 8px;" type="radio" name="add" :value=0 v-model="add">
-            A. If the website has implemented data security best practices.
+      <div class="center">
+        <div v-if="this.result===1">
+          <div class="left">
+            <h5>You are a Visual Learner.</h5>
+            <p>Sketch course content. Even the simplest sketch can help you remember ideas.</p>
+            <li>List your tasks – even the ones you have completed – just to have the satisfaction of visually crossing
+              out
+              tasks done.
+            </li>
+            <li>Write notes on your favorite colored sticky-notes to help you remember and paste them around your
+              room.
+            </li>
+            <li>An uncluttered desk may help in clearing your mind to be able to study better.</li>
+            <li>Write yourself encouraging notes and post them where you can see them.</li>
+            <li>Create mind maps, flowcharts, or other graphic organizers.</li>
+            <li>Sketch course content. Even the simplest sketch can help you remember ideas.</li>
           </div>
-        </label>
-        <br>
-        <label>
-          <div class="item">
-            <input style="margin-right: 8px;" type="radio" name="add" :value=1 v-model="add">
-            B. Looking at the advertisements and wonder how the tracking works.
+          <div class="right">
+            <img src="../assets/img/quiz/result-visual.jpg" height="300" width="300">
           </div>
-        </label>
-        <br>
-        <label>
-          <div class="item">
-            <input style="margin-right: 8px;" type="radio" name="add" :value=2 v-model="add">
-            C. Why did they choose a 3 column layout while so many other great choices exist.
+        </div>
+        <div v-if="this.result===2">
+          <div class="left">
+            <h5>You are an Auditory Learner.</h5>
+            <li>Teach yourself to read aloud in your mind without making sound.
+              During exams, you can hear the test questions as well as see them.
+            </li>
+            <li>Study with a partner or in a group. When studying with others, you
+              can hear what they say, and hear yourself teaching them as well.
+              This will reinforce your understanding of the material.
+            </li>
+            <li>Proofread your assignments out loud.</li>
+            <li>Read your textbook and notes aloud as you study. You could even
+              record them as you do so.
+            </li>
           </div>
-        </label>
-        <br>
-        <label>
-          <div class="item">
-            <input style="margin-right: 8px;" type="radio" name="add" :value=3 v-model="add">
-            D. What would this look like in virtual reality.
+          <div class="right">
+            <img src="../assets/img/quiz/result-auditory.jpg" height="300" width="300">
           </div>
-        </label>
-        <br>
-        <hr>
-      </div>
-      <button type="button" class="btn btn-primary" style="margin-bottom: 20px;margin-left:10px;"
-              @click="submit">Submit
-      </button>
-      <div v-if="this.result===1">
-        <h5>You are a visual learner.</h5>
-        <p>Sketch course content. Even the simplest sketch can help you remember ideas.</p>
-        <li>List your tasks – even the ones you have completed – just to have the satisfaction of visually crossing out
-          tasks done.
-        </li>
-        <li>Write notes on your favorite colored sticky-notes to help you remember and paste them around your room.</li>
-        <li>An uncluttered desk may help in clearing your mind to be able to study better.</li>
-        <li>Write yourself encouraging notes and post them where you can see them.</li>
-        <li>Create mind maps, flowcharts, or other graphic organizers.</li>
-        <li>Sketch course content. Even the simplest sketch can help you remember ideas.</li>
-      </div>
-      <div v-if="this.result===2">
-        <h5>You are an auditory learner.</h5>
-        <li>Teach yourself to read aloud in your mind without making sound.
-          During exams, you can hear the test questions as well as see them.
-        </li>
-        <li>Study with a partner or in a group. When studying with others, you
-          can hear what they say, and hear yourself teaching them as well.
-          This will reinforce your understanding of the material.
-        </li>
-        <li>Proofread your assignments out loud.</li>
-        <li>Read your textbook and notes aloud as you study. You could even
-          record them as you do so.
-        </li>
-      </div>
-      <div v-if="this.result===3">
-        <h5>You are a visual learner.</h5>
-        <li>Make models of the concepts whenever possible.</li>
-        <li>Move around while you are studying. For instance, you can simply
-          walk around in your room.
-        </li>
-        <li>Study on a whiteboard. Draw flowcharts, mind maps, or simply
-          rewrite the notes.
-        </li>
-        <li>Incorporate pictures of models, if possible.</li>
-        <li>Make physical comfort a priority as you study.</li>
-        <li>Make note cards and create sample tests that you can take for
-          review.
-        </li>
-      </div>
-      <div v-if="this.resource!==''">
-        <br>
-        <h4>The right course(s) for you is/are {{ resource }}.</h4>
-        <br>
+        </div>
+        <div v-if="this.result===3">
+          <div class="left">
+            <h5>You are a Tactile/Kinesthetic Learner.</h5>
+            <li>Make models of the concepts whenever possible.</li>
+            <li>Move around while you are studying. For instance, you can simply
+              walk around in your room.
+            </li>
+            <li>Study on a whiteboard. Draw flowcharts, mind maps, or simply
+              rewrite the notes.
+            </li>
+            <li>Incorporate pictures of models, if possible.</li>
+            <li>Make physical comfort a priority as you study.</li>
+            <li>Make note cards and create sample tests that you can take for
+              review.
+            </li>
+          </div>
+          <div class="right">
+            <img src="../assets/img/quiz/result-kinesthetic.jpg" height="300" width="300">
+          </div>
+        </div>
+        <div v-if="this.resource!==''">
+          <br>
+          <h4>The right course(s) for you is/are {{ resource }}.</h4>
+          <br>
+        </div>
       </div>
     </div>
   </div>
@@ -167,7 +191,6 @@ export default {
       let max = num1 > num2 ? num1 : num2
       return max > num3 ? max : num3
     },
-
   },
   data() {
     return {
@@ -237,18 +260,31 @@ export default {
       add: 4,
       resource: '',
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
 .center {
-  position: relative;
-  top: 0;
+  position: absolute;
+  top: 380px;
   bottom: 0;
-  left: 0;
+  left: 30%;
   right: 0;
   margin: auto;
+}
+
+.left {
+  width: 40%;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+}
+
+.right {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .content {

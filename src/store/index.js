@@ -1778,14 +1778,21 @@ export default createStore({
             //Cyber Security
             [
                 //ch1-5
-                'https://https://www.cisco.com/c/en/us/products/security/what-is-cybersecurity.html',
-                'https://https://onlinedegrees.und.edu/blog/types-of-cyber-security-threats',
-                'https://https://onlinedegrees.und.edu/blog/5-cryptography-tools.html/',
-                'https://https://www.csoonline.com/article/3235970/what-is-quantum-cryptography-it-s-no-silver-bullet-but-could-improve-security.html',
-                'https://https://www.executech.com/insights/top-15-types-of-cybersecurity-attacks-how-to-prevent-them/',
+                'https://www.cisco.com/c/en/us/products/security/what-is-cybersecurity.html',
+                'https://onlinedegrees.und.edu/blog/types-of-cyber-security-threats',
+                'https://onlinedegrees.und.edu/blog/5-cryptography-tools.html/',
+                'https://www.csoonline.com/article/3235970/what-is-quantum-cryptography-it-s-no-silver-bullet-but-could-improve-security.html',
+                'https://www.executech.com/insights/top-15-types-of-cybersecurity-attacks-how-to-prevent-them/',
             ],
             //Data Science
-            [],
+            [
+                //ch1-5
+                'https://www.sisense.com/glossary/data-science-basics/#:~:text=Data%20science%20is%20the%20multidisciplinary,that%20are%20unknown%20and%20unexpected',
+                'https://medium.com/data-science-365/pandas-for-data-science-part-1-89bc231b3478#:~:text=as%20an%20argument.-,The%20pandas%20DataFrame,%2C%20bool%2C%20and%20so%20on.',
+                'https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html',
+                'https://opensource.com/article/20/4/plot-data-python',
+                'https://byjus.com/maths/probability-and-statistics/',
+            ],
             //Big Data
             [],
             //Machine Learning and AI
