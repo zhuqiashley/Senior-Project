@@ -2,6 +2,10 @@
 <template>
     <div class="Events">
         <custom-header title="Events"></custom-header>
+
+        <div class="container mt-4 d-flex justify-content-end">
+          <button class="btn btn-success" type="button" @click="addcourse">+ Add Course</button>
+        </div>
     
         <div class="container">
             <card class="event-module mt-4 mb-4" v-for="(event, index) in events" v-bind:key="index" >
@@ -43,6 +47,13 @@ export default {
     CustomHeader,
     Card
   },
+
+  methods: {
+    addcourse(){
+      alert('adding course')
+    }
+  },
+
   setup() {
     
     // const events = [
@@ -64,7 +75,7 @@ export default {
       const date = new Date(d)
       return date.toLocaleString()
     }
-
+  
     onBeforeMount(async () => {
       await axios.get(eventDB)
             .then(response => {
@@ -84,6 +95,18 @@ export default {
 
 <!-- ======= STYLE ======= -->
 <style scoped>
+.event-manager{
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.divider{
+    width:1.5rem;
+    height:auto;
+    display:inline-block;
+}
+
 .event-module {
   width: 100%;
 }
