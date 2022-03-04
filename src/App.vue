@@ -15,6 +15,7 @@
 					<router-link to="/profile"> Profile </router-link>
 					<router-link to="/achievements"> Achievements </router-link>
 					<router-link to=/MyCourses> My Courses </router-link>
+					<router-link to=/Introduction> Introduction Quiz </router-link>
 				</ul>
 				</li>
 				<router-link to="Login">

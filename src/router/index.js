@@ -8,10 +8,13 @@ import Events from '../views/Events.vue'
 import Login from '../views/Login.vue'
 import Profile from '../views/Profile.vue'
 import MyCourses from '../views/UserCourses.vue'
+import Quiz from '../views/Quiz.vue'
+import Problem from '../views/Problem.vue'
+import Introduction from '../views/Introduction.vue'
 
 const routes = [
 	{
-		path: '/',
+		path: '',
 		name: 'Home',
 		component: Home,
 		meta: {
@@ -65,7 +68,46 @@ const routes = [
 		meta: {
 			title: 'Master CS | My Courses'
 		}
-	}
+	},
+    {
+        path: '/Introduction',
+        name: 'Introduction',
+        component: Introduction,
+        meta: {
+            title: 'Master CS | Introduction Quiz'
+        }
+    },
+
+    {
+        path: '/Quiz',
+        name: 'Quiz',
+        component: Quiz,
+        props($route) {
+            return {
+                title: $route.query.title,
+                id: $route.query.id,
+            }
+        },
+        meta: {
+            title: 'Master CS | Quiz'
+        },
+        children: [
+        ]
+    },
+    {
+        name: 'Problem',
+        path: '/Problem',
+        component: Problem,
+        props($route) {
+            return {
+                index: $route.query.index,
+                id: $route.query.id,
+            }
+        },
+    },
+    {
+        path: '',
+    },
 ]
 
 const router = createRouter({
