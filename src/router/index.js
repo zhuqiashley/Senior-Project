@@ -12,7 +12,7 @@ import Announcement from '../views/Announcement.vue'
 import Chapter from '../views/Chapter.vue'
 import Forum from '../views/Forum.vue'
 import HomeCourse from '../views/HomeCourse.vue'
-import Quizzes from '../views/Quize.vue'
+// import Quizzes from '../views/Quize.vue'
 import Syllabus from '../views/Syllabus.vue'
 import Quiz from '../views/Quiz.vue'
 import Problem from '../views/Problem.vue'
@@ -135,14 +135,14 @@ const routes = [
 			title: 'Master CS | My Courses'
 		}
 	},
-	{
-		path: '/quizzes',
-		name: 'MyCoursesQuizzes',
-		component: Quizzes,
-		meta: {
-			title: 'Master CS | My Courses'
-		}
-	},
+	// {
+	// 	path: '/quizzes',
+	// 	name: 'MyCoursesQuizzes',
+	// 	component: Quizzes,
+	// 	meta: {
+	// 		title: 'Master CS | My Courses'
+	// 	}
+	// },
 	{
 		path: '/syllabus',
 		name: 'MyCoursesSyllabus',

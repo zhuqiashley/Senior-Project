@@ -33,7 +33,7 @@
       <br>
       <div v-if="this.$store.state.isSubmit">
         <div class="explain">
-          correct answer：{{ pro.answer }}
+            Correct Answer：{{ pro.answer }}
         </div>
         <div class="explain">
           Explanation：{{ pro.explanation }}
