@@ -3,11 +3,16 @@
     <div class="Events">
         <custom-header title="Events"></custom-header>
 
+        <!-- popup modal for adding classes - modal code found on digitalocean.com -->
         <div class="container mt-4 d-flex justify-content-end">
-          <button class="btn btn-success" type="button" @click="addcourse">+ Add Course</button>
-        </div>
-    
+			<button type="button" class="btn btn-success" @click="showModal">
+				+ Add Course
+			</button>
+			<Modal v-show="isModalVisible" @close="closeModal"/>
+		</div>
+  
         <div class="container">
+            <!-- Loopt through entire events table and output data into card component -->
             <card class="event-module mt-4 mb-4" v-for="(event, index) in events" v-bind:key="index" >
                 <template #body>
                     <div class="d-flex align-items-start">
@@ -36,7 +41,9 @@ import CustomHeader from '../components/Header.vue'
 import Card from '../components/Card.vue'
 import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
+import Modal from '../components/Modal.vue'
 
+//access event table
 let eventDB = 'http://localhost:3001/api/event'
 // let userDB = 'http://localhost:3001/api/user'
 
@@ -45,37 +52,42 @@ export default {
   components:
   {
     CustomHeader,
-    Card
+    Card,
+	Modal,
   },
 
   methods: {
     addcourse(){
       alert('adding course')
+    },
+
+	showModal() {
+        this.isModalVisible = true;
+    },
+
+    closeModal() {
+        this.isModalVisible = false;
+    }
+  },
+
+  data(){
+    return {
+		popupAddCourse: false, // setup for add course popup
+		isModalVisible: false, 
     }
   },
 
   setup() {
-    
-    // const events = [
-    //   {
-    //     title: 'Git & Github',
-    //     instructors: 'Sergiu Dascalu and Vinh Le',
-    //     date: 'January 31st @ 2:00 pm',
-    //   },
-    //   {
-    //     title: 'Event 1',
-    //     instructors: 'Sergiu Dascalu and Vinh Le',
-    //     date: 'January 31st @ 2:00 pm',
-    //   },
-    // ]
 
     const events = ref([])
 
+    // format date to be readable (m/dd/yyy hh:mm:ss)
     function formatDate(d){
       const date = new Date(d)
       return date.toLocaleString()
     }
   
+    // access event database
     onBeforeMount(async () => {
       await axios.get(eventDB)
             .then(response => {
@@ -87,7 +99,7 @@ export default {
     })
     return {
       formatDate,
-      events
+      events,
     }
   },
 }
