@@ -14,7 +14,7 @@
             <router-link  :to="{ path: '/chapter', query: $route.query }"><ol class="">
             <h1>Course Chapters</h1>
             </ol></router-link>
-            <router-link  :to="{ path: '/quizzes', query: $route.query }"><ol class="">
+            <router-link  :to="{ path: '/Quiz', query: $route.query }"><ol class="">
             <h1>Quizzes</h1>
             </ol></router-link>
             <router-link  :to="{ path: '/syllabus', query: $route.query }"><ol class="">
