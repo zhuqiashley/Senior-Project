@@ -39,6 +39,7 @@ export default {
 	setup() {
 		const courses = [
 			{
+				id: 0,
 				title: 'Cyber Security',
 				description: 'Complete the video course and complete the quiz exercises. Good luck!',
 				image: {
@@ -64,6 +65,7 @@ export default {
 
 			},
 			{
+				id: 1,
 				title: 'Data Science',
 				description: 'Complete the video course and complete the quiz exercises. Good luck!',
 				image: {
@@ -87,8 +89,9 @@ export default {
 				chapter5:"https://www.youtube.com/embed/vJEO57B05Sg",
 				chapterDetail5:"Our global network of security operations centers provides 24x7 management, monitoring and incident response for the world's largest companies.",
 
-      },
+			},
 			{
+				id: 2,
 				title: 'Big Data',
 				description: 'Complete the video course and complete the quiz exercises. Good luck!',
 				image: {
@@ -112,8 +115,9 @@ export default {
 				chapter5:"https://www.youtube.com/embed/vJEO57B05Sg",
 				chapterDetail5:"Our global network of security operations centers provides 24x7 management, monitoring and incident response for the world's largest companies.",
 
-      },
+			},
 			{
+				id: 3,
 				title: 'Machine Learning and AI',
 				description: 'Complete the video course and complete the quiz exercises. Good luck!',
 				image: {
@@ -137,8 +141,9 @@ export default {
 				chapter5:"https://www.youtube.com/embed/vJEO57B05Sg",
 				chapterDetail5:"Our global network of security operations centers provides 24x7 management, monitoring and incident response for the world's largest companies.",
 
-      },
+			},
 			{
+				id: 4,
 				title: 'Web Development',
 				description: 'Complete the video course and complete the quiz exercises. Good luck!',
 				image: {
@@ -156,9 +161,9 @@ export default {
 				chapter3:"https://www.youtube.com/embed/xoL6WvCARJY",
 				chapter4:"https://www.youtube.com/embed/8cm1x4bC610",
 				chapter5:"https://www.youtube.com/embed/vJEO57B05Sg",
-
-      },
+			},
 			{
+				id: 5,
 				title: "Metaverse",
 				description: 'Complete the video course and complete the quiz exercises. Good luck!',
 				image: {
@@ -178,7 +183,7 @@ export default {
 				chapter4:"https://www.youtube.com/embed/8cm1x4bC610",
 				chapter5:"https://www.youtube.com/embed/vJEO57B05Sg",
 
-      }
+			}
 		]
 		return {
 			courses
