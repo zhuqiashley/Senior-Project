@@ -8,6 +8,12 @@ import Events from '../views/Events.vue'
 import Login from '../views/Login.vue'
 import Profile from '../views/Profile.vue'
 import MyCourses from '../views/UserCourses.vue'
+import Announcement from '../views/Announcement.vue'
+import Chapter from '../views/Chapter.vue'
+import Forum from '../views/Forum.vue'
+import HomeCourse from '../views/HomeCourse.vue'
+import Quizzes from '../views/Quize.vue'
+import Syllabus from '../views/Syllabus.vue'
 import Quiz from '../views/Quiz.vue'
 import Problem from '../views/Problem.vue'
 import Introduction from '../views/Introduction.vue'
@@ -105,9 +111,54 @@ const routes = [
             }
         },
     },
-    {
-        path: '',
-    },
+	{
+		path: '/homecourse',
+		name: 'MyCoursesHome',
+		component: HomeCourse,
+		meta: {
+			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/announcements',
+		name: 'MyCoursesAnnouncement',
+		component: Announcement,
+		meta: {
+			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/chapter',
+		name: 'MyCoursesChapter',
+		component: Chapter,
+		meta: {
+			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/quizzes',
+		name: 'MyCoursesQuizzes',
+		component: Quizzes,
+		meta: {
+			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/syllabus',
+		name: 'MyCoursesSyllabus',
+		component: Syllabus,
+		meta: {
+			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/forum',
+		name: 'MyCoursesForum',
+		component: Forum,
+		meta: {
+			title: 'Master CS | My Courses'
+		}
+	}
 ]
 
 const router = createRouter({
