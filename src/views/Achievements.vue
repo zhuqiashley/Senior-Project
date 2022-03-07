@@ -28,7 +28,7 @@ import Card from '@/components/Card.vue'
 import ProgressBar from '@/components/ProgressBar.vue';
 
 export default {
-    components:
+  components:
     {
         CustomHeader,
         Card,
@@ -123,6 +123,8 @@ export default {
         return {
             achievements, unlocked, locked,
         }
+
+
     },
 }
 </script>
