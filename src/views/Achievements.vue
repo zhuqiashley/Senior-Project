@@ -124,6 +124,10 @@ export default {
             achievements, unlocked, locked,
         }
 
+        //get user id
+        //get achievement
+        //check achievement requirements
+        //award achievement & update user profile - event triggered  w/ pop-up of badge icon
 
     },
 }
