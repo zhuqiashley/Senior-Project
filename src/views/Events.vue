@@ -78,10 +78,9 @@ import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
 import Modal from '../components/Modal.vue'
 
-//access event table
-const eventDB = 'http://localhost:3001/api/event'
-//let testDB = 'http://localhost:3001/api/test'
-//let userDB = 'http://localhost:3001/api/user'
+let eventDB = 'http://localhost:3001/api/event'
+
+// let userDB = 'http://localhost:3001/api/user'
 
 export default {
 
