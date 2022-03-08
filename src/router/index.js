@@ -9,6 +9,8 @@ import Login from '../views/Login.vue'
 import Profile from '../views/Profile.vue'
 import MyCourses from '../views/UserCourses.vue'
 import Signup from "../views/Signup";
+import Statistics from "../views/Statistics";
+import LoginFailed from "../views/LoginFailed";
 
 const routes = [
 	{
@@ -73,6 +75,22 @@ const routes = [
 		component: Signup,
 		meta: {
 			title: 'Master CS | Sign Up'
+		}
+	},
+	{
+		path: '/Statistics',
+		name: 'Statistics',
+		component: Statistics,
+		meta: {
+			title: 'Master CS | User Statistics'
+		}
+	},
+	{
+		path: '/LoginFailed',
+		name: 'LoginFailed',
+		component: LoginFailed,
+		meta: {
+			title: 'Master CS | User Statistics'
 		}
 	}
 ]

@@ -36,15 +36,15 @@ import Card from '../components/Card.vue'
 import axios from 'axios';
 //import {onBeforeMount, ref} from "vue";
 
-let userDB = 'http://localhost:3001/api/user'
+let userDB = 'http://localhost:3001/api/userpost'
 
 export default {
   components:
       {
         Card
       },
-  /*setup() {
-    const user = ref('')
+  setup() {
+    /*const user = ref('')
     onBeforeMount(async () => {
       await axios.get(userDB)
           .then(response => {
@@ -56,14 +56,16 @@ export default {
 
     return {
       user
-    }
-  },*/
+    }*/
+  },
   methods:{
-    submit: async function(){
-      const postData = {firstName: this.$refs.getfirstname.value, lastName: this.$refs.getlastname.value, email: this.$refs.getemail.value, passwordInput: this.$refs.getpassword.value,
-        UserIDInput: 2};
+    submit(){
+      let firstName = this.$refs.getfirstname.value;
+      let lastName = this.$refs.getlastname.value;
+      let email = this.$refs.getemail.value;
+      let passwordInput = this.$refs.getpassword.value;
 
-      await axios.post(userDB, postData).then(response=>{
+       axios.post(userDB, {FirstName:firstName, LastName:lastName, username:email, password:passwordInput}).then(response=>{
         console.log(response);
       }).catch(e=>{
         console.error(e);
