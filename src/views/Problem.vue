@@ -1,6 +1,6 @@
 <template>
   <div style="margin-left: 20%;margin-right: 20%;">
-    <h1>ch{{ Number(index) + 1 }}</h1>
+    <h1>Chapter {{ Number(index) + 1 }} Quiz</h1>
     <div v-for="(pro,idx) in this.$store.state.current" :key="pro.id">
       <p class="content">{{ idx + 1 }}. {{ pro.content }}</p>
       <label>
@@ -52,8 +52,8 @@
     </button>
     <div v-if="this.$store.state.isSubmit">
       <p>Your score: {{score}}</p>
-      <p>reference:<a :href="this.$store.state.url[this.id][this.index]">1</a></p>
-      <p>watch this chapter video again:<a :href="this.$store.state.video[this.id][this.index]">video</a></p>
+      <p>reference:<a :href="this.$store.state.url[this.id][this.index]"> Click Here </a></p>
+      <p>watch this chapter video again:<a :href="this.$store.state.video[this.id][this.index]">Click Here</a></p>
     </div>
   </div>
 </template>
