@@ -8,13 +8,22 @@ import Events from '../views/Events.vue'
 import Login from '../views/Login.vue'
 import Profile from '../views/Profile.vue'
 import MyCourses from '../views/UserCourses.vue'
+import Announcement from '../views/Announcement.vue'
+import Chapter from '../views/Chapter.vue'
+import Forum from '../views/Forum.vue'
+import HomeCourse from '../views/HomeCourse.vue'
+// import Quizzes from '../views/Quize.vue'
+import Syllabus from '../views/Syllabus.vue'
+import Quiz from '../views/Quiz.vue'
+import Problem from '../views/Problem.vue'
+import Introduction from '../views/Introduction.vue'
 import Signup from "../views/Signup";
 import Statistics from "../views/Statistics";
 import LoginFailed from "../views/LoginFailed";
 
 const routes = [
 	{
-		path: '/',
+		path: '',
 		name: 'Home',
 		component: Home,
 		meta: {
@@ -65,6 +74,90 @@ const routes = [
 		path: '/MyCourses',
 		name: 'MyCourses',
 		component: MyCourses,
+		meta: {
+			title: 'Master CS | My Courses'
+		}
+	},
+    {
+        path: '/Introduction',
+        name: 'Introduction',
+        component: Introduction,
+        meta: {
+            title: 'Master CS | Introduction Quiz'
+        }
+    },
+
+    {
+        path: '/Quiz',
+        name: 'Quiz',
+        component: Quiz,
+        props($route) {
+            return {
+                title: $route.query.title,
+                id: $route.query.id,
+            }
+        },
+        meta: {
+            title: 'Master CS | Quiz'
+        },
+        children: [
+        ]
+    },
+    {
+        name: 'Problem',
+        path: '/Problem',
+        component: Problem,
+        props($route) {
+            return {
+                index: $route.query.index,
+                id: $route.query.id,
+            }
+        },
+    },
+	{
+		path: '/homecourse',
+		name: 'MyCoursesHome',
+		component: HomeCourse,
+		meta: {
+			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/announcements',
+		name: 'MyCoursesAnnouncement',
+		component: Announcement,
+		meta: {
+			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/chapter',
+		name: 'MyCoursesChapter',
+		component: Chapter,
+		meta: {
+			title: 'Master CS | My Courses'
+		}
+	},
+	// {
+	// 	path: '/quizzes',
+	// 	name: 'MyCoursesQuizzes',
+	// 	component: Quizzes,
+	// 	meta: {
+	// 		title: 'Master CS | My Courses'
+	// 	}
+	// },
+	{
+		path: '/syllabus',
+		name: 'MyCoursesSyllabus',
+		component: Syllabus,
+		meta: {
+			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/forum',
+		name: 'MyCoursesForum',
+		component: Forum,
 		meta: {
 			title: 'Master CS | My Courses'
 		}
