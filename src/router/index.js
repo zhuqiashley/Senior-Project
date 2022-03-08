@@ -17,6 +17,9 @@ import Syllabus from '../views/Syllabus.vue'
 import Quiz from '../views/Quiz.vue'
 import Problem from '../views/Problem.vue'
 import Introduction from '../views/Introduction.vue'
+import Signup from "../views/Signup";
+import Statistics from "../views/Statistics";
+import LoginFailed from "../views/LoginFailed";
 
 const routes = [
 	{
@@ -157,6 +160,30 @@ const routes = [
 		component: Forum,
 		meta: {
 			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/Signup',
+		name: 'Signup',
+		component: Signup,
+		meta: {
+			title: 'Master CS | Sign Up'
+		}
+	},
+	{
+		path: '/Statistics',
+		name: 'Statistics',
+		component: Statistics,
+		meta: {
+			title: 'Master CS | User Statistics'
+		}
+	},
+	{
+		path: '/LoginFailed',
+		name: 'LoginFailed',
+		component: LoginFailed,
+		meta: {
+			title: 'Master CS | User Statistics'
 		}
 	}
 ]
