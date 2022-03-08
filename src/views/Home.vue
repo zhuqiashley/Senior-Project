@@ -87,9 +87,9 @@ export default {
 		const team = [
 			{
 				name: 'Crystal Atoz',
-				description: 'She will be graduating December 2022 with a B.S. in Computer Science & Engineering and a minor in Mathematics.',
+				description: 'She will be graduating December 2022 with a B.S. in Computer Science & Engineering with a minor in Mathematics.',
 				image: {
-					src: 'img/team/crystal.jpeg',
+					src: 'img/team/advisors.jpeg',
 					alt: 'Crystal Atoz',
 				},
 			},
