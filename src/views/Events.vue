@@ -65,6 +65,18 @@
                         </div>
                     </div>
                 </template>
+
+				<template #end>
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Edit
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+							<li><a class="dropdown-item" href="#">Edit Course</a></li>
+							<li><a class="dropdown-item" href="#">Delete Course</a></li>
+						</ul>
+					</div>
+				</template>
             </card>
         </div>
     </div>
@@ -78,9 +90,9 @@ import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
 import Modal from '../components/Modal.vue'
 
-let eventDB = 'http://localhost:3001/api/event'
 
-// let userDB = 'http://localhost:3001/api/user'
+const eventDB = 'http://localhost:3001/api/event'
+// const userDB = 'http://localhost:3001/api/user'
 
 export default {
 
