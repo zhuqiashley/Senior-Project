@@ -13,6 +13,33 @@
     <p>Quiz 3 Score</p>
         <progress-bar :progress="quiz3"/>
   </div>
+  <div class="container mt-4">
+    <p>Chapter 1 Completion</p>
+    <progress-bar :progress="this.chapter1" />
+  </div>
+  <div class="container mt-4">
+    <p>Chapter 2 Completion</p>
+    <progress-bar :progress="chapter2"/>
+  </div>
+  <div class="container mt-4">
+    <p>Chapter 3 Completion</p>
+    <progress-bar :progress="chapter3"/>
+  </div>
+  <div class="container mt-4">
+    <p>Enrolled Events</p>
+    <p>{{this.event1}}</p>
+    <p>
+
+
+    </p>
+    <p>{{this.event2}}</p>
+    <p>
+
+
+    </p>
+    <p>{{this.event3}}</p>
+  </div>
+
   <div class="form-floating mb-3">
     <input v-model="email" type="email" ref = "getemail" class="form-control" placeholder="name@example.com">
     <label for="floatingInput">User ID</label>
@@ -30,6 +57,9 @@ import ProgressBar from '../components/ProgressBar.vue';
 //import { computed } from 'vue';
 
 let quizDB = 'http://localhost:3001/api/quiz'
+let chapterDB = 'http://localhost:3001/api/VideoCompletion'
+let eventIDDB = 'http://localhost:3001/api/UserEvents'
+let eventDB = 'http://localhost:3001/api/event'
 
 export default {
   components:
@@ -39,6 +69,9 @@ export default {
       },
   setup() {
     const quiz = ref('')
+    const chapter = ref('')
+    const eventID = ref('')
+    const event = ref('')
     onBeforeMount(async () => {
       await axios.get(quizDB)
           .then(response => {
@@ -46,10 +79,35 @@ export default {
 
           }).catch(err => {
             console.error(err);
-          });})
+          });
+      await axios.get(chapterDB)
+          .then(response => {
+            chapter.value = response.data;
+
+          }).catch(err => {
+            console.error(err);
+          });
+      await axios.get(eventIDDB)
+          .then(response => {
+            eventID.value = response.data;
+
+          }).catch(err => {
+            console.error(err);
+          });
+      await axios.get(eventDB)
+          .then(response => {
+            event.value = response.data;
+
+          }).catch(err => {
+            console.error(err);
+          });
+    })
     //this.load();
     //const id = 3;
     let quiz1 = 0, quiz2 = 0, quiz3 = 0;
+    let chapter1 = 0, chapter2 = 0, chapter3 = 0;
+    let eventID1, eventID2, eventID3
+    let event1 = "Event Title", event2 = "Event Title", event3 = "Event Title"
 
     /*try{
       const data = axios.get(quizDB, {params: {UserID: id}}).then(res => res.data);
@@ -100,7 +158,7 @@ export default {
     }*/
 
     return {
-      quiz, quiz1, quiz2, quiz3
+      quiz, quiz1, quiz2, quiz3, chapter1, chapter2, chapter3, eventID1, eventID2, eventID3, event1, event2, event3
     }
 
   },
@@ -136,6 +194,98 @@ export default {
         await this.$router.push('Events');
         console.log(email);
       }
+      try{
+        const data1 = await axios.get(chapterDB, {params: {UserID: email}}).then(res => res.data);
+        console.log(data1);
+        for(var j = 0; j < data1.valueOf().length; j++)
+        {
+          let username = data1[j].UserID;
+          //let passwordcheck = data[i].password;
+          /*let variablecheck = data[i].FirstName;
+          console.log(variablecheck);*/
+          if(username == email)
+          {
+            console.log("inside if");
+            this.chapter1 = data1[j].Course1;
+            this.chapter2 = data1[j].Course2;
+            this.chapter3 = data1[j].Course3;
+            //console.log(this.quiz1);
+            this.$forceUpdate();
+          }
+          //await this.$router.push('LoginFailed');
+        }
+
+        console.log(email);
+      }
+      catch
+      {
+        await this.$router.push('Events');
+        console.log(email);
+      }
+      try{
+        const data2 = await axios.get(eventIDDB, {params: {UserID: email}}).then(res => res.data);
+        console.log(data2);
+        for(var k = 0; k < data2.valueOf().length; k++)
+        {
+          let username = data2[k].UserID;
+          //let passwordcheck = data[i].password;
+          /*let variablecheck = data[i].FirstName;
+          console.log(variablecheck);*/
+          if(username == email)
+          {
+            console.log("inside if");
+            this.eventID1 = data2[k].EventID;
+            this.eventID2 = data2[k].EventID2;
+            this.eventID3 = data2[k].EventID3;
+            //console.log(this.quiz1);
+            this.$forceUpdate();
+          }
+          //await this.$router.push('LoginFailed');
+        }
+
+        console.log(email);
+      }
+      catch
+      {
+        await this.$router.push('Events');
+        console.log(email);
+      }
+      try{
+        const data3 = await axios.get(eventDB, {params: {UserID: email}}).then(res => res.data);
+        console.log(data3);
+        for(var l = 0; l < data3.valueOf().length; l++)
+        {
+
+          let insideId;
+          insideId = data3[l].EventID;
+          console.log(insideId);
+          console.log(this.EventID1);
+
+          if(insideId == this.EventID1)
+            {
+                this.event1 = data3[l].EventTitle;
+              /*const first = document.getElementById("first");
+              first.outerHTML = "changed";*/
+            }
+          if(insideId == this.EventID2)
+          {
+            this.event2 = data3[l].EventTitle;
+          }
+          if(insideId == this.EventID3)
+          {
+            this.event3 = data3[l].EventTitle;
+          }
+            //console.log(this.quiz1);
+            this.$forceUpdate();
+          }
+          //await this.$router.push('LoginFailed')
+      }
+      catch
+      {
+        await this.$router.push('Events');
+        console.log(email);
+      }
+
       return{
         quiz1
       }

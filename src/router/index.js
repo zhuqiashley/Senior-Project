@@ -20,6 +20,7 @@ import Introduction from '../views/Introduction.vue'
 import Signup from "../views/Signup";
 import Statistics from "../views/Statistics";
 import LoginFailed from "../views/LoginFailed";
+import AccountCreationSuccess from "@/views/AccountCreationSuccess";
 
 const routes = [
 	{
@@ -185,6 +186,15 @@ const routes = [
 		meta: {
 			title: 'Master CS | User Statistics'
 		}
+	},
+	{
+		path: '/AccountCreationSuccess',
+		name: 'AccountCreationSuccess',
+		component: AccountCreationSuccess,
+		meta: {
+			title: 'Master CS | Account Creation'
+		}
+
 	}
 ]
 
