@@ -1806,22 +1806,52 @@ export default createStore({
             //Cyber Security
             [
                 //ch1-5
-                'https://www.google.com',
-                'https://www.ch2.com',
-                'https://www.ch3.com',
-                'https://www.ch4.com',
-                'https://www.ch5.com',
+                'https://www.youtube.com/embed/i9o70PMqMGY',
+                'https://www.youtube.com/embed/_uQrJ0TkZlc',
+                'https://www.youtube.com/embed/xoL6WvCARJY',
+                'https://www.youtube.com/embed/8cm1x4bC610',
+                'https://www.youtube.com/embed/vJEO57B05Sg',
             ],
             //Data Science
-            [],
+            [
+                'https://www.youtube.com/embed/i9o70PMqMGY',
+                'https://www.youtube.com/embed/_uQrJ0TkZlc',
+                'https://www.youtube.com/embed/xoL6WvCARJY',
+                'https://www.youtube.com/embed/8cm1x4bC610',
+                'https://www.youtube.com/embed/vJEO57B05Sg',
+            ],
             //Big Data
-            [],
+            [
+                'https://www.youtube.com/embed/i9o70PMqMGY',
+                'https://www.youtube.com/embed/_uQrJ0TkZlc',
+                'https://www.youtube.com/embed/xoL6WvCARJY',
+                'https://www.youtube.com/embed/8cm1x4bC610',
+                'https://www.youtube.com/embed/vJEO57B05Sg',
+            ],
             //Machine Learning and AI
-            [],
+            [
+                'https://www.youtube.com/embed/i9o70PMqMGY',
+                'https://www.youtube.com/embed/_uQrJ0TkZlc',
+                'https://www.youtube.com/embed/xoL6WvCARJY',
+                'https://www.youtube.com/embed/8cm1x4bC610',
+                'https://www.youtube.com/embed/vJEO57B05Sg',
+            ],
             //Web Development
-            [],
+            [
+                'https://www.youtube.com/embed/i9o70PMqMGY',
+                'https://www.youtube.com/embed/_uQrJ0TkZlc',
+                'https://www.youtube.com/embed/xoL6WvCARJY',
+                'https://www.youtube.com/embed/8cm1x4bC610',
+                'https://www.youtube.com/embed/vJEO57B05Sg',
+            ],
             //Metaverse
-            [],
+            [
+                'https://www.youtube.com/embed/i9o70PMqMGY',
+                'https://www.youtube.com/embed/_uQrJ0TkZlc',
+                'https://www.youtube.com/embed/xoL6WvCARJY',
+                'https://www.youtube.com/embed/8cm1x4bC610',
+                'https://www.youtube.com/embed/vJEO57B05Sg',
+            ],
         ],
         current: [],
         isSubmit:false,

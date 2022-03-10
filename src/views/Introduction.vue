@@ -5,7 +5,7 @@
       <div v-if="this.result===0" style="margin-left: 20%;margin-right: 20%;">
         <h1>What Type of Learner Are You?</h1>
         <img src="../assets/img/quiz/introQuiz.png"
-             style="text-align:center;margin-right: 15%;margin-bottom: 15px;margin-top: 15px" height="300">
+            style="text-align:center;margin-right: 15%;margin-bottom: 15px;margin-top: 15px" height="300">
         <div v-for="(pro,idx) in list" :key="pro.id">
           <p class="content">{{ idx + 1 }}. {{ pro.content }}</p>
           <label>
@@ -32,7 +32,7 @@
           <hr>
         </div>
         <div>
-          <p class="content">Additional: When you visit a website for the first time, what is the first thing you look
+          <p class="content">Additional Question: When you visit a website for the first time, what is the first thing you look
             at?</p>
           <label>
             <div class="item">
