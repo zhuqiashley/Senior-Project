@@ -52,8 +52,10 @@
     </button>
     <div v-if="this.$store.state.isSubmit">
       <p>Your score: {{score}}</p>
-      <p>reference:<a :href="this.$store.state.url[this.id][this.index]"> Click Here </a></p>
-      <p>watch this chapter video again:<a :href="this.$store.state.video[this.id][this.index]">Click Here</a></p>
+      <p>Reference:<a :href="this.$store.state.url[this.id][this.index]"> Click Here </a></p>
+      <p>Watch this chapter video again:</p>
+<!--      <router-link :to="{ path: '/chapter', query: $route.query }"><p>video</p></router-link>-->
+      <iframe width="420" height="315" :src="this.$store.state.video[this.id][this.index]"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
 </template>
