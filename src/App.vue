@@ -16,8 +16,15 @@
 					<router-link to="/achievements"> Achievements </router-link>
 					<router-link to=/MyCourses> My Courses </router-link>
 					<router-link to=/Introduction> Introduction Quiz </router-link>
+          <router-link to="/Statistics">Statistics</router-link>
 				</ul>
 				</li>
+        <li class="dropdown">Account<i class="bi-chevron-down"></i>
+          <ul>
+            <router-link to="Login">Login</router-link>
+            <router-link to="Signup">Signup</router-link>
+          </ul>
+        </li>
 				<router-link to="Login">
 					<custom-button title="Login"></custom-button>
 				</router-link>

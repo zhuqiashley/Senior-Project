@@ -25,6 +25,9 @@
 import Card from '../components/Card.vue'
 import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
+//import VueSession from 'vue-session';
+
+
 
 let userDB = 'http://localhost:3001/api/user'
 
@@ -56,18 +59,19 @@ export default {
       try{
         const data = await axios.get(userDB, {params: {username: email, password: password}}).then(res => res.data);
         console.log(data);
-        for(var i = 0; i < data.length; i++)
+        for(var i = 0; i < data.valueOf().length; i++)
         {
           let username = data[i].username;
           let passwordcheck = data[i].password;
+          /*let variablecheck = data[i].FirstName;
+          console.log(variablecheck);*/
           if(username == email && passwordcheck == password)
           {
-            await this.$router.push('Profile');
+            console.log("inside if");
+            await this.$router.push('Statistics');
+            break;
           }
-          else
-          {
-            await this.$router.push('LoginFailed');
-          }
+          await this.$router.push('LoginFailed');
         }
 
         console.log(email,password);
