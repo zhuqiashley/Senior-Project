@@ -27,10 +27,10 @@
 							<label for="EventInstructor">Event Instructor</label>
 							<input v-model="EventInstructor" type="text" class="form-control" id="EventInstructor" placeholder="Instructor" >
 						</div>
-						<!-- <div class="form-group mb-4">
+						<div class="form-group mb-4">
 							<label for="EventTime">Event Time</label>
 							<input v-model="EventTime" type="datetime-local" class="form-control">
-						</div> -->
+						</div>
 						<div class="form-group mb-4">
 							<label for="EventSpots">Maximum Attendees</label>
 							<input v-model="EventSpots" type="number" class="form-control">
@@ -39,6 +39,7 @@
 							<!-- <button class="btn btn-primary" @click="submitForm()">Submit</button> -->
 							<button class="btn btn-primary" @click="closeModal()">Submit</button>
 						</div>
+						
 					</form>
 					<!-- End Add Event Form -->
 				</template>
@@ -61,7 +62,7 @@
                             <p> Instructors: {{event.EventInstructor}} </p>
                             <p> Description: {{event.EventDescription}} </p>
                             <p> Spots Left: {{event.EventSpots}} </p>
-                            <p><button class="btn btn-success" type="button" @click="register">Register</button></p>
+                            <!-- <p><button class="btn btn-success" type="button" @click="register">Register</button></p> -->
                         </div>
                     </div>
                 </template>
@@ -71,9 +72,9 @@
 						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Edit
 						</button>
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-							<li><a class="dropdown-item" href="#">Edit Course</a></li>
-							<li><a class="dropdown-item" href="#">Delete Course</a></li>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" @click="deleteEvent(event.EventID)">Delete Event</a></li>
+							<li><a class="dropdown-item" href="#">Edit Event</a></li>
 						</ul>
 					</div>
 				</template>
@@ -92,7 +93,7 @@ import Modal from '../components/Modal.vue'
 
 
 const eventDB = 'http://localhost:3001/api/event'
-// const userDB = 'http://localhost:3001/api/user'
+const deleteEventDB = 'http://localhost:3001/api/event/'
 
 export default {
 
@@ -103,79 +104,21 @@ export default {
     Modal,
   },
 
-  methods: {
-	// Show/Close add course modal
-	showModal() {
-        this.isModalVisible = true;
-    },
-
-    closeModal() {
-        this.isModalVisible = false;
-    },
-
-	// Insert data into event table
-	async submitForm(){
-		const object = {
-			EventTitle: this.EventTitle,
-			EventDescription: this.EventDescription,
-			EventInstructor: this.EventInstructor,
-			// EventTime: this.EventTime,
-			EventSpots: this.EventSpots
-		}
-
-		// Front End error handling goes here
-
-		await axios.post(eventDB, object)
-			.then((res) => {
-				console.log(res)
-			}).catch(err => {
-				console.error(err)
-			})
-	},
-
-	// // test function for inserting data
-	// async submitTest(){
-	// 	const object = {
-	// 		TestSentence: this.TestSentence
-	// 	}
-
-	// 	console.log(this.TestSentence)
-
-	// 	if(this.TestSentence == 't'){
-	// 		console.error("t was hit")
-	// 		return
-	// 	}
-
-	// 	await axios.post(testDB, object)
-	// 		.then((res) => {
-	// 			console.log(res)
-	// 		}).catch(err => {
-	// 			console.error(err)
-	// 		})
-	// }
-
-  },
-
-  data(){
-    return {
-		isModalVisible: false, // setup for popup add course modal
-		//Event Data to Insert into Database
-		EventTitle: '',
-		EventDescription: '',
-		EventInstructor: '',
-		// EventTime: '',
-		EventSpots: '',
-    };
-  },
-
   setup() {
 
+	const isModalVisible = ref(false) // setup for popup add course modal
+	//Event Data to Insert into Database
+	const EventTitle = ref('')
+	const EventDescription = ref('')
+	const EventInstructor = ref('')
+	const EventTime = ref('')
+	const EventSpots = ref('')
+	const EventID = ref('')
     const events = ref([])
 
     // format date to be readable (m/dd/yyy hh:mm:ss)
 	function formatDate(d){
 		const date = new Date(d)
-		date.setSeconds(0)
 		return date.toLocaleString()
 	}
   
@@ -191,9 +134,64 @@ export default {
 		},
 	);
 
+		// Show/Close add course modal
+	function showModal() {
+        isModalVisible.value = true;
+    }
+
+    function closeModal() {
+        isModalVisible.value = false;
+    }
+
+	// pass event ID to delete course
+	async function deleteEvent(EventID){
+		axios.delete(deleteEventDB + EventID)
+
+		.then(res => {
+			events.value.splice(events.value.indexOf(EventID), 1);
+			console.log(res);
+		});
+	}
+
+	// Insert data into event table
+	async function submitForm(){
+
+		const postTime = new Date(this.EventTime)
+		postTime.setHours(postTime.getHours() - 8 ) // set to PST
+
+		const submitObject = {
+			EventTitle: this.EventTitle,
+			EventDescription: this.EventDescription,
+			EventInstructor: this.EventInstructor,
+			EventDate: postTime.toISOString().slice(0, 19).replace('T', ' '), // formatting found on stack overflow
+			EventSpots: this.EventSpots
+		}
+
+		// Front End error handling goes here
+		
+		await axios.post(eventDB, submitObject)
+			.then((res) => {
+				submitObject.EventID = res.data.insertId
+				events.value.push(submitObject)
+			}).catch(err => {
+				console.error(err)
+			})
+	}
+
 	return {
 		formatDate,
 		events,
+		submitForm,
+		deleteEvent,
+		closeModal,
+		showModal,
+		EventTitle, 
+		EventDescription,
+		EventInstructor,
+		EventTime,
+		EventSpots,
+		EventID,
+		isModalVisible
 	}
   },
 }

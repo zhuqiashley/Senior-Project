@@ -44,7 +44,7 @@
 }
 
 .modal {
-	background: #FFFFFF;
+	background: #f3f5fa;
 	overflow-x: auto;
 	display: flex;
 	flex-direction: column;
@@ -67,7 +67,7 @@
 	border-bottom: 1px solid #eeeeee;
 	color: white;
 	justify-content: space-between;
-	background: #0c3c53;
+	background: rgb(12, 34, 71);
 	justify-content: center;
 	font-size: 1.25rem;
 }
