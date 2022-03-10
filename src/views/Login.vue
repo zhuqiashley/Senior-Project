@@ -68,7 +68,7 @@ export default {
           if(username == email && passwordcheck == password)
           {
             console.log("inside if");
-            await this.$router.push('Statistics');
+            await this.$router.push('Profile');
             break;
           }
           await this.$router.push('LoginFailed');

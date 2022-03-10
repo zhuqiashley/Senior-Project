@@ -70,12 +70,11 @@ export default {
           let passwordcheck = data[i].password;
           if(username == email && passwordcheck == password)
           {
-            await this.$router.push('Statistics');
+            await this.$router.push('Profile');
+            break;
           }
-          else
-          {
             await this.$router.push('LoginFailed');
-          }
+
         }
 
         console.log(email,password);

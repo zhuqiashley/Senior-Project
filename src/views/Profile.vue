@@ -1,18 +1,17 @@
 <template>
     <custom-header title="Profile"></custom-header>
-    <p> Name: {{ user.name }} </p>
 </template>
 
 <script>
 import CustomHeader from '../components/Header.vue'
-import axios from "axios"
-import router from "../router"
+//import axios from "axios"
+//import router from "../router"
 export default {
     components:
     {
         CustomHeader,
     },
-  name: "Login",
+  /*name: "Login",
   data() {
     return {
       user: {
@@ -36,7 +35,7 @@ export default {
   },
   mounted() {
     this.getUserData()
-  }
+  }*/
 }
 </script>
 
