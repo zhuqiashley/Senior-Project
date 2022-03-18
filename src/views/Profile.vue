@@ -1,5 +1,8 @@
 <template>
     <custom-header title="Profile"></custom-header>
+  <div class="container mt-4">
+    <p>{{this.userid}}</p>
+  </div>
 </template>
 
 <script>
@@ -11,6 +14,18 @@ export default {
     {
         CustomHeader,
     },
+  setup(){
+      let userid = 100;
+      let length = 100;
+      userid = localStorage.getItem('ID');
+      length = localStorage.length;
+      console.log(userid);
+      console.log(length);
+
+      return{
+        userid
+      }
+  }
   /*name: "Login",
   data() {
     return {

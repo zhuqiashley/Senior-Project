@@ -164,7 +164,8 @@ export default {
   },
   methods:{
     login: async function(quiz1){
-      const email = this.$refs.getemail.value;
+      //const email = this.$refs.getemail.value;
+      const email = localStorage.getItem('ID');
       //const password = this.$refs.getpassword.value;
       try{
         const data = await axios.get(quizDB, {params: {username: email}}).then(res => res.data);

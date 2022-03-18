@@ -25,7 +25,7 @@
 import Card from '../components/Card.vue'
 import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
-//import VueSession from 'vue-session';
+//import VueSessionStorage from 'vue-sessionstorage';
 
 
 
@@ -63,11 +63,16 @@ export default {
         {
           let username = data[i].username;
           let passwordcheck = data[i].password;
+          let id = data[i].UserID;
           /*let variablecheck = data[i].FirstName;
           console.log(variablecheck);*/
           if(username == email && passwordcheck == password)
           {
             console.log("inside if");
+            //this.$session.start();
+            //this.$session.set('ID', id);
+            localStorage.clear();
+            localStorage.setItem('ID',id);
             await this.$router.push('Profile');
             break;
           }
