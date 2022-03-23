@@ -131,7 +131,7 @@
 	<h4>Acceptance Criteria & Testing Strategy and Plan</h4>
 	<h4>Progress Demo</h4>
 	<h4>Project Poster</h4>
-	<h4>Project</h4>
+	<h4>Project Video</h4>
 
 	</div>
 
