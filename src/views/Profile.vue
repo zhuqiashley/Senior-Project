@@ -1,8 +1,14 @@
+<!-- ======= TEMPLATE ======= -->
 <template>
     <custom-header title="Profile"></custom-header>
-  <div class="container mt-4">
-    <p>{{this.userid}}</p>
-  </div>
+  <!-- ======= UserProfilePage Section ======= -->
+  <section id="UserPage" class="d-flex align-items-center">
+    <div class="section-title">
+      <h1>Welcome {{this.userid}}!</h1>
+    </div>
+  </section>
+
+
 </template>
 
 <script>
