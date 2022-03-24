@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 
-// before line 971 updated for cyber security and data science
+// update line 1510
 export default createStore({
     state: {
         courses: [
@@ -40,7 +40,7 @@ export default createStore({
                 description: 'Complete the video course and complete the quiz exercises. Good luck!',
                 image: {
                     src: 'img/Courses/ml-ai.jpg',
-                    alt: 'Data Science',
+                    alt: 'Machine Learning and AI',
                 }
 
             },
@@ -50,7 +50,7 @@ export default createStore({
                 description: 'Complete the video course and complete the quiz exercises. Good luck!',
                 image: {
                     src: 'img/Courses/webdev.jpg',
-                    alt: 'Big Data',
+                    alt: 'Web Development',
                 }
 
             },
@@ -1242,266 +1242,266 @@ export default createStore({
                 //ch1
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
+                        "A": "parsing the markup content (HTML)",
+                        "B": "parsing style information (CSS, XSL, and so on)",
+                        "C": "generating a visual presentation of the formatted content including media files referenced",
+                        "D": "parsing style information (CSS only)",
+                        "answer": 'D',
+                        "id": 1,
+                        "explanation": "A rendering engine is a software that draws text and images on the screen. The engine draws structured text from a document (HTML, XML) and formats it properly based on the given style declarations (CSS, XSL, etc). The primary job of a browser engine is to transform HTML documents and other resources of a web page into an interactive visual representation on a user’s device.",
+                        "content": "A Rendering engine is not responsible for ________"
+                    },
+                    {
+                        "A": "WebKit",
+                        "B": "Gecko",
+                        "C": "Trident",
+                        "D": "Presto",
+                        "answer": 'B',
+                        "id": 2,
+                        "explanation": "Gecko is a web browser engine used in many applications developed by Mozilla Foundation and the Mozilla Corporation as well as in many other open source software projects. Gecko is free and open-source software subject to the terms of the Mozilla Public License version 2.",
+                        "content": "Firefox uses _________ rendering engine."
+                    },
+                    {
+                        "A": "It defers rendering of html page",
+                        "B": "It defers script execution until the page has been rendered",
+                        "C": "It defers rendering of css attributes",
+                        "D": "It is only for internal scripts",
+                        "answer": 'B',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 1 Problem 1"
+                        "explanation": "The defer attribute is a boolean attribute. The script is executed after the page has finished parsing. The defer attribute is used if and only if there is src attribute. Defer is for external not internal scripts.",
+                        "content": "What is the use of “defer” attribute?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "async and defer attributes of script tag execute before the DOMContentLoaded event",
+                        "B": "defer executes each script sequentially",
+                        "C": "async executes each script when it is ready",
+                        "D": "all older browsers supports async attribute",
+                        "answer": 'D',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 1 Problem 2"
+                        "explanation": "In async attribute, the script is executed asynchronously with the rest of the page (the script will be executed while the page continues the parsing). Defer, the Boolean attribute is set to indicate to a browser that the script is meant to be executed after the document has been parsed, but before firing DOMContentLoaded event. Older browsers doesn’t support async attribute.",
+                        "content": "Which of the following statements is false?"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "Web browser",
+                        "B": "Web server",
+                        "C": "Web matrix",
+                        "D": "Web network",
+                        "answer": 'A',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 1 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 1 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 1 Problem 5"
+                        "explanation": "A web browser (commonly referred to as a browser) is a software application for retrieving, presenting and traversing information resources on the World Wide Web. A web server process, store and display output to client as per their request. Web matrix is a discontinued cloud-connected website builder and HTML editor for Windows.",
+                        "content": "Which of the following is used to read a HTML page and render it?"
                     },
                 ],
                 //ch2
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
+                        "A": "Using Drag action",
+                        "B": "Using new input type",
+                        "C": "Using play and pause action of audio and video elements",
+                        "D": "Verifying SVG and Canvas elements",
+                        "answer": 'A',
+                        "id": 1,
+                        "explanation": "While testing of HTML5 for a browser i.e. whether its elements are supported by the browser or not one can use draggable content using Drag action and this action can be called through On-Screen Action operation.",
+                        "content": "What does ‘On-Screen Action’ means in the testing of HTML5 applications?"
+                    },
+                    {
+                        "A": "Property checkpoints",
+                        "B": "Region checkpoints",
+                        "C": "On-Screen Action",
+                        "D": "Local STorage",
+                        "answer": 'B',
+                        "id": 2,
+                        "explanation": "Region checkpoints are used to verify a displayed graphics. It is a kind of test operation which gives verification of application’s window or control is displayed correctly or not. Object’s property is verified by region checkpoints which is test operation. Local storage is for storing data.",
+                        "content": " What can be used to verify a displayed graphics?"
+                    },
+                    {
+                        "A": "url",
+                        "B": "time",
+                        "C": "tel",
+                        "D": "option",
+                        "answer": 'D',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 2 Problem 1"
+                        "explanation": "<input> element type has new values as ‘url’, ‘email’, ‘datetime’, ‘date’, ‘month’, ‘tel’, ‘time’, ‘number’, ‘search’, ‘color’, ‘range’, ‘datetime-local’, ‘week’.",
+                        "content": "Which of the following does not lie under the attribute of <input> and is not supported by Opera?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "Indeterminate",
+                        "B": "Media",
+                        "C": "EI",
+                        "D": "Target",
+                        "answer": 'A',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 2 Problem 2"
+                        "explanation": "The indeterminate is actually not an attribute, it is the property of checkbox which can be change via JavaScript.",
+                        "content": "Which is the new attribute of <input> element that is used to change the appearance of checkbox?"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "Media",
+                        "B": "Ping",
+                        "C": "Hreflang",
+                        "D": "Preload",
+                        "answer": 'D',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 2 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 2 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 2 Problem 5"
+                        "explanation": " Preload is the attribute of the <video> element. Media, ping, hreflang, rel are the attribute used with <a> and <area> elements.",
+                        "content": "Which attribute does not lie inside <a> and <area> elements?"
                     },
                 ],
                 //ch3
                 [
                     {
-                        "A": "Cyber Security Chapter 3 Problem 1 A",
-                        "B": "Cyber Security Chapter 3 Problem 1 B",
-                        "C": "Cyber Security Chapter 3 Problem 1 C",
-                        "D": "Cyber Security Chapter 3 Problem 1 D",
-                        "answer": 4,
+                        "A": "class",
+                        "B": "id",
+                        "C": "article",
+                        "D": "html",
+                        "answer": 'B',
+                        "id": 1,
+                        "explanation": " HTML is Hyper Text Markup Language which is used to create web pages and applications. The id attribute is most used to point to a style in a style sheet, and by JavaScript (via the HTML DOM) to manipulate the element with the specific id. Class is a name given to HTML elements which can be used by CSS and JavaScript for styling the web pages. A self-contained content is called attribute.",
+                        "content": "Which attribute specifies a unique alphanumeric identifier to be associated with an element?"
+                    },
+                    {
+                        "A": "tooltip",
+                        "B": "dir",
+                        "C": "title",
+                        "D": "head",
+                        "answer": 'C',
+                        "id": 2,
+                        "explanation": "The extra information about an element is specified by title tag. The information is most often shown as a tooltip text when the mouse moves over the element. List of directory files is given by dir tag which is not supported in HTML5. Tooltip or else infotip is a graphical user interface of an element. Container of metadata is called head.",
+                        "content": "Which attribute is used to provide an advisory text about an element or its contents?"
+                    },
+                    {
+                        "A": "dir",
+                        "B": "style",
+                        "C": "class",
+                        "D": "article",
+                        "answer": 'B',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 3 Problem 1"
+                        "explanation": "Style attribute specifies an inline style for an element. The style attribute will override any style set globally, e.g. styles specified in the style tag or in an external style sheet. A self-contained content is called attribute. Class is a name given to HTML elements which can be used by CSS and JavaScript for styling the web pages. List of directory files is given by dir tag which is not supported in HTML5.",
+                        "content": "The _____________ attribute specifies an inline style associated with an element, which determines the rendering of the affected element."
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "dataFormatAs",
+                        "B": "datafld",
+                        "C": "disabled",
+                        "D": "datasrc",
+                        "answer": 'B',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 3 Problem 2"
+                        "explanation": "DataFormatAs specifies how data is rendered. The identifier for data source is set by dataSrc. Datafld attribute specifies the column name from the data source object that supplies the bound data. This attribute is specific to Microsoft’s data binding. A Disabled is a boolean attribute which specifies that <input> element should be disabled.",
+                        "content": "Which of the following is the attribute that specifies the column name from the data source object that supplies the bound data?"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "height",
+                        "B": "height",
+                        "C": "hidefocus",
+                        "D": "datasrc",
+                        "answer": 'B',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 3 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 3 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 3 Problem 5"
+                        "explanation": "Height of element is pixels is specified by height attribute. The hspace attribute specifies the whitespace on left and right side of an object. The hidefocus specifies whether a focused rectangle is drawn around an object. The identifier for data source is set by dataSrc.",
+                        "content": "Which of the following is the attribute that specifies additional horizontal space, in pixels, to be reserved on either side of an embedded item like an iframe, applet, image, and so on?"
                     },
                 ],
                 //ch4
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
+                        "A": "<details>",
+                        "B": "<aside>",
+                        "C": "<bdi>",
+                        "D": "<article>",
+                        "answer": 'C',
+                        "id": 1,
+                        "explanation": "The additional details the user wants to know as per the demand is fulfilled by <details> tag. Content related to surroundings is given by <aside> tag. <bdi> element is useful when embedding user-generated content with an unknown directional. <article> is self defined independent content which contains data which can be anything including photos, videos, and other contents. It provides a section.",
+                        "content": "Which of the following defines a part of text that might be formatted in a different direction from other text?"
+                    },
+                    {
+                        "A": "<figcaption>",
+                        "B": "<dialog>",
+                        "C": "<caption>",
+                        "D": "<figure>",
+                        "answer": 'A',
+                        "id": 2,
+                        "explanation": "The figcaption element can be placed as the first or last child of the figure element. It defines a caption for a figure element. Caption in a table immediately after <table> tag can be given by <caption> tag. The <figure> tag provides section for illustration, diagrams, photos etc. A box else window is defined by <dialog> tag in HTML.",
+                        "content": "Which of the following defines a caption for a figure element?"
+                    },
+                    {
+                        "A": "<menuitem> ",
+                        "B": "<menu> ",
+                        "C": "<nav>",
+                        "D": "<class>",
+                        "answer": 'A',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 4 Problem 1"
+                        "explanation": "The menuitem tag is new in HTML5 and as of now is only supported in Firefox 8+ versions. <menuitem> defines a command item that the user can invoke from a popup menu. A list of of commands is defined by <menu> tag. <nav> is set of navigation links. One or more class names are specified by the global <class> attribute.‘",
+                        "content": "Which of the following defines a command/menu item that the user can invoke from a popup menu?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "<meter>",
+                        "B": "<progress>",
+                        "C": "<gauge>",
+                        "D": "<wbr>",
+                        "answer": 'B',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 4 Problem 2"
+                        "explanation": "Scalar measurement within range or may be a fractional value can be displayed through <meter> tag. Use the progress tag in conjunction with JavaScript to display the progress of a task. <wbr> is used for whether it is okay to add a line break in a text.",
+                        "content": "Which of the following tag defines the progress of a task?"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "<output>",
+                        "B": "<keygen>",
+                        "C": "<datalist>",
+                        "D": "<datalist>",
+                        "answer": 'A',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 4 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 4 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 4 Problem 5"
+                        "explanation": "The output tag represents the result of a calculation (like one performed by a script). <keygen> has been removed from HTML5 and it specifies a name to <keygen> element which refers to data after it’s submission. <datalist> is a list of pre-defined option for input element. The additional details the user wants to know as per the demand is fulfilled by <details> tag.",
+                        "content": "Which of the following defines the result of a calculation?"
                     },
                 ],
                 //ch5
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
+                        "A": "browsing offline",
+                        "B": "reduction of server load",
+                        "C": "speed",
+                        "D": "asynchronous",
+                        "answer": 'D',
+                        "id": 1,
+                        "explanation": "Application cache can be helpful in so many ways like we can browse offline, as the cached resources are at local level hence they load at faster speed, it also reduces the load of the server. Asynchronous is one of the problems with the use of application cache due to this the resources which are not required like JavaScript or images will also be downloaded.",
+                        "content": "Which of the following is not the benefit of cache application?"
+                    },
+                    {
+                        "A": "CACHE MANIFEST",
+                        "B": "CSS stylesheet",
+                        "C": "index.html",
+                        "D": "image address",
+                        "answer": 'A',
+                        "id": 2,
+                        "explanation": "For offline access, there is a text file named cache manifest. It lists the resources of the browser. For enabling application cache for any app we must include manifest attribute inside an html tag of the document like <html manifest=”text.appcache”> this manifest should be included on every page that we want cached.",
+                        "content": "Which line is mandatory in cache manifest file?"
+                    },
+                    {
+                        "A": "network",
+                        "B": "cache",
+                        "C": "fallback",
+                        "D": "cache status",
+                        "answer": 'D',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 5 Problem 1"
+                        "explanation": "If the files are not in cache they come from a list of the files in the network. Cache is the default section. The files those are listed under this header are explicitly cached after downloading for the first time. If the resource is inaccessible then this section will be in use. There is no any rule to list these section, can be listed in any order.",
+                        "content": "Which is not the section of manifest?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "explicit entries",
+                        "B": "master entries",
+                        "C": "fallback entries",
+                        "D": "idle entries",
+                        "answer": 'D',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 5 Problem 2"
+                        "explanation": "The categories for the resources to fit in are explicit entries, master entries, network entries, fallback entries. Entry can be both fallback and explicit entry. Any HTML file that contains manifest attribute is a master entry. Explicit entries are listed explicitly in the cache section.",
+                        "content": "Resources do not fit into _______"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "Explicit entry",
+                        "B": "Network entry",
+                        "C": "Fallback entry",
+                        "D": "Master entry",
+                        "answer": 'B',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 5 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 5 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 5 Problem 5"
+                        "explanation": "There are four types of resources in an application cache which are 1) Master Entries 2) Explicit Entries 3) Network Entries 4) Fallback Entries. Resources are explicitly listed in the application’s cache manifest file by the explicit entry. Fallback entry provides fallback entries in the application’s manifest file. Master entries are the resources added to the cache. Network entry executes and load scripts and code from the server, not from the cache.",
+                        "content": "Which entry executes and load scripts from the server?"
                     },
                 ],
             ],
@@ -1814,11 +1814,11 @@ export default createStore({
             //Web Development
             [
                 //ch1-5
-                'https://hadoop.apache.org',
-                'https://www.tutorialspoint.com/hadoop/hadoop_mapreduce.htm',
-                'https://databricks.com/glossary/hadoop-distributed-file-system-hdfs',
-                'https://www.talend.com/resources/what-is-data-integrity',
-                'https://techvidvan.com/tutorials/hadoop-mapreduce-features',
+                'https://www.slimjet.com/en/lp/top-10-browsers.php',
+                'https://html.com/document/',
+                'https://tdg.docbook.org/tdg/5.0/ref-elements.html#:~:text=The%20common%20attributes%20include%20a,relevant%20to%20a%20particular%20audience.',
+                'https://developer.mozilla.org/en-US/docs/Glossary/Semantics',
+                'https://www.html5rocks.com/en/tutorials/appcache/beginner/#:~:text=A%20manifest%20can%20have%20three,downloaded%20for%20the%20first%20time.',
             ],
             //Metaverse
             [
