@@ -9,7 +9,7 @@ import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
 
 const achievementsDB = 'http://localhost:3001/api/achievements'
-//const userDB = 'http://localhost:3001/api/userpost'
+const userDB = 'http://localhost:3001/api/userpost'
 
 export default {
     components:
@@ -24,7 +24,6 @@ export default {
         //check achievement requirements
         //award achievement & update user profile - event triggered  w/ pop-up of badge icon
 
-        //const showAward = ref(false) //setup for popup badge
         //Achievement Data to insert to database 
         //const BadgeID = ref('')
         //const AchievementTitle = ref('')
