@@ -21,7 +21,7 @@ import Signup from "../views/Signup";
 import Statistics from "../views/Statistics";
 import LoginFailed from "../views/LoginFailed";
 import AccountCreationSuccess from "@/views/AccountCreationSuccess";
-import Badges from '../views/Badges.vue'
+
 
 const routes = [
 	{
@@ -197,10 +197,7 @@ const routes = [
 		}
 
 	},
-	{
-		path: '/Badges',
-		name: 'Badges',
-	}
+
 ]
 
 const router = createRouter({
