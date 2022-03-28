@@ -26,9 +26,9 @@ import { computed } from 'vue';
 import CustomHeader from '@/components/Header.vue'
 import Card from '@/components/Card.vue'
 import ProgressBar from '@/components/ProgressBar.vue';
-import axios from 'axios';
+//import axios from 'axios';
 
-let achievementsDB = 'http://localhost:3001/api/achievements'
+//let achievementsDB = 'http://localhost:3001/api/achievements'
 
 export default {
   components:
@@ -119,21 +119,8 @@ export default {
             return achievements.filter(achievement => !achievement.unlocked);
         });
 
-        // Insert data into achievement table
-	    async function submitBadges() {
-
-		    // Front End error handling goes here
-		    await axios.post(achievementsDB, this.achievements)
-			    .then((res) => {
-				    achievements.BadgeID = res.data.insertId
-				    achievements.value.push(achievements)
-			    }).catch(err => {
-				    console.error(err)
-			    })
-	    }
-
         return {
-            achievements, unlocked, locked, submitBadges,
+            achievements, unlocked, locked,
         }
     },
 }
