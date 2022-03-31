@@ -22,7 +22,6 @@ import Statistics from "../views/Statistics";
 import LoginFailed from "../views/LoginFailed";
 import AccountCreationSuccess from "@/views/AccountCreationSuccess";
 
-
 const routes = [
 	{
 		path: '',

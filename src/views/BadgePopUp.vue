@@ -2,15 +2,18 @@
 <template>
     <!-- popup modal for adding classes - adapted from digitalocean.com -->
 		<div class="container mt-4 d-flex justify-content-end">
+            <button type="button" class="btn btn-success" @click="showModal">
+				View Achievement
+			</button>
 			<Modal  v-show="isModalVisible" @close="closeModal">
                 <template v-slot:header>
-                    <h1>{{ achievements.title }}</h1>
+                    <h1>{{ Achievements.AchievementTitle }}</h1>
                 </template>
 
                 <template v-slot:body>
-                    <p>{{ achievements.description }}</p>
-                    <img src= {{ achivements.img }} class="img-fluid animated" alt= {{ achievements.alt}}>
-                    <p>You can view your earned badge in your profile</p>
+                    <p>{{ Achievements.AchievementDescription }}</p>
+                    <img src= {{ Achievements.BadgeImage }} class="img-fluid animated" alt= "">
+                    <p>You can now view your earned badge in your profile</p>
                 </template>
 
                 <template v-slot:footer>
@@ -27,73 +30,55 @@
 <script>
 // import components 
 import axios from 'axios'
-import modal from '@/components/Modal.vue'
-import achievements from '@/views/Achievements.vue'
+//import modal from '@/components/Modal.vue'
+//import achievements from '@/views/Achievements.vue'
+import { ref, onBeforeMount } from "vue";
 
 let achievementsDB = 'http://localhost:3001/api/achievements'
-
-// send HTTP request 
-// check user session
+//let userDB = 'http://localhost:3001/api/user'
 
 export default{
+
     components:
     {
-        Modal, 
-        achievements
+        //Modal, 
     },
+
     setup() {
 
         const isModalVisible = ref(false) // setup for popup add course modal
+        const Achievements = ref([])
 
-         // access event database for display
+        // access achievement database for display
         onBeforeMount(async () => {
             await axios.get(achievementsDB)
                 .then(response => {
-                    achievements.value = response.data;
+                    Achievements.value = response.data;
 
                 }).catch(err => {
                     console.error(err);
-                });
-		    },
-	    );
+            });
+		},
+	);
 
-        // Show/Close add course modal
-	    function showModal() {
-            isModalVisible.value = true;
-        }
+    // Show/Close add course modal
+	function showModal() {
+        isModalVisible.value = true;
+    }
 
-        function closeModal() {
-         isModalVisible.value = false;
-        }
+    function closeModal() {
+        isModalVisible.value = false;
+    }
 
-        // Insert data into event table
-	    async function badgesInsert(){
+    //Function for checking for Achivement Requirements 
+    //If requirements are satisfied, post to user database, display modal, update achievements page
 
-		const submitObjects = {
-			AchievementTitle: this.achievements.title,
-			AchievementDescription: this.achievements.description,
-			AchievementImage: this.achievements.img,
-		}
-
-		// Front End error handling goes here
-		
-		await axios.post(achievementsDB, submitObjects)
-			.then((res) => {
-				submitObjects.BadgeID = res.data.insertId
-				achievements.value.push(submitObjects)
-			}).catch(err => {
-				console.error(err)
-			})
-	}
-
-
-        return {
-            badgesInsert, 
-            isModalVisible, 
-            showModal,
-            closeModal
-        }
-    },
+    return {
+        isModalVisible, 
+        showModal,
+        closeModal
+    }
+  },
 }
 </script>
 
