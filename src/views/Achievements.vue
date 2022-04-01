@@ -32,7 +32,7 @@ import axios from 'axios';
 import { ref, onBeforeMount } from "vue";
 
 let achievementsDB = 'http://localhost:3001/api/achievements'
-//let userDB = 'http://localhost:3001/api/user'
+let userDB = 'http://localhost:3001/api/user'
 
 export default {
   components:
@@ -42,22 +42,6 @@ export default {
         ProgressBar,
     },
     setup() {
-
-
-        const Achievements = ref([])
-
-        // access achievement database for display
-        onBeforeMount(async () => {
-            await axios.get(achievementsDB)
-                .then(response => {
-                    Achievements.value = response.data;
-
-                }).catch(err => {
-                    console.error(err);
-            });
-		},
-        );
-        //Pull from database instead
         const achievements = [
             {
                 title: "Welcome to the Class",
