@@ -2,19 +2,21 @@
 <template>
     <custom-header title="Achievements"></custom-header>
 
-    <!--Insert alert popup here -->
+    <!--Alert notification -->
+    
+    <!--End Alert notification -->
 
     <div class="container mt-4">
         <progress-bar :progress="(unlocked.length / (locked.length + unlocked.length)) * 100" />
 
         <div class="parent">
-            <div v-for="(achievement, index) in achievements" v-bind:key="index">
-                <card :horizontal="true" :image="achievement.image" :class="['mt-4', achievement.unlocked ? '' : 'locked']"> 
+            <div v-for="(badge, index) in badges" v-bind:key="index">
+                <card :horizontal="true" :image="badge.image" :class="['mt-4', badge.unlocked ? '' : 'locked']"> 
                     <template #title>
-                        {{achievement.title}}
+                        {{badge.title}}
                     </template>
                     <template #body>
-                        {{achievement.description}}
+                        {{badge.description}}
                     </template>
                 </card> 
             </div>
@@ -30,6 +32,8 @@ import Card from '@/components/Card.vue'
 import ProgressBar from '@/components/ProgressBar.vue';
 import axios from 'axios';
 import { ref, onBeforeMount } from "vue";
+//import { notify } from "@kyvg/vue3-notification";
+
 
 let achievementsDB = 'http://localhost:3001/api/achievements'
 let userDB = 'http://localhost:3001/api/user'
@@ -42,7 +46,7 @@ export default {
         ProgressBar,
     },
     setup() {
-        const achievements = [
+        const badges = [
             {
                 title: "Welcome to the Class",
                 description: "Earned when you first registered.",
@@ -50,7 +54,7 @@ export default {
                     src: "img/badges/Cup_Badge_Color.png",
                     alt: "Welcome to the Class",
                 },
-                unlocked: true,
+                unlocked: false,
             },
             {
                 title: "E-Learning Newbie!",
@@ -117,20 +121,51 @@ export default {
           }
         ];
         const unlocked = computed(() => {
-            return achievements.filter(achievement => achievement.unlocked);
+            return badges.filter(badge => badge.unlocked);
         });
 
         const locked = computed(() => {
-            return achievements.filter(achievement => !achievement.unlocked);
+            return badges.filter(badge => !badge.unlocked);
         });
 
         //Function for checking for Achivement Requirements 
-        //If requirements are satisfied, post to user database, display modal, update achievements page
+        //If requirements are satisfied, post to user database, display notification, update achievements page
+
+        //get userDB
+        const user = ref('')
+        onBeforeMount(async () => {
+            await axios.get(userDB)
+                .then(response => {
+                    user.value = response.data;
+
+                }).catch(err => {
+                    console.error(err);
+                 });})
+        
+        //get achievementsDB
+        const achievements = ref('')
+        onBeforeMount(async () => {
+            await axios.get(achievementsDB)
+                .then(response => {
+                    achievements.value = response.data;
+
+                }).catch(err => {
+                    console.error(err);
+                 });})
+
+        //test notification
+        //notify({
+            //title: "Vue 3 notification",
+        //});
+        
 
         return {
-            achievements, unlocked, locked
+            badges, achievements, unlocked, locked, user
         }
     },
+    //methods:{
+        //const id = localStorage.getItem('ID');
+    //}
 }
 </script>
 
