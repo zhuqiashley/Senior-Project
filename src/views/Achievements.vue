@@ -1,31 +1,8 @@
 <!-- ======= TEMPLATE ======= -->
 <template>
     <custom-header title="Achievements"></custom-header>
-    
-    <!-- popup modal for adding classes - adapted from digitalocean.com -->
-		<div class="container mt-4 d-flex justify-content-end">
-            <button type="button" class="btn btn-success" @click="showModal">
-				View Achievement
-			</button>
-			<Modal  v-show="isModalVisible" @close="closeModal">
-                <template v-slot:header>
-                    <h1>{{ Achievements.AchievementTitle }}</h1>
-                </template>
 
-                <template v-slot:body>
-                    <p>{{ Achievements.AchievementDescription }}</p>
-                    <img src= {{ Achievements.BadgeImage }} class="img-fluid animated" alt= "">
-                    <p>You can now view your earned badge in your profile</p>
-                </template>
-
-                <template v-slot:footer>
-                    <div>
-                        <button @click="$refs.modalName.closeModal()">Dismiss</button>
-                    </div>
-                </template>
-            </Modal>
-		</div>
-	<!-- End popup modal -->
+    <!--Insert alert popup here -->
 
     <div class="container mt-4">
         <progress-bar :progress="(unlocked.length / (locked.length + unlocked.length)) * 100" />
@@ -66,7 +43,7 @@ export default {
     },
     setup() {
 
-        const isModalVisible = ref(false) // setup for popup add course modal
+
         const Achievements = ref([])
 
         // access achievement database for display
@@ -163,21 +140,11 @@ export default {
             return achievements.filter(achievement => !achievement.unlocked);
         });
 
-    // Show/Close add course modal
-	
-	function showModal() {
-        isModalVisible.value = true;
-    }
-
-    function closeModal() {
-        isModalVisible.value = false;
-    }
-
         //Function for checking for Achivement Requirements 
         //If requirements are satisfied, post to user database, display modal, update achievements page
 
         return {
-            achievements, unlocked, locked, isModalVisible, showModal, closeModal
+            achievements, unlocked, locked
         }
     },
 }
