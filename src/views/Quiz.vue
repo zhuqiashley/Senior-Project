@@ -2,13 +2,13 @@
   <div>
     <custom-header :title="this.course+' Quiz'"></custom-header>
     <img src="../assets/img/quiz/chQuiz.png" height="200" width="800"
-         style="margin-left: 33%;margin-bottom: 20px;">
+        style="margin-left: 33%;margin-bottom: 20px;">
     <div class="parent">
       <ul class="nav-left-container">
         <li v-for="(c, index) in ch" v-bind:key="index">
-          <a href="#" @click="toProblem(index)">
+          <a href="#" @click="toProblem(c.ChapterID)">
             <span class="glyphicon glyphicon-calendar f12" aria-hidden="true"></span>
-            <span>{{ c }}</span>
+            <span>{{ c.ChapterName }}</span>
             <span class="glyphicon glyphicon-menu-right f12 fr" aria-hidden="true"></span>
           </a>
         </li>
@@ -19,6 +19,7 @@
 
 <script>
 import CustomHeader from "../components/Header";
+import {getChapterInfo} from "../api/api";
 
 export default {
   name: "Quiz",
@@ -40,13 +41,18 @@ export default {
   },
   methods: {
     toProblem(index) {
-      this.$store.commit('setCurrent', this.$store.state.problems[this.id][index].slice(0,5))
+      this.$store.commit('setCurrent', this.$store.state.problems[this.id][index].slice(0, 5))
       this.$store.state.isSubmit = false
       this.$router.push({
         name: "Problem",
         query: {id: this.id, index: index,}
       })
     },
+  },
+  mounted() {
+    getChapterInfo(this.id + 1).then(res => {
+      this.ch=res.data
+    })
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div style="margin-left: 20%;margin-right: 20%;">
-    <h1>Chapter {{ Number(index) + 1 }} Quiz</h1>
-    <div v-for="(pro,idx) in this.$store.state.current" :key="pro.id">
-      <p class="content">{{ idx + 1 }}. {{ pro.content }}</p>
+    <h1>Chapter {{ Number(index) }} Quiz</h1>
+    <div v-for="(pro,idx) in current" :key="pro.id">
+      <p class="content">{{ idx + 1 }}. {{ pro.Content }}</p>
       <label>
         <div class="item">
           <input style="margin-right: 8px;" type="radio" :name="pro.id" :value=0 v-model="checkedValue[idx]">
@@ -33,10 +33,10 @@
       <br>
       <div v-if="this.$store.state.isSubmit">
         <div class="explain">
-            Correct Answer：{{ pro.answer }}
+            Correct Answer：{{ map[pro.CorrectAnswer] }}
         </div>
         <div class="explain">
-          Explanation：{{ pro.explanation }}
+          Explanation：{{ pro.Explanation }}
         </div>
       </div>
       <hr>
@@ -51,16 +51,25 @@
       Problems
     </button>
     <div v-if="this.$store.state.isSubmit">
-      <p>Your score: {{score}}</p>
-      <p>Reference:<a :href="this.$store.state.url[this.id][this.index]"> Click Here </a></p>
-      <p>Watch this chapter video again:</p>
-<!--      <router-link :to="{ path: '/chapter', query: $route.query }"><p>video</p></router-link>-->
-      <iframe width="420" height="315" :src="this.$store.state.video[this.id][this.index]"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <p>Your score: {{ score }}</p>
+      <div v-if="score<80">
+        <p>Reference:<a :href="this.$store.state.url[this.id][this.index]"> Click Here </a></p>
+        <p>Watch this chapter video again:</p>
+        <!--      <router-link :to="{ path: '/chapter', query: $route.query }"><p>video</p></router-link>-->
+        <iframe width="420" height="315" :src="this.$store.state.video[this.id][this.index]"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+
+import {getCourseQuizzes, updateQuizScores} from "../api/api";
+
 export default {
   name: "Problem",
   props: ['index', 'id', 'isSubmit'],
@@ -74,22 +83,23 @@ export default {
       }
       let score = 0
       for (let i = 0; i < this.checkedValue.length; i++) {
-        if (this.map[this.checkedValue[i]] === (this.$store.state.current[i].answer)) {
+        console.log(this.checkedValue[i])
+        if (this.checkedValue[i] === (this.current[i].CorrectAnswer)) {
           score += 20
         }
       }
-      this.score=score
+      this.score = score
+      updateQuizScores(20220405, this.index, score)
       this.$store.state.isSubmit = true
       alert("submit success")
     },
     getMore() {
       this.$store.state.isSubmit = false
-      let list = this.getRandomArrayElements(this.$store.state.problems[this.id][this.index], 5)
-      this.$store.commit('setCurrent', list)
+      this.current = this.getRandomArrayElements(this.list, 5)
+      // this.$store.commit('setCurrent', list)
       for (let i = 0; i < this.checkedValue.length; i++) {
         this.checkedValue[i] = 4
       }
-      // this.$root.reload()
     },
     getRandomArrayElements(arr, count) {
       let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
@@ -109,16 +119,24 @@ export default {
   data() {
     return {
       checkedValue: [
-          4,
-          4,
-          4,
-          4,
-          4,
+        4,
+        4,
+        4,
+        4,
+        4,
       ],
       map:['A','B','C','D'],
       score:0,
+      list: [],
+      current: [],
     }
   },
+  mounted() {
+    getCourseQuizzes(this.id + 1, this.index).then(res => {
+      this.list = res.data
+      this.current = res.data.slice(0, 5)
+    })
+  }
 }
 </script>
 
