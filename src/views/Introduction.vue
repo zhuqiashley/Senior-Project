@@ -6,8 +6,8 @@
         <h1>What Type of Learner Are You?</h1>
         <img src="../assets/img/quiz/introQuiz.png"
             style="text-align:center;margin-right: 15%;margin-bottom: 15px;margin-top: 15px" height="300">
-        <div v-for="(pro,idx) in list" :key="pro.id">
-          <p class="content">{{ idx + 1 }}. {{ pro.content }}</p>
+        <div v-for="(pro,idx) in list" :key="pro.QuestionID">
+          <p class="content">{{ pro.QuestionID }}. {{ pro.Content }}</p>
           <label>
             <div class="item">
               <input style="margin-right: 8px;" type="radio" :name="pro.id" :value=0 v-model="checkedValue[idx]">
@@ -32,33 +32,32 @@
           <hr>
         </div>
         <div>
-          <p class="content">Additional Question: When you visit a website for the first time, what is the first thing you look
-            at?</p>
+          <p class="content">Additional Question: {{ this.additional.Content }}</p>
           <label>
             <div class="item">
               <input style="margin-right: 8px;" type="radio" name="add" :value=0 v-model="add">
-              A. If the website has implemented data security best practices.
+              A. {{ this.additional.A }}
             </div>
           </label>
           <br>
           <label>
             <div class="item">
               <input style="margin-right: 8px;" type="radio" name="add" :value=1 v-model="add">
-              B. Looking at the advertisements and wonder how the tracking works.
+              B. {{ this.additional.B }}
             </div>
           </label>
           <br>
           <label>
             <div class="item">
               <input style="margin-right: 8px;" type="radio" name="add" :value=2 v-model="add">
-              C. Why did they choose a 3 column layout while so many other great choices exist.
+              C. {{ this.additional.C }}
             </div>
           </label>
           <br>
           <label>
             <div class="item">
               <input style="margin-right: 8px;" type="radio" name="add" :value=3 v-model="add">
-              D. What would this look like in virtual reality.
+              D. {{ this.additional.D }}
             </div>
           </label>
           <br>
@@ -140,6 +139,8 @@
 
 <script>
 import CustomHeader from "@/components/Header";
+import {getIntroQuiz, updateIntroQuizResult} from "../api/api";
+
 
 export default {
   name: "Introduction",
@@ -169,22 +170,30 @@ export default {
         }
       }
       let max = this.getMax(a, b, c)
+      let type = 0
+      let recommend = 0
       if (max === a) {
         this.result = 1
       } else if (max === b) {
         this.result = 2
+        type = 1
       } else {
         this.result = 3
+        type = 2
       }
       if (this.add === 0) {
         this.resource = 'Cyber security'
       } else if (this.add === 1) {
         this.resource = 'Data science / Big data / Machine learning(AI)'
+        recommend = 1
       } else if (this.add === 2) {
         this.resource = 'Web development'
+        recommend = 2
       } else if (this.add === 3) {
         this.resource = 'Metaverse'
+        recommend = 3
       }
+      updateIntroQuizResult(20220405, type, recommend)
       alert("submit success")
     },
     getMax(num1, num2, num3) {
@@ -259,8 +268,15 @@ export default {
       result: 0,
       add: 4,
       resource: '',
+      additional: {},
     }
   },
+  mounted() {
+    getIntroQuiz().then(res => {
+      this.list = res.data.slice(0, res.data.length - 1)
+      this.additional = res.data[res.data.length - 1]
+    })
+  }
 }
 </script>
 
