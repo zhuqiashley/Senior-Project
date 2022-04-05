@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 
-// before line 703 updated for cyber security and data science
+// update line 1510
 export default createStore({
     state: {
         courses: [
@@ -40,7 +40,7 @@ export default createStore({
                 description: 'Complete the video course and complete the quiz exercises. Good luck!',
                 image: {
                     src: 'img/Courses/ml-ai.jpg',
-                    alt: 'Data Science',
+                    alt: 'Machine Learning and AI',
                 }
 
             },
@@ -50,7 +50,7 @@ export default createStore({
                 description: 'Complete the video course and complete the quiz exercises. Good luck!',
                 image: {
                     src: 'img/Courses/webdev.jpg',
-                    alt: 'Big Data',
+                    alt: 'Web Development',
                 }
 
             },
@@ -706,266 +706,266 @@ export default createStore({
                 //ch1
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
-                        "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 1 Problem 1"
+                        "A": "Improved data storage and information retrieval",
+                        "B": "Improved extract, transform and load features for data integration",
+                        "C": "Improved data warehousing functionality",
+                        "D": "Improved security, workload management, and SQL support",
+                        "answer": 'D',
+                        "id": 1,
+                        "explanation": "Adding security to Hadoop is challenging because all the interactions do not follow the classic client-server pattern.",
+                        "content": "As companies move past the experimental phase with Hadoop, many cite the need for additional capabilities, including _______________"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
+                        "A": "Hadoop do need specialized hardware to process the data",
+                        "B": "Hadoop 2.0 allows live stream processing of real-time data",
+                        "C": "In the Hadoop programming framework output files are divided into lines or records",
                         "D": "None of the mentioned",
-                        "answer": 4,
+                        "answer": 'B',
+                        "id": 2,
+                        "explanation": "Hadoop batch processes data distributed over a number of computers ranging in 100s and 1000s.",
+                        "content": "Point out the correct statement."
+                    },
+                    {
+                        "A": "Big data management and data mining",
+                        "B": "Data warehousing and business intelligence",
+                        "C": "Management of Hadoop clusters",
+                        "D": "Collecting and storing unstructured data",
+                        "answer": 'A',
+                        "id": 3,
+                        "explanation": "Data warehousing integrated with Hadoop would give a better understanding of data.",
+                        "content": "According to analysts, for what can traditional IT systems provide a foundation when they’re integrated with big data technologies like Hadoop?"
+                    },
+                    {
+                        "A": "MapReduce, Hive and HBase",
+                        "B": "MapReduce, MySQL and Google Apps",
+                        "C": "MapReduce, Hummer and Iguana",
+                        "D": "MapReduce, Heron and Trumpet",
+                        "answer": 'A',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 1 Problem 2"
+                        "explanation": "To use Hive with HBase you’ll typically want to launch two clusters, one to run HBase and the other to run Hive.",
+                        "content": "Hadoop is a framework that works with a variety of related tools. Common cohorts include ____________"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
-                        "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 1 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 1 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
+                        "A": "Hardtop processing capabilities are huge and its real advantage lies in the ability to process terabytes & petabytes of data",
+                        "B": "Hadoop uses a programming model called “MapReduce”, all the programs should conform to this model in order to work on the Hadoop platform",
+                        "C": "The programming model, MapReduce, used by Hadoop is difficult to write and test",
                         "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 1 Problem 5"
+                        "answer": 'C',
+                        "id": 5,
+                        "explanation": "The programming model, MapReduce, used by Hadoop is simple to write and test.",
+                        "content": "Point out the wrong statement."
                     },
                 ],
                 //ch2
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
-                        "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 2 Problem 1"
+                        "A": "MapReduce",
+                        "B": "Mapper",
+                        "C": "TaskTracker",
+                        "D": "JobTracker",
+                        "answer": 'C',
+                        "id": 1,
+                        "explanation": "TaskTracker receives the information necessary for the execution of a Task from JobTracker, Executes the Task, and Sends the Results back to JobTracker.",
+                        "content": " A ________ node acts as the Slave and is responsible for executing a Task assigned to it by the JobTracker."
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
+                        "A": "MapReduce tries to place the data and the compute as close as possible",
+                        "B": "Map Task in MapReduce is performed using the Mapper() function",
+                        "C": "Reduce Task in MapReduce is performed using the Map() function",
                         "D": "None of the mentioned",
-                        "answer": 4,
+                        "answer": 'A',
+                        "id": 2,
+                        "explanation": "This feature of MapReduce is “Data Locality”.",
+                        "content": "Point out the correct statement."
+                    },
+                    {
+                        "A": "Maptask",
+                        "B": "Mapper",
+                        "C": "Task execution",
+                        "D": "All of the mentioned",
+                        "answer": 'A',
+                        "id": 3,
+                        "explanation": "Map Task in MapReduce is performed using the Map() function.",
+                        "content": " ___________ part of the MapReduce is responsible for processing one or more chunks of data and producing the output results."
+                    },
+                    {
+                        "A": "Reduce",
+                        "B": "Map",
+                        "C": "Reducer",
+                        "D": "All of the mentioned",
+                        "answer": 'A',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 2 Problem 2"
+                        "explanation": "Reduce function collates the work and resolves the results.",
+                        "content": "_________ function is responsible for consolidating the results produced by each of the Map() functions/tasks."
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
-                        "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 2 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 2 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
+                        "A": " Java",
+                        "B": "C",
+                        "C": "C#",
                         "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 2 Problem 5"
+                        "answer": 'A',
+                        "id": 5,
+                        "explanation": "Hadoop Pipes is a SWIG- compatible C++ API to implement MapReduce applications (non JNITM based).",
+                        "content": "Although the Hadoop framework is implemented in Java, MapReduce applications need not be written in ____________"
                     },
                 ],
                 //ch3
                 [
                     {
-                        "A": "Cyber Security Chapter 3 Problem 1 A",
-                        "B": "Cyber Security Chapter 3 Problem 1 B",
-                        "C": "Cyber Security Chapter 3 Problem 1 C",
-                        "D": "Cyber Security Chapter 3 Problem 1 D",
-                        "answer": 4,
-                        "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 3 Problem 1"
+                        "A": "Hive",
+                        "B": "MapReduce",
+                        "C": "Pig",
+                        "D": "Lucene",
+                        "answer": 'B',
+                        "id": 1,
+                        "explanation": "MapReduce is the heart of hadoop.",
+                        "content": "________ is a programming model designed for processing large volumes of data in parallel by dividing the work into a set of independent tasks."
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
+                        "A": "Data locality means movement of the algorithm to the data instead of data to algorithm",
+                        "B": "When the processing is done on the data algorithm is moved across the Action Nodes rather than data to the algorithm",
+                        "C": "Moving Computation is expensive than Moving Data",
                         "D": "None of the mentioned",
-                        "answer": 4,
+                        "answer": 'A',
+                        "id": 2,
+                        "explanation": "Data flow framework possesses the feature of data locality.",
+                        "content": " Point out the correct statement."
+                    },
+                    {
+                        "A": "job-tracker",
+                        "B": "map-tracker",
+                        "C": "reduce-tracker",
+                        "D": "all of the mentioned",
+                        "answer": 'A',
+                        "id": 3,
+                        "explanation": "Map-Reduce jobs are submitted on job-tracker.",
+                        "content": "The daemons associated with the MapReduce phase are ________ and task-trackers."
+                    },
+                    {
+                        "A": "DataNodes",
+                        "B": "TaskTracker",
+                        "C": "ActionNodes",
+                        "D": "All of the mentioned",
+                        "answer": 'B',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 3 Problem 2"
+                        "explanation": "A heartbeat is sent from the TaskTracker to the JobTracker every few minutes to check its status whether the node is dead or alive.",
+                        "content": "The JobTracker pushes work out to available _______ nodes in the cluster, striving to keep the work as close to the data as possible."
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
-                        "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 3 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 3 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
+                        "A": "puts",
+                        "B": "gets",
+                        "C": "getSplits",
                         "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 3 Problem 5"
+                        "answer": 'C',
+                        "id": 5,
+                        "explanation": "InputFormat uses their storage locations to schedule map tasks to process them on the tasktrackers.",
+                        "content": "InputFormat class calls the ________ function and computes splits for each file and then sends them to the jobtracker."
                     },
                 ],
                 //ch4
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
-                        "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 4 Problem 1"
+                        "A": "metastore",
+                        "B": "parity",
+                        "C": "checksum",
+                        "D": "none of the mentioned",
+                        "answer": 'C',
+                        "id": 1,
+                        "explanation": "When a client creates an HDFS file, it computes a checksum of each block of the file and stores these checksums in a separate hidden file in the same HDFS namespace.",
+                        "content": "The HDFS client software implements __________ checking on the contents of HDFS files."
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
+                        "A": "The HDFS architecture is compatible with data rebalancing schemes",
+                        "B": "Datablocks support storing a copy of data at a particular instant of time",
+                        "C": "HDFS currently support snapshots",
                         "D": "None of the mentioned",
-                        "answer": 4,
+                        "answer": 'A',
+                        "id": 2,
+                        "explanation": "A scheme might automatically move data from one DataNode to another if the free space on a DataNode falls below a certain threshold.",
+                        "content": "Point out the correct statement."
+                    },
+                    {
+                        "A": "DsImage",
+                        "B": "FsImage",
+                        "C": "FsImages",
+                        "D": "All of the mentioned",
+                        "answer": 'B',
+                        "id": 3,
+                        "explanation": "A corruption of these files can cause the HDFS instance to be non-functional.",
+                        "content": "The ____________ and the EditLog are central data structures of HDFS."
+                    },
+                    {
+                        "A": "Data Image",
+                        "B": "Datanots",
+                        "C": "Snapshots",
+                        "D": "All of the mentioned",
+                        "answer": 'C',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 4 Problem 2"
+                        "explanation": "One usage of the snapshot feature may be to roll back a corrupted HDFS instance to a previously known good point in time.",
+                        "content": " __________ support storing a copy of data at a particular instant of time."
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
-                        "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 4 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 4 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
+                        "A": "failover",
+                        "B": "end",
+                        "C": "scalability",
                         "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 4 Problem 5"
+                        "answer": 'A',
+                        "id": 5,
+                        "explanation": "If the NameNode machine fails, manual intervention is necessary.",
+                        "content": "Automatic restart and ____________ of the NameNode software to another machine is not supported."
                     },
                 ],
                 //ch5
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
+                        "A": "MergePartitioner",
+                        "B": "HashedPartitioner",
+                        "C": "HashPartitioner",
                         "D": "All of the mentioned",
-                        "answer": 4,
-                        "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 5 Problem 1"
+                        "answer": 'C',
+                        "id": 1,
+                        "explanation": "The total number of partitions is the same as the number of reduce tasks for the job.",
+                        "content": "Which of the following is the default Partitioner for Mapreduce?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
+                        "A": "The right number of reduces seems to be 0.95 or 1.75",
+                        "B": "Increasing the number of reduces increases the framework overhead",
+                        "C": "With 0.95 all of the reduces can launch immediately and start transferring map outputs as the maps finish",
                         "D": "None of the mentioned",
-                        "answer": 4,
+                        "answer": 'C',
+                        "id": 2,
+                        "explanation": "With 1.75 the faster nodes will finish their first round of reduces and launch a second wave of reduces doing a much better job of load balancing.",
+                        "content": "Point out the correct statement."
+                    },
+                    {
+                        "A": "Partitioner",
+                        "B": "Compactor",
+                        "C": "Collector",
+                        "D": "All of the mentioned",
+                        "answer": 'A',
+                        "id": 3,
+                        "explanation": "Partitioner controls the partitioning of the keys of the intermediate map-outputs.",
+                        "content": "Which of the following partitions the key space?"
+                    },
+                    {
+                        "A": "set",
+                        "B": "reset",
+                        "C": "alter",
+                        "D": "select",
+                        "answer": 'C',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 5 Problem 2"
+                        "explanation": "Alter is the command used to make changes to an existing table.",
+                        "content": "_______ can change the maximum number of cells of a column family."
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
-                        "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 5 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 5 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
+                        "A": "MEMSTORE_FLUSH",
+                        "B": "MEMSTORE_FLUSHSIZE",
+                        "C": "MAX_FILESIZE",
                         "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 5 Problem 5"
+                        "answer": 'A',
+                        "id": 5,
+                        "explanation": "Using alter, you can set and remove table scope operators such as MAX_FILESIZE, READONLY, MEMSTORE_FLUSHSIZE, DEFERRED_LOG_FLUSH, etc.",
+                        "content": "Which of the following is not a table scope operator?"
                     },
                 ],
             ],
@@ -974,266 +974,266 @@ export default createStore({
                 //ch1
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
+                        "A": "car",
+                        "B": "last",
+                        "C": "cons",
+                        "D": "cdr",
+                        "answer": 'D',
+                        "id": 1,
+                        "explanation": "None.",
+                        "content": "In LISP, the function returns the list that results after the first element is removed (the rest f the list), is __________"
+                    },
+                    {
+                        "A": "Printed language and synthesized speech",
+                        "B": "Manipulation of physical object",
+                        "C": "Locomotion",
                         "D": "All of the mentioned",
-                        "answer": 4,
+                        "answer": 'D',
+                        "id": 2,
+                        "explanation": "None.",
+                        "content": "Which of the following contains the output segments of Artificial Intelligence programming?"
+                    },
+                    {
+                        "A": "John McCarthy",
+                        "B": "Marvin Minsky",
+                        "C": "Alan Turing",
+                        "D": "Allen Newell and Herbert Simon",
+                        "answer": 'a',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 1 Problem 1"
+                        "explanation": "None.",
+                        "content": "LISP was created by?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "SHRDLU",
+                        "B": "SIMD",
+                        "C": "BACON",
+                        "D": "STUDENT",
+                        "answer": 'A',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 1 Problem 2"
+                        "explanation": "None.",
+                        "content": "An Artificial Intelligence system developed by Terry A. Winograd to permit an interactive dialogue about a domain he called blocks-world."
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
-                        "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 1 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 1 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
+                        "A": "the embodiment of human intellectual capabilities within a computer considered to reflect intelligence if it were generated by humans",
+                        "B": "a set of computer programs that produce output that would be",
+                        "C": "the study of mental faculties through the use of mental models implemented on a computer",
                         "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 1 Problem 5"
+                        "answer": 'A',
+                        "id": 5,
+                        "explanation": "None.",
+                        "content": "Strong Artificial Intelligence is __________"
                     },
                 ],
                 //ch2
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
-                        "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 2 Problem 1"
+                        "A": "Problem",
+                        "B": "Solution",
+                        "C": "Agent",
+                        "D": "Observation",
+                        "answer": 'A',
+                        "id": 1,
+                        "explanation": "Task environments will pose a problem and rational agent will find the solution for the posed problem.",
+                        "content": "What is the action of task environment in artificial intelligence?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
+                        "A": "Peer, Environment, Actuators, Sense",
+                        "B": "Perceiving, Environment, Actuators, Sensors",
+                        "C": "Performance, Environment, Actuators, Sensors",
                         "D": "None of the mentioned",
-                        "answer": 4,
+                        "answer": 'C',
+                        "id": 2,
+                        "explanation": "Task environment will contain PEAS which is used to perform the action independently.",
+                        "content": "What is the expansion if PEAS in task environment?"
+                    },
+                    {
+                        "A": "Partial",
+                        "B": "Fully",
+                        "C": "Learning",
+                        "D": "Both Partial & Fully",
+                        "answer": 'D',
+                        "id": 3,
+                        "explanation": "Partial and fully observable environments are present in artificial intelligence.",
+                        "content": "What kind of observing environments are present in artificial intelligence?"
+                    },
+                    {
+                        "A": "Static",
+                        "B": "Dynamic",
+                        "C": "Semi Dynamic",
+                        "D": "None of the mentioned",
+                        "answer": 'A',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 2 Problem 2"
+                        "explanation": "As the problem in crossword puzzle are posed at beginning itself, So it is static.",
+                        "content": "What kind of environment is crossword puzzle?"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
-                        "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 2 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 2 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
+                        "A": "Local",
+                        "B": "Deterministic",
+                        "C": "Rational",
                         "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 2 Problem 5"
+                        "answer": 'A',
+                        "id": 5,
+                        "explanation": "Stochastic behavior are rational because it avoids the pitfall of predictability.",
+                        "content": "What kind of behavior does the stochastic environment posses?"
                     },
                 ],
                 //ch3
                 [
                     {
-                        "A": "Cyber Security Chapter 3 Problem 1 A",
-                        "B": "Cyber Security Chapter 3 Problem 1 B",
-                        "C": "Cyber Security Chapter 3 Problem 1 C",
-                        "D": "Cyber Security Chapter 3 Problem 1 D",
-                        "answer": 4,
-                        "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 3 Problem 1"
-                    },
-                    {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
+                        "A": "Solve the given problem and reach to goal",
+                        "B": "To find out which sequence of action will get it to the goal state",
+                        "C": " All of the mentioned",
                         "D": "None of the mentioned",
-                        "answer": 4,
+                        "answer": 'C',
+                        "id": 1,
+                        "explanation": "The problem-solving agents are one of the goal-based agents.",
+                        "content": "What is the main task of a problem-solving agent?"
+                    },
+                    {
+                        "A": "The whole problem",
+                        "B": "Your Definition to a problem",
+                        "C": "Problem you design",
+                        "D": "Representing your problem with variable and parameter",
+                        "answer": 'D',
+                        "id": 2,
+                        "explanation": "Because state space is mostly concerned with a problem, when you try to solve a problem, we have to design a mathematical structure to the problem, which can only be through variables and parameters. eg. You have given a 4-gallon jug and another 3-gallon jug. Neither has measuring marker on it. You have to fill the jugs with water. How can you get exactly 2 gallons of water in to 4 gallons. Here the state space can defined as set of ordered pairs integers(x,y), such that x=0,1,2,3 or 4 and y=0,1,2 or 3; X represents the number of gallons in 4 gallon jug and y represents the quantity of water in the 3-gallon jug.",
+                        "content": "What is state space?"
+                    },
+                    {
+                        "A": "Input, output",
+                        "B": "Problem, solution",
+                        "C": "Solution, problem",
+                        "D": "Parameters, sequence of actions",
+                        "answer": 'B',
+                        "id": 3,
+                        "explanation": "A search algorithm takes input as a problem and returns a solution to the problem as an output.",
+                        "content": "A search algorithm takes _________ as an input and returns ________ as an output."
+                    },
+                    {
+                        "A": "Initial state",
+                        "B": "Last state",
+                        "C": "Intermediate state",
+                        "D": "All of the mentioned",
+                        "answer": 'A',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 3 Problem 2"
+                        "explanation": "A problem has four components initial state, goal test, set of actions, path cost.",
+                        "content": "A problem in a search space is defined by one of these state."
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "Extraction",
+                        "B": "Abstraction",
+                        "C": "Information Retrieval",
+                        "D": "Mining of data",
+                        "answer": 'B',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 3 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 3 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 3 Problem 5"
+                        "explanation": "The process of removing detail from a representation is called abstraction.",
+                        "content": "The process of removing detail from a given state representation is called ______"
                     },
                 ],
                 //ch4
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
+                        "A": "Depth-first search",
+                        "B": "Breadth-first search",
+                        "C": "Alpha-beta pruning",
                         "D": "All of the mentioned",
-                        "answer": 4,
-                        "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 4 Problem 1"
+                        "answer": 'C',
+                        "id": 1,
+                        "explanation": "The alpha-beta search computes the same optimal moves as minimax, but eliminates the branches that can’t influence the final decision.",
+                        "content": "Which search is equal to minimax search but eliminates the branches that can’t influence the final decision?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
+                        "A": "Pruned leaves x and y",
+                        "B": "Every states are dependant",
+                        "C": "Root is independant",
                         "D": "None of the mentioned",
-                        "answer": 4,
+                        "answer": 'A',
+                        "id": 2,
+                        "explanation": "The minimax decision are independant of the values of the pruned values x and y because of the root values.",
+                        "content": "Which values are independant in minimax search algorithm?"
+                    },
+                    {
+                        "A": "10 states",
+                        "B": "8 States",
+                        "C": "6 States",
+                        "D": "Any depth",
+                        "answer": 'D',
+                        "id": 3,
+                        "explanation": "Alpha–beta pruning can be applied to trees of any depth and it is possible to prune entire subtree rather than leaves.",
+                        "content": "To which depth does the alpha-beta pruning can be applied?"
+                    },
+                    {
+                        "A": "Alpha = max",
+                        "B": "Beta = min",
+                        "C": "Beta = max",
+                        "D": "Both Alpha = max & Beta = min",
+                        "answer": 'D',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 4 Problem 2"
+                        "explanation": "Alpha and beta are the values of the best choice we have found so far at any choice point along the path for MAX and MIN.",
+                        "content": "Which value is assigned to alpha and beta in the alpha-beta pruning?"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
-                        "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 4 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 4 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
+                        "A": "Hill climbing search algorithm",
+                        "B": "Depth-first search",
+                        "C": "Transposition table",
                         "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 4 Problem 5"
+                        "answer": 'C',
+                        "id": 5,
+                        "explanation": "None. ",
+                        "content": " Which is identical to the closed list in Graph search?"
                     },
                 ],
                 //ch5
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
+                        "A": "Deductive Systems",
+                        "B": "Inductive Systems",
+                        "C": "Reasoning with Knowledge Based Systems",
+                        "D": "Search Based Systems",
+                        "answer": 'A',
+                        "id": 1,
+                        "explanation": "Refer the definition of Deductive based systems.",
+                        "content": "A _________ is used to demonstrate, on a purely syntactic basis, that one formula is a logical consequence of another formula."
+                    },
+                    {
+                        "A": "Expressiveness",
+                        "B": "Formalizing Natural Languages",
+                        "C": "Many-sorted Logic",
                         "D": "All of the mentioned",
-                        "answer": 4,
+                        "answer": 'D',
+                        "id": 2,
+                        "explanation": "None.",
+                        "content": "The statement comprising the limitations of FOL is/are ____________"
+                    },
+                    {
+                        "A": "First Order Predicate Calculus",
+                        "B": "Quantification Theory",
+                        "C": "Lower Order Calculus",
+                        "D": "All of the mentioned",
+                        "answer": 'D',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 5 Problem 1"
+                        "explanation": "None.",
+                        "content": "First Order Logic is also known as ___________"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "Representational Verification",
+                        "B": "Representational Adequacy",
+                        "C": "Higher Order Logic",
+                        "D": "Inferential Efficiency",
+                        "answer": 'C',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 5 Problem 2"
+                        "explanation": "None.",
+                        "content": "The adjective “first-order” distinguishes first-order logic from ___________ in which there are predicates having predicates or functions as arguments, or in which one or both of predicate quantifiers or function quantifiers are permitted."
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "1",
+                        "B": "2",
+                        "C": "3",
+                        "D": "4",
+                        "answer": 'B',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 5 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 5 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 5 Problem 5"
+                        "explanation": "The two proposition symbols are true and false.",
+                        "content": "How many proposition symbols are there in artificial intelligence?"
                     },
                 ],
             ],
@@ -1242,266 +1242,266 @@ export default createStore({
                 //ch1
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
+                        "A": "parsing the markup content (HTML)",
+                        "B": "parsing style information (CSS, XSL, and so on)",
+                        "C": "generating a visual presentation of the formatted content including media files referenced",
+                        "D": "parsing style information (CSS only)",
+                        "answer": 'D',
+                        "id": 1,
+                        "explanation": "A rendering engine is a software that draws text and images on the screen. The engine draws structured text from a document (HTML, XML) and formats it properly based on the given style declarations (CSS, XSL, etc). The primary job of a browser engine is to transform HTML documents and other resources of a web page into an interactive visual representation on a user’s device.",
+                        "content": "A Rendering engine is not responsible for ________"
+                    },
+                    {
+                        "A": "WebKit",
+                        "B": "Gecko",
+                        "C": "Trident",
+                        "D": "Presto",
+                        "answer": 'B',
+                        "id": 2,
+                        "explanation": "Gecko is a web browser engine used in many applications developed by Mozilla Foundation and the Mozilla Corporation as well as in many other open source software projects. Gecko is free and open-source software subject to the terms of the Mozilla Public License version 2.",
+                        "content": "Firefox uses _________ rendering engine."
+                    },
+                    {
+                        "A": "It defers rendering of html page",
+                        "B": "It defers script execution until the page has been rendered",
+                        "C": "It defers rendering of css attributes",
+                        "D": "It is only for internal scripts",
+                        "answer": 'B',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 1 Problem 1"
+                        "explanation": "The defer attribute is a boolean attribute. The script is executed after the page has finished parsing. The defer attribute is used if and only if there is src attribute. Defer is for external not internal scripts.",
+                        "content": "What is the use of “defer” attribute?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "async and defer attributes of script tag execute before the DOMContentLoaded event",
+                        "B": "defer executes each script sequentially",
+                        "C": "async executes each script when it is ready",
+                        "D": "all older browsers supports async attribute",
+                        "answer": 'D',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 1 Problem 2"
+                        "explanation": "In async attribute, the script is executed asynchronously with the rest of the page (the script will be executed while the page continues the parsing). Defer, the Boolean attribute is set to indicate to a browser that the script is meant to be executed after the document has been parsed, but before firing DOMContentLoaded event. Older browsers doesn’t support async attribute.",
+                        "content": "Which of the following statements is false?"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "Web browser",
+                        "B": "Web server",
+                        "C": "Web matrix",
+                        "D": "Web network",
+                        "answer": 'A',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 1 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 1 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 1 Problem 5"
+                        "explanation": "A web browser (commonly referred to as a browser) is a software application for retrieving, presenting and traversing information resources on the World Wide Web. A web server process, store and display output to client as per their request. Web matrix is a discontinued cloud-connected website builder and HTML editor for Windows.",
+                        "content": "Which of the following is used to read a HTML page and render it?"
                     },
                 ],
                 //ch2
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
+                        "A": "Using Drag action",
+                        "B": "Using new input type",
+                        "C": "Using play and pause action of audio and video elements",
+                        "D": "Verifying SVG and Canvas elements",
+                        "answer": 'A',
+                        "id": 1,
+                        "explanation": "While testing of HTML5 for a browser i.e. whether its elements are supported by the browser or not one can use draggable content using Drag action and this action can be called through On-Screen Action operation.",
+                        "content": "What does ‘On-Screen Action’ means in the testing of HTML5 applications?"
+                    },
+                    {
+                        "A": "Property checkpoints",
+                        "B": "Region checkpoints",
+                        "C": "On-Screen Action",
+                        "D": "Local STorage",
+                        "answer": 'B',
+                        "id": 2,
+                        "explanation": "Region checkpoints are used to verify a displayed graphics. It is a kind of test operation which gives verification of application’s window or control is displayed correctly or not. Object’s property is verified by region checkpoints which is test operation. Local storage is for storing data.",
+                        "content": " What can be used to verify a displayed graphics?"
+                    },
+                    {
+                        "A": "url",
+                        "B": "time",
+                        "C": "tel",
+                        "D": "option",
+                        "answer": 'D',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 2 Problem 1"
+                        "explanation": "<input> element type has new values as ‘url’, ‘email’, ‘datetime’, ‘date’, ‘month’, ‘tel’, ‘time’, ‘number’, ‘search’, ‘color’, ‘range’, ‘datetime-local’, ‘week’.",
+                        "content": "Which of the following does not lie under the attribute of <input> and is not supported by Opera?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "Indeterminate",
+                        "B": "Media",
+                        "C": "EI",
+                        "D": "Target",
+                        "answer": 'A',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 2 Problem 2"
+                        "explanation": "The indeterminate is actually not an attribute, it is the property of checkbox which can be change via JavaScript.",
+                        "content": "Which is the new attribute of <input> element that is used to change the appearance of checkbox?"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "Media",
+                        "B": "Ping",
+                        "C": "Hreflang",
+                        "D": "Preload",
+                        "answer": 'D',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 2 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 2 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 2 Problem 5"
+                        "explanation": " Preload is the attribute of the <video> element. Media, ping, hreflang, rel are the attribute used with <a> and <area> elements.",
+                        "content": "Which attribute does not lie inside <a> and <area> elements?"
                     },
                 ],
                 //ch3
                 [
                     {
-                        "A": "Cyber Security Chapter 3 Problem 1 A",
-                        "B": "Cyber Security Chapter 3 Problem 1 B",
-                        "C": "Cyber Security Chapter 3 Problem 1 C",
-                        "D": "Cyber Security Chapter 3 Problem 1 D",
-                        "answer": 4,
+                        "A": "class",
+                        "B": "id",
+                        "C": "article",
+                        "D": "html",
+                        "answer": 'B',
+                        "id": 1,
+                        "explanation": " HTML is Hyper Text Markup Language which is used to create web pages and applications. The id attribute is most used to point to a style in a style sheet, and by JavaScript (via the HTML DOM) to manipulate the element with the specific id. Class is a name given to HTML elements which can be used by CSS and JavaScript for styling the web pages. A self-contained content is called attribute.",
+                        "content": "Which attribute specifies a unique alphanumeric identifier to be associated with an element?"
+                    },
+                    {
+                        "A": "tooltip",
+                        "B": "dir",
+                        "C": "title",
+                        "D": "head",
+                        "answer": 'C',
+                        "id": 2,
+                        "explanation": "The extra information about an element is specified by title tag. The information is most often shown as a tooltip text when the mouse moves over the element. List of directory files is given by dir tag which is not supported in HTML5. Tooltip or else infotip is a graphical user interface of an element. Container of metadata is called head.",
+                        "content": "Which attribute is used to provide an advisory text about an element or its contents?"
+                    },
+                    {
+                        "A": "dir",
+                        "B": "style",
+                        "C": "class",
+                        "D": "article",
+                        "answer": 'B',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 3 Problem 1"
+                        "explanation": "Style attribute specifies an inline style for an element. The style attribute will override any style set globally, e.g. styles specified in the style tag or in an external style sheet. A self-contained content is called attribute. Class is a name given to HTML elements which can be used by CSS and JavaScript for styling the web pages. List of directory files is given by dir tag which is not supported in HTML5.",
+                        "content": "The _____________ attribute specifies an inline style associated with an element, which determines the rendering of the affected element."
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "dataFormatAs",
+                        "B": "datafld",
+                        "C": "disabled",
+                        "D": "datasrc",
+                        "answer": 'B',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 3 Problem 2"
+                        "explanation": "DataFormatAs specifies how data is rendered. The identifier for data source is set by dataSrc. Datafld attribute specifies the column name from the data source object that supplies the bound data. This attribute is specific to Microsoft’s data binding. A Disabled is a boolean attribute which specifies that <input> element should be disabled.",
+                        "content": "Which of the following is the attribute that specifies the column name from the data source object that supplies the bound data?"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "height",
+                        "B": "height",
+                        "C": "hidefocus",
+                        "D": "datasrc",
+                        "answer": 'B',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 3 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 3 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 3 Problem 5"
+                        "explanation": "Height of element is pixels is specified by height attribute. The hspace attribute specifies the whitespace on left and right side of an object. The hidefocus specifies whether a focused rectangle is drawn around an object. The identifier for data source is set by dataSrc.",
+                        "content": "Which of the following is the attribute that specifies additional horizontal space, in pixels, to be reserved on either side of an embedded item like an iframe, applet, image, and so on?"
                     },
                 ],
                 //ch4
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
+                        "A": "<details>",
+                        "B": "<aside>",
+                        "C": "<bdi>",
+                        "D": "<article>",
+                        "answer": 'C',
+                        "id": 1,
+                        "explanation": "The additional details the user wants to know as per the demand is fulfilled by <details> tag. Content related to surroundings is given by <aside> tag. <bdi> element is useful when embedding user-generated content with an unknown directional. <article> is self defined independent content which contains data which can be anything including photos, videos, and other contents. It provides a section.",
+                        "content": "Which of the following defines a part of text that might be formatted in a different direction from other text?"
+                    },
+                    {
+                        "A": "<figcaption>",
+                        "B": "<dialog>",
+                        "C": "<caption>",
+                        "D": "<figure>",
+                        "answer": 'A',
+                        "id": 2,
+                        "explanation": "The figcaption element can be placed as the first or last child of the figure element. It defines a caption for a figure element. Caption in a table immediately after <table> tag can be given by <caption> tag. The <figure> tag provides section for illustration, diagrams, photos etc. A box else window is defined by <dialog> tag in HTML.",
+                        "content": "Which of the following defines a caption for a figure element?"
+                    },
+                    {
+                        "A": "<menuitem> ",
+                        "B": "<menu> ",
+                        "C": "<nav>",
+                        "D": "<class>",
+                        "answer": 'A',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 4 Problem 1"
+                        "explanation": "The menuitem tag is new in HTML5 and as of now is only supported in Firefox 8+ versions. <menuitem> defines a command item that the user can invoke from a popup menu. A list of of commands is defined by <menu> tag. <nav> is set of navigation links. One or more class names are specified by the global <class> attribute.‘",
+                        "content": "Which of the following defines a command/menu item that the user can invoke from a popup menu?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "<meter>",
+                        "B": "<progress>",
+                        "C": "<gauge>",
+                        "D": "<wbr>",
+                        "answer": 'B',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 4 Problem 2"
+                        "explanation": "Scalar measurement within range or may be a fractional value can be displayed through <meter> tag. Use the progress tag in conjunction with JavaScript to display the progress of a task. <wbr> is used for whether it is okay to add a line break in a text.",
+                        "content": "Which of the following tag defines the progress of a task?"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "<output>",
+                        "B": "<keygen>",
+                        "C": "<datalist>",
+                        "D": "<datalist>",
+                        "answer": 'A',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 4 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 4 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 4 Problem 5"
+                        "explanation": "The output tag represents the result of a calculation (like one performed by a script). <keygen> has been removed from HTML5 and it specifies a name to <keygen> element which refers to data after it’s submission. <datalist> is a list of pre-defined option for input element. The additional details the user wants to know as per the demand is fulfilled by <details> tag.",
+                        "content": "Which of the following defines the result of a calculation?"
                     },
                 ],
                 //ch5
                 [
                     {
-                        "A": " Cyber Security provides security against malware",
-                        "B": "Cyber Security provides security against cyber-terrorists",
-                        "C": "Cyber Security protects a system from cyber attacks",
-                        "D": "All of the mentioned",
-                        "answer": 4,
+                        "A": "browsing offline",
+                        "B": "reduction of server load",
+                        "C": "speed",
+                        "D": "asynchronous",
+                        "answer": 'D',
+                        "id": 1,
+                        "explanation": "Application cache can be helpful in so many ways like we can browse offline, as the cached resources are at local level hence they load at faster speed, it also reduces the load of the server. Asynchronous is one of the problems with the use of application cache due to this the resources which are not required like JavaScript or images will also be downloaded.",
+                        "content": "Which of the following is not the benefit of cache application?"
+                    },
+                    {
+                        "A": "CACHE MANIFEST",
+                        "B": "CSS stylesheet",
+                        "C": "index.html",
+                        "D": "image address",
+                        "answer": 'A',
+                        "id": 2,
+                        "explanation": "For offline access, there is a text file named cache manifest. It lists the resources of the browser. For enabling application cache for any app we must include manifest attribute inside an html tag of the document like <html manifest=”text.appcache”> this manifest should be included on every page that we want cached.",
+                        "content": "Which line is mandatory in cache manifest file?"
+                    },
+                    {
+                        "A": "network",
+                        "B": "cache",
+                        "C": "fallback",
+                        "D": "cache status",
+                        "answer": 'D',
                         "id": 3,
-                        "explanation": "Cyber Security provides security to a system against cyber-attacks by using various technologies, and processes.",
-                        "content": "Cyber Security Chapter 5 Problem 1"
+                        "explanation": "If the files are not in cache they come from a list of the files in the network. Cache is the default section. The files those are listed under this header are explicitly cached after downloading for the first time. If the resource is inaccessible then this section will be in use. There is no any rule to list these section, can be listed in any order.",
+                        "content": "Which is not the section of manifest?"
                     },
                     {
-                        "A": "Cyber security protects criminals",
-                        "B": "Cyber security protects internet-connected systems",
-                        "C": "Cyber security protects hackers",
-                        "D": "None of the mentioned",
-                        "answer": 4,
+                        "A": "explicit entries",
+                        "B": "master entries",
+                        "C": "fallback entries",
+                        "D": "idle entries",
+                        "answer": 'D',
                         "id": 4,
-                        "explanation": "It protects internet-connected systems such as hardware, software, and data from cyber-attacks. It aims to reduce cyber attacks against the system, network, and technologies by reducing unauthorized exploitation, vulnerability, and threats.",
-                        "content": "Cyber Security Chapter 5 Problem 2"
+                        "explanation": "The categories for the resources to fit in are explicit entries, master entries, network entries, fallback entries. Entry can be both fallback and explicit entry. Any HTML file that contains manifest attribute is a master entry. Explicit entries are listed explicitly in the cache section.",
+                        "content": "Resources do not fit into _______"
                     },
                     {
-                        "A": "August Kerckhoffs",
-                        "B": "Bob Thomas",
-                        "C": "Robert",
-                        "D": "Charles",
-                        "answer": 4,
+                        "A": "Explicit entry",
+                        "B": "Network entry",
+                        "C": "Fallback entry",
+                        "D": "Master entry",
+                        "answer": 'B',
                         "id": 5,
-                        "explanation": "August Kerckhoffs, a linguist and German professor at HEC, wrote an essay in the Journal of Military Science in February 1883. Kerckhoff had unwittingly established the foundations for contemporary encryption, earning him the title of ’Father of Computer Security.‘",
-                        "content": "Cyber Security Chapter 5 Problem 3"
-                    },
-                    {
-                        "A": "Cyber attack",
-                        "B": "Computer security",
-                        "C": "Cryptography",
-                        "D": "Digital hacking",
-                        "answer": 4,
-                        "id": 8,
-                        "explanation": "An effort to steal, spy on, damage, or destroy diverse components of cyberspace, such as computer systems, related peripherals, network systems, and information, is known as a cyber attack.",
-                        "content": "Cyber Security Chapter 5 Problem 4"
-                    },
-                    {
-                        "A": "Cloud Security",
-                        "B": "Network Security",
-                        "C": "Application Security",
-                        "D": "All of the above",
-                        "answer": 4,
-                        "id": 9,
-                        "explanation": "Cloud Security: Provides security for the data stored on the cloud. Network Security: Protects the internal network from threats. Application Security: Protects data stored in the application software. ",
-                        "content": "Cyber Security Chapter 5 Problem 5"
+                        "explanation": "There are four types of resources in an application cache which are 1) Master Entries 2) Explicit Entries 3) Network Entries 4) Fallback Entries. Resources are explicitly listed in the application’s cache manifest file by the explicit entry. Fallback entry provides fallback entries in the application’s manifest file. Master entries are the resources added to the cache. Network entry executes and load scripts and code from the server, not from the cache.",
+                        "content": "Which entry executes and load scripts from the server?"
                     },
                 ],
             ],
@@ -1780,9 +1780,9 @@ export default createStore({
                 //ch1-5
                 'https://www.cisco.com/c/en/us/products/security/what-is-cybersecurity.html',
                 'https://onlinedegrees.und.edu/blog/types-of-cyber-security-threats',
-                'https://onlinedegrees.und.edu/blog/5-cryptography-tools.html/',
+                'https://onlinedegrees.und.edu/blog/5-cryptography-tools.html',
                 'https://www.csoonline.com/article/3235970/what-is-quantum-cryptography-it-s-no-silver-bullet-but-could-improve-security.html',
-                'https://www.executech.com/insights/top-15-types-of-cybersecurity-attacks-how-to-prevent-them/',
+                'https://www.executech.com/insights/top-15-types-of-cybersecurity-attacks-how-to-prevent-them',
             ],
             //Data Science
             [
@@ -1791,17 +1791,45 @@ export default createStore({
                 'https://medium.com/data-science-365/pandas-for-data-science-part-1-89bc231b3478#:~:text=as%20an%20argument.-,The%20pandas%20DataFrame,%2C%20bool%2C%20and%20so%20on.',
                 'https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html',
                 'https://opensource.com/article/20/4/plot-data-python',
-                'https://byjus.com/maths/probability-and-statistics/',
+                'https://byjus.com/maths/probability-and-statistics',
             ],
             //Big Data
-            [],
-            //Machine Learning and AI
-            [],
-            //Web Development
-            [],
-            //Metaverse
-            [],
+            [
+                //ch1-5
+                'https://hadoop.apache.org',
+                'https://www.tutorialspoint.com/hadoop/hadoop_mapreduce.htm',
+                'https://databricks.com/glossary/hadoop-distributed-file-system-hdfs',
+                'https://www.talend.com/resources/what-is-data-integrity',
+                'https://techvidvan.com/tutorials/hadoop-mapreduce-features',
             ],
+            //Machine Learning and AI
+            [
+                //ch1-5
+                'https://sitn.hms.harvard.edu/flash/2017/history-artificial-intelligence',
+                'https://www.tutorialspoint.com/artificial_intelligence/artificial_intelligence_agents_and_environments.htm',
+                'https://www.baeldung.com/cs/informed-vs-uninformed-search',
+                'https://www.educative.io/edpresso/what-is-alpha-beta-pruning',
+                'https://www.javatpoint.com/first-order-logic-in-artificial-intelligence',
+            ],
+            //Web Development
+            [
+                //ch1-5
+                'https://www.slimjet.com/en/lp/top-10-browsers.php',
+                'https://html.com/document/',
+                'https://tdg.docbook.org/tdg/5.0/ref-elements.html#:~:text=The%20common%20attributes%20include%20a,relevant%20to%20a%20particular%20audience.',
+                'https://developer.mozilla.org/en-US/docs/Glossary/Semantics',
+                'https://www.html5rocks.com/en/tutorials/appcache/beginner/#:~:text=A%20manifest%20can%20have%20three,downloaded%20for%20the%20first%20time.',
+            ],
+            //Metaverse
+            [
+                //ch1-5
+                'https://hadoop.apache.org',
+                'https://www.tutorialspoint.com/hadoop/hadoop_mapreduce.htm',
+                'https://databricks.com/glossary/hadoop-distributed-file-system-hdfs',
+                'https://www.talend.com/resources/what-is-data-integrity',
+                'https://techvidvan.com/tutorials/hadoop-mapreduce-features',
+            ],
+        ],
         video:[
             //Cyber Security
             [
