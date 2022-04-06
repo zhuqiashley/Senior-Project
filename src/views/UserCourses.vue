@@ -28,8 +28,8 @@
         <div class="col-md-6">
         <div class="col-md-12">
           <span style="float:right">
-            <button type="button" class="btn btn-dark m-4 enroll" @click="Enroll()" v-if="toggleEnroll">Enroll This Course</button>
-            <button type="button" class="btn btn-dark m-4 enroll" @click="Enroll()" v-if="!toggleEnroll">Unenroll This Course</button>
+            <button type="button" class="btn btn-success m-4 enroll" @click="Enroll()" v-if="toggleEnroll">Enroll This Course</button>
+            <button type="button" class="btn btn-danger m-4 enroll" @click="Enroll()" v-if="!toggleEnroll">Unenroll This Course</button>
           </span>
       </div>
         </div>
@@ -53,8 +53,28 @@ export default {
       }
     },
     methods:{
-    Enroll(){
-      this.toggleEnroll = !this.toggleEnroll
+    async Enroll(){
+      if(this.toggleEnroll){
+        let userId = 2;
+        let courseId = this.$route.query.id;
+        let courseCompletion = 0;
+        const response = await fetch("http://localhost:3001/api/enrollUser/"+userId+"/"+courseId+"/"+courseCompletion);
+				const data = await response.json();
+        if(data.affectedRows > 0){
+          this.toggleEnroll = !this.toggleEnroll
+        }
+      }
+
+      else{
+        let userId = 2;
+        let courseId = this.$route.query.id;
+        const response = await fetch("http://localhost:3001/api/removeEnrolledUser/"+userId+"/"+courseId);
+				const data = await response.json();
+        if(data.affectedRows > 0){
+          this.toggleEnroll = !this.toggleEnroll
+        }
+      }
+     
     }
   },
   computed: {

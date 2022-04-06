@@ -2,17 +2,18 @@
   <custom-header :title="titleValue"></custom-header>
   <div class="container">
     <div class="row">
-      <div
-        class="
-          col-lg-12
-          d-flex
-          flex-column
-          justify-content-center
-          pt-4 
-          order-2 order-lg-1
-        "
-      >
-      <h1>Course Chapters</h1>
+      <div class="col-lg-12 d-flex flex-column justify-content-center pt-4 order-2 order-lg-1">
+        <h1>Course Chapters</h1>
+        <div class="col-lg-12">
+          <h4> Course process: </h4> 
+          <progress-bar :progress="this.$route.query.course_complete">
+            <template>
+              {{this.$route.query.course_complete}} 
+            </template>
+          </progress-bar>
+        </div>
+        <br/>
+
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
@@ -153,10 +154,17 @@
 <!-- ======= SCRIPT ======= -->
 <script>
 import CustomHeader from "../components/Header.vue";
+import ProgressBar from "../components/ProgressBar.vue";
 
 export default {
   components: {
     CustomHeader,
+    ProgressBar
+  },
+  data() {
+      return {
+        progress: this.$route.query.course_complete
+      }
   },
   computed: {
 		titleValue() {
