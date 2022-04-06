@@ -13,6 +13,7 @@
 				<template #end>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-right">
 						<button class="btn btn-success" @click="viewCourse(course)"> View Course </button>
+						<button class="btn btn-info" @click="rateCourse(course)"> Rate my Course </button>
 					</div>
 				</template>
 			</card>
@@ -26,18 +27,65 @@ import CustomHeader from '../components/Header.vue'
 import Card from '../components/Card.vue'
 
 export default {
+	data() {
+		return {
+			coursess: null
+		}
+	},
 	components:
 	{
 		CustomHeader,
 		Card
 	},
 	methods: {
-		viewCourse: function(course) {
-			this.$router.push({ path: 'MyCourses', query: course})			
+		async viewCourse(course) {
+			
+			try {
+				let title = course.title;
+				let userId = 1;
+
+				const response = await fetch("http://localhost:3001/api/getcourses/"+title);
+				const data = await response.json();
+
+				this.coursess = data;
+				const queryURL = this.coursess[0];
+
+				const courseData = await fetch("http://localhost:3001/api/getCourseData/"+queryURL.id);
+				const cData = await courseData.json();
+
+				const forumData = await fetch("http://localhost:3001/api/getForumData/"+queryURL.id);
+				const fData = await forumData.json();
+
+				const userData = await fetch("http://localhost:3001/api/getUserData");
+				const uData = await userData.json();
+
+				const userEnrolledData = await fetch("http://localhost:3001/api/getUserEnrolledCourses/"+userId);
+				const uEData = await userEnrolledData.json();
+
+				
+				queryURL.course_complete = cData[0].course_completion;
+				queryURL.uEDdata = uEData[0];
+
+				queryURL.user = uData[0].FirstName+ " " +uData[0].LastName;	
+				queryURL.question = fData[0].question;
+				queryURL.comments = fData[0].comments;
+				queryURL.commentCount = fData[0].comment_count;
+				queryURL.likeCount = fData[0].like_count;
+				queryURL.viewCount = fData[0].views_count;
+				queryURL.postedOn = fData[0].posted_on;
+				queryURL.forumSrc = fData[0].forum_src;
+				
+				this.$router.push({ path: 'UserCourses', query: queryURL});	
+				
+			} catch (error) {
+				console.log(error);
+			}	
+				
 		}
 	}, 
 	setup() {
-		const courses = [
+		let courses  = [];
+		courses = [
 			{
 				id: 0,
 				title: 'Cyber Security',
@@ -185,6 +233,9 @@ export default {
 
 			}
 		]
+
+		
+
 		return {
 			courses
 		}

@@ -7,7 +7,8 @@ import Achievements from '../views/Achievements.vue'
 import Events from '../views/Events.vue'
 import Login from '../views/Login.vue'
 import Profile from '../views/Profile.vue'
-import MyCourses from '../views/UserCourses.vue'
+import MyCourses from '../views/UserEnrollCourses.vue'
+import UserCourses from '../views/UserCourses.vue'
 import Announcement from '../views/Announcement.vue'
 import Chapter from '../views/Chapter.vue'
 import Forum from '../views/Forum.vue'
@@ -77,6 +78,14 @@ const routes = [
 		component: MyCourses,
 		meta: {
 			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/UserCourses',
+		name: 'UserCourses',
+		component: UserCourses,
+		meta: {
+			title: 'Master CS | User Courses'
 		}
 	},
     {
