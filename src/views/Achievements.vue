@@ -7,16 +7,16 @@
     <!--End Alert notification -->
 
     <div class="container mt-4">
-        <progress-bar :progress="(unlocked.length / (locked.length + unlocked.length)) * 100" />
+        <progress-bar :progress="(unlocked.length / (locked.length + unlocked.length)) * 100" /> 
 
         <div class="parent">
-            <div v-for="(badge, index) in badges" v-bind:key="index">
-                <card :horizontal="true" :image="badge.image" :class="['mt-4', badge.unlocked ? '' : 'locked']"> 
+            <div v-for="(achievement, index) in achievements" v-bind:key="index">
+                <card :horizontal="true" :image="achievement.BadgeImage" :class="['mt-4', achievement.unlocked ? '' : 'locked']"> 
                     <template #title>
-                        {{badge.title}}
+                        {{achievement.AchievementTitle}}
                     </template>
                     <template #body>
-                        {{badge.description}}
+                        {{achievement.AchievementDescription}}
                     </template>
                 </card> 
             </div>
@@ -37,6 +37,7 @@ import { ref, onBeforeMount } from "vue";
 
 let achievementsDB = 'http://localhost:3001/api/achievements'
 let userDB = 'http://localhost:3001/api/user'
+let userAchievementsDB = 'http://localhost:3001/api/userachievements'
 
 export default {
   components:
@@ -46,104 +47,15 @@ export default {
         ProgressBar,
     },
     setup() {
-        const badges = [
-            {
-                title: "Welcome to the Class",
-                description: "Earned when you first registered.",
-                image: {
-                    src: "img/badges/Cup_Badge_Color.png",
-                    alt: "Welcome to the Class",
-                },
-                unlocked: false,
-            },
-            {
-                title: "E-Learning Newbie!",
-                description: "Earned upon completing your first lesson.",
-                image: {
-                    src: "img/badges/Growth_Badge_Color.png",
-                    alt: "E-Learning Newbie",
-                },
-                unlocked: false,
-            },
-            {
-                title: "Brainiac in the Making!",
-                description: "Earned when you ace your first quiz.",
-                image: {
-                    src: "img/badges/Idea_Badge_Color.png",
-                    alt: "Brainiac in the Making",
-                },
-                unlocked: false,
-            },
-            {
-                title: "Baby Steps!",
-                description: "Earned when you complete you complete your first topic.",
-                image: {
-                    src: "img/badges/Like_Badge_Color.png",
-                    alt: "Baby Steps",
-                },
-                unlocked: false,
-            },
-            {
-              title: "Knowledge Knight",
-              description: "Earned when you complete your first course.",
-              image: {
-                  src: "img/badges/Medal_Badge_Color.png",
-                  alt: "Knowledge Knight",
-              },
-              unlocked: false,
-            },
-          {
-            title: "On a Roll!",
-            description: "Earned when you complete 10 lessons.",
-            image: {
-                src: "img/badges/Monitor_Badge_Color.png",
-                alt: "On a Roll",
-            },
-            unlocked: false,
-          },
-          {
-            title: "First Streak!",
-            description: "Earned when you learn for 3 days straight.",
-            image: {
-              src: "img/badges/Shuttle_Badge_Color.png",
-              alt: "First Streak",
-            },
-            unlocked: false,
-          },
-          {
-            title: "Overachiever!",
-            description: "Earned when you complete all courses available.",
-            image: {
-              src: "img/badges/Star_Badge_Color.png",
-              alt: "Overachiever",
-            },
-            unlocked: false,
-          }
-        ];
-        const unlocked = computed(() => {
-            return badges.filter(badge => badge.unlocked);
-        });
 
-        const locked = computed(() => {
-            return badges.filter(badge => !badge.unlocked);
-        });
+        const AchievementTitle = ref('')
+        const AchievementDescription = ref('')
+        const achievements = ref([])
+        const BadgeID = ref('')
+        const users = ref('')
+        const userAchievements = ref('')
 
-        //Function for checking for Achivement Requirements 
-        //If requirements are satisfied, post to user database, display notification, update achievements page
-
-        //get userDB
-        const user = ref('')
-        onBeforeMount(async () => {
-            await axios.get(userDB)
-                .then(response => {
-                    user.value = response.data;
-
-                }).catch(err => {
-                    console.error(err);
-                 });})
-        
         //get achievementsDB
-        const achievements = ref('')
         onBeforeMount(async () => {
             await axios.get(achievementsDB)
                 .then(response => {
@@ -153,6 +65,98 @@ export default {
                     console.error(err);
                  });})
 
+        //get userDB
+        onBeforeMount(async () => {
+            await axios.get(userDB)
+                .then(response => {
+                    users.value = response.data;
+
+                }).catch(err => {
+                    console.error(err);
+                 });})
+
+        //get userAchievementsDB
+        onBeforeMount(async () => {
+            await axios.get(userAchievementsDB)
+                .then(response => {
+                    userAchievements.value = response.data;
+
+                }).catch(err => {
+                    console.error(err);
+                 });})
+
+        const unlocked = computed(() => {
+            return achievements.filter(achievement => achievement.unlocked);
+        });
+
+        const locked = computed(() => {
+            return achievements.filter(achievement => !achievement.unlocked);
+        });
+
+        
+        //Functions for checking for Achievement Requirements 
+        //If requirements are satisfied, post to database, display notification, update achievements page
+
+        //BadgeID 1 
+        /*
+        if user new 
+        award badgeID 1
+        unlocked()
+        */
+
+        //BadgeID 2
+        /*
+        if user lessons completed = 0 
+        if user lessons completed = 1 
+        award badgeID 2 
+        unlocked()
+        */
+
+        //BadgeID 3
+        /*
+        check user quiz scores for 100 
+        if user quiz score = 100 and not others
+        award badgeID 3
+        unlocked()
+        */
+
+        //BadgeID 4
+        /*
+        if user posts = 0 
+        if user posts = 1
+        award badgeID 4
+        unlocked()
+        */
+
+        //BadgeID 5
+        /*
+        if user courses completed = 0 
+        if user courses completed = 1 
+        award badgeID 5
+        unlocked()
+        */
+
+        //BadgeID 6
+        /*
+        if user lessons completed == 10 
+        award badgeID 6
+        unlocked()
+        */
+
+        //BadgeID 7
+        /*
+        if user streaks = 3 days 
+        award badgeID 7 
+        unlocked()
+        */
+
+        //BadgeID 8
+        /*
+        if user completes all courses 
+        award badgeID 8 
+        unlocked()
+        */
+
         //test notification
         //notify({
             //title: "Vue 3 notification",
@@ -160,7 +164,7 @@ export default {
         
 
         return {
-            badges, achievements, unlocked, locked, user
+            achievements, unlocked, locked, AchievementTitle, AchievementDescription, BadgeID
         }
     },
     //methods:{
