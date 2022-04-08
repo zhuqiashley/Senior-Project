@@ -4,24 +4,27 @@
   <!-- ======= UserProfilePage Section ======= -->
   <section id="UserPage" class="d-flex align-items-center">
     <div class="section-title">
-      <h1>Welcome {{this.userid}}!</h1>
+      <h1>{{this.userid}}</h1>
     </div>
   </section>
 
   <!-- User streaks here --> 
+ <div id="DailyStreaks" class="header">
+  <h2>My Daily Login Streaks</h2>
+  <p>{{this.count}}</p>
+</div>
 
 
   <!-- User Goal/to do list here --> 
   <!-- Modified from https://www.w3schools.com/howto/howto_js_todolist.asp -->
- <div id="myDIV" class="header">
+ <div id="GoalList" class="header">
   <h2>My Goals</h2>
-  <input type="text" id="myInput" placeholder="Add a new goal...">
+  <input  type="text" id="myInput" placeholder="Add a new goal...">
   <span onclick="newElement()" class="addBtn">Add</span>
 </div>
 
 <ul id="myUL">
-  <li>Ace a quiz</li>
-  <li class="checked">Sign up for an event</li>
+  <li v-for="(goal, index) in goals" v-bind:key="index">{{goal.GoalDescription}}</li>
 </ul>
 
 </template>
@@ -40,6 +43,7 @@ export default {
     components:
     {
     CustomHeader,
+    //Card
 },
   setup(){
       let userid = 100;
@@ -153,6 +157,29 @@ function newElement() {
   }
 } 
 
+//Streaks Widget goes here 
+
+var OneDay = new Date().getTime() + (1 * 24 * 60 * 60 * 1000)
+
+// formatting found on stack overflow
+function timeNow() {
+    const today = new Date();
+                    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    const dateTime = date +' '+ time;
+                    this.timestamp = dateTime;
+}
+
+// The timeNow time is less than 1 days from now
+if (this.count > 0 && OneDay > timeNow) {
+  this.count++;
+}
+
+// The timeNow time is more than 1 days from now
+if (OneDay < timeNow) {
+  this.count == 0;
+}
+
   return {
         userid,
         //goals,
@@ -162,6 +189,7 @@ function newElement() {
         //deleteGoal,
         //AddGoal,
         newElement,
+        timeNow
   }
     },
   /*name: "Login",

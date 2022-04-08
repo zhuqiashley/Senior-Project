@@ -26,18 +26,18 @@
 
 <!-- ======= SCRIPT ======= -->
 <script>
-import { computed } from 'vue';
+//import { computed } from 'vue';
 import CustomHeader from '@/components/Header.vue'
 import Card from '@/components/Card.vue'
 import ProgressBar from '@/components/ProgressBar.vue';
-import axios from 'axios';
-import { ref, onBeforeMount } from "vue";
+//import axios from 'axios';
+//import { ref, onBeforeMount } from "vue";
 //import { notify } from "@kyvg/vue3-notification";
 
 
-let achievementsDB = 'http://localhost:3001/api/achievements'
-let userDB = 'http://localhost:3001/api/user'
-let userAchievementsDB = 'http://localhost:3001/api/userachievements'
+//let achievementsDB = 'http://localhost:3001/api/achievements'
+//let userDB = 'http://localhost:3001/api/user'
+//let userAchievementsDB = 'http://localhost:3001/api/userachievements'
 
 export default {
   components:
@@ -47,7 +47,7 @@ export default {
         ProgressBar,
     },
     setup() {
-
+        /*
         const id = localStorage.getItem('ID');
 
         const AchievementTitle = ref('')
@@ -86,7 +86,8 @@ export default {
                 }).catch(err => {
                     console.error(err);
                  });})
-
+        */
+        /*
         const unlocked = computed(() => {
             return achievements.filter(achievement => achievement.unlocked);
         });
@@ -94,7 +95,7 @@ export default {
         const locked = computed(() => {
             return achievements.filter(achievement => !achievement.unlocked);
         });
-
+        */
         
         //Functions for checking for Achievement Requirements 
         //If requirements are satisfied, post to database, display notification, update achievements page
@@ -166,7 +167,13 @@ export default {
         
 
         return {
-            achievements, unlocked, locked, AchievementTitle, AchievementDescription, BadgeID
+            //achievements, 
+            //AchievementTitle, 
+            //AchievementDescription, 
+            //BadgeID, 
+            //unlocked, 
+            //locked,
+            //id
         }
     },
 
