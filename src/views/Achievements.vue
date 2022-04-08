@@ -48,6 +48,8 @@ export default {
     },
     setup() {
 
+        const id = localStorage.getItem('ID');
+
         const AchievementTitle = ref('')
         const AchievementDescription = ref('')
         const achievements = ref([])
@@ -167,9 +169,7 @@ export default {
             achievements, unlocked, locked, AchievementTitle, AchievementDescription, BadgeID
         }
     },
-    //methods:{
-        //const id = localStorage.getItem('ID');
-    //}
+
 }
 </script>
 
