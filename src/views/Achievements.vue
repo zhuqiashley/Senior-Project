@@ -4,7 +4,7 @@
 
     <!--Alert notification -->
     <!--End Alert notification -->
-     
+
 <div class="container mt-4">
         <progress-bar :progress="(unlocked.length / (locked.length + unlocked.length)) * 100" />
 
@@ -31,7 +31,7 @@ import Card from '@/components/Card.vue'
 import ProgressBar from '@/components/ProgressBar.vue';
 import axios from 'axios';
 import { ref, onBeforeMount } from "vue";
-//import { notify } from "@kyvg/vue3-notification";
+import { notify } from "@kyvg/vue3-notification";
 
 
 let achievementDB = 'http://localhost:3001/api/achievement'
@@ -135,7 +135,13 @@ export default {
             if(LessonsTaken == 1)
             {
                 console.log("Awarded Badge2");
+
                 achievement.unlocked = true;
+
+                notify({
+                    title: "You have earned a badge!",
+                 });
+
                 await axios.post(UserAchievementsDB, {id, BadgeID: '2'})
 			        .then((res) => {
 				        UserAchievements.UserAchievementsID = res.data.insertId
@@ -158,7 +164,13 @@ export default {
             if(Quiz1Score == 100 || Quiz2Score == 100 || Quiz3Score == 100)
             {
                 console.log("Awarded Badge3");
+
                 achievement.unlocked = true;
+
+                notify({
+                    title: "You have earned a badge!",
+                 });
+
                 await axios.post(UserAchievementsDB, {id, BadgeID: '3'})
 			        .then((res) => {
 				        UserAchievements.UserAchievementsID = res.data.insertId
@@ -190,7 +202,13 @@ export default {
             if(CoursesTaken == 1)
             {
                 console.log("Awarded Badge5");
+
                 achievement.unlocked = true;
+
+                notify({
+                    title: "You have earned a badge!",
+                 });
+
                 await axios.post(UserAchievementsDB, {id, BadgeID: '5'})
 			        .then((res) => {
 				        UserAchievements.UserAchievementsID = res.data.insertId
@@ -214,7 +232,13 @@ export default {
             if(LessonsTaken == 10)
             {
                 console.log("Awarded Badge6");
+
                 achievement.unlocked = true;
+
+                notify({
+                    title: "You have earned a badge!",
+                 });
+
                 await axios.post(UserAchievementsDB, {id, BadgeID: '6'})
 			        .then((res) => {
 				        UserAchievements.UserAchievementsID = res.data.insertId
@@ -237,7 +261,13 @@ export default {
             if(Streaks == 3)
             {
                 console.log("Awarded Badge7");
+
                 achievement.unlocked = true;
+
+                notify({
+                    title: "You have earned a badge!",
+                 });
+
                 await axios.post(UserAchievementsDB, {id, BadgeID: '7'})
 			        .then((res) => {
 				        UserAchievements.UserAchievementsID = res.data.insertId
@@ -260,7 +290,13 @@ export default {
             if(CoursesTaken == 6)
             {
                 console.log("Awarded Badge7");
+
                 achievement.unlocked = true;
+
+                notify({
+                    title: "You have earned a badge!",
+                 });
+
                 await axios.post(UserAchievementsDB, {id, BadgeID: '7'})
 			        .then((res) => {
 				        UserAchievements.UserAchievementsID = res.data.insertId
