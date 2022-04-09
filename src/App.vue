@@ -1,7 +1,7 @@
 <!-- Navbar -->
 
 <template>
-  <!--<notifications/> --> <!-- global notifications component -->
+ <!--<notifications> </notifications> --> <!-- global notifications component -->
 	<nav class="navbar" aria-label="navigation">
 		<div class="container d-flex align-items-center">
 			<router-link to="/">
