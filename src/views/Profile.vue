@@ -9,10 +9,6 @@
   </section>
 
   <!-- User streaks here --> 
- <div id="DailyStreaks" class="header">
-  <h2>My Daily Login Streaks</h2>
-  <p>{{this.count}}</p>
-</div>
 
 
   <!-- User Goal/to do list here --> 
@@ -24,7 +20,7 @@
 </div>
 
 <ul id="myUL">
-  <li v-for="(goal, index) in goals" v-bind:key="index">{{goal.GoalDescription}}</li>
+  <li>Ace quiz</li>
 </ul>
 
 </template>
@@ -158,7 +154,7 @@ function newElement() {
 } 
 
 //Streaks Widget goes here 
-
+/*
 var OneDay = new Date().getTime() + (1 * 24 * 60 * 60 * 1000)
 
 // formatting found on stack overflow
@@ -179,7 +175,7 @@ if (this.count > 0 && OneDay > timeNow) {
 if (OneDay < timeNow) {
   this.count == 0;
 }
-
+*/
   return {
         userid,
         //goals,
@@ -189,7 +185,7 @@ if (OneDay < timeNow) {
         //deleteGoal,
         //AddGoal,
         newElement,
-        timeNow
+        //timeNow
   }
     },
   /*name: "Login",
