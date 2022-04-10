@@ -15,8 +15,8 @@
   <!-- Modified from https://www.w3schools.com/howto/howto_js_todolist.asp -->
  <div id="GoalList" class="header">
   <h2>My Goals</h2>
-  <input  type="text" id="myInput" placeholder="Add a new goal...">
-  <span onclick="newElement()" class="addBtn">Add</span>
+  <input  v-model="GoalDescription" type="text" id="GoalDescription" placeholder="Add a new goal...">
+  <button class="btn btn-primary" @click="AddGoal">Add</button>
 </div>
 
 <ul id="myUL">
