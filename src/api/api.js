@@ -58,3 +58,14 @@ export function getScores(UserID,CourseID) {
         timeout: 5000,
     })
 }
+
+export function submitFeedback(UserID,CourseID,Feedback) {
+    return axios.get(baseURL + 'submitFeedback', {
+        params: {
+            UserID,
+            CourseID,
+            Feedback,
+        },
+        timeout: 5000,
+    })
+}
