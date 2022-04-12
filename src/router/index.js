@@ -22,6 +22,8 @@ import Signup from "../views/Signup";
 import Statistics from "../views/Statistics";
 import LoginFailed from "../views/LoginFailed";
 import AccountCreationSuccess from "@/views/AccountCreationSuccess";
+import Feedback from "../views/Feedback";
+import Score from "../views/Score";
 
 const routes = [
 	{
@@ -147,6 +149,34 @@ const routes = [
 		meta: {
 			title: 'Master CS | My Courses'
 		}
+	},
+	{
+		path: '/scores',
+		name: 'MyScore',
+		component: Score,
+		meta: {
+			title: 'Master CS | My Courses'
+		},
+		props($route) {
+			return {
+				title: $route.query.title,
+				id: $route.query.id,
+			}
+		},
+	},
+	{
+		path: '/feedback',
+		name: 'Feedback',
+		component: Feedback,
+		meta: {
+			title: 'Master CS | My Courses'
+		},
+		props($route) {
+			return {
+				title: $route.query.title,
+				id: $route.query.id,
+			}
+		},
 	},
 	// {
 	// 	path: '/quizzes',
