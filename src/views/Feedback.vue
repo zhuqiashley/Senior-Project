@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     submit() {
-      submitFeedback(20220405, this.id + 1, this.feedback).then(res => {
+      submitFeedback( this.id, this.feedback).then(res => {
         if (res.data === 'ok') {
           alert("submit success")
         } else {
