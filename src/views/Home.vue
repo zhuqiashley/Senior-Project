@@ -121,22 +121,6 @@
 
 </section>
 
-<!-- ======= Documents/Videos Section ======= -->
-<section class="Documents section-bg">
-	<div class="section-title">
-	<h2>Documents & Videos</h2>
-	
-	<h4>Revised Concept & Project Management</h4>
-	<h4>Revised Specification & Design</h4>
-	<h4>Acceptance Criteria & Testing Strategy and Plan</h4>
-	<h4>Progress Demo</h4>
-	<h4>Project Poster</h4>
-	<h4>Project Video</h4>
-
-	</div>
-
-</section>
-
 </template>
 
 <!-- ======= SCRIPT ======= -->

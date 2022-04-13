@@ -130,7 +130,7 @@ export default {
           for(var i = 0; i < badge2Data.valueOf().length; i++)
           {
             let LessonsTaken = badge2Data[i].LessonsTaken;
-            let id = badge2Data[i].UserID;
+            let id = badge2Data[i].userid;
             console.log(id, LessonsTaken)
             if(LessonsTaken == 1)
             {
