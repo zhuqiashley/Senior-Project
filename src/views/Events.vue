@@ -6,10 +6,10 @@
         <!-- popup modal for adding classes - adapted from digitalocean.com -->
 		<div class="container mt-4 d-flex justify-content-end">
 			<button type="button" class="btn btn-success" @click="showModal">
-				+ Add Course
+				+ Add Event
 			</button>
 			<Modal v-show="isModalVisible" @close="closeModal">
-				<template v-slot:header> Add Course </template>
+				<template v-slot:header> Add Event </template>
 				
 				<template v-slot:body>
 					<!-- Add Event Form -->
