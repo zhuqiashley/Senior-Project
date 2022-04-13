@@ -62,7 +62,6 @@ export function getScores(UserID,CourseID) {
 export function submitFeedback(UserID,CourseID,Feedback) {
     return axios.get(baseURL + 'submitFeedback', {
         params: {
-            UserID,
             CourseID,
             Feedback,
         },
