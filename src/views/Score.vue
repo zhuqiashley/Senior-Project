@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted() {
-    getScores(20220405, this.id + 1).then(res => {
+    getScores(20220405, this.id).then(res => {
       this.chapter = res.data
     })
   }
