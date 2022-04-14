@@ -17,8 +17,12 @@
           <label for="floatingInput">Email Address</label>
         </div>
         <div class = "form-floating mb-3">
-          <input v-model="password" ref="getpassword" class="form-control" placeholder="password">
+          <input v-model="password" ref="getpassword" type="password" class="form-control" placeholder="password">
           <label for="floatingInput">Password</label>
+        </div>
+        <div class = "form-floating mb-3">
+          <input v-model="password" ref="getrole" class="form-control" placeholder="Student or Admin">
+          <label for="floatingInput">Student or Admin</label>
         </div>
         <div class="d-grid gap-2">
           <button class="btn btn-success" type="button" @click="submit">Sign Up</button>
@@ -32,6 +36,7 @@
 <script>
 
 import Card from '../components/Card.vue'
+import CustomHeader from '../components/Header.vue'
 //import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
 //import {onBeforeMount, ref} from "vue";
@@ -41,7 +46,8 @@ let userDB = 'http://localhost:3001/api/userpost'
 export default {
   components:
       {
-        Card
+        Card,
+        CustomHeader
       },
   setup() {
     /*const user = ref('')
@@ -64,8 +70,9 @@ export default {
       let lastName = this.$refs.getlastname.value;
       let email = this.$refs.getemail.value;
       let passwordInput = this.$refs.getpassword.value;
+      let roleInput = this.$refs.getrole.value;
 
-       axios.post(userDB, {FirstName:firstName, LastName:lastName, username:email, password:passwordInput}).then(response=>{
+       axios.post(userDB, {FirstName:firstName, LastName:lastName, username:email, password:passwordInput, role:roleInput}).then(response=>{
         console.log(response);
       }).catch(e=>{
         console.error(e);

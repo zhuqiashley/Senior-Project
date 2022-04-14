@@ -127,6 +127,7 @@ export default {
       await axios.get(eventDB)
             .then(response => {
                 events.value = response.data;
+				console.log(events);
 
             }).catch(err => {
                 console.error(err);
