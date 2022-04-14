@@ -50,7 +50,7 @@ export default {
     },
   },
   mounted() {
-    getChapterInfo(this.id + 1).then(res => {
+    getChapterInfo(this.id).then(res => {
       this.ch=res.data
     })
   }

@@ -7,7 +7,8 @@ import Achievements from '../views/Achievements.vue'
 import Events from '../views/Events.vue'
 import Login from '../views/Login.vue'
 import Profile from '../views/Profile.vue'
-import MyCourses from '../views/UserCourses.vue'
+import MyCourses from '../views/UserEnrollCourses.vue'
+import UserCourses from '../views/UserCourses.vue'
 import Announcement from '../views/Announcement.vue'
 import Chapter from '../views/Chapter.vue'
 import Forum from '../views/Forum.vue'
@@ -23,6 +24,8 @@ import LoginFailed from "../views/LoginFailed";
 import AccountCreationSuccess from "@/views/AccountCreationSuccess";
 import LogoutSuccess from "../views/LogoutSuccess";
 import EditProfile from "../views/EditProfile";
+import Feedback from "../views/Feedback";
+import Score from "../views/Score";
 
 const routes = [
 	{
@@ -79,6 +82,14 @@ const routes = [
 		component: MyCourses,
 		meta: {
 			title: 'Master CS | My Courses'
+		}
+	},
+	{
+		path: '/UserCourses',
+		name: 'UserCourses',
+		component: UserCourses,
+		meta: {
+			title: 'Master CS | User Courses'
 		}
 	},
     {
@@ -140,6 +151,34 @@ const routes = [
 		meta: {
 			title: 'Master CS | My Courses'
 		}
+	},
+	{
+		path: '/scores',
+		name: 'MyScore',
+		component: Score,
+		meta: {
+			title: 'Master CS | My Courses'
+		},
+		props($route) {
+			return {
+				title: $route.query.title,
+				id: $route.query.id,
+			}
+		},
+	},
+	{
+		path: '/feedback',
+		name: 'Feedback',
+		component: Feedback,
+		meta: {
+			title: 'Master CS | My Courses'
+		},
+		props($route) {
+			return {
+				title: $route.query.title,
+				id: $route.query.id,
+			}
+		},
 	},
 	// {
 	// 	path: '/quizzes',
