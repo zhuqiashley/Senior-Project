@@ -13,7 +13,7 @@
 				<template #end>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-right">
 						<button class="btn btn-success" @click="viewCourse(course)"> View Course </button>
-						<button class="btn btn-info" @click="rateCourse(course.title)"> Rate My Course </button>
+						<button class="btn btn-info" @click="rateCourse(course.title)"> Rate my Course </button>
 					</div>
 				</template>
 			</card>
