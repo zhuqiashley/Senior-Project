@@ -16,8 +16,17 @@
 				</div>
 			</template>
 		</card>
+    <div style="text-align: center">
+          <span>
+            <p>
+
+            </p>
+            <a class="text-link" @click="redirect">No Account? Sign Up</a>
+          </span>
+  </div>
 	</div>
 </template>
+
 
 <!-- ======= SCRIPT ======= -->
 <script>
@@ -29,7 +38,7 @@ import axios from 'axios';
 
 
 
-let userDB = 'http://localhost:3001/api/user'
+let userDB = 'http://localhost:3001/api/userwithoutid'
 
 export default {
   components:
@@ -53,6 +62,9 @@ export default {
 	}
   },
   methods:{
+    redirect: async function () {
+    await this.$router.push('/Signup');
+  },
     login: async function(){
       const email = this.$refs.getemail.value;
       const password = this.$refs.getpassword.value;
@@ -83,7 +95,7 @@ export default {
       }
       catch
       {
-        await this.$router.push('Events');
+        await this.$router.push('LoginFailed');
         console.log(email,password);
       }
     }

@@ -22,12 +22,10 @@
         <li class="dropdown">Account<i class="bi-chevron-down"></i>
           <ul>
             <router-link to="Login">Login</router-link>
+            <router-link to="/LogoutSuccess">Logout</router-link>
             <router-link to="Signup">Signup</router-link>
           </ul>
         </li>
-				<router-link to="Login">
-					<custom-button title="Login"></custom-button>
-				</router-link>
 			</ul>
 		</div>
 	</nav>
@@ -35,10 +33,10 @@
 </template>
 
 <script>
-import CustomButton from './components/Button.vue'
+//import CustomButton from './components/Button.vue'
 export default {
 	components: {
-		CustomButton
+		//CustomButton
 	},
 	setup() {
 		return {
