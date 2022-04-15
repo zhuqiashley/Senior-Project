@@ -123,6 +123,27 @@ export default {
 
         //BadgeID 1 
         //Earned when you first register
+        async function badge1() {
+          const badge1Data = await axios.get(userDB, {params: userid}).then(res.data);
+          for(var i = 0; i < badge1Data.valueOf().length; i++)
+          {
+            let id = badge1Data[i].userid;
+            console.log(id)
+            console.log("Awarded Badge1");
+
+            achievements.value.unlocked = true;
+
+            this.$notify({ type: "success", text: "You have earned a badge!" });
+
+            await axios.post(UserAchievementsDB, {id, BadgeID: '1'})
+               .then((res) => {
+                  UserAchievements.value.UserAchievementsID = res.data.insertId
+                  UserAchievements.value.push(id, BadgeID)
+                }).catch(err => {
+                  console.error(err)
+                })
+          }
+        }
 
         //BadgeID 2
         async function badge2() {
@@ -315,6 +336,7 @@ export default {
             locked,
             //id
             userid,
+            badge1,
             badge2,
             badge3,
             badge5,
