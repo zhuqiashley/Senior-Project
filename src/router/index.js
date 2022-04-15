@@ -22,8 +22,7 @@ import Signup from "../views/Signup";
 import Statistics from "../views/Statistics";
 import LoginFailed from "../views/LoginFailed";
 import AccountCreationSuccess from "@/views/AccountCreationSuccess";
-import Feedback from "../views/Feedback";
-import Score from "../views/Score";
+import CourseRating from "../views/CourseRating.vue"
 
 const routes = [
 	{
@@ -150,34 +149,6 @@ const routes = [
 			title: 'Master CS | My Courses'
 		}
 	},
-	{
-		path: '/scores',
-		name: 'MyScore',
-		component: Score,
-		meta: {
-			title: 'Master CS | My Courses'
-		},
-		props($route) {
-			return {
-				title: $route.query.title,
-				id: $route.query.id,
-			}
-		},
-	},
-	{
-		path: '/feedback',
-		name: 'Feedback',
-		component: Feedback,
-		meta: {
-			title: 'Master CS | My Courses'
-		},
-		props($route) {
-			return {
-				title: $route.query.title,
-				id: $route.query.id,
-			}
-		},
-	},
 	// {
 	// 	path: '/quizzes',
 	// 	name: 'MyCoursesQuizzes',
@@ -234,6 +205,14 @@ const routes = [
 			title: 'Master CS | Account Creation'
 		}
 
+	},
+	{
+		path: '/CourseRating',
+		name: 'CourseRating',
+		component: CourseRating,
+		meta: {
+			title: 'Master CS | Course rating'
+		}
 	}
 ]
 

@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <img v-if="image" :src="getImage(`${image.src}`) " :class="[horizontal ? 'card-img-left' : 'card-img-top']" :alt="image.alt">
+        <img v-if="image" :src="getImage(`${image}`) " :class="[horizontal ? 'card-img-left' : 'card-img-top']" :alt="image.alt">
 
         <div :class="['card-body', horizontal ? 'shifted' : '']">
             <h5 class="card-title" v-if="hasSlot('title')">

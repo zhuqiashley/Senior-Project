@@ -19,6 +19,12 @@ export function updateIntroQuizResult(id, type, recommended) {
     })
 }
 
+export function getAllCources() {
+    return axios.get(baseURL + 'getAllcourses', {
+        timeout: 3000,
+    })
+}
+
 export function getCourseQuizzes(CourseID, ChapterID) {
     return axios.get(baseURL + 'getCourseQuizzes', {
         params: {
@@ -46,25 +52,5 @@ export function getChapterInfo(CourseID) {
             CourseID,
         },
         timeout: 3000,
-    })
-}
-
-export function getScores(UserID,CourseID) {
-    return axios.get(baseURL + 'Scores', {
-        params: {
-            UserID,
-            CourseID,
-        },
-        timeout: 5000,
-    })
-}
-
-export function submitFeedback(CourseID,Feedback) {
-    return axios.get(baseURL + 'submitFeedback', {
-        params: {
-            CourseID,
-            Feedback,
-        },
-        timeout: 5000,
     })
 }

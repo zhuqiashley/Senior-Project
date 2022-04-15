@@ -132,7 +132,7 @@ export default {
     }
   },
   mounted() {
-    getCourseQuizzes(this.id, this.index).then(res => {
+    getCourseQuizzes(this.id + 1, this.index).then(res => {
       this.list = res.data
       this.current = res.data.slice(0, 5)
     })
