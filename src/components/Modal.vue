@@ -1,110 +1,77 @@
-<!-- Modal code adapted from www.digitalocean.com/ -->
+<!-- Modal code adapted from www.digitalocean.com/ and bootstrap -->
 <template>
-	<transition name="modal-fade">
-		<div class="modal-backdrop">
-			<div class="modal">
-				<header class="modal-header">
-					<slot name="header">
-						Defualt Title
+	<!-- Modal -->
+	<div :id="uid" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="label" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="title">
+					<slot name="title">
+						Default Title
 					</slot>
-					<button type="button" class="btn-close" @click="close">
-						x
-					</button>
-				</header>
-
-				<section class="modal-body">
-					<slot name="body">
-						Default Body
-					</slot>
-				</section>
+				</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="toggle()"></button>
+			</div>
+			<div class="modal-body">
+				<slot name="body">
+				</slot>
+			</div>
+			<div class="modal-footer" v-if="hasSlot('footer')">
+				<slot name="footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				</slot>
+			</div>
 			</div>
 		</div>
-	</transition>
+	</div>
 </template>
 
 <script>
-	export default {
-		name: 'Modal',
-		methods: {
-			close() {
-				this.$emit('close');
-			},
-		},
-	};
+import { ref, onMounted } from 'vue';
+import { Modal } from 'bootstrap';
+
+export default {
+	setup(props, { slots }) {
+		const isModalVisible = ref(false);
+		const uid = "Modal_" + Math.random().toString(16).slice(2)
+		const modal = ref(null);
+
+		onMounted(() => {
+			modal.value = new Modal(document.getElementById(uid), {});
+		});
+
+
+		function toggle() {
+			isModalVisible.value = !isModalVisible.value;
+
+			if (isModalVisible.value) {
+				modal.value.show();
+			} else {
+				modal.value.hide();
+			}
+		}
+
+		function hasSlot(name) {
+			return !!slots[name];
+		}
+
+		return {
+			hasSlot, toggle,
+			isModalVisible, uid
+		}
+	},
+}
 </script>
 
-
 <style scoped>
-.modal-backdrop {
-	position: fixed;
-	background-color: rgba(0, 0, 0, 0.3);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.modal {
-	background: #f3f5fa;
-	overflow-x: auto;
-	display: flex;
-	flex-direction: column;
-	position:absolute;
-	top:60%;
-	left:50%;
-	width:50%;
-	height:50%;
-	margin-left:-25%;
-	margin-top:-25%;
-}
-
-.modal-header{
-	padding: 15px;
-	display: flex;
-}
-
 .modal-header {
-	position: relative;
-	border-bottom: 1px solid #eeeeee;
-	color: white;
-	justify-content: space-between;
 	background: rgb(12, 34, 71);
-	justify-content: center;
-	font-size: 1.25rem;
+	color: white;
 }
-
-.modal-body {
-	position: relative;
-	padding: 20px 10px;
-}
-
 .btn-close {
-	position: absolute;
-	top: 0;
-	right: 0;
-	border: none;
-	font-size: 2rem;
-	padding: 10px;
-	cursor: pointer;
-	font-weight: bold;
-	color: white;
-	background: transparent;
+	background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat
 }
-
-.btn-green {
-	color: white;
-	background: #20ad85;
-	border: 1px solid #20ad85;
-	border-radius: 2px;
-}
-
-/* smooth fade out transition */ 
-.modal-fade-enter,
-.modal-fade-leave-to {
-	opacity: 0;
-}
-
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-	transition: opacity .5s ease;
+.modal-body {
+	margin-bottom: -15px;
 }
 </style>
