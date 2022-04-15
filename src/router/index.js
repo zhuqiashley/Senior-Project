@@ -22,6 +22,8 @@ import Signup from "../views/Signup";
 import Statistics from "../views/Statistics";
 import LoginFailed from "../views/LoginFailed";
 import AccountCreationSuccess from "@/views/AccountCreationSuccess";
+import LogoutSuccess from "../views/LogoutSuccess";
+import EditProfile from "../views/EditProfile";
 import Feedback from "../views/Feedback";
 import Score from "../views/Score";
 import CourseRating from "../views/CourseRating.vue"
@@ -242,6 +244,23 @@ const routes = [
 		component: CourseRating,
 		meta: {
 			title: 'Master CS | Course rating'
+		}
+  },
+  {
+		path: '/LogoutSuccess',
+		name: 'LogoutSuccess',
+		component: LogoutSuccess,
+		meta: {
+			title: 'Master CS | Logout'
+		}
+
+	},
+	{
+		path: '/EditProfile',
+		name: 'EditProfile',
+		component: EditProfile,
+		meta: {
+			title: 'Master CS | Edit Profile'
 		}
 	}
 ]

@@ -34,7 +34,7 @@ import Card from '../components/Card.vue'
 import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
 
-let userDB = 'http://localhost:3001/api/user'
+let userDB = 'http://localhost:3001/api/userwithoutid'
 
 export default {
   components:

@@ -1,5 +1,5 @@
 <template>
-    <button class="custombutton" @click="foo()" >{{title}}</button>
+    <button class="custombutton">{{title}}</button>
 </template>
 
 <script>
@@ -13,12 +13,7 @@ export default {
         },
     },
     setup() {
-        function foo() {
-            console.log('foo');
-        }
-        return {
-            foo
-        }
+        return { }
     },
 }
 </script>
