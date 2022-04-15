@@ -151,7 +151,7 @@ const routes = [
 			title: 'Master CS | My Courses'
 		}
 	},
-    	{
+    {
 		path: '/scores',
 		name: 'MyScore',
 		component: Score,

@@ -54,3 +54,23 @@ export function getChapterInfo(CourseID) {
         timeout: 3000,
     })
 }
+
+export function getScores(UserID,CourseID) {
+    return axios.get(baseURL + 'Scores', {
+        params: {
+            UserID,
+            CourseID,
+        },
+        timeout: 5000,
+    })
+}
+
+export function submitFeedback(CourseID,Feedback) {
+    return axios.get(baseURL + 'submitFeedback', {
+        params: {
+            CourseID,
+            Feedback,
+        },
+        timeout: 5000,
+    })
+}
