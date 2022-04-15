@@ -245,8 +245,8 @@ const routes = [
 		meta: {
 			title: 'Master CS | Course rating'
 		}
-  },
-  {
+  	},
+  	{
 		path: '/LogoutSuccess',
 		name: 'LogoutSuccess',
 		component: LogoutSuccess,
