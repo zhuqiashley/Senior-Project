@@ -39,6 +39,7 @@ import axios from 'axios';
 
 
 let userDB = 'http://localhost:3001/api/userwithoutid'
+let userLoginDB = 'http://localhost:3001/api/userlogin/'
 
 export default {
   components:
@@ -47,6 +48,8 @@ export default {
   },
 
   setup() {
+
+    const User = ref([])
     const user = ref('')
     onBeforeMount(async () => {
       await axios.get(userDB)
@@ -58,40 +61,39 @@ export default {
           });})
 
 	return {
-		user
+		user, User
 	}
   },
   methods:{
     redirect: async function () {
     await this.$router.push('/Signup');
   },
-    login: async function(){
+    login: async function()
+    {
       const email = this.$refs.getemail.value;
       const password = this.$refs.getpassword.value;
       try{
-        const data = await axios.get(userDB, {params: {username: email, password: password}}).then(res => res.data);
-        console.log(data);
-        for(var i = 0; i < data.valueOf().length; i++)
-        {
-          let username = data[i].username;
-          let passwordcheck = data[i].password;
-          let id = data[i].UserID;
-          /*let variablecheck = data[i].FirstName;
-          console.log(variablecheck);*/
-          if(username == email && passwordcheck == password)
+        await axios.get(`${userLoginDB}${email}`).then(response => {
+            this.User.value = response.data;
+            console.log(this.User);
+
+          }).catch(err => {
+            console.error(err);
+          });
+        let id = this.User.value.UserID;
+        if(this.User.value.password == password)
           {
             console.log("inside if");
-            //this.$session.start();
-            //this.$session.set('ID', id);
-            localStorage.clear();
+            localStorage.setItem('reloadCheck', 1);
+            localStorage.setItem('signedIn', 1)
             localStorage.setItem('ID',id);
             await this.$router.push('Profile');
-            break;
           }
-          await this.$router.push('LoginFailed');
-        }
+          else
+          {
+            await this.$router.push('LoginFailed');
+          }
 
-        console.log(email,password);
       }
       catch
       {

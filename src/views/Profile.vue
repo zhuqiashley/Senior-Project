@@ -64,7 +64,15 @@ export default {
         Card
     }, 
   setup(){
-
+      let reloadCheck = localStorage.getItem('reloadCheck');
+      let zero = 0;
+      console.log(reloadCheck);
+    if(reloadCheck > 0)
+    {
+      window.location.reload();
+      localStorage.setItem('reloadCheck', zero);
+      console.log("inside if");
+    }
     const users = ref([])
     const User = reactive({});
     let id = localStorage.getItem('ID');

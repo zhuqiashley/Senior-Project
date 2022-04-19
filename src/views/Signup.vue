@@ -40,6 +40,7 @@ import CustomHeader from '../components/Header.vue'
 //import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
 //import {onBeforeMount, ref} from "vue";
+//import bcrypt from 'bcrypt'
 
 let userDB = 'http://localhost:3001/api/userpost'
 
@@ -71,6 +72,15 @@ export default {
       let email = this.$refs.getemail.value;
       let passwordInput = this.$refs.getpassword.value;
       let roleInput = this.$refs.getrole.value;
+      //let rounds = 10;
+
+      /*bcrypt.hash(passwordInput, rounds, (err, hash) => {
+      if (err) {
+      console.error(err)
+      return
+      }
+      console.log(hash)
+      })*/
 
        axios.post(userDB, {FirstName:firstName, LastName:lastName, username:email, password:passwordInput, role:roleInput}).then(response=>{
         console.log(response);

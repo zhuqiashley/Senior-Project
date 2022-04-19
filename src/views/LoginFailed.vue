@@ -35,6 +35,7 @@ import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
 
 let userDB = 'http://localhost:3001/api/userwithoutid'
+let userLoginDB = 'http://localhost:3001/api/userlogin/'
 
 export default {
   components:
@@ -44,6 +45,7 @@ export default {
 
   setup() {
     const user = ref('')
+    const User = ref([])
     onBeforeMount(async () => {
       await axios.get(userDB)
           .then(response => {
@@ -54,34 +56,40 @@ export default {
           });})
 
     return {
-      user
+      user, User
     }
   },
   methods:{
-    login: async function(){
+    login: async function()
+    {
       const email = this.$refs.getemail.value;
       const password = this.$refs.getpassword.value;
       try{
-        const data = await axios.get(userDB, {params: {username: email, password: password}}).then(res => res.data);
-        console.log(data);
-        for(let i = 0; i < data.length; i++)
-        {
-          let username = data[i].username;
-          let passwordcheck = data[i].password;
-          if(username == email && passwordcheck == password)
+        await axios.get(`${userLoginDB}${email}`).then(response => {
+            this.User.value = response.data;
+            console.log(this.User);
+
+          }).catch(err => {
+            console.error(err);
+          });
+        let id = this.User.value.UserID;
+        if(this.User.value.password == password)
           {
+            console.log("inside if");
+            localStorage.setItem('reloadCheck', 1);
+            localStorage.setItem('signedIn', 1)
+            localStorage.setItem('ID',id);
             await this.$router.push('Profile');
-            break;
           }
-            await this.$router.push('LoginFailed');
+          else
+          {
+            window.location.reload();
+          }
 
-        }
-
-        console.log(email,password);
       }
       catch
       {
-        await this.$router.push('Events');
+        await this.$router.push('LoginFailed');
         console.log(email,password);
       }
     },

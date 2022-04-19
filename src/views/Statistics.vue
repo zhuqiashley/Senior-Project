@@ -1,7 +1,8 @@
 <template>
   <custom-header title="User Statistics"></custom-header>
 <div class="container mt-4">
-<h1 v-if="chapter1">Chapter 1</h1>
+<h1>Chapter 1</h1>
+<p v-if="chapter1">No Quiz Scores for Chapter 1, visit the Courses page to take Quizzes</p>
 </div>
   <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
                         <div class="container mt-4">
@@ -14,7 +15,8 @@
                         </div>
   </div>
   <div class="container mt-4">
-  <h1 v-if="chapter2">Chapter 2</h1>
+  <h1>Chapter 2</h1>
+  <p v-if="chapter2">No Quiz Scores for Chapter 2, visit the Courses page to take Quizzes</p>
   </div>
   <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
                         <div class="container mt-4">
@@ -27,7 +29,8 @@
                         </div>
   </div>
   <div class="container mt-4">
-  <h1 v-if="chapter3">Chapter 3</h1>
+  <h1>Chapter 3</h1>
+  <p v-if="chapter3">No Quiz Scores for Chapter 3, visit the Courses page to take Quizzes</p>
   </div>
   <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
                         <div class="container mt-4">
@@ -40,7 +43,8 @@
                         </div>
   </div>
   <div class="container mt-4">
-  <h1 v-if="chapter4">Chapter 4</h1>
+  <h1>Chapter 4</h1>
+  <p v-if="chapter4">No Quiz Scores for Chapter 4, visit the Courses page to take Quizzes</p>
   </div>
   <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
                         <div class="container mt-4">
@@ -53,7 +57,8 @@
                         </div>
   </div>
   <div class="container mt-4">
-  <h1 v-if="chapter5">Chapter 5</h1>
+  <h1>Chapter 5</h1>
+  <p v-if="chapter5">No Quiz Scores for Chapter 5, visit the Courses page to take Quizzes</p>
   </div>
   <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
                         <div class="container mt-4">
@@ -67,12 +72,14 @@
   </div>
   <div class ="container mt-4">
     <h1>Learning Type</h1>
+    <p v-if="!User.TypeOfLearner">Introductory Quiz has not been completed, please take the Introductory Quiz to receive your learning style.</p>
     <p v-if="User.TypeOfLearner === 0">Visual</p>
     <p v-if="User.TypeOfLearner === 1">Auditory</p>
     <p v-if="User.TypeOfLearner === 2">Tactile/Kinesthetic</p>
   </div>
   <div class ="container mt-4">
     <h1>Recommended Area of Study</h1>
+    <p v-if="!User.CourseRecommended">Introductory Quiz has not been completed, please take the Introductory Quiz to receive your recommended course.</p>
     <p v-if="User.CourseRecommended === 0">Cybersecurity</p>
     <p v-if="User.CourseRecommended === 1">Data Science / Big Data / Machine Learning (AI)</p>
     <p v-if="User.CourseRecommended === 2">Web Development</p>
@@ -160,22 +167,6 @@ export default {
             console.error(err);
           });
     })
-    //let chapter1 = false, chapter2 = false, chapter3 = false, chapter4 = false, chapter5 = false
-    /*for(let i = 0; i < 10; i++)
-    {
-        console.log(quizID[i].ChapterID);
-        if(quizID[i].ChapterID < 6)
-        {chapter1 = true;}
-        if(quizID[i].ChapterID >5 && quizID[i] < 11)
-        {chapter2 = true;}
-        if(quizID[i].ChapterID > 10 && quizID[i] < 16)
-        {chapter3 = true;}
-        if(quizID[i].ChapterID > 15 && quizID[i] < 21)
-        {chapter4 = true;}
-        if(quizID[i].ChapterID > 20 && quizID[i] < 26)
-        {chapter5 = true;}
-
-    }*/
 
     let quiz1 = 0, quiz2 = 0, quiz3 = 0;
     let eventID1, eventID2, eventID3, learnerType, areaOfStudy
@@ -192,47 +183,47 @@ export default {
   },
   computed:{
     chapter1(){
-      let check = false;
+      let check = true;
       for(let i = 0; i < this.quizID.length; i++)
       {
         if(this.quizID[i].ChapterID < 6)
-        {check = true;}
+        {check = false;}
       }
       return check;
     },
     chapter2(){
-      let check = false;
+      let check = true;
       for(let i = 0; i < this.quizID.length; i++)
       {
         if(this.quizID[i].ChapterID > 5 && this.quizID[i].ChapterID < 11)
-        {check = true;}
+        {check = false;}
       }
       return check;
     },
     chapter3(){
-      let check = false;
+      let check = true;
       for(let i = 0; i < this.quizID.length; i++)
       {
         if(this.quizID[i].ChapterID > 10 && this.quizID[i].ChapterID < 16)
-        {check = true;}
+        {check = false;}
       }
       return check;
     },
     chapter4(){
-      let check = false;
+      let check = true;
       for(let i = 0; i < this.quizID.length; i++)
       {
         if(this.quizID[i].ChapterID > 15 && this.quizID[i].ChapterID < 21)
-        {check = true;}
+        {check = false;}
       }
       return check;
     },
     chapter5(){
-      let check = false;
+      let check = true;
       for(let i = 0; i < this.quizID.length; i++)
       {
         if(this.quizID[i].ChapterID > 20 && this.quizID[i].ChapterID < 26)
-        {check = true;}
+        {check = false;}
       }
       return check;
     }

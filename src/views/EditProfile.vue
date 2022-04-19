@@ -71,7 +71,7 @@ export default {
       }).catch(e=>{
         console.error(e);
       })
-       //this.$router.push('AccountCreationSuccess');
+       this.$router.push('Profile');
     }
   }
 }

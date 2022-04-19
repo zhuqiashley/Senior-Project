@@ -10,7 +10,7 @@
 				<router-link to="/"> Home </router-link>
 				<router-link to="/courses"> Courses </router-link>
 				<router-link to="/events"> Events </router-link>
-				<li class="dropdown">My Profile <i class="bi-chevron-down"></i>
+				<li v-if="signedIn" class="dropdown">My Profile <i class="bi-chevron-down"></i>
 				<ul>
 					<router-link to="/profile"> Profile </router-link>
 					<router-link to="/achievements"> Achievements </router-link>
@@ -21,9 +21,9 @@
 				</li>
         <li class="dropdown">Account<i class="bi-chevron-down"></i>
           <ul>
-            <router-link to="Login">Login</router-link>
-            <router-link to="/LogoutSuccess">Logout</router-link>
-            <router-link to="Signup">Signup</router-link>
+            <router-link v-if="signedOut" to="Login">Login</router-link>
+            <router-link v-if="signedIn" to="/LogoutSuccess">Logout</router-link>
+            <router-link v-if="signedOut" to="Signup">Signup</router-link>
           </ul>
         </li>
 			</ul>
@@ -39,8 +39,17 @@ export default {
 		//CustomButton
 	},
 	setup() {
+    let signedIn = false;
+    let signedOut = true;
+    console.log("signedIn = " + localStorage.getItem('signedIn'));
+    console.log("ID = " + localStorage.getItem('ID'));
+    if(localStorage.getItem('signedIn') > 0)
+    {
+      signedIn = true;
+      signedOut = false;
+    }
 		return {
-			
+			signedIn, signedOut
 		}
 	},
 }
