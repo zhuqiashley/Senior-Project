@@ -60,15 +60,9 @@
   <h1>Chapter 5</h1>
   <p v-if="chapter5">No Quiz Scores for Chapter 5, visit the Courses page to take Quizzes</p>
   </div>
-  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
-                        <div class="container mt-4">
-                        <p v-if="quizi.ChapterID === 22"> Quiz 2 Score</p>
-                        <p v-if="quizi.ChapterID === 21">Quiz 1 Score</p>
-                        <p v-if="quizi.ChapterID === 23"> Quiz 3 Score</p>
-                        <p v-if="quizi.ChapterID === 24">Quiz 4 Score</p>
-                        <p v-if="quizi.ChapterID === 25">Quiz 5 Score</p>
-                        <progress-bar v-if="quizi.ChapterID > 20 && quizi.ChaperID < 26" :progress="quizi.Score"/>
-                        </div>
+  <div class="container mt-4">
+    <p>Chapter 3 Completion</p>
+    <progress-bar :progress="chapter3"/>
   </div>
   <div class ="container mt-4">
     <h1>Learning Type</h1>
@@ -86,65 +80,69 @@
     <p v-if="User.CourseRecommended === 3">Metaverse</p>
   </div>
   <div class="container mt-4">
-    <h1>Enrolled Events</h1>
-    <div v-for="(eventi, index) in eventID" v-bind:key="index">
-      <div v-for="(eventtitle, index1) in event" v-bind:key="index1">
-        <p v-if="eventi.EventID === eventtitle.EventID">{{eventtitle.EventTitle}}</p>
-      </div>
-    </div>
+    <p>Enrolled Events</p>
+    <p>{{this.event1}}</p>
+    <p>
+
+
+    </p>
+    <p>{{this.event2}}</p>
+    <p>
+
+
+    </p>
+    <p>{{this.event3}}</p>
+  </div>
+  <div class="d-grid gap-2">
+    <button class="btn btn-success" type="button" @click="login(quiz1)">Load</button>
   </div>
 </template>
 
 <script>
-//import Card from '../components/Card.vue'
 import CustomHeader from '../components/Header.vue'
-import { ref, onBeforeMount, reactive } from "vue";
+import { ref, onBeforeMount } from "vue";
 import axios from 'axios';
 import ProgressBar from '../components/ProgressBar.vue';
 //import { computed } from 'vue';
 
-let quizDB = 'http://localhost:3001/api/quizscoreswithid/'
-//let quizDBNoID = 'http://localhost:3001/api/QuizScores'
-let chapterDB = 'http://localhost:3001/api/videocompletionwithid/'
-let eventIDDB = 'http://localhost:3001/api/usereventwithid/'
-let eventDB = 'http://localhost:3001/api/eventwithid'
-let introQuizDB = 'http://localhost:3001/api/introresult/'
+let quizDB = 'http://localhost:3001/api/quiz'
+let chapterDB = 'http://localhost:3001/api/VideoCompletion'
+let eventIDDB = 'http://localhost:3001/api/UserEvents'
+let eventDB = 'http://localhost:3001/api/event'
+let introQuizDB = 'http://localhost:3001/api/IntroQuizResult'
 
 export default {
   components:
       {
         CustomHeader,
-        ProgressBar,
-        //Card
+        ProgressBar
       },
   setup() {
 
     const quiz = ref('')
-    const quizID = ref('')
     const chapter = ref('')
     const eventID = ref('')
     const event = ref('')
     const introQuiz = ref('')
     const id = localStorage.getItem('ID');
-    const User = reactive({});
 
     onBeforeMount(async () => {
-          await axios.get(`${quizDB}${localStorage.getItem('ID')}`)
+      await axios.get(quizDB)
           .then(response => {
-            quizID.value = response.data;
+            quiz.value = response.data;
+            console.log(quiz);
 
           }).catch(err => {
             console.error(err);
           });
-      await axios.get(`${chapterDB}${localStorage.getItem('ID')}`)
+      await axios.get(chapterDB)
           .then(response => {
             chapter.value = response.data;
-            console.log(chapter);
 
           }).catch(err => {
             console.error(err);
           });
-      await axios.get(`${eventIDDB}${localStorage.getItem('ID')}`)
+      await axios.get(eventIDDB)
           .then(response => {
             eventID.value = response.data;
 
@@ -158,10 +156,9 @@ export default {
           }).catch(err => {
             console.error(err);
           });
-      await axios.get(`${introQuizDB}${localStorage.getItem('ID')}`)
+      await axios.get(introQuizDB)
           .then(response => {
             introQuiz.value = response.data;
-            Object.assign(User, response.data);
 
           }).catch(err => {
             console.error(err);
@@ -169,12 +166,13 @@ export default {
     })
 
     let quiz1 = 0, quiz2 = 0, quiz3 = 0;
+    let chapter1 = 0, chapter2 = 0, chapter3 = 0;
     let eventID1, eventID2, eventID3, learnerType, areaOfStudy
     let event1 , event2 , event3 
     let dataCorrect, data2Correct   
 
     return {
-      quiz, quiz1, quiz2, quiz3, eventID1, eventID2, eventID3, event1, event2, event3,dataCorrect, data2Correct, id, areaOfStudy, learnerType, User, quizID, chapter, event, eventID
+      quiz, quiz1, quiz2, quiz3, chapter1, chapter2, chapter3, eventID1, eventID2, eventID3, event1, event2, event3,dataCorrect, data2Correct, id, areaOfStudy, learnerType
     }
   },
 
@@ -189,7 +187,6 @@ export default {
         if(this.quizID[i].ChapterID < 6)
         {check = false;}
       }
-      return check;
     },
     chapter2(){
       let check = true;
