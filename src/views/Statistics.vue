@@ -1,102 +1,143 @@
 <template>
   <custom-header title="User Statistics"></custom-header>
-
-  <div class="container mt-4">
-    <p>Quiz 1 Score </p>
-    <progress-bar :progress="this.quiz1" />
+<div class="container mt-4">
+<h1 v-if="chapter1">Chapter 1</h1>
+</div>
+  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
+                        <div class="container mt-4">
+                        <p v-if="quizi.ChapterID === 2"> Quiz 2 Score</p>
+                        <p v-if="quizi.ChapterID === 1">Quiz 1 Score</p>
+                        <p v-if="quizi.ChapterID === 3"> Quiz 3 Score</p>
+                        <p v-if="quizi.ChapterID === 4">Quiz 4 Score</p>
+                        <p v-if="quizi.ChapterID === 5">Quiz 5 Score</p>
+                        <progress-bar v-if="quizi.ChapterID < 6" :progress="quizi.Score"/>
+                        </div>
   </div>
   <div class="container mt-4">
-    <p>Quiz 2 Score</p>
-      <progress-bar :progress="this.quiz2"/>
+  <h1 v-if="chapter2">Chapter 2</h1>
+  </div>
+  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
+                        <div class="container mt-4">
+                        <p v-if="quizi.ChapterID === 7"> Quiz 2 Score</p>
+                        <p v-if="quizi.ChapterID === 6">Quiz 1 Score</p>
+                        <p v-if="quizi.ChapterID === 8"> Quiz 3 Score</p>
+                        <p v-if="quizi.ChapterID === 9">Quiz 4 Score</p>
+                        <p v-if="quizi.ChapterID === 10">Quiz 5 Score</p>
+                        <progress-bar v-if="quizi.ChapterID < 11 && quizi.ChapterID > 5" :progress="quizi.Score"/>
+                        </div>
   </div>
   <div class="container mt-4">
-    <p>Quiz 3 Score</p>
-        <progress-bar :progress="this.quiz3"/>
+  <h1 v-if="chapter3">Chapter 3</h1>
+  </div>
+  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
+                        <div class="container mt-4">
+                        <p v-if="quizi.ChapterID === 12"> Quiz 2 Score</p>
+                        <p v-if="quizi.ChapterID === 11">Quiz 1 Score</p>
+                        <p v-if="quizi.ChapterID === 13"> Quiz 3 Score</p>
+                        <p v-if="quizi.ChapterID === 14">Quiz 4 Score</p>
+                        <p v-if="quizi.ChapterID === 15">Quiz 5 Score</p>
+                        <progress-bar v-if="quizi.ChapterID > 10 && quizi.ChapterID <16" :progress="quizi.Score"/>
+                        </div>
   </div>
   <div class="container mt-4">
-    <p>Chapter 1 Completion</p>
-    <progress-bar :progress="this.chapter1" />
+  <h1 v-if="chapter4">Chapter 4</h1>
+  </div>
+  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
+                        <div class="container mt-4">
+                        <p v-if="quizi.ChapterID === 17"> Quiz 2 Score</p>
+                        <p v-if="quizi.ChapterID === 16">Quiz 1 Score</p>
+                        <p v-if="quizi.ChapterID === 18"> Quiz 3 Score</p>
+                        <p v-if="quizi.ChapterID === 19">Quiz 4 Score</p>
+                        <p v-if="quizi.ChapterID === 20">Quiz 5 Score</p>
+                        <progress-bar v-if="quizi.ChapterID > 15 && quizi.ChapterID <21" :progress="quizi.Score"/>
+                        </div>
   </div>
   <div class="container mt-4">
-    <p>Chapter 2 Completion</p>
-    <progress-bar :progress="chapter2"/>
+  <h1 v-if="chapter5">Chapter 5</h1>
   </div>
-  <div class="container mt-4">
-    <p>Chapter 3 Completion</p>
-    <progress-bar :progress="chapter3"/>
+  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
+                        <div class="container mt-4">
+                        <p v-if="quizi.ChapterID === 22"> Quiz 2 Score</p>
+                        <p v-if="quizi.ChapterID === 21">Quiz 1 Score</p>
+                        <p v-if="quizi.ChapterID === 23"> Quiz 3 Score</p>
+                        <p v-if="quizi.ChapterID === 24">Quiz 4 Score</p>
+                        <p v-if="quizi.ChapterID === 25">Quiz 5 Score</p>
+                        <progress-bar v-if="quizi.ChapterID > 20 && quizi.ChaperID < 26" :progress="quizi.Score"/>
+                        </div>
   </div>
   <div class ="container mt-4">
-    <p>Learning Type</p>
-    <p>{{this.learnerType}}</p>
+    <h1>Learning Type</h1>
+    <p v-if="User.TypeOfLearner === 0">Visual</p>
+    <p v-if="User.TypeOfLearner === 1">Auditory</p>
+    <p v-if="User.TypeOfLearner === 2">Tactile/Kinesthetic</p>
   </div>
   <div class ="container mt-4">
-    <p>Recommended Area of Study</p>
-    <p>{{this.areaOfStudy}}</p>
+    <h1>Recommended Area of Study</h1>
+    <p v-if="User.CourseRecommended === 0">Cybersecurity</p>
+    <p v-if="User.CourseRecommended === 1">Data Science / Big Data / Machine Learning (AI)</p>
+    <p v-if="User.CourseRecommended === 2">Web Development</p>
+    <p v-if="User.CourseRecommended === 3">Metaverse</p>
   </div>
   <div class="container mt-4">
-    <p>Enrolled Events</p>
-    <p>{{this.event1}}</p>
-    <p>
-
-
-    </p>
-    <p>{{this.event2}}</p>
-    <p>
-
-
-    </p>
-    <p>{{this.event3}}</p>
-  </div>
-  <div class="d-grid gap-2">
-    <button class="btn btn-success" type="button" @click="login(quiz1)">Load</button>
+    <h1>Enrolled Events</h1>
+    <div v-for="(eventi, index) in eventID" v-bind:key="index">
+      <div v-for="(eventtitle, index1) in event" v-bind:key="index1">
+        <p v-if="eventi.EventID === eventtitle.EventID">{{eventtitle.EventTitle}}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+//import Card from '../components/Card.vue'
 import CustomHeader from '../components/Header.vue'
-import { ref, onBeforeMount } from "vue";
+import { ref, onBeforeMount, reactive } from "vue";
 import axios from 'axios';
 import ProgressBar from '../components/ProgressBar.vue';
 //import { computed } from 'vue';
 
-let quizDB = 'http://localhost:3001/api/quiz'
-let chapterDB = 'http://localhost:3001/api/VideoCompletion'
-let eventIDDB = 'http://localhost:3001/api/UserEvents'
-let eventDB = 'http://localhost:3001/api/event'
-let introQuizDB = 'http://localhost:3001/api/IntroQuizResult'
+let quizDB = 'http://localhost:3001/api/quizscoreswithid/'
+//let quizDBNoID = 'http://localhost:3001/api/QuizScores'
+let chapterDB = 'http://localhost:3001/api/videocompletionwithid/'
+let eventIDDB = 'http://localhost:3001/api/usereventwithid/'
+let eventDB = 'http://localhost:3001/api/eventwithid'
+let introQuizDB = 'http://localhost:3001/api/introresult/'
 
 export default {
   components:
       {
         CustomHeader,
-        ProgressBar
+        ProgressBar,
+        //Card
       },
   setup() {
 
     const quiz = ref('')
+    const quizID = ref('')
     const chapter = ref('')
     const eventID = ref('')
     const event = ref('')
     const introQuiz = ref('')
     const id = localStorage.getItem('ID');
+    const User = reactive({});
 
     onBeforeMount(async () => {
-      await axios.get(quizDB)
+          await axios.get(`${quizDB}${localStorage.getItem('ID')}`)
           .then(response => {
-            quiz.value = response.data;
-            console.log(quiz);
+            quizID.value = response.data;
 
           }).catch(err => {
             console.error(err);
           });
-      await axios.get(chapterDB)
+      await axios.get(`${chapterDB}${localStorage.getItem('ID')}`)
           .then(response => {
             chapter.value = response.data;
+            console.log(chapter);
 
           }).catch(err => {
             console.error(err);
           });
-      await axios.get(eventIDDB)
+      await axios.get(`${eventIDDB}${localStorage.getItem('ID')}`)
           .then(response => {
             eventID.value = response.data;
 
@@ -110,234 +151,90 @@ export default {
           }).catch(err => {
             console.error(err);
           });
-      await axios.get(introQuizDB)
+      await axios.get(`${introQuizDB}${localStorage.getItem('ID')}`)
           .then(response => {
             introQuiz.value = response.data;
+            Object.assign(User, response.data);
 
           }).catch(err => {
             console.error(err);
           });
     })
+    //let chapter1 = false, chapter2 = false, chapter3 = false, chapter4 = false, chapter5 = false
+    /*for(let i = 0; i < 10; i++)
+    {
+        console.log(quizID[i].ChapterID);
+        if(quizID[i].ChapterID < 6)
+        {chapter1 = true;}
+        if(quizID[i].ChapterID >5 && quizID[i] < 11)
+        {chapter2 = true;}
+        if(quizID[i].ChapterID > 10 && quizID[i] < 16)
+        {chapter3 = true;}
+        if(quizID[i].ChapterID > 15 && quizID[i] < 21)
+        {chapter4 = true;}
+        if(quizID[i].ChapterID > 20 && quizID[i] < 26)
+        {chapter5 = true;}
 
+    }*/
 
     let quiz1 = 0, quiz2 = 0, quiz3 = 0;
-    let chapter1 = 0, chapter2 = 0, chapter3 = 0;
     let eventID1, eventID2, eventID3, learnerType, areaOfStudy
     let event1 , event2 , event3 
     let dataCorrect, data2Correct   
 
     return {
-      quiz, quiz1, quiz2, quiz3, chapter1, chapter2, chapter3, eventID1, eventID2, eventID3, event1, event2, event3,dataCorrect, data2Correct, id, areaOfStudy, learnerType
+      quiz, quiz1, quiz2, quiz3, eventID1, eventID2, eventID3, event1, event2, event3,dataCorrect, data2Correct, id, areaOfStudy, learnerType, User, quizID, chapter, event, eventID
     }
   },
 
 
   methods:{
-    login: async function(quiz1){
-      const email = localStorage.getItem('ID');
-      try{
-        const data = await axios.get(quizDB, {params: {username: email}}).then(res => res.data);
-        console.log(data);
-        for(var i = 0; i < data.valueOf().length; i++)
-        {
-          let username = data[i].UserID;
-          if(username == email)
-          {
-            //console.log("inside if");
-            this.quiz1 = data[i].Quiz1Score;
-            this.quiz2 = data[i].Quiz2Score;
-            this.quiz3 = data[i].Quiz3Score;
-            this.$forceUpdate();
-          }
-        }
-
-        console.log(email);
-      }
-      catch
+  },
+  computed:{
+    chapter1(){
+      let check = false;
+      for(let i = 0; i < this.quizID.length; i++)
       {
-        await this.$router.push('Events');
-        console.log(email);
+        if(this.quizID[i].ChapterID < 6)
+        {check = true;}
       }
-      try{
-        const data1 = await axios.get(chapterDB, {params: {UserID: email}}).then(res => res.data);
-        console.log(data1);
-        for(var j = 0; j < data1.valueOf().length; j++)
-        {
-          let username = data1[j].UserID;
-          if(username == email)
-          {
-            //console.log("inside if");
-            this.chapter1 = data1[j].Course1;
-            this.chapter2 = data1[j].Course2;
-            this.chapter3 = data1[j].Course3;
-            this.$forceUpdate();
-          }
-        }
-      }
-      catch
-      {
-        await this.$router.push('Events');
-        console.log(email);
-      }
-      try{
-        const data2 = await axios.get(eventIDDB, {params: {UserID: email}}).then(res => res.data);
-        console.log(data2);
-        for(var k = 0; k < data2.valueOf().length; k++)
-        {
-          let username = data2[k].UserID;
-          if(username == email)
-          {
-            //console.log("inside if");
-            this.eventID1 = data2[k].EventID;
-            this.eventID2 = data2[k].EventID2;
-            this.eventID3 = data2[k].EventID3;
-            this.$forceUpdate();
-          }
-        }
-      }
-      catch
-      {
-        await this.$router.push('Events');
-        console.log(email);
-      }
-      try{
-        const data3 = await axios.get(eventDB, {params: {UserID: email}}).then(res => res.data);
-        console.log(data3);
-        for(var l = 0; l < data3.valueOf().length; l++)
-        {
-
-          let insideId;
-          insideId = data3[l].EventID;
-          console.log(insideId);
-          console.log(this.eventID1);
-
-          if(insideId == this.eventID1)
-            {
-              const eventTitle1 = data3[l].EventTitle;
-              console.log(eventTitle1);
-              
-              this.event1 = data3[l].EventTitle;
-            }
-          if(insideId == this.eventID2)
-          {
-            this.event2 = data3[l].EventTitle;
-          }
-          if(insideId == this.eventID3)
-          {
-            this.event3 = data3[l].EventTitle;
-          }
-            //console.log(this.quiz1);
-            this.$forceUpdate();
-          }
-          //await this.$router.push('LoginFailed')
-      }
-      catch
-      {
-        await this.$router.push('Events');
-        console.log(email);
-      }
-      try{
-          const data4 = await axios.get(introQuizDB).then(res => res.data);
-          console.log("intro quiz data");
-          console.log(data4);
-          for(var m = 0; m < data4.valueOf().length; m++)
-          {
-            let insideID = data4[m].UserID;
-            if(email == insideID)
-            {
-              if(data4[m].TypeOfLearner == 0)
-              {
-                this.learnerType = "Visual Learner";
-              }
-              if(data4[m].TypeOfLearner == 1)
-              {
-                this.learnerType = "Auditory Learner";
-              }
-              if(data4[m].TypeOfLearner == 2)
-              {
-                this.learnerType = "Tactile/Kinesthetic Learner";
-              }
-              if(data4[m].CourseRecommended == 0)
-              {
-                this.areaOfStudy = "CyberSecurity";
-              }
-              if(data4[m].CourseRecommended == 1)
-              {
-                this.areaOfStudy = "Data Science";
-              }
-              if(data4[m].CourseRecommended == 2)
-              {
-                this.areaOfStudy = "Web Development";
-              }
-              if(data4[m].CourseRecommended == 3)
-              {
-                this.areaOfStudy = "Metaverse";
-              }
-            }
-          }
-          //console.log(this.learnerType);
-          this.$forceUpdate();
-      }
-      catch{
-        //await this.$router.push('Events');
-        console.log(email);
-      }
-      return{
-        quiz1
-      }
+      return check;
     },
-    load: async function(){
-      let quiz1 = 10;
-      const id =3;
-      try{
-        const data = axios.get(quizDB, {params: {UserID: id}}).then(res => res.data);
-        //const data = axios.get(quizDB).then(res => res.data);
-        console.log(data);
-        console.log(data.valueOf().length);
-        for(var i = 0; i < 1; i++)
-        {
-          console.log("insidefor");
-          quiz1 = data[i].Quiz1Score;
-          console.log(quiz1);
-        }
-        /*quiz1 = data[0].Quiz1Score;
-        quiz2 = data[0].Quiz2Score;
-        quiz3 = data[0].Quiz3Score;*/
-        //console.log(data[0].Quiz1Score,data[0].Quiz2Score,data[0].Quiz3Score);
-        /*for(var i = 0; i < data.valueOf().length; i++)
-        {
-          let userID = quiz[i].UserID;
-
-          if(userID == id)
-          {
-            quiz1 = data[i].Quiz1Score;
-            console.log(quiz1);
-            quiz2 = data[i].Quiz2Score;
-            console.log(quiz2);
-            quiz3 = data[i].Quiz3Score;
-            console.log(quiz3);
-          }
-        }*/
-
-        /*const quiz1Computed = computed(() => {
-          return quiz1;
-        });
-
-        const quiz2Computed = computed(() => {
-          return quiz2;
-        });
-
-        const quiz3Computed = computed(() => {
-          return quiz3;
-        });*/
-
-        //console.log(email,password);
-      }
-      catch
+    chapter2(){
+      let check = false;
+      for(let i = 0; i < this.quizID.length; i++)
       {
-        this.$router.push('Events');
-        //console.log(email,password);
+        if(this.quizID[i].ChapterID > 5 && this.quizID[i].ChapterID < 11)
+        {check = true;}
       }
+      return check;
+    },
+    chapter3(){
+      let check = false;
+      for(let i = 0; i < this.quizID.length; i++)
+      {
+        if(this.quizID[i].ChapterID > 10 && this.quizID[i].ChapterID < 16)
+        {check = true;}
+      }
+      return check;
+    },
+    chapter4(){
+      let check = false;
+      for(let i = 0; i < this.quizID.length; i++)
+      {
+        if(this.quizID[i].ChapterID > 15 && this.quizID[i].ChapterID < 21)
+        {check = true;}
+      }
+      return check;
+    },
+    chapter5(){
+      let check = false;
+      for(let i = 0; i < this.quizID.length; i++)
+      {
+        if(this.quizID[i].ChapterID > 20 && this.quizID[i].ChapterID < 26)
+        {check = true;}
+      }
+      return check;
     }
   }
 }
