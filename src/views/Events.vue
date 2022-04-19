@@ -22,11 +22,11 @@
 				</template>
 			</div>
 	
-			<div class="container mt-4 d-flex flex-box" v-if="events.upcomingEvents && events.upcomingEvents.length === 0">
-				<h4 class="no-events">No upcoming events...</h4>
+			<div class="container mt-4 d-flex flex-box" v-if="getFilteredEvents('upcoming') && getFilteredEvents('upcoming').length === 0">
+				<h4 class="no-events">No upcoming events to display...</h4>
 			</div>
             <!-- Loop through upcoming events output data into card component -->
-            <card class="event-module mt-4 mb-4" v-for="(event, index) in filteredUpcomingEvents" v-bind:key="index" >
+            <card class="event-module mt-4 mb-4" v-for="(event, index) in getFilteredEvents('upcoming')" v-bind:key="index" >
                 <template #body>
                     <div class="d-flex align-items-start">
                         <div class="pic">
@@ -70,12 +70,12 @@
 			<div class="container mt-4 d-flex flex-box">
 				<h2>Past Events</h2>
 			</div>
-			<div class="container mt-4 d-flex flex-box" v-if="events.upcomingEvents && events.upcomingEvents.length === 0">
-				<h4 class="no-events">No past events...</h4>
+			<div class="container mt-4 d-flex flex-box" v-if="getFilteredEvents('past') && getFilteredEvents('past').length === 0">
+				<h4 class="no-events">No past events to display...</h4>
 			</div>
 
 			<!-- Loop through past events output data into card component -->
-            <card class="event-module mt-4 mb-4" v-for="(event, index) in filteredPastEvents" v-bind:key="index" >
+            <card class="event-module mt-4 mb-4" v-for="(event, index) in getFilteredEvents('past')" v-bind:key="index" >
                 <template #body>
                     <div class="d-flex align-items-start">
                         <div class="pic">
@@ -175,7 +175,7 @@
 				<template #body>
 					<div class="form-check" v-for="(tag, index) in filteredTags" :key="index">
 						<input class="form-check-input" type="checkbox" :id="'filterTag' + index" :value="tag" @click="updateFilter(tag)" :checked="tag.selected">
-						<label class="form-check-label" :for="'filterTag' + index">{{tag.tag}}</label>
+						<label class="form-check-label" :for="'filterTag' + index">{{tag.tag}} ({{tag.total}})</label>
 					</div>
 				</template>
 				<template #footer>
@@ -194,30 +194,22 @@
 <script>
 import CustomHeader from '../components/Header.vue'
 import Card from '../components/Card.vue'
-import { ref, onBeforeMount, computed, reactive } from "vue";
+import { ref, reactive, onBeforeMount } from "vue"
 import axios from 'axios';
 import Modal from '../components/Modal.vue'
 import Notification from '../components/Alert.vue'
 import Tags from '../components/Tags.vue'
 
-
-const eventDB = 'http://localhost:3001/api/event'
-const deleteEventDB = 'http://localhost:3001/api/event/'
+const eventDB = 'http://localhost:3001/api/event';
+const deleteEventDB = 'http://localhost:3001/api/event/';
 const userDB = 'http://localhost:3001/api/user/';
 
 export default {
-
   components:
   {
-    CustomHeader,
-    Modal,
-	Card,
-	Notification,
-	Tags
+    CustomHeader, Card, Modal, Notification, Tags
   },
-
   setup() {
-
 	const isModalVisible = ref(false) // setup for popup add course modal
 	const alert = ref(null); // setup for alert
 	const addEditEventModal = ref(null); // setup for add event modal
@@ -234,14 +226,9 @@ export default {
 	const EventID = ref('')
 	const EventTags = ref([]);
 	const filteredTags = ref([]);
-    const events = ref([])
 
-	const filteredUpcomingEvents = computed(() => {
-		return events.value.upcomingEvents;
-	});
-	const filteredPastEvents = computed(() => {
-		return events.value.pastEvents;
-	});
+	// Primary Event Array
+    const events = ref([]);
 
 	// User Data
 	const User = reactive({});
@@ -254,10 +241,10 @@ export default {
 		const date = new Date(d)
 		return date.toLocaleString()
 	}
-  
+
     // access event database for display
     onBeforeMount(async () => {
-      // Get Event Data from database
+		// Get Event Data from database
 		await axios.get(eventDB)
 			.then(response => {
 				events.value = response.data;
@@ -313,7 +300,6 @@ export default {
 		if(confirmed) {
 			axios.delete(deleteEventDB + Event.EventID)
 				.then(() => {
-					events.value.splice(events.value.indexOf(Event.EventID), 1);
 					alert.value.addAlert('success', 'Event Deleted', 3000);
 				});
 			
@@ -350,7 +336,6 @@ export default {
 		addEditEventModal.value.toggle();
 	}
 
-	// user event registration
 	async function register(EventID) {
 		if(!localStorage.getItem('ID')) return false;
 		
@@ -498,15 +483,44 @@ export default {
 	function updateFilter(tag) {
 		const tagIndex = filteredTags.value.findIndex(e => e.tag === tag.tag)
 		filteredTags.value[tagIndex].selected = !filteredTags.value[tagIndex].selected;
-
-		console.log(filteredTags.value)
 	}
+
+	function getFilteredEvents(type) {
+		if(type === 'upcoming') {
+			if(filteredTags.value.length === 0) {
+				return events.value.upcomingEvents;
+			} else {
+				return filter(events.value.upcomingEvents);
+			}
+		} else {
+			if(filteredTags.value.length === 0) {
+				return events.value.pastEvents;
+			} else {
+				return filter(events.value.pastEvents);
+			}
+		}
+	}
+
+	function filter(arr) {
+		return arr.filter(event => {
+			let tagMatch = false;
+			event.EventTags.forEach(tag => {
+				filteredTags.value.forEach(filteredTag => {
+					if(tag.Tag === filteredTag.tag && filteredTag.selected) {
+						tagMatch = true;
+					}
+				});
+			});
+			return tagMatch;
+		});
+	}
+
 
 	return {
 		formatDate, submitForm, deleteEvent, editEvent, checkValidDate,
 		EventTitle, EventDescription, EventInstructor, EventTime, EventSpots, EventID, EventTags, isModalVisible, User,
 		events, alert, addEditEventModal, deleteEventModal, SelectedEvent, clearFields, addEditTags, checkRegistration, 
-		register, filterModal, filteredTags, updateFilter, filteredUpcomingEvents, filteredPastEvents,
+		register, filterModal, filteredTags, updateFilter, getFilteredEvents,
 	}
   },
 }
@@ -550,7 +564,6 @@ export default {
 	margin: 10px 0 0 0;
 	font-size: 1rem;
 }
-
 .flex-box {
   display:flex;
   justify-content:space-between;
