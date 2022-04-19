@@ -19,12 +19,6 @@ export function updateIntroQuizResult(id, type, recommended) {
     })
 }
 
-export function getAllCources() {
-    return axios.get(baseURL + 'getAllcourses', {
-        timeout: 3000,
-    })
-}
-
 export function getCourseQuizzes(CourseID, ChapterID) {
     return axios.get(baseURL + 'getCourseQuizzes', {
         params: {
