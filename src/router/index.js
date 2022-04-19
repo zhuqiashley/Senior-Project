@@ -13,7 +13,6 @@ import Announcement from '../views/Announcement.vue'
 import Chapter from '../views/Chapter.vue'
 import Forum from '../views/Forum.vue'
 import HomeCourse from '../views/HomeCourse.vue'
-// import Quizzes from '../views/Quize.vue'
 import Syllabus from '../views/Syllabus.vue'
 import Quiz from '../views/Quiz.vue'
 import Problem from '../views/Problem.vue'
@@ -26,6 +25,7 @@ import LogoutSuccess from "../views/LogoutSuccess";
 import EditProfile from "../views/EditProfile";
 import Feedback from "../views/Feedback";
 import Score from "../views/Score";
+import CourseRating from "../views/CourseRating.vue"
 
 const routes = [
 	{
@@ -152,7 +152,7 @@ const routes = [
 			title: 'Master CS | My Courses'
 		}
 	},
-	{
+    {
 		path: '/scores',
 		name: 'MyScore',
 		component: Score,
@@ -238,6 +238,14 @@ const routes = [
 
 	},
 	{
+		path: '/CourseRating',
+		name: 'CourseRating',
+		component: CourseRating,
+		meta: {
+			title: 'Master CS | Course rating'
+		}
+  	},
+  	{
 		path: '/LogoutSuccess',
 		name: 'LogoutSuccess',
 		component: LogoutSuccess,
@@ -253,7 +261,6 @@ const routes = [
 		meta: {
 			title: 'Master CS | Edit Profile'
 		}
-
 	}
 ]
 

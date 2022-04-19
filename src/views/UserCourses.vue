@@ -23,7 +23,7 @@
             <router-link  :to="{ path: '/forum', query: $route.query }"><ol class="">
             <h1>Discussion Forum</h1>
             </ol></router-link>
-          <router-link  :to="{ path: '/scores', query: $route.query }"><ol class="">
+            <router-link  :to="{ path: '/scores', query: $route.query }"><ol class="">
             <h1>Scores</h1>
           </ol></router-link>
           <router-link  :to="{ path: '/feedback', query: $route.query }"><ol class="">

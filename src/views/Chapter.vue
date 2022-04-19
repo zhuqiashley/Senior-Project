@@ -35,8 +35,8 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-                <p>{{this.$route.query.chapterDetail1}}</p>
-                <iframe width="420" height="315" :src="this.$route.query.chapter1"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>{{this.chapterData?.chapterDetail1}}</p>
+                <iframe width="420" height="315" :src="this.chapterData?.chapter1"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
               
             </div>
@@ -61,8 +61,8 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-                <p>{{this.$route.query.chapterDetail2}}</p>
-                <iframe width="420" height="315" :src="this.$route.query.chapter2"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>{{this.chapterData?.chapterDetail2}}</p>
+                <iframe width="420" height="315" :src="this.chapterData?.chapter2"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
@@ -87,8 +87,8 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-              <p>{{this.$route.query.chapterDetail3}}</p>
-              <iframe width="420" height="315" :src="this.$route.query.chapter3"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <p>{{this.chapterData?.chapterDetail3}}</p>
+              <iframe width="420" height="315" :src="this.chapterData?.chapter3"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
@@ -113,8 +113,8 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-               <p>{{this.$route.query.chapterDetail4}}</p>
-               <iframe width="420" height="315" :src="this.$route.query.chapter4"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               <p>{{this.chapterData?.chapterDetail4}}</p>
+               <iframe width="420" height="315" :src="this.chapterData?.chapter4"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
@@ -140,8 +140,8 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-                <p>{{this.$route.query.chapterDetail5}}</p>
-                <iframe width="420" height="315"  :src="this.$route.query.chapter5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>{{this.chapterData?.chapterDetail5}}</p>
+                <iframe width="420" height="315"  :src="this.chapterData?.chapter5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
@@ -155,6 +155,8 @@
 <script>
 import CustomHeader from "../components/Header.vue";
 import ProgressBar from "../components/ProgressBar.vue";
+import axios from 'axios'
+
 
 export default {
   components: {
@@ -163,8 +165,17 @@ export default {
   },
   data() {
       return {
-        progress: this.$route.query.course_complete
+        progress: this.$route.query.course_complete,
+        chapterData: null,
       }
+  },
+  mounted () {
+    axios.get("http://localhost:3001/api/getcourses/"+this.$route.query.title)
+			.then((res) => {
+				this.chapterData = res.data[0]
+			}).catch(err => {
+				console.error(err)
+			})
   },
   computed: {
 		titleValue() {
