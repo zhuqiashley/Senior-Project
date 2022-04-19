@@ -265,8 +265,6 @@ export default {
 				console.error(err);
 			});
 
-		
-
 		// Get user data
 		await axios.get(`${userDB}${localStorage.getItem('ID')}`)
 			.then(response => {
