@@ -1,5 +1,11 @@
 <template>
   <custom-header title="User Statistics"></custom-header>
+  <div class = "login container mt-4">
+  <card>
+      <div class="card-text">
+                <slot name="body"></slot>
+            </div>
+      <template #body>
 <div class="container mt-4">
 <h1>Chapter 1</h1>
 <p v-if="chapter1">No Quiz Scores for Chapter 1, visit the Courses page to take Quizzes</p>
@@ -14,6 +20,19 @@
                         <progress-bar v-if="quizi.ChapterID < 6" :progress="quizi.Score"/>
                         </div>
   </div>
+  <div class = "container mt-4">
+  <h3>Chapter Completion</h3>
+  <progress-bar :progress="course1completion"/>
+  </div>
+      </template>
+  </card>
+  </div>
+  <div class = "login container mt-4">
+  <card>
+      <div class="card-text">
+                <slot name="body"></slot>
+            </div>
+      <template #body>
   <div class="container mt-4">
   <h1>Chapter 2</h1>
   <p v-if="chapter2">No Quiz Scores for Chapter 2, visit the Courses page to take Quizzes</p>
@@ -28,6 +47,19 @@
                         <progress-bar v-if="quizi.ChapterID < 11 && quizi.ChapterID > 5" :progress="quizi.Score"/>
                         </div>
   </div>
+  <div class = "container mt-4">
+  <h3>Chapter Completion</h3>
+  <progress-bar :progress="course2completion"/>
+  </div>
+      </template>
+  </card>
+  </div>
+  <div class = "login container mt-4">
+  <card>
+      <div class="card-text">
+                <slot name="body"></slot>
+            </div>
+      <template #body>
   <div class="container mt-4">
   <h1>Chapter 3</h1>
   <p v-if="chapter3">No Quiz Scores for Chapter 3, visit the Courses page to take Quizzes</p>
@@ -42,6 +74,19 @@
                         <progress-bar v-if="quizi.ChapterID > 10 && quizi.ChapterID <16" :progress="quizi.Score"/>
                         </div>
   </div>
+  <div class = "container mt-4">
+  <h3>Chapter Completion</h3>
+  <progress-bar :progress="course3completion"/>
+  </div>
+      </template>
+  </card>
+  </div>
+  <div class = "login container mt-4">
+  <card>
+      <div class="card-text">
+                <slot name="body"></slot>
+            </div>
+      <template #body>
   <div class="container mt-4">
   <h1>Chapter 4</h1>
   <p v-if="chapter4">No Quiz Scores for Chapter 4, visit the Courses page to take Quizzes</p>
@@ -56,6 +101,19 @@
                         <progress-bar v-if="quizi.ChapterID > 15 && quizi.ChapterID <21" :progress="quizi.Score"/>
                         </div>
   </div>
+  <div class = "container mt-4">
+  <h3>Chapter Completion</h3>
+  <progress-bar :progress="course4completion"/>
+  </div>
+      </template>
+  </card>
+  </div>
+  <div class = "login container mt-4">
+  <card>
+      <div class="card-text">
+                <slot name="body"></slot>
+            </div>
+      <template #body>
   <div class="container mt-4">
   <h1>Chapter 5</h1>
   <p v-if="chapter5">No Quiz Scores for Chapter 5, visit the Courses page to take Quizzes</p>
@@ -69,6 +127,13 @@
                         <p v-if="quizi.ChapterID === 25">Quiz 5 Score</p>
                         <progress-bar v-if="quizi.ChapterID > 20 && quizi.ChapterID <26" :progress="quizi.Score"/>
                         </div>
+  </div>
+  <div class = "container mt-4">
+  <h3>Chapter Completion</h3>
+  <progress-bar :progress="course5completion"/>
+  </div>
+      </template>
+  </card>
   </div>
   <div class ="container mt-4">
     <h1>Learning Type</h1>
@@ -100,6 +165,7 @@
 
 <script>
 import CustomHeader from '../components/Header.vue'
+import Card from '../components/Card.vue'
 import { ref, onBeforeMount, reactive } from "vue";
 import axios from 'axios';
 import ProgressBar from '../components/ProgressBar.vue';
@@ -107,6 +173,7 @@ import ProgressBar from '../components/ProgressBar.vue';
 let quizIDDB = 'http://localhost:3001/api/quizscoreswithid/'
 let chapterDB = 'http://localhost:3001/api/VideoCompletion'
 let eventIDDB = 'http://localhost:3001/api/usereventwithid/'
+let courseDB = 'http://localhost:3001/api/coursecompletionwithid/'
 let eventDB = 'http://localhost:3001/api/event'
 let introQuizDB = 'http://localhost:3001/api/introresult/'
 
@@ -114,16 +181,16 @@ export default {
   components:
       {
         CustomHeader,
-        ProgressBar
+        ProgressBar,
+        Card
       },
   setup() {
 
     const quiz = ref([])
-    //const quizID = ref([])
+    const course = ref([])
     const chapter = ref('')
     const eventID = ref('')
     const event = ref('')
-    //const introQuiz = ref('')
     const id = localStorage.getItem('ID');
     const User = reactive({});
 
@@ -131,6 +198,12 @@ export default {
       await axios.get(`${quizIDDB}${localStorage.getItem('ID')}`).then(response => {
             quiz.value = response.data;
 
+          }).catch(err => {
+            console.error(err);
+          });
+      await axios.get(`${courseDB}${localStorage.getItem('ID')}`).then(response => {
+            course.value = response.data;
+            console.log(course);
           }).catch(err => {
             console.error(err);
           });
@@ -150,14 +223,14 @@ export default {
       await axios.get(`${eventIDDB}${localStorage.getItem('ID')}`)
           .then(response => {
             eventID.value = response.data;
-            console.log(eventID);
+            //console.log(eventID);
           }).catch(err => {
             console.error(err);
           });
       await axios.get(eventDB)
           .then(response => {
             event.value = response.data;
-            console.log(event);
+            //console.log(event);
           }).catch(err => {
             console.error(err);
           });
@@ -173,7 +246,7 @@ export default {
     
 
     return {
-      quiz1, quiz2, quiz3, eventID1, eventID2, eventID3, event1, event2, event3,dataCorrect, data2Correct, id, areaOfStudy, learnerType, quiz, User, trigger, eventID, event
+      quiz1, quiz2, quiz3, eventID1, eventID2, eventID3, event1, event2, event3,dataCorrect, data2Correct, id, areaOfStudy, learnerType, quiz, User, trigger, eventID, event, course
     }
   },
 
@@ -229,6 +302,99 @@ export default {
         {check = false;}
       }
       return check;
+    },
+    course1completion(){
+      let completion = 0;
+      for(let i = 0; i < this.course.length; i++)
+      {
+        if(this.course[i].course_id < 6)
+        {
+          console.log("inside course 1");
+          if(this.course[i].VideoComplete == 1)
+          {
+            completion += 10;
+          }
+          if(this.course[i].QuizComplete == 1)
+          {
+            completion += 10;
+          }
+        }
+      }
+      console.log
+      return completion;
+    },
+    course2completion(){
+      let completion = 0;
+      for(let i = 0; i < this.course.length; i++)
+      {
+        if(this.course[i].course_id > 5 && this.course[i].course_id < 11)
+        {
+          if(this.course[i].VideoComplete == 1)
+          {
+            completion += 10;
+          }
+          if(this.course[i].QuizComplete == 1)
+          {
+            completion += 10;
+          }
+        }
+      }
+      return completion;
+    },
+    course3completion(){
+      let completion = 0;
+      for(let i = 0; i < this.course.length; i++)
+      {
+        if(this.course[i].course_id > 10 && this.course[i].course_id < 16)
+        {
+          if(this.course[i].VideoComplete == 1)
+          {
+            completion += 10;
+          }
+          if(this.course[i].QuizComplete == 1)
+          {
+            completion += 10;
+          }
+        }
+      }
+      return completion;
+    },
+    course4completion(){
+      let completion = 0;
+      for(let i = 0; i < this.course.length; i++)
+      {
+        if(this.course[i].course_id > 15 && this.course[i].course_id < 21)
+        {
+          if(this.course[i].VideoComplete == 1)
+          {
+            completion += 10;
+          }
+          if(this.course[i].QuizComplete == 1)
+          {
+            completion += 10;
+          }
+        }
+      }
+      return completion;
+    },
+    course5completion(){
+      let completion = 0;
+      for(let i = 0; i < this.course.length; i++)
+      {
+        if(this.course[i].course_id > 20 && this.course[i].course_id < 26)
+        {
+          if(this.course[i].VideoComplete == 1)
+          {
+            completion += 10;
+          }
+          if(this.course[i].QuizComplete == 1)
+          {
+            completion += 10;
+          }
+        }
+      }
+      console.log(completion);
+      return completion;
     }
   }
 }

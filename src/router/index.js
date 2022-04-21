@@ -29,6 +29,8 @@ import Score from "../views/Score";
 import EditProfilePasswordCheck from "../views/EditProfilePasswordCheck";
 import ChangePassword from "../views/ChangePassword"
 import ChangePasswordPasswordCheck from "../views/ChangePasswordPasswordCheck";
+import ForgotPassword from "../views/ForgotPassword";
+import ForgotPasswordID from "../views/ForgotPasswordID";
 
 const routes = [
 	{
@@ -282,6 +284,24 @@ const routes = [
 		component: ChangePasswordPasswordCheck,
 		meta: {
 			title: 'Master CS | Password Check'
+		}
+
+	},
+	{
+		path: '/ForgotPassword',
+		name: 'ForgotPassword',
+		component: ForgotPassword,
+		meta: {
+			title: 'Master CS | Forgot Password'
+		}
+
+	},
+	{
+		path: '/ForgotPasswordID',
+		name: 'ForgotPasswordID',
+		component: ForgotPasswordID,
+		meta: {
+			title: 'Master CS | Forgot Password'
 		}
 
 	}

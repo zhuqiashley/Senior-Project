@@ -24,6 +24,14 @@
             <a class="text-link" @click="redirect">No Account? Sign Up</a>
           </span>
   </div>
+  <div style="text-align: center">
+          <span>
+            <p>
+
+            </p>
+            <a class="text-link" @click="forgot">Forgot Password?</a>
+          </span>
+  </div>
 	</div>
 </template>
 
@@ -67,6 +75,9 @@ export default {
   methods:{
     redirect: async function () {
     await this.$router.push('/Signup');
+  },
+  forgot: async function (){
+    await this.$router.push('ForgotPasswordID');
   },
     login: async function()
     {

@@ -25,6 +25,14 @@
         </div>
       </template>
     </card>
+    <div style="text-align: center">
+          <span>
+            <p>
+
+            </p>
+            <a class="text-link" @click="forgot">Forgot Password?</a>
+          </span>
+  </div>
   </div>
 </template>
 
@@ -95,6 +103,9 @@ export default {
     },
     redirect: async function () {
       await this.$router.push('Signup');
+    },
+    forgot: async function (){
+      await this.$router.push('ForgotPasswordID');
     }
   }
 }

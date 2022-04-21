@@ -15,15 +15,6 @@
           <input v-model="email" ref="getemail" class="form-control" placeholder="name@example.com">
           <label for="floatingInput">Username: {{User.username}}</label>
         </div>
-        <h3 v-if="passwordTest == 1">Please make sure your passwords match.</h3>
-        <div class = "form-floating mb-3">
-          <input v-model="email" ref="getpassword1" class="form-control" type="password" placeholder="password">
-          <label for="floatingInput">Enter New Password</label>
-        </div>
-        <div class = "form-floating mb-3">
-          <input v-model="email" ref="getpassword2" class="form-control" type="password" placeholder="password">
-          <label for="floatingInput">Re-Enter New Password</label>
-        </div>
         <div class="d-grid gap-2">
           <button class="btn btn-success" type="button" @click="edit">Submit Changes</button>
         </div>
@@ -82,18 +73,10 @@ export default {
         console.log(firstName + " " + lastName + " " + email);
         let idVariable = localStorage.getItem('ID');
         console.log(idVariable);
-        let password1 = this.$refs.getpassword1.value;
-        let password2 = this.$refs.getpassword2.value;
 
-        if(firstName == "" || lastName == "" || email == "" || password1 == "" || password2 == "")
+        if(firstName == "" || lastName == "" || email == "")
         {
           localStorage.setItem('fillCheck', 1);
-          window.location.reload();
-          return;
-        }
-        if(password1 != password2)
-        {
-          localStorage.setItem('passwordCheck', 1);
           window.location.reload();
           return;
         }

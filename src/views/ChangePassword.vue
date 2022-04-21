@@ -34,7 +34,10 @@ export default {
         CustomHeader,
     },
   setup(){
-
+      if(localStorage.getItem('ID') == 0)
+      {
+          localStorage.setItem('ID',localStorage.getItem('ForgotID'));
+      }
     const User = reactive({});
     onBeforeMount(async () => {
           await axios.get(`${userLoginDB}${localStorage.getItem('ID')}`).then(response => {

@@ -35,6 +35,7 @@ export default {
         localStorage.setItem('signedIn', zero);
       }
       localStorage.setItem('signedIn', zero);
+      localStorage.setItem('ID',0);
   },
   methods:{
   redirect: async function () {
