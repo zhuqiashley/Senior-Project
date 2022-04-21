@@ -88,50 +88,32 @@ export default {
 			{
 				name: 'Crystal Atoz',
 				description: 'She will be graduating December 2022 with a B.S. in Computer Science & Engineering with a minor in Mathematics.',
-				image: {
-					src: 'img/team/advisors.jpeg',
-					alt: 'Crystal Atoz',
-				},
+				image:  'img/team/advisors.jpeg',
 			},
 			{
 				name: 'Kayla Garin',
 				description: 'test',
-				image: {
-					src: 'img/team/advisors.jpeg',
-					alt: 'Kayla Garin',
-				},
+				image:  'img/team/advisors.jpeg',
 			},
 			{
 				name: 'Austin Schrage',
 				description: 'test',
-				image: {
-					src: 'img/team/advisors.jpeg',
-					alt: 'Austin Schrage',
-				},
+				image: 'img/team/advisors.jpeg',
 			},
 			{
 				name: 'Yan Shore',
 				description: 'test',
-				image: {
-					src: 'img/team/advisors.jpeg',
-					alt: 'Yan Shore',
-				},
+				image:  'img/team/advisors.jpeg',
 			},
 			{
 				name: 'Zhuqi You',
 				description: 'test',
-				image: {
-					src: 'img/team/advisors.jpeg',
-					alt: 'Zhuqi You',
-				},
+				image:  'img/team/advisors.jpeg',
 			},
 			{
 				name: 'Advisors',
 				description: 'test',
-				image: {
-					src: 'img/team/advisors.jpeg',
-					alt: 'Advisors'
-				},
+				image: 'img/team/advisors.jpeg',
 			}
 		]
 		return {

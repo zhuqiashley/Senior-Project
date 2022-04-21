@@ -23,7 +23,7 @@
             <router-link  :to="{ path: '/forum', query: $route.query }"><ol class="">
             <h1>Discussion Forum</h1>
             </ol></router-link>
-          <router-link  :to="{ path: '/scores', query: $route.query }"><ol class="">
+            <router-link  :to="{ path: '/scores', query: $route.query }"><ol class="">
             <h1>Scores</h1>
           </ol></router-link>
           <router-link  :to="{ path: '/feedback', query: $route.query }"><ol class="">
@@ -48,10 +48,27 @@
 <!-- ======= SCRIPT ======= -->
 <script>
 import CustomHeader from "../components/Header.vue";
+import axios from 'axios'
+
 
 export default {
   components: {
     CustomHeader,
+  },
+  mounted () {
+    if (localStorage.getItem('ID')) {
+        axios.post("http://localhost:3001/api/getProgress/", { user_id: localStorage.getItem('ID'), course_id: this.$route.query.id})
+        .then((res) => {
+          if (res && res.data.length > 0) {
+            this.toggleEnroll = false
+          }
+          // this.progress = res.data[0].course_completion
+          // this.chapterData = res.data[0]
+        }).catch(err => {
+          console.error(err)
+        });
+          // const uEData = await userEnrolledData.json();
+      }
   },
   data(){
       return {
@@ -61,7 +78,7 @@ export default {
     methods:{
     async Enroll(){
       if(this.toggleEnroll){
-        let userId = 2;
+        let userId = localStorage.getItem('ID');
         let courseId = this.$route.query.id;
         let courseCompletion = 0;
         const response = await fetch("http://localhost:3001/api/enrollUser/"+userId+"/"+courseId+"/"+courseCompletion);
@@ -72,7 +89,7 @@ export default {
       }
 
       else{
-        let userId = 2;
+        let userId = localStorage.getItem('ID');
         let courseId = this.$route.query.id;
         const response = await fetch("http://localhost:3001/api/removeEnrolledUser/"+userId+"/"+courseId);
 				const data = await response.json();

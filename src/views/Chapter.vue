@@ -6,9 +6,9 @@
         <h1>Course Chapters</h1>
         <div class="col-lg-12">
           <h4> Course process: </h4> 
-          <progress-bar :progress="this.$route.query.course_complete">
+          <progress-bar :progress="this.progress">
             <template>
-              {{this.$route.query.course_complete}} 
+              {{this.progress}} 
             </template>
           </progress-bar>
         </div>
@@ -35,8 +35,9 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-                <p>{{this.$route.query.chapterDetail1}}</p>
-                <iframe width="420" height="315" :src="this.$route.query.chapter1"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>{{this.chapterData?.chapterDetail1}}</p>
+                <iframe width="420" height="315" :src="this.chapterData?.chapter1"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <button class="btn btn-primary" style="float:right;" @click="completeChapter(20)" :disabled="this.progress > 20"> Complete </button>
               </div>
               
             </div>
@@ -50,8 +51,10 @@
                 data-bs-target="#collapseTwo"
                 aria-expanded="false"
                 aria-controls="collapseTwo"
+                :disabled="this.progress < 20"
               >
                 Chapter #2
+                <p v-if="this.progress < 20"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
               </button>
             </h2>
             <div
@@ -61,8 +64,10 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-                <p>{{this.$route.query.chapterDetail2}}</p>
-                <iframe width="420" height="315" :src="this.$route.query.chapter2"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>{{this.chapterData?.chapterDetail2}}</p>
+                <iframe width="420" height="315" :src="this.chapterData?.chapter2"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <button class="btn btn-primary" style="float:right;" @click="completeChapter(40)" :disabled="this.progress > 40"> Complete </button>
+
               </div>
             </div>
           </div>
@@ -76,8 +81,10 @@
                 data-bs-target="#collapseThree"
                 aria-expanded="false"
                 aria-controls="collapseThree"
+                :disabled="this.progress < 40"
               >
                 Chapter #3
+                <p v-if="this.progress < 40"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
               </button>
             </h2>
             <div
@@ -87,8 +94,10 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-              <p>{{this.$route.query.chapterDetail3}}</p>
-              <iframe width="420" height="315" :src="this.$route.query.chapter3"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <p>{{this.chapterData?.chapterDetail3}}</p>
+              <iframe width="420" height="315" :src="this.chapterData?.chapter3"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <button class="btn btn-primary" style="float:right;" @click="completeChapter(60)" :disabled="this.progress > 60"> Complete </button>
+
               </div>
             </div>
           </div>
@@ -102,8 +111,10 @@
                 data-bs-target="#collapseFour"
                 aria-expanded="false"
                 aria-controls="collapseFour"
+                :disabled="this.progress < 60"
               >
                 Chapter #4
+                <p v-if="this.progress < 60"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
               </button>
             </h2>
             <div
@@ -113,8 +124,10 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-               <p>{{this.$route.query.chapterDetail4}}</p>
-               <iframe width="420" height="315" :src="this.$route.query.chapter4"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               <p>{{this.chapterData?.chapterDetail4}}</p>
+               <iframe width="420" height="315" :src="this.chapterData?.chapter4"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <button class="btn btn-primary" style="float:right;" @click="completeChapter(80)" :disabled="this.progress > 80"> Complete </button>
+
               </div>
             </div>
           </div>
@@ -129,8 +142,10 @@
                 data-bs-target="#collapseFive"
                 aria-expanded="false"
                 aria-controls="collapseFive"
+                :disabled="this.progress < 80"
               >
                 Chapter #5
+                <p v-if="this.progress < 80"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
               </button>
             </h2>
             <div
@@ -140,8 +155,9 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-                <p>{{this.$route.query.chapterDetail5}}</p>
-                <iframe width="420" height="315"  :src="this.$route.query.chapter5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>{{this.chapterData?.chapterDetail5}}</p>
+                <iframe width="420" height="315"  :src="this.chapterData?.chapter5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <button class="btn btn-primary" style="float:right;" @click="completeChapter(100)" :disabled="this.progress > 90"> Finish </button>
               </div>
             </div>
           </div>
@@ -155,6 +171,8 @@
 <script>
 import CustomHeader from "../components/Header.vue";
 import ProgressBar from "../components/ProgressBar.vue";
+import axios from 'axios'
+
 
 export default {
   components: {
@@ -163,7 +181,26 @@ export default {
   },
   data() {
       return {
-        progress: this.$route.query.course_complete
+        progress: 0,
+        chapterData: null,
+      }
+  },
+  async mounted () {
+    axios.get("http://localhost:3001/api/getcourses/"+this.$route.query.title)
+			.then((res) => {
+				this.chapterData = res.data[0]
+			}).catch(err => {
+				console.error(err)
+			})
+      if (localStorage.getItem('ID')) {
+        axios.post("http://localhost:3001/api/getProgress/", { user_id: localStorage.getItem('ID'), course_id: this.$route.query.id})
+        .then((res) => {
+          this.progress = res.data[0].course_completion
+          // this.chapterData = res.data[0]
+        }).catch(err => {
+          console.error(err)
+        });
+          // const uEData = await userEnrolledData.json();
       }
   },
   computed: {
@@ -171,6 +208,52 @@ export default {
 			return  this.$route.query.title
 		}
 	},
+  methods: {
+    async completeChapter (course_completion) {
+      console.log(localStorage.getItem('ID'))
+      if (localStorage.getItem('ID')) {
+        axios.post("http://localhost:3001/api/updateProgress/", {user_id: localStorage.getItem('ID'), course_id: this.$route.query.id, course_completion: course_completion})
+        .then(() => {
+          this.relodeData()
+          // this.chapterData = res.data[0]
+        }).catch(err => {
+          console.error(err)
+        });
+
+        if (course_completion == 100) {
+          
+          axios.post("http://localhost:3001/api/chapterCompletion/", {user_id: localStorage.getItem('ID'), course_id: this.$route.query.id})
+          .then(() => {
+            this.relodeData()
+            // this.chapterData = res.data[0]
+          }).catch(err => {
+            console.error(err)
+          });
+        }
+      } else {
+        return this.$router.push({ path: 'login', query: ''});
+      }
+    },
+    relodeData () {
+      axios.get("http://localhost:3001/api/getcourses/"+this.$route.query.title)
+			.then((res) => {
+				this.chapterData = res.data[0]
+			}).catch(err => {
+				console.error(err)
+			})
+      if (localStorage.getItem('ID')) {
+        axios.post("http://localhost:3001/api/getProgress/", { user_id: localStorage.getItem('ID'), course_id: this.$route.query.id})
+        .then((res) => {
+          console.log(res, 'deeeeet')
+          this.progress = res.data[0].course_completion
+          // this.chapterData = res.data[0]
+        }).catch(err => {
+          console.error(err)
+        });
+          // const uEData = await userEnrolledData.json();
+      }
+    }
+  },
   setup() {},
 };
 </script>
