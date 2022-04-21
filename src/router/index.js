@@ -26,6 +26,9 @@ import LogoutSuccess from "../views/LogoutSuccess";
 import EditProfile from "../views/EditProfile";
 import Feedback from "../views/Feedback";
 import Score from "../views/Score";
+import EditProfilePasswordCheck from "../views/EditProfilePasswordCheck";
+import ChangePassword from "../views/ChangePassword"
+import ChangePasswordPasswordCheck from "../views/ChangePasswordPasswordCheck";
 
 const routes = [
 	{
@@ -252,6 +255,33 @@ const routes = [
 		component: EditProfile,
 		meta: {
 			title: 'Master CS | Edit Profile'
+		}
+
+	},
+	{
+		path: '/EditProfilePasswordCheck',
+		name: 'EditProfilePasswordCheck',
+		component: EditProfilePasswordCheck,
+		meta: {
+			title: 'Master CS | Password Check'
+		}
+
+	},
+	{
+		path: '/ChangePassword',
+		name: 'ChangePassword',
+		component: ChangePassword,
+		meta: {
+			title: 'Master CS | ChangePassword'
+		}
+
+	},
+	{
+		path: '/ChangePasswordPasswordCheck',
+		name: 'ChangePasswordPasswordCheck',
+		component: ChangePasswordPasswordCheck,
+		meta: {
+			title: 'Master CS | Password Check'
 		}
 
 	}

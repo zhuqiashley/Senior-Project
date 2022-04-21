@@ -21,8 +21,27 @@
           <label for="floatingInput">Password</label>
         </div>
         <div class = "form-floating mb-3">
-          <input v-model="password" ref="getrole" class="form-control" placeholder="Student or Admin">
-          <label for="floatingInput">Student or Admin</label>
+          <select ref="getroledropdown">
+            <option>Role</option>
+            <option value="Student">Student</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <div class = "form-floating mb-3">
+          <p>Security Question</p>
+        </div>
+        <div class = "form-floating mb-3">
+          <select ref="getsecurityquestion">
+            <option>Select a Quesion</option>
+            <option value="1">What is your Mother's Maiden name?</option>
+            <option value="2">What town where you born in?</option>
+            <option value = "3">What is the title of your favorite book?</option>
+            <option value = "4">What is your favorite song?</option>
+          </select>
+        </div>
+        <div class = "form-floating mb-3">
+          <input v-model="answer" ref="getanswer" type="answer" class="form-control" placeholder="password">
+          <label for="floatingInput">Answer</label>
         </div>
         <div class="d-grid gap-2">
           <button class="btn btn-success" type="button" @click="submit">Sign Up</button>
@@ -51,19 +70,6 @@ export default {
         CustomHeader
       },
   setup() {
-    /*const user = ref('')
-    onBeforeMount(async () => {
-      await axios.get(userDB)
-          .then(response => {
-            user.value = response.data;
-
-          }).catch(err => {
-            console.error(err);
-          });})
-
-    return {
-      user
-    }*/
   },
   methods:{
     submit(){
@@ -71,7 +77,10 @@ export default {
       let lastName = this.$refs.getlastname.value;
       let email = this.$refs.getemail.value;
       let passwordInput = this.$refs.getpassword.value;
-      let roleInput = this.$refs.getrole.value;
+      let roleInput = this.$refs.getroledropdown.value;
+      let securityquestion = this.$refs.getsecurityquestion.value;
+      let securityanswer = this.$refs.getanswer.value;
+      //let answer = this.$refs.answer.value;
       //let rounds = 10;
 
       /*bcrypt.hash(passwordInput, rounds, (err, hash) => {
@@ -82,7 +91,7 @@ export default {
       console.log(hash)
       })*/
 
-       axios.post(userDB, {FirstName:firstName, LastName:lastName, username:email, password:passwordInput, role:roleInput}).then(response=>{
+       axios.post(userDB, {FirstName:firstName, LastName:lastName, username:email, password:passwordInput, role:roleInput, SecurityQuestion:securityquestion, SecurityAnswer:securityanswer}).then(response=>{
         console.log(response);
       }).catch(e=>{
         console.error(e);

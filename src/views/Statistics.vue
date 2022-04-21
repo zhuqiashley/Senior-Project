@@ -4,7 +4,7 @@
 <h1>Chapter 1</h1>
 <p v-if="chapter1">No Quiz Scores for Chapter 1, visit the Courses page to take Quizzes</p>
 </div>
-  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
+  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
                         <div class="container mt-4">
                         <p v-if="quizi.ChapterID === 2"> Quiz 2 Score</p>
                         <p v-if="quizi.ChapterID === 1">Quiz 1 Score</p>
@@ -18,7 +18,7 @@
   <h1>Chapter 2</h1>
   <p v-if="chapter2">No Quiz Scores for Chapter 2, visit the Courses page to take Quizzes</p>
   </div>
-  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
+  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
                         <div class="container mt-4">
                         <p v-if="quizi.ChapterID === 7"> Quiz 2 Score</p>
                         <p v-if="quizi.ChapterID === 6">Quiz 1 Score</p>
@@ -32,7 +32,7 @@
   <h1>Chapter 3</h1>
   <p v-if="chapter3">No Quiz Scores for Chapter 3, visit the Courses page to take Quizzes</p>
   </div>
-  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
+  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
                         <div class="container mt-4">
                         <p v-if="quizi.ChapterID === 12"> Quiz 2 Score</p>
                         <p v-if="quizi.ChapterID === 11">Quiz 1 Score</p>
@@ -46,7 +46,7 @@
   <h1>Chapter 4</h1>
   <p v-if="chapter4">No Quiz Scores for Chapter 4, visit the Courses page to take Quizzes</p>
   </div>
-  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quizID" v-bind:key="index" >
+  <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
                         <div class="container mt-4">
                         <p v-if="quizi.ChapterID === 17"> Quiz 2 Score</p>
                         <p v-if="quizi.ChapterID === 16">Quiz 1 Score</p>
@@ -60,9 +60,15 @@
   <h1>Chapter 5</h1>
   <p v-if="chapter5">No Quiz Scores for Chapter 5, visit the Courses page to take Quizzes</p>
   </div>
-  <div class="container mt-4">
-    <p>Chapter 3 Completion</p>
-    <progress-bar :progress="chapter3"/>
+<div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
+                        <div class="container mt-4">
+                        <p v-if="quizi.ChapterID === 22"> Quiz 2 Score</p>
+                        <p v-if="quizi.ChapterID === 21">Quiz 1 Score</p>
+                        <p v-if="quizi.ChapterID === 23"> Quiz 3 Score</p>
+                        <p v-if="quizi.ChapterID === 24">Quiz 4 Score</p>
+                        <p v-if="quizi.ChapterID === 25">Quiz 5 Score</p>
+                        <progress-bar v-if="quizi.ChapterID > 20 && quizi.ChapterID <26" :progress="quizi.Score"/>
+                        </div>
   </div>
   <div class ="container mt-4">
     <h1>Learning Type</h1>
@@ -80,36 +86,29 @@
     <p v-if="User.CourseRecommended === 3">Metaverse</p>
   </div>
   <div class="container mt-4">
-    <p>Enrolled Events</p>
-    <p>{{this.event1}}</p>
-    <p>
-
-
-    </p>
-    <p>{{this.event2}}</p>
-    <p>
-
-
-    </p>
-    <p>{{this.event3}}</p>
-  </div>
-  <div class="d-grid gap-2">
-    <button class="btn btn-success" type="button" @click="login(quiz1)">Load</button>
+    <h1>Enrolled Events</h1>
+    <div v-for="(eventi, index) in eventID" v-bind:key="index">
+      <div v-for="(eventj, index) in event.pastEvents" v-bind:key="index">
+        <p v-if="eventi.EventID === eventj.EventID">{{eventj.EventTitle}}</p>
+      </div>
+      <div v-for="(eventk, index) in event.upcomingEvents" v-bind:key="index">
+        <p v-if="eventi.EventID == eventk.EventID">{{eventk.EventTitle}}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import CustomHeader from '../components/Header.vue'
-import { ref, onBeforeMount } from "vue";
+import { ref, onBeforeMount, reactive } from "vue";
 import axios from 'axios';
 import ProgressBar from '../components/ProgressBar.vue';
-//import { computed } from 'vue';
 
-let quizDB = 'http://localhost:3001/api/quiz'
+let quizIDDB = 'http://localhost:3001/api/quizscoreswithid/'
 let chapterDB = 'http://localhost:3001/api/VideoCompletion'
-let eventIDDB = 'http://localhost:3001/api/UserEvents'
+let eventIDDB = 'http://localhost:3001/api/usereventwithid/'
 let eventDB = 'http://localhost:3001/api/event'
-let introQuizDB = 'http://localhost:3001/api/IntroQuizResult'
+let introQuizDB = 'http://localhost:3001/api/introresult/'
 
 export default {
   components:
@@ -119,19 +118,25 @@ export default {
       },
   setup() {
 
-    const quiz = ref('')
+    const quiz = ref([])
+    //const quizID = ref([])
     const chapter = ref('')
     const eventID = ref('')
     const event = ref('')
-    const introQuiz = ref('')
+    //const introQuiz = ref('')
     const id = localStorage.getItem('ID');
+    const User = reactive({});
 
     onBeforeMount(async () => {
-      await axios.get(quizDB)
-          .then(response => {
+      await axios.get(`${quizIDDB}${localStorage.getItem('ID')}`).then(response => {
             quiz.value = response.data;
-            console.log(quiz);
 
+          }).catch(err => {
+            console.error(err);
+          });
+      await axios.get(`${introQuizDB}${localStorage.getItem('ID')}`)
+          .then(response => {
+            Object.assign(User, response.data);
           }).catch(err => {
             console.error(err);
           });
@@ -142,37 +147,33 @@ export default {
           }).catch(err => {
             console.error(err);
           });
-      await axios.get(eventIDDB)
+      await axios.get(`${eventIDDB}${localStorage.getItem('ID')}`)
           .then(response => {
             eventID.value = response.data;
-
+            console.log(eventID);
           }).catch(err => {
             console.error(err);
           });
       await axios.get(eventDB)
           .then(response => {
             event.value = response.data;
-
+            console.log(event);
           }).catch(err => {
             console.error(err);
           });
-      await axios.get(introQuizDB)
-          .then(response => {
-            introQuiz.value = response.data;
 
-          }).catch(err => {
-            console.error(err);
-          });
+
     })
 
     let quiz1 = 0, quiz2 = 0, quiz3 = 0;
-    let chapter1 = 0, chapter2 = 0, chapter3 = 0;
     let eventID1, eventID2, eventID3, learnerType, areaOfStudy
     let event1 , event2 , event3 
-    let dataCorrect, data2Correct   
+    let dataCorrect, data2Correct
+    let trigger = true;
+    
 
     return {
-      quiz, quiz1, quiz2, quiz3, chapter1, chapter2, chapter3, eventID1, eventID2, eventID3, event1, event2, event3,dataCorrect, data2Correct, id, areaOfStudy, learnerType
+      quiz1, quiz2, quiz3, eventID1, eventID2, eventID3, event1, event2, event3,dataCorrect, data2Correct, id, areaOfStudy, learnerType, quiz, User, trigger, eventID, event
     }
   },
 
@@ -180,46 +181,51 @@ export default {
   methods:{
   },
   computed:{
+    quizlength(){
+      let quizlength = this.quiz.length;
+      return quizlength;
+    },
     chapter1(){
       let check = true;
-      for(let i = 0; i < this.quizID.length; i++)
+      for(let i = 0; i < this.quiz.length; i++)
       {
-        if(this.quizID[i].ChapterID < 6)
+        if(this.quiz[i].ChapterID < 6)
         {check = false;}
       }
+      return check;
     },
     chapter2(){
       let check = true;
-      for(let i = 0; i < this.quizID.length; i++)
+      for(let i = 0; i < this.quiz.length; i++)
       {
-        if(this.quizID[i].ChapterID > 5 && this.quizID[i].ChapterID < 11)
+        if(this.quiz[i].ChapterID > 5 && this.quiz[i].ChapterID < 11)
         {check = false;}
       }
       return check;
     },
     chapter3(){
       let check = true;
-      for(let i = 0; i < this.quizID.length; i++)
+      for(let i = 0; i < this.quiz.length; i++)
       {
-        if(this.quizID[i].ChapterID > 10 && this.quizID[i].ChapterID < 16)
+        if(this.quiz[i].ChapterID > 10 && this.quiz[i].ChapterID < 16)
         {check = false;}
       }
       return check;
     },
     chapter4(){
       let check = true;
-      for(let i = 0; i < this.quizID.length; i++)
+      for(let i = 0; i < this.quiz.length; i++)
       {
-        if(this.quizID[i].ChapterID > 15 && this.quizID[i].ChapterID < 21)
+        if(this.quiz[i].ChapterID > 15 && this.quiz[i].ChapterID < 21)
         {check = false;}
       }
       return check;
     },
     chapter5(){
       let check = true;
-      for(let i = 0; i < this.quizID.length; i++)
+      for(let i = 0; i < this.quiz.length; i++)
       {
-        if(this.quizID[i].ChapterID > 20 && this.quizID[i].ChapterID < 26)
+        if(this.quiz[i].ChapterID > 20 && this.quiz[i].ChapterID < 26)
         {check = false;}
       }
       return check;
