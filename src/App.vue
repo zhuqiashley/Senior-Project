@@ -1,7 +1,6 @@
 <!-- Navbar -->
 
 <template>
- <notifications position="bottom right" />  <!-- global notifications component -->
 	<nav class="navbar" aria-label="navigation">
 		<div class="container d-flex align-items-center">
 			<router-link to="/">

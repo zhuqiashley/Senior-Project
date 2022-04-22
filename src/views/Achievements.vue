@@ -2,8 +2,6 @@
 <template>
     <custom-header title="Achievements"></custom-header>
 
-    <!--Alert notification -->
-    <!--End Alert notification -->
 
 <div class="container mt-4">
         <progress-bar :progress="(unlocked.length / (locked.length + unlocked.length)) * 100" />
@@ -19,6 +17,8 @@
                     </template>
                 </card> 
             </div>
+
+            <Notification ref="alert"></Notification>
         </div>
     </div>
 </template>
@@ -32,11 +32,11 @@ import ProgressBar from '@/components/ProgressBar.vue';
 import axios from 'axios';
 import { ref, onBeforeMount } from "vue";
 //import { notify } from "@kyvg/vue3-notification";
+import Notification from '../components/Alert.vue'
 
 
 let achievementDB = 'http://localhost:3001/api/achievement'
 let userDB = 'http://localhost:3001/api/user'
-let UserAchievementsDB = 'http://localhost:3001/api/userachievements'
 let quizDB = 'http://localhost:3001/api/quiz'
 
 export default {
@@ -45,16 +45,15 @@ export default {
         CustomHeader,
         Card,
         ProgressBar,
+        Notification
     },
     setup() {
-        
-        //Get id of user logged in 
-        const userid = localStorage.getItem('ID');
 
         //Achievement Data 
+        const achievements = ref([])
+
         const AchievementTitle = ref('')
         const AchievementDescription = ref('')
-        const achievements = ref([])
         const UserAchievements = ref('')
         const BadgeID = ref(')')
 
@@ -69,45 +68,43 @@ export default {
         const CoursesTaken = ref('')
         const Streaks = ref('')
 
-        //get achievementsDB
+        // User Data
+	    const User = reactive({});
+
+        //access achievementsDB
         onBeforeMount(async () => {
-        await axios.get(achievementDB)
-            .then(response => {
-                achievements.value = response.data;
-            }).catch(err => {
-                console.error(err);
-            });})
+            //get Achievement data
+            await axios.get(achievementDB)
+                .then(response => {
+                    achievements.value = response.data;
+                }).catch(err => {
+                    console.error(err);
+                });
+            
+            //get user data
+            await axios.get(`${userDB}${localStorage.getItem('ID')}`)
+			    .then(response => {
+				    Object.assign(User, response.data);
+			    }).catch(err => {
+				    console.error(err);
+			});   
 
-        //Get user DB
-        const user = ref('')
-        onBeforeMount(async () => {
-        await axios.get(userDB)
-          .then(response => {
-            user.value = response.data;
+            //get user db
+            await axios.get(userDB)
+                .then(response => {
+                    user.value = response.data;
+                }).catch(err => {
+                    console.error(err);
+            });
 
-          }).catch(err => {
-            console.error(err);
-          });})
-        
-        //Get UserAchievements DB
-        onBeforeMount(async () => {
-        await axios.get(UserAchievementsDB)
-          .then(response => {
-            UserAchievements.value = response.data;
-
-          }).catch(err => {
-            console.error(err);
-          });})
-
-        //Get quiz DB
-        onBeforeMount(async () => {
-        await axios.get(quizDB)
-          .then(response => {
-            quiz.value = response.data;
-
-          }).catch(err => {
-            console.error(err);
-          });})
+            //get quiz data 
+            await axios.get(quizDB)
+                .then(response => {
+                    quiz.value = response.data;
+                }).catch(err => {
+                    console.error(err);
+            });
+        })
 
         const unlocked = computed(() => {
             return achievements.value.filter(achievement => achievement.unlocked);
@@ -116,7 +113,6 @@ export default {
         const locked = computed(() => {
             return achievements.value.filter(achievement => !achievement.unlocked);
         });
-        
         
         //Functions for checking for Achievement Requirements 
         //If requirements are satisfied, post to database, display notification, update achievements page
@@ -133,12 +129,13 @@ export default {
 
             achievements.value.unlocked = true;
 
-            this.$notify({ type: "success", text: "You have earned a badge!" });
-
-            await axios.post(UserAchievementsDB, {id, BadgeID: '1'})
+            await axios.post(UserAchievementsDB)
                .then((res) => {
                   UserAchievements.value.UserAchievementsID = res.data.insertId
-                  UserAchievements.value.push(id, BadgeID)
+                  UserAchievements.value.BadgeID = '1'
+                  UserAchievements.value.UserID = userid
+
+                  alert.value.addAlert('success', 'Event Registered', 3000);
                 }).catch(err => {
                   console.error(err)
                 })
@@ -159,12 +156,12 @@ export default {
 
               achievements.value.unlocked = true;
 
-              this.$notify({ type: "success", text: "You have earned a badge!" });
-
               await axios.post(UserAchievementsDB, {id, BadgeID: '2'})
                 .then((res) => {
                     UserAchievements.value.UserAchievementsID = res.data.insertId
                     UserAchievements.value.push(id, BadgeID)
+
+                    alert.value.addAlert('success', 'Event Registered', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
@@ -186,12 +183,12 @@ export default {
 
                 achievements.value.unlocked = true;
 
-                this.$notify({ type: "success", text: "You have earned a badge!" });
-
                 await axios.post(UserAchievementsDB, {id, BadgeID: '3'})
                     .then((res) => {
                         UserAchievements.value.UserAchievementsID = res.data.insertId
                         UserAchievements.value.push(id, BadgeID)
+
+                        alert.value.addAlert('success', 'Event Registered', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
@@ -222,12 +219,12 @@ export default {
 
                 achievements.value.unlocked = true;
 
-                this.$notify({ type: "success", text: "You have earned a badge!" });
-
                 await axios.post(UserAchievementsDB, {id, BadgeID: '5'})
                     .then((res) => {
                         UserAchievements.value.UserAchievementsID = res.data.insertId
                         UserAchievements.value.push(id, BadgeID)
+
+                        alert.value.addAlert('success', 'Event Registered', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
@@ -250,12 +247,12 @@ export default {
 
                 achievements.value.unlocked = true;
 
-                this.$notify({ type: "success", text: "You have earned a badge!" });
-
                 await axios.post(UserAchievementsDB, {id, BadgeID: '6'})
                     .then((res) => {
                         UserAchievements.value.UserAchievementsID = res.data.insertId
                         UserAchievements.value.push(id, BadgeID)
+
+                        alert.value.addAlert('success', 'Event Registered', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
@@ -277,12 +274,12 @@ export default {
 
                 achievements.value.unlocked = true;
 
-                this.$notify({ type: "success", text: "You have earned a badge!" });
-
                 await axios.post(UserAchievementsDB, {id, BadgeID: '7'})
                     .then((res) => {
                         UserAchievements.value.UserAchievementsID = res.data.insertId
                         UserAchievements.value.push(id, BadgeID)
+
+                        alert.value.addAlert('success', 'Event Registered', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
@@ -304,23 +301,18 @@ export default {
 
                 achievements.value.unlocked = true;
 
-                this.$notify({ type: "success", text: "You have earned a badge!" });
-
                 await axios.post(UserAchievementsDB, {id, BadgeID: '7'})
                     .then((res) => {
                         UserAchievements.value.UserAchievementsID = res.data.insertId
                         UserAchievements.value.push(id, BadgeID)
+
+                        alert.value.addAlert('success', 'Event Registered', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
             }
         }
         }
-
-        //test notification
-        //this.$notify({ type: "warning", text: "This is a test alert" });
-        
-
         return {
             achievements, 
             AchievementTitle, 
@@ -339,10 +331,11 @@ export default {
             badge1,
             badge2,
             badge3,
+            badge4,
             badge5,
-            badge6, 
+            badge6,
             badge7,
-            badge8
+            badge8,
         }
     },
 }
