@@ -63,8 +63,8 @@ export default {
 }
 
 .card-img-left {
-    height: 15rem;
-    width: 35rem;
+        height: 15rem;
+    width: 20rem;
     float: left;
     display: block;
     margin: 1rem;

@@ -16,6 +16,11 @@ import "bootstrap"
 
 // Global Styling
 import '@/assets/main.css';
+
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $;
+
 createApp(App).use(store).use(router).mount('#app')
 
 //remove before demo, test code for session storage
