@@ -1,6 +1,6 @@
 <template>
   <div>
-    <custom-header :title="this.course+' Scores'"></custom-header>
+    <custom-header :title="titleValue"></custom-header>
     <div class="center">
       <div v-for="(c, index) in chapter" v-bind:key="index">
         <div class="item">{{ c.ChapterName }} : {{ c.Score }}</div>
@@ -22,11 +22,15 @@ export default {
   data() {
     return {
       chapter: [],
-      course: this.$store.state.courses[this.id].title
+    }
+  },
+  computed: {
+    titleValue() {
+      return  this.$route.query.title
     }
   },
   mounted() {
-    getScores(20220405, this.id).then(res => {
+    getScores(localStorage.getItem('ID'), this.id).then(res => {
       this.chapter = res.data
     })
   }
