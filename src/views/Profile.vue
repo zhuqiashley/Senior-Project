@@ -8,7 +8,7 @@
       <h1>{{this.userid}}</h1>
     </div>
   </section>
-
+  </div>
   <!-- User streaks here --> 
 
 
