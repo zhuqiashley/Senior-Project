@@ -1,12 +1,12 @@
 <template>
   <div>
-    <custom-header :title="this.course+' Feedback'"></custom-header>
+    <custom-header :title="titleValue"></custom-header>
     <div style="height: 30px;"></div>
     <div class="center item">
       Congratulations on completing the course!
     </div>
     <div class="center item">
-      Please leave feedback bothpositive and negitive so we can
+      Please leave feedback both positive and negative so we can
     </div>
     <div class="center item">
       improve the user experience for future students who take this class.
@@ -34,8 +34,12 @@ export default {
   data() {
     return {
       chapter: [],
-      course: this.$store.state.courses[this.id].title,
       feedback: '',
+    }
+  },
+  computed: {
+    titleValue() {
+      return  this.$route.query.title
     }
   },
   methods: {

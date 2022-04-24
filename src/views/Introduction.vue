@@ -3,9 +3,9 @@
     <custom-header :title="'Introduction Quiz'"></custom-header>
     <div style="margin-left:20px;">
       <div v-if="this.result===0" style="margin-left: 20%;margin-right: 20%;">
-        <h1>What Type of Learner Are You?</h1>
+        <!-- <h1>What Type of Learner Are You?</h1>
         <img src="../assets/img/quiz/introQuiz.png"
-            style="text-align:center;margin-right: 15%;margin-bottom: 15px;margin-top: 15px" height="300">
+            style="text-align:center;margin-right: 15%;margin-bottom: 15px;margin-top: 15px" height="300"> -->
         <div v-for="(pro,idx) in list" :key="pro.QuestionID">
           <p class="content">{{ pro.QuestionID }}. {{ pro.Content }}</p>
           <label>
@@ -199,7 +199,7 @@ export default {
         this.resource = 'Metaverse'
         recommend = 3
       }
-      updateIntroQuizResult(20220405, type, recommend)
+      updateIntroQuizResult(localStorage.getItem('ID'), type, recommend)
       alert("submit success")
     },
     getMax(num1, num2, num3) {
@@ -209,65 +209,7 @@ export default {
   },
   data() {
     return {
-      list: [
-        {
-          "A": "Watch someone show me how.",
-          "B": "Hear someone tell me how.",
-          "C": "Try to do it myself.",
-          "id": 1,
-          "content": "If I have to learn how to do something, I learn best when I:"
-        },
-        {
-          "A": "Looking at the word to see if it looks correct.",
-          "B": "Sounding the word out in my head.",
-          "C": "Getting a feeling about the correctness of the spelling.",
-          "id": 2,
-          "content": "When I spell, I verify accuracy by:"
-        },
-        {
-          "A": "See the actual places in my mind as I say them or prefer to draw \n" +
-              "them.",
-          "B": "Have no difficulty giving them verbally.",
-          "C": "Have to point or move my body as I give them.",
-          "id": 3,
-          "content": "When asked to give directions, I:"
-        },
-        {
-          "A": "Write them down.",
-          "B": "Repeat them over and over to myself.",
-          "C": "Move around and use my fingers to name each item.",
-          "id": 4,
-          "content": "When I have to remember a list of items, I remember them best if I:"
-        },
-        {
-          "A": "Write or draw diagrams to see it.",
-          "B": "Talk myself through it.",
-          "C": "Use and/or move objects to help me think.",
-          "id": 5,
-          "content": "When solving a problem, I:"
-        },
-        {
-          "A": "Looking at the numbers to see if they are correct.",
-          "B": "Counting the numbers in my head or out loud.",
-          "C": "Using my fingers to get a feeling if it is correct.",
-          "id": 6,
-          "content": "When I am adding numbers, I verify my answer by:"
-        },
-        {
-          "A": "Faces more easily than names.",
-          "B": "Names more easily than faces.",
-          "C": "The situation or the meeting more easily than names or faces.",
-          "id": 7,
-          "content": "When trying to recall names, I remember:"
-        },
-        {
-          "A": "The room is dark.",
-          "B": "The room is quiet.",
-          "C": "The bed feels comfortable.",
-          "id": 8,
-          "content": "Before going to sleep at night, I appreciate that:"
-        },
-      ],
+      list: [],
       checkedValue: [
         3, 3, 3, 3, 3, 3, 3, 3
       ],

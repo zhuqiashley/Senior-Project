@@ -1,6 +1,6 @@
 <template>
   <div style="margin-left: 20%;margin-right: 20%;">
-    <h1>Chapter {{ Number(index) }} Quiz</h1>
+    <h1> {{ this.chapterName }} Quiz</h1>
     <div v-for="(pro,idx) in current" :key="pro.id">
       <p class="content">{{ idx + 1 }}. {{ pro.Content }}</p>
       <label>
@@ -53,10 +53,9 @@
     <div v-if="this.$store.state.isSubmit">
       <p>Your score: {{ score }}</p>
       <div v-if="score<80">
-        <p>Reference:<a :href="this.$store.state.url[this.id][this.index]"> Click Here </a></p>
+        <p>Reference:<a :href="this.reference"> Click Here </a></p>
         <p>Watch this chapter video again:</p>
-        <!--      <router-link :to="{ path: '/chapter', query: $route.query }"><p>video</p></router-link>-->
-        <iframe width="420" height="315" :src="this.$store.state.video[this.id][this.index]"
+        <iframe width="420" height="315" :src="this.video"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -68,7 +67,7 @@
 
 <script>
 
-import {getCourseQuizzes, updateQuizScores} from "../api/api";
+import {getChapterName, getCourseQuizzes, getReference, getVideo, updateQuizScores} from "../api/api";
 
 export default {
   name: "Problem",
@@ -89,14 +88,15 @@ export default {
         }
       }
       this.score = score
-      updateQuizScores(20220405, this.index, score)
+      console.log('id:')
+      console.log(localStorage.getItem('ID'))
+      updateQuizScores(localStorage.getItem('ID'), this.index, score)
       this.$store.state.isSubmit = true
       alert("submit success")
     },
     getMore() {
       this.$store.state.isSubmit = false
       this.current = this.getRandomArrayElements(this.list, 5)
-      // this.$store.commit('setCurrent', list)
       for (let i = 0; i < this.checkedValue.length; i++) {
         this.checkedValue[i] = 4
       }
@@ -125,16 +125,28 @@ export default {
         4,
         4,
       ],
-      map:['A','B','C','D'],
-      score:0,
+      map: ['A', 'B', 'C', 'D'],
+      score: 0,
       list: [],
       current: [],
+      reference:'',
+      video:'',
+      chapterName: '',
     }
   },
   mounted() {
     getCourseQuizzes(this.id, this.index).then(res => {
       this.list = res.data
       this.current = res.data.slice(0, 5)
+    })
+    getReference(this.id,this.index).then(res => {
+      this.reference = res.data[0].ReferenceLink
+    })
+    getVideo(this.id, this.index).then(res => {
+      this.video = res.data[0].ModuleVideo
+    })
+    getChapterName(this.index).then(res => {
+      this.chapterName = res.data[0].ChapterName
     })
   }
 }
@@ -148,7 +160,6 @@ export default {
   margin-top: 15px;
   margin-bottom: 10px;
 }
-
 .item {
   padding-left: 15px;
   line-height: 40px;
@@ -156,12 +167,10 @@ export default {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
 .item:hover {
   cursor: default;
   background-color: #f4f4f5;
 }
-
 .explain {
   padding-left: 15px;
   line-height: 40px;
@@ -169,5 +178,4 @@ export default {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
 </style>
