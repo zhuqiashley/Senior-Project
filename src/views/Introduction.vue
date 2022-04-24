@@ -131,6 +131,9 @@
           <br>
           <h4>The right course(s) for you is/are {{ resource }}.</h4>
           <br>
+          <div class="d-grid gap-2">
+          <a class="text-link" @click="edit">View Profile</a>
+        </div>
         </div>
       </div>
     </div>
@@ -148,6 +151,9 @@ export default {
     CustomHeader,
   },
   methods: {
+    edit(){
+        this.$router.push('Profile');
+    },
     submit() {
       for (let i = 0; i < this.checkedValue.length; i++) {
         if (this.checkedValue[i] === 3) {

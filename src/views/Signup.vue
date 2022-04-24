@@ -21,8 +21,27 @@
           <label for="floatingInput">Password</label>
         </div>
         <div class = "form-floating mb-3">
-          <input v-model="password" ref="getrole" class="form-control" placeholder="Student or Admin">
-          <label for="floatingInput">Student or Admin</label>
+          <select ref="getroledropdown">
+            <option>Role</option>
+            <option value="Student">Student</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <div class = "form-floating mb-3">
+          <p>Security Question</p>
+        </div>
+        <div class = "form-floating mb-3">
+          <select ref="getsecurityquestion">
+            <option>Select a Quesion</option>
+            <option value="1">What is your Mother's Maiden name?</option>
+            <option value="2">What town where you born in?</option>
+            <option value = "3">What is the title of your favorite book?</option>
+            <option value = "4">What is your favorite song?</option>
+          </select>
+        </div>
+        <div class = "form-floating mb-3">
+          <input v-model="answer" ref="getanswer" type="answer" class="form-control" placeholder="password">
+          <label for="floatingInput">Answer</label>
         </div>
         <div class="d-grid gap-2">
           <button class="btn btn-success" type="button" @click="submit">Sign Up</button>
@@ -37,11 +56,13 @@
 
 import Card from '../components/Card.vue'
 import CustomHeader from '../components/Header.vue'
-//import { ref, onBeforeMount } from "vue";
+import { ref } from "vue";
 import axios from 'axios';
 //import {onBeforeMount, ref} from "vue";
+//import bcrypt from 'bcrypt'
 
 let userDB = 'http://localhost:3001/api/userpost'
+//let userLoginDB = 'http://localhost:3001/api/userlogin/'
 
 export default {
   components:
@@ -50,19 +71,10 @@ export default {
         CustomHeader
       },
   setup() {
-    /*const user = ref('')
-    onBeforeMount(async () => {
-      await axios.get(userDB)
-          .then(response => {
-            user.value = response.data;
-
-          }).catch(err => {
-            console.error(err);
-          });})
-
-    return {
-      user
-    }*/
+    const User = ref([])
+    return{
+      User
+    }
   },
   methods:{
     submit(){
@@ -70,13 +82,27 @@ export default {
       let lastName = this.$refs.getlastname.value;
       let email = this.$refs.getemail.value;
       let passwordInput = this.$refs.getpassword.value;
-      let roleInput = this.$refs.getrole.value;
+      let roleInput = this.$refs.getroledropdown.value;
+      let securityquestion = this.$refs.getsecurityquestion.value;
+      let securityanswer = this.$refs.getanswer.value;
+      //let answer = this.$refs.answer.value;
+      //let rounds = 10;
 
-       axios.post(userDB, {FirstName:firstName, LastName:lastName, username:email, password:passwordInput, role:roleInput}).then(response=>{
+      /*bcrypt.hash(passwordInput, rounds, (err, hash) => {
+      if (err) {
+      console.error(err)
+      return
+      }
+      console.log(hash)
+      })*/
+
+       axios.post(userDB, {FirstName:firstName, LastName:lastName, username:email, password:passwordInput, role:roleInput, SecurityQuestion:securityquestion, SecurityAnswer:securityanswer}).then(response=>{
         console.log(response);
       }).catch(e=>{
         console.error(e);
       });
+      localStorage.setItem('Name', email);
+      localStorage.setItem('signedIn', 1);
        this.$router.push('AccountCreationSuccess');
     }
   }
