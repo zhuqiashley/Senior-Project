@@ -25,6 +25,11 @@ import LogoutSuccess from "../views/LogoutSuccess";
 import EditProfile from "../views/EditProfile";
 import Feedback from "../views/Feedback";
 import Score from "../views/Score";
+import EditProfilePasswordCheck from "../views/EditProfilePasswordCheck";
+import ChangePassword from "../views/ChangePassword"
+import ChangePasswordPasswordCheck from "../views/ChangePasswordPasswordCheck";
+import ForgotPassword from "../views/ForgotPassword";
+import ForgotPasswordID from "../views/ForgotPasswordID";
 import CourseRating from "../views/CourseRating.vue"
 
 const routes = [
@@ -261,6 +266,52 @@ const routes = [
 		meta: {
 			title: 'Master CS | Edit Profile'
 		}
+
+	},
+	{
+		path: '/EditProfilePasswordCheck',
+		name: 'EditProfilePasswordCheck',
+		component: EditProfilePasswordCheck,
+		meta: {
+			title: 'Master CS | Password Check'
+		}
+
+	},
+	{
+		path: '/ChangePassword',
+		name: 'ChangePassword',
+		component: ChangePassword,
+		meta: {
+			title: 'Master CS | ChangePassword'
+		}
+
+	},
+	{
+		path: '/ChangePasswordPasswordCheck',
+		name: 'ChangePasswordPasswordCheck',
+		component: ChangePasswordPasswordCheck,
+		meta: {
+			title: 'Master CS | Password Check'
+		}
+
+	},
+	{
+		path: '/ForgotPassword',
+		name: 'ForgotPassword',
+		component: ForgotPassword,
+		meta: {
+			title: 'Master CS | Forgot Password'
+		}
+
+	},
+	{
+		path: '/ForgotPasswordID',
+		name: 'ForgotPasswordID',
+		component: ForgotPasswordID,
+		meta: {
+			title: 'Master CS | Forgot Password'
+		}
+
 	}
 ]
 
