@@ -56,12 +56,13 @@
 
 import Card from '../components/Card.vue'
 import CustomHeader from '../components/Header.vue'
-//import { ref, onBeforeMount } from "vue";
+import { ref } from "vue";
 import axios from 'axios';
 //import {onBeforeMount, ref} from "vue";
 //import bcrypt from 'bcrypt'
 
 let userDB = 'http://localhost:3001/api/userpost'
+//let userLoginDB = 'http://localhost:3001/api/userlogin/'
 
 export default {
   components:
@@ -70,6 +71,10 @@ export default {
         CustomHeader
       },
   setup() {
+    const User = ref([])
+    return{
+      User
+    }
   },
   methods:{
     submit(){
@@ -96,6 +101,8 @@ export default {
       }).catch(e=>{
         console.error(e);
       });
+      localStorage.setItem('Name', email);
+      localStorage.setItem('signedIn', 1);
        this.$router.push('AccountCreationSuccess');
     }
   }

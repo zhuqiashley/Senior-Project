@@ -54,6 +54,7 @@ import axios from 'axios';
 //import router from "../router"
 
 let userLoginDB = 'http://localhost:3001/api/userprofile/'
+let introQuizDB = 'http://localhost:3001/api/introresult/'
 
 export default {
     components:
@@ -73,12 +74,19 @@ export default {
     }
     const users = ref([])
     const User = reactive({});
+    const userIntro = reactive({});
     const data1 = ref([])
     let id = localStorage.getItem('ID');
     onBeforeMount(async () => {
       await axios.get(`${userLoginDB}${localStorage.getItem('ID')}`).then(response => {
             Object.assign(User, response.data);
 
+          }).catch(err => {
+            console.error(err);
+          });
+      await axios.get(`${introQuizDB}${localStorage.getItem('ID')}`)
+          .then(response => {
+            Object.assign(userIntro, response.data);
           }).catch(err => {
             console.error(err);
           });

@@ -237,6 +237,7 @@ export default {
 
 
     })
+    console.log(id);
 
     let quiz1 = 0, quiz2 = 0, quiz3 = 0;
     let eventID1, eventID2, eventID3, learnerType, areaOfStudy
