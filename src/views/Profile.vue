@@ -2,12 +2,48 @@
 <template>
   <div class = "Signup">
     <custom-header title="Profile"></custom-header>
-  <!-- ======= UserProfilePage Section ======= -->
-  <section id="UserPage" class="d-flex align-items-center">
-    <div class="section-title">
-      <h1>{{this.userid}}</h1>
-    </div>
-  </section>
+  <div class = "login container mt-4">
+    <card>
+      <div class="card-text">
+                <slot name="body"></slot>
+            </div>
+      <template #body>
+        <div class = "form-floating mb-3">
+          <p>First Name: {{User.FirstName}}</p>
+        </div>
+        <div class = "form-floating mb-3">
+          <p>Last Name: {{User.LastName}}</p>
+        </div>
+        <div class = "form-floating mb-3">
+          <p>Username: {{User.username}}</p>
+        </div>
+        <div class = "form-floating mb-3">
+          <p>Role: {{User.Role}}</p>
+        </div>
+      </template>
+    </card>
+    <card>
+      <template #body>
+      <div class="d-grid gap-2">
+          <button class="btn btn-success" type="button" @click="edit">Edit Profile</button>
+        </div>
+      </template>
+    </card>
+    <card>
+      <template #body>
+      <div class="d-grid gap-2">
+          <button class="btn btn-success" type="button" @click="statistics">View Statistics</button>
+        </div>
+      </template>
+    </card>
+    <card>
+      <template #body>
+      <div class="d-grid gap-2">
+          <button class="btn btn-success" type="button" @click="password">Change Password</button>
+        </div>
+      </template>
+    </card>
+  </div>
   </div>
   <!-- User streaks here --> 
 
@@ -30,16 +66,16 @@
 <script>
 import Card from '../components/Card.vue'
 import CustomHeader from '../components/Header.vue'
-//import Card from '../components/Card.vue'
-//import axios from "axios"
 
 //const goalDB = 'http://localhost:3001/api/goal'
 //const deleteGoalDB = 'http://localhost:3001/api/goal/'
 
+import { ref, onBeforeMount, reactive } from "vue";
+import axios from 'axios';
 //import router from "../router"
 
-let userDB = 'http://localhost:3001/api/userwithoutid'
-let userwithidDB = 'http://localhost:3001/api/user'
+let userLoginDB = 'http://localhost:3001/api/userprofile/'
+let introQuizDB = 'http://localhost:3001/api/introresult/'
 
 export default {
     components:
@@ -48,42 +84,34 @@ export default {
     //Card
 },
   setup(){
-
+      let reloadCheck = localStorage.getItem('reloadCheck');
+      let zero = 0;
+      console.log(reloadCheck);
+    if(reloadCheck > 0)
+    {
+      window.location.reload();
+      localStorage.setItem('reloadCheck', zero);
+      console.log("inside if");
+    }
     const users = ref([])
+    const User = reactive({});
+    const userIntro = reactive({});
     const data1 = ref([])
     let id = localStorage.getItem('ID');
-    const intID = id;
     onBeforeMount(async () => {
-      await axios.get(userDB, {params:{UserID : intID}})
-          .then(response => {
-            users.value = response.data;
+      await axios.get(`${userLoginDB}${localStorage.getItem('ID')}`).then(response => {
+            Object.assign(User, response.data);
 
           }).catch(err => {
             console.error(err);
           });
-
-          await axios.get(userwithidDB, {params:{UserID : intID}})
+      await axios.get(`${introQuizDB}${localStorage.getItem('ID')}`)
           .then(response => {
-            data1.value = response.data;
-          }).catch(err=>{
+            Object.assign(userIntro, response.data);
+          }).catch(err => {
             console.error(err);
-            console.log(err);
           });
           })
-
-          /*async function pullProfile(id)
-          {
-            axios.get(userwithidDB, {params:{UserID : intID}})
-          .then(response => {
-            data1.value = response.data;
-          }).catch(err=>{
-            console.error(err);
-            console.log(err);
-          });
-          }*/
-
-      //const data1 = axios.get(userwithidDB, {params:{UserID : id}}).then(res => res.data);
-      console.log(data1);
 
       let firstName = data1.value.FirstName; 
       let lastName, email, role, firstNameLabel, lastNameLabel, emailLabel, roleLabel
@@ -183,46 +211,28 @@ if (OneDay < timeNow) {
     return {
       user: {
         name: ""
+      return{
+        id, firstName, lastName, email, role, firstNameLabel, lastNameLabel, emailLabel, roleLabel, users, data1, User
       }
     }
   },
 
   methods:{
     login: async function(){
-      const email = localStorage.getItem('ID');
-      try{
-        const data = await axios.get(userDB, {params: {UserID: email}}).then(res => res.data);
-        console.log(data);
-        for(var i = 0; i < data.valueOf().length; i++)
-        {
-          let id = data[i].UserID;
-          /*let variablecheck = data[i].FirstName;
-          console.log(variablecheck);*/
-          this.firstNameLabel = "First Name: ";
-          this.lastNameLabel = "Last Name: "
-          this.emailLabel = "Email: "
-          this.roleLabel = "Role: "
-          if(id == email)
-          {
-            this.firstName = data[i].FirstName;
-            console.log(this.firstName);
-            this.lastName = data[i].LastName;
-            console.log(this.lastName);
-            this.email = data[i].username;
-            console.log(this.email);
-            this.role = data[i].Role;
-            console.log(this.role);
-            this.$forceUpdate();
-          }
-        }
-      }
-      catch
-      {
-        await this.$router.push('Events');
-      }
+      
     },
     edit: async function(){
-      await this.$router.push('EditProfile');
+      localStorage.setItem('fillCheck',0);
+      localStorage.setItem('passwordCheck',0);
+      await this.$router.push('EditProfilePasswordCheck');
+    },
+    statistics: async function(){
+      await this.$router.push('Statistics');
+    },
+    password: async function(){
+      localStorage.setItem('fillCheck',0);
+      localStorage.setItem('passwordCheck',0);
+      await this.$router.push('ChangePasswordPasswordCheck');
     }
   }
 }

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <custom-header :title="this.course+' Quiz'"></custom-header>
-    <img src="../assets/img/quiz/chQuiz.png" height="200" width="800"
-        style="margin-left: 33%;margin-bottom: 20px;">
+    <custom-header :title="titleValue"></custom-header>
+    <!-- <img src="../assets/img/quiz/chQuiz.png" height="200" width="800"
+        style="margin-left: 33%;margin-bottom: 20px;"> -->
     <div class="parent">
       <ul class="nav-left-container">
         <li v-for="(c, index) in ch" v-bind:key="index">
@@ -36,12 +36,15 @@ export default {
         'Chapter 4',
         'Chapter 5',
       ],
-      course: this.$store.state.courses[this.id].title
+    }
+  },
+  computed: {
+    titleValue() {
+      return  this.$route.query.title
     }
   },
   methods: {
     toProblem(index) {
-      this.$store.commit('setCurrent', this.$store.state.problems[this.id][index].slice(0, 5))
       this.$store.state.isSubmit = false
       this.$router.push({
         name: "Problem",

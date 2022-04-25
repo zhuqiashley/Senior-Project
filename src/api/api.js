@@ -74,3 +74,32 @@ export function submitFeedback(CourseID,Feedback) {
         timeout: 5000,
     })
 }
+
+export function getReference(CourseID,ChapterID) {
+    return axios.get(baseURL + 'getReference', {
+        params: {
+            CourseID,
+            ChapterID,
+        },
+        timeout: 5000,
+    })
+}
+
+export function getVideo(CourseID,ChapterID) {
+    return axios.get(baseURL + 'getVideo', {
+        params: {
+            CourseID,
+            ChapterID,
+        },
+        timeout: 5000,
+    })
+}
+
+export function getChapterName(ChapterID) {
+    return axios.get(baseURL + 'getChapterName', {
+        params: {
+            ChapterID,
+        },
+        timeout: 5000,
+    })
+}

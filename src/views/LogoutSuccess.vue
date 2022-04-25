@@ -28,7 +28,14 @@ export default {
   name: "AccountCreationSuccess",
 
   setup(){
-      localStorage.clear();
+    let zero = 0;
+      if(localStorage.getItem('signedIn') > 0)
+      {
+        window.location.reload();
+        localStorage.setItem('signedIn', zero);
+      }
+      localStorage.setItem('signedIn', zero);
+      localStorage.setItem('ID',0);
   },
   methods:{
   redirect: async function () {
