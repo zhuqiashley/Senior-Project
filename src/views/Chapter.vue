@@ -37,7 +37,7 @@
               <div class="accordion-body">
                 <p>{{this.chapterData?.chapterDetail1}}</p>
                 <iframe width="420" height="315" :src="this.chapterData?.chapter1"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <button class="btn btn-primary" style="float:right;" @click="completeChapter(20)" :disabled="this.progress > 20"> Complete </button>
+                <button class="btn btn-primary" style="float:right;" @click="completeChapterOne" :disabled="this.progress > 20"> Complete </button>
               </div>
               
             </div>
@@ -66,7 +66,7 @@
               <div class="accordion-body">
                 <p>{{this.chapterData?.chapterDetail2}}</p>
                 <iframe width="420" height="315" :src="this.chapterData?.chapter2"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <button class="btn btn-primary" style="float:right;" @click="completeChapter(40)" :disabled="this.progress > 40"> Complete </button>
+                <button class="btn btn-primary" style="float:right;" @click="completeChapterTwo" :disabled="this.progress > 40"> Complete </button>
 
               </div>
             </div>
@@ -96,7 +96,7 @@
               <div class="accordion-body">
               <p>{{this.chapterData?.chapterDetail3}}</p>
               <iframe width="420" height="315" :src="this.chapterData?.chapter3"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <button class="btn btn-primary" style="float:right;" @click="completeChapter(60)" :disabled="this.progress > 60"> Complete </button>
+                <button class="btn btn-primary" style="float:right;" @click="completeChapterThree" :disabled="this.progress > 60"> Complete </button>
 
               </div>
             </div>
@@ -126,7 +126,7 @@
               <div class="accordion-body">
                <p>{{this.chapterData?.chapterDetail4}}</p>
                <iframe width="420" height="315" :src="this.chapterData?.chapter4"  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <button class="btn btn-primary" style="float:right;" @click="completeChapter(80)" :disabled="this.progress > 80"> Complete </button>
+                <button class="btn btn-primary" style="float:right;" @click="completeChapterFour" :disabled="this.progress > 80"> Complete </button>
 
               </div>
             </div>
@@ -157,7 +157,7 @@
               <div class="accordion-body">
                 <p>{{this.chapterData?.chapterDetail5}}</p>
                 <iframe width="420" height="315"  :src="this.chapterData?.chapter5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <button class="btn btn-primary" style="float:right;" @click="completeChapter(100)" :disabled="this.progress > 90"> Finish </button>
+                <button class="btn btn-primary" style="float:right;" @click="completeChapterFive" :disabled="this.progress > 90"> Finish </button>
               </div>
             </div>
           </div>
@@ -173,6 +173,7 @@ import CustomHeader from "../components/Header.vue";
 import ProgressBar from "../components/ProgressBar.vue";
 import axios from 'axios'
 
+let userDB = 'http://localhost:3001/api/completechapter'
 
 export default {
   components: {
@@ -193,8 +194,12 @@ export default {
 				console.error(err)
 			})
       if (localStorage.getItem('ID')) {
-        axios.post("http://localhost:3001/api/getProgress/", { user_id: localStorage.getItem('ID'), course_id: this.$route.query.id})
+        let id = localStorage.getItem('ID');
+        let courseid = this.$route.query.id;
+        console.log("UserID = " + localStorage.getItem('ID') + " courseId = " + this.$route.query.id);
+        axios.get("http://localhost:3001/api/getProgress", { user_id: id, course_id: courseid})
         .then((res) => {
+          console.log(res.data);
           this.progress = res.data[0].course_completion
           // this.chapterData = res.data[0]
         }).catch(err => {
@@ -252,7 +257,127 @@ export default {
         });
           // const uEData = await userEnrolledData.json();
       }
-    }
+    },
+  completeChapterOne()
+  {
+    console.log("inside chapterone");
+    let id = this.$route.query.id;
+    let Userid = localStorage.getItem('ID');
+    let courseID = 0;
+    if(id == 1)
+    {courseID = 1;}
+    else if(id == 2)
+    {courseID = 6;}
+    else if(id == 3)
+    {courseID = 11;}
+    else if(id == 4)
+    {courseID = 16;}
+    else if(id ==5)
+    {courseID = 21;}
+    else if(id == 6)
+    {courseID = 26;}
+    axios.post(userDB, {userid:Userid, courseid:courseID}).then(response=>{
+        console.log(response);
+      }).catch(e=>{
+        console.error(e);
+      });
+  },
+  completeChapterTwo()
+  {
+    console.log("inside chaptertwo");
+    let id = this.$route.query.id;
+    let Userid = localStorage.getItem('ID');
+    let courseID = 0;
+    if(id == 1)
+    {courseID = 2;}
+    else if(id == 2)
+    {courseID = 7;}
+    else if(id == 3)
+    {courseID = 12;}
+    else if(id == 4)
+    {courseID = 17;}
+    else if(id ==5)
+    {courseID = 22;}
+    else if(id == 6)
+    {courseID = 27;}
+    axios.post(userDB, {userid:Userid, courseid:courseID}).then(response=>{
+        console.log(response);
+      }).catch(e=>{
+        console.error(e);
+      });
+  },
+  completeChapterThree()
+  {
+    console.log("inside chapterthree");
+    let id = this.$route.query.id;
+    let Userid = localStorage.getItem('ID');
+    let courseID = 0;
+    if(id == 1)
+    {courseID = 3;}
+    else if(id == 2)
+    {courseID = 8;}
+    else if(id == 3)
+    {courseID = 13;}
+    else if(id == 4)
+    {courseID = 18;}
+    else if(id ==5)
+    {courseID = 23;}
+    else if(id == 6)
+    {courseID = 28;}
+    axios.post(userDB, {userid:Userid, courseid:courseID}).then(response=>{
+        console.log(response);
+      }).catch(e=>{
+        console.error(e);
+      });
+  },
+  completeChapterFour()
+  {
+    console.log("inside chapterfour");
+    let id = this.$route.query.id;
+    let Userid = localStorage.getItem('ID');
+    let courseID = 0;
+    if(id == 1)
+    {courseID = 4;}
+    else if(id == 2)
+    {courseID = 9;}
+    else if(id == 3)
+    {courseID = 14;}
+    else if(id == 4)
+    {courseID = 19;}
+    else if(id ==5)
+    {courseID = 24;}
+    else if(id == 6)
+    {courseID = 29;}
+    axios.post(userDB, {userid:Userid, courseid:courseID}).then(response=>{
+        console.log(response);
+      }).catch(e=>{
+        console.error(e);
+      });
+  },
+  completeChapterFive()
+  {
+    console.log("inside chapterfive");
+    let id = this.$route.query.id;
+    let Userid = localStorage.getItem('ID');
+    let courseID = 0;
+    if(id == 1)
+    {courseID = 5;}
+    else if(id == 2)
+    {courseID = 10;}
+    else if(id == 3)
+    {courseID = 15;}
+    else if(id == 4)
+    {courseID = 20;}
+    else if(id ==5)
+    {courseID = 25;}
+    else if(id == 6)
+    {courseID = 30;}
+    axios.post(userDB, {userid:Userid, courseid:courseID}).then(response=>{
+        console.log(response);
+      }).catch(e=>{
+        console.error(e);
+      });
+  }
   },
   setup() {},
 };
