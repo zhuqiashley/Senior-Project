@@ -3,7 +3,7 @@
 	<custom-header title="Courses"></custom-header>
 	<div class="parent">
 		<div v-for="(course, index) in courses" v-bind:key="index" >
-			<card class= "mt-4" :image="course?.CourseImage" >
+			<card class= "mt-4" :image="{'src': course.image_src, 'alt': course.image_alt}" >
 				<template #title>
 					{{course?.title}}
 				</template>
