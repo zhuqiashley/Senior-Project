@@ -135,7 +135,7 @@ export default {
                   UserAchievements.value.BadgeID = '1'
                   UserAchievements.value.UserID = userid
 
-                  alert.value.addAlert('success', 'Event Registered', 3000);
+                  alert.value.addAlert('success', 'You have earned a badge!', 3000);
                 }).catch(err => {
                   console.error(err)
                 })
@@ -159,9 +159,10 @@ export default {
               await axios.post(UserAchievementsDB, {id, BadgeID: '2'})
                 .then((res) => {
                     UserAchievements.value.UserAchievementsID = res.data.insertId
-                    UserAchievements.value.push(id, BadgeID)
+                    UserAchievements.value.BadgeID = '2'
+                    UserAchievements.value.UserID = userid
 
-                    alert.value.addAlert('success', 'Event Registered', 3000);
+                    alert.value.addAlert('success', 'You have earned a badge!', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
@@ -186,9 +187,10 @@ export default {
                 await axios.post(UserAchievementsDB, {id, BadgeID: '3'})
                     .then((res) => {
                         UserAchievements.value.UserAchievementsID = res.data.insertId
-                        UserAchievements.value.push(id, BadgeID)
+                        UserAchievements.value.BadgeID = '3'
+                        UserAchievements.value.UserID = userid
 
-                        alert.value.addAlert('success', 'Event Registered', 3000);
+                        alert.value.addAlert('success', 'You have earned a badge!', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
@@ -198,12 +200,31 @@ export default {
 
         //BadgeID 4
         //Earned when user makes first post
-        /*
-        if user posts = 0 
-        if user posts = 1
-        award badgeID 4
-        achievement.unlocked = true
-        */
+        async function badge4() {
+        const badge4Data = await axios.get({params: userid}).then(res.data);
+        for(var i = 0; i < badge4Data.valueOf().length; i++)
+        {
+            let id = badge4Data[i].UserID;
+            console.log(id, badge4Data)
+            if(comment = 1)
+            {
+                console.log("Awarded Badge3");
+
+                achievements.value.unlocked = true;
+
+                await axios.post(UserAchievementsDB, {id, BadgeID: '4'})
+                    .then((res) => {
+                        UserAchievements.value.UserAchievementsID = res.data.insertId
+                        UserAchievements.value.BadgeID = '4'
+                        UserAchievements.value.UserID = userid
+
+                        alert.value.addAlert('success', 'You have earned a badge!', 3000);
+                }).catch(err => {
+                    console.error(err)
+                })
+            }
+        }
+        }
 
         //BadgeID 5
         //Earned when user completes first course
@@ -222,9 +243,10 @@ export default {
                 await axios.post(UserAchievementsDB, {id, BadgeID: '5'})
                     .then((res) => {
                         UserAchievements.value.UserAchievementsID = res.data.insertId
-                        UserAchievements.value.push(id, BadgeID)
+                        UserAchievements.value.BadgeID = '5'
+                        UserAchievements.value.UserID = userid
 
-                        alert.value.addAlert('success', 'Event Registered', 3000);
+                        alert.value.addAlert('success', 'You have earned a badge!', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
@@ -250,9 +272,10 @@ export default {
                 await axios.post(UserAchievementsDB, {id, BadgeID: '6'})
                     .then((res) => {
                         UserAchievements.value.UserAchievementsID = res.data.insertId
-                        UserAchievements.value.push(id, BadgeID)
+                        UserAchievements.value.BadgeID = '6'
+                        UserAchievements.value.UserID = userid
 
-                        alert.value.addAlert('success', 'Event Registered', 3000);
+                        alert.value.addAlert('success', 'You have earned a badge!', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
@@ -277,9 +300,10 @@ export default {
                 await axios.post(UserAchievementsDB, {id, BadgeID: '7'})
                     .then((res) => {
                         UserAchievements.value.UserAchievementsID = res.data.insertId
-                        UserAchievements.value.push(id, BadgeID)
+                        UserAchievements.value.BadgeID = '7'
+                        UserAchievements.value.UserID = userid
 
-                        alert.value.addAlert('success', 'Event Registered', 3000);
+                        alert.value.addAlert('success', 'You have earned a badge!', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
@@ -301,12 +325,13 @@ export default {
 
                 achievements.value.unlocked = true;
 
-                await axios.post(UserAchievementsDB, {id, BadgeID: '7'})
+                await axios.post(UserAchievementsDB, {id, BadgeID: '8'})
                     .then((res) => {
                         UserAchievements.value.UserAchievementsID = res.data.insertId
-                        UserAchievements.value.push(id, BadgeID)
+                        UserAchievements.value.BadgeID = '8'
+                        UserAchievements.value.UserID = userid
 
-                        alert.value.addAlert('success', 'Event Registered', 3000);
+                        alert.value.addAlert('success', 'You have earned a badge!', 3000);
                 }).catch(err => {
                     console.error(err)
                 })
