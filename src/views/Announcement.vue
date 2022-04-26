@@ -27,19 +27,10 @@
                                 <label for="EventTime">Announcment Time</label>
                                 <input v-model="announcementTime" type="datetime-local" class="form-control">
                             </div>
-                            <div id="imageUpload" class="" style="margin-bottom:20px;">
-                            <div v-if="!image">
-                                <h2>Select an image</h2>
-                                <input type="file" @change="onFileChange">
-                            </div>
-                            <div v-else>
-                                <img :src="image" />
-                                <button @click="removeImage">Remove image</button>
-                            </div>
-                            </div>
                             <div class="form-group mb-4 text-center">
                                 <button class="btn btn" @click="closeModal()">close</button>
-                                <button class="btn btn-primary" @click="addAnnouncment()">Submit</button>
+                                <button class="btn btn-primary" @click="updateAnnouncment()" v-if="editAnnouncmentId">Submit</button>
+                                <button class="btn btn-primary" @click="addAnnouncment()" v-else>Submit</button>
                             </div>
                             
                         </form>
@@ -67,7 +58,9 @@
                     </template>
                     <template #end>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-right">
-                        <div class="heart"></div>
+                        <div v-if="isLiked(announcment.likedArr)" class="heart is-active" @click="removelike(announcment.id)"></div>
+                        <div v-else class="heart" @click="likeAnnouncment(announcment.id)"></div>
+
                         </div>
                         <div class="dropdown">
 						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -75,9 +68,27 @@
 						</button>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" @click="deleteAnnouncment(announcment.id)">Delete announcment</a></li>
-							<li><a class="dropdown-item" href="#">Edit announcment</a></li>
+							<li><a class="dropdown-item"  @click="editAnnouncment(announcment.id)" >Edit announcment</a></li>
 						</ul>
 					</div>
+                    <div class="bg-white">
+                                <div class="d-flex flex-row fs-12">
+                                    <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">{{ announcment.like_count }} Likes</span></div>
+                                    <div class="like p-2 cursor" data-bs-toggle="collapse" :href="'#postComment-' + announcment.id" role="button" aria-expanded="false" :aria-controls="'postComment-' + announcment.id" ><i class="fa fa-commenting-o"></i><span class="ml-1"> {{ announcment.commentJson ? Object.keys(JSON.parse(announcment.commentJson)).length : 0 }} Comment</span></div>
+                                </div>
+                            </div>
+                            <div class="bg-light p-2 collapse" :id="'postComment-' + announcment.id">
+                                <div class="d-flex flex-row align-items-start"><textarea class="form-control ml-1 shadow-none textarea" v-model="commentSection"></textarea></div>
+                                <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="button" @click="postComment(announcment.id)">Post comment</button></div>
+
+                                <div v-if="announcment.commentJson"> 
+                                    <div v-for="comment in JSON.parse(announcment.commentJson)" :key="comment" class="card commentCard align-items-start mt-4 p-2">
+                                        <div>  <strong>Posted By: </strong> {{ comment.userName }}  </div>
+                                        <div> {{ comment.comment  }} </div>
+                                    </div>
+                                 </div>
+
+                            </div>
                     </template>
                 </forum>
 			</div>
@@ -115,7 +126,9 @@ export default{
 			AnnouncmentDescription: null,
 			AnnouncmentTime: null,
             image: '',
-            SelectedEvent: {}
+            SelectedEvent: {},
+            commentSection: null,
+            editAnnouncmentId: null
 		}
 	},
 	async mounted(){
@@ -164,10 +177,34 @@ export default{
                 // this.isModalVisible = false;
             })
         },
+        isLiked(likedArr) {
+            const newArr  = likedArr.split(",")
+            if (newArr.includes(localStorage.getItem('ID'))) {
+                console.log("true")
+                return true
+            } else {
+                return false
+            }
+        },
         closeModal() {
             this.isModalVisible = false;
         },
-
+        likeAnnouncment (id) {
+            axios.post('http://127.0.0.1:3001/api/like/announcment', {user_id: localStorage.getItem('ID'), id: id})
+			.then(() => {
+                this.reloadData()
+			}).catch(err => {
+                console.error(err)
+			})
+        },
+        removelike (id) {
+            axios.post('http://127.0.0.1:3001/api/removeLike/announcment', {user_id: localStorage.getItem('ID'), id: id})
+			.then(() => {
+                this.reloadData()
+			}).catch(err => {
+                console.error(err)
+			})
+        },
 		addAnnouncment() {
             if (!localStorage.getItem('ID'))  {
                 return this.$router.push({ path: 'login', query: ''});    
@@ -185,6 +222,30 @@ export default{
                 console.error(err)
 			})
         },
+        editAnnouncment (id) {
+            this.editAnnouncmentId = id
+                this.isModalVisible = true;
+        },
+        updateAnnouncment() {
+
+            if (!localStorage.getItem('ID'))  {
+                return this.$router.push({ path: 'login', query: ''});    
+            }
+            axios.post('http://127.0.0.1:3001/api//announcment/update', {title: this.announcementTitle, description: this.announcementDescription, id: this.editAnnouncmentId })
+			.then(() => {
+				// this.courses = res.data
+                this.isModalVisible = false;
+                this.editAnnouncmentId = null
+                this.reloadData()
+
+				// submitObject.EventID = res.data.insertId
+				// events.value.push(submitObject)
+			}).catch(err => {
+                this.isModalVisible = false;
+                this.editAnnouncmentId = null;
+                console.error(err)
+			})
+        },
         reloadData () {
             axios.get(`http://127.0.0.1:3001/api/getAnnouncments/${this.$route.query.id}`)
 			.then((res) => {
@@ -194,6 +255,23 @@ export default{
 				// submitObject.EventID = res.data.insertId
 				// events.value.push(submitObject)
 			}).catch(err => {
+                console.error(err)
+			})
+        },
+        async postComment(id) {
+            if (!localStorage.getItem('ID'))  {
+                return this.$router.push({ path: 'login', query: ''});    
+            }
+            axios.post('http://127.0.0.1:3001/api//announcment/comment', {id: id, userId: localStorage.getItem('ID'), comment: this.commentSection})
+			.then(() => {
+				// this.courses = res.data
+                this.commentSection = null
+                this.reloadData()
+
+				// submitObject.EventID = res.data.insertId
+				// events.value.push(submitObject)
+			}).catch(err => {
+                this.isModalVisible = false;
                 console.error(err)
 			})
         },
@@ -232,5 +310,10 @@ img {
         transition-duration: 1s;
         background-position: -2800px 0;
     }    
+    .is-active svg > path{ fill: red }
+
+    .commentCard {
+        border-radius: 20px !important;
+    }
 
 </style>
