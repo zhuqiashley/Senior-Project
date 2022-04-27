@@ -61,7 +61,43 @@
                 </card>
             </div>
             <div class="parent">
-            <card v-if="chapter3Check" :horizontal="true" :image="this.achievements[5].image"> 
+            <card v-if="chapter3Check" :horizontal="true" :image="this.achievements[3].image"> 
+                    <template #title>
+                        {{this.achievements[5].title}}
+                    </template>
+                    <template #body>
+                        {{this.achievements[5].description}}
+                    </template>
+                </card>
+            <card v-if="chapter4Check" :horizontal="true" :image="this.achievements[4].image"> 
+                    <template #title>
+                        {{this.achievements[8].title}}
+                    </template>
+                    <template #body>
+                        {{this.achievements[8].description}}
+                    </template>
+                </card>
+            </div>
+            <div class="parent">
+            <card v-if="chapter5Check" :horizontal="true" :image="this.achievements[3].image"> 
+                    <template #title>
+                        {{this.achievements[9].title}}
+                    </template>
+                    <template #body>
+                        {{this.achievements[9].description}}
+                    </template>
+                </card>
+            <card v-if="chapter6Check" :horizontal="true" :image="this.achievements[4].image"> 
+                    <template #title>
+                        {{this.achievements[10].title}}
+                    </template>
+                    <template #body>
+                        {{this.achievements[10].description}}
+                    </template>
+                </card>
+            </div>
+            <div class="parent">
+            <card v-if="false" :horizontal="true" :image="this.achievements[5].image"> 
                     <template #title>
                         {{this.achievements[5].title}}
                     </template>
@@ -227,6 +263,33 @@ export default {
               alt: "Overachiever",
             },
             unlocked: false,
+          },
+          {
+                title: "Machine Learning and AI Quiz Master",
+                description: "Earned when you complete all Quizzes in Machine Learning and AI.",
+                image: {
+                    src: "img/badges/Like_Badge_Color.png",
+                    alt: "Baby Steps",
+                },
+                unlocked: false,
+            },
+            {
+              title: "Web Development Quiz Master",
+              description: "Earned when you complete all Quizzes in Web Development.",
+              image: {
+                  src: "img/badges/Medal_Badge_Color.png",
+                  alt: "Knowledge Knight",
+              },
+              unlocked: false,
+            },
+            {
+            title: "Metaverse Quiz Master!",
+            description: "Earned when you complete all quizzes in Metaverse.",
+            image: {
+                src: "img/badges/Monitor_Badge_Color.png",
+                alt: "On a Roll",
+            },
+            unlocked: false,
           }
         ];
 
@@ -282,19 +345,15 @@ export default {
         //Badge 4
         chapter1Check()
         {
-            let none = true;
-            for(let i = 0; i < this.course.length; i++)
+            let count = 0;
+            for(let i = 0; i < this.quiz.length; i++)
             {
-                if(this.course[i].course_id < 6)
+                if(this.quiz[i].ChapterID < 6)
                 {
-                    none = false;
-                    if(this.course[i].QuizComplete == 0)
-                    {
-                        return false;
-                    }
+                    count++;
                 }
             }
-            if(!none)
+            if(count == 5)
             {
                 return true;
             }
@@ -305,22 +364,16 @@ export default {
         //Badge 5
         chapter2Check()
         {
-            let none = true;
-            for(let i = 0; i < this.course.length; i++)
+            //let none = true;
+            let count = 0;
+            for(let i = 0; i < this.quiz.length; i++)
             {
-                if(this.course[i].course_id < 11 && this.course[i].course_id > 5)
+                if(this.quiz[i].ChapterID < 11 && this.quiz[i].ChapterID > 5)
                 {
-                    console.log("insidechapter2");
-                    none = false;
-                    console.log(this.course[i].QuizComplete);
-                    if(this.course[i].QuizComplete == 0)
-                    {
-                        console.log("insidefalse");
-                        return false;
-                    }
+                    count++;
                 }
             }
-            if(!none)
+            if(count == 5)
             {
                 return true;
             }
@@ -331,22 +384,69 @@ export default {
         //Badge 6
         chapter3Check()
         {
-            let none = true;
-            for(let i = 0; i < this.course.length; i++)
+            let count = 0;
+            for(let i = 0; i < this.quiz.length; i++)
             {
-                if(this.course[i].course_id < 16 && this.course[i].course_id > 6)
+                if(this.quiz[i].ChapterID < 16 && this.quiz[i].ChapterID > 10)
                 {
-                    console.log("insidechapter3");
-                    none = false;
-                    console.log(this.course[i].QuizComplete);
-                    if(this.course[i].QuizComplete == 0)
-                    {
-                        console.log("insidefalse");
-                        return false;
-                    }
+                    count++;
                 }
             }
-            if(!none)
+            if(count == 5)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        },
+        chapter4Check()
+        {
+            let count = 0;
+            for(let i = 0; i < this.quiz.length; i++)
+            {
+                if(this.quiz[i].ChapterID < 21 && this.quiz[i].ChapterID > 15)
+                {
+                    count++;
+                }
+            }
+            if(count == 5)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        },
+        chapter5Check()
+        {
+            let count = 0;
+            for(let i = 0; i < this.quiz.length; i++)
+            {
+                if(this.quiz[i].ChapterID < 26 && this.quiz[i].ChapterID > 20)
+                {
+                    count++;
+                }
+            }
+            if(count == 5)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        },
+        chapter6Check()
+        {
+            let count = 0;
+            for(let i = 0; i < this.quiz.length; i++)
+            {
+                if(this.quiz[i].ChapterID > 25)
+                {
+                    count++;
+                }
+            }
+            if(count == 5)
             {
                 return true;
             }
