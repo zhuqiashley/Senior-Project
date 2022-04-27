@@ -87,6 +87,7 @@ export default {
       await axios.get(`${introQuizDB}${localStorage.getItem('ID')}`)
           .then(response => {
             Object.assign(userIntro, response.data);
+            console.log(userIntro);
           }).catch(err => {
             console.error(err);
           });
