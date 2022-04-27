@@ -8,27 +8,29 @@
            <router-link  :to="{ path: '/homecourse', query: $route.query }" > <ol class="mt-4">
             <h1>Home</h1>
             </ol></router-link>
-            <router-link  :to="{ path: '/announcements', query: $route.query }"><ol class="">
-            <h1>Announcements</h1>
+            <section v-if="!toggleEnroll">
+              <router-link  :to="{ path: '/announcements', query: $route.query }"><ol class="">
+              <h1>Announcements</h1>
+              </ol></router-link>
+              <router-link  :to="{ path: '/chapter', query: $route.query }"><ol class="">
+              <h1>Course Chapters</h1>
+              </ol></router-link>
+              <router-link  :to="{ path: '/Quiz', query: $route.query }"><ol class="">
+              <h1>Quizzes</h1>
+              </ol></router-link>
+              <router-link  :to="{ path: '/syllabus', query: $route.query }"><ol class="">
+              <h1>Syllabus</h1>
+              </ol></router-link>
+              <router-link  :to="{ path: '/forum', query: $route.query }"><ol class="">
+              <h1>Discussion Forum</h1>
+              </ol></router-link>
+              <router-link  :to="{ path: '/scores', query: $route.query }"><ol class="">
+              <h1>Scores</h1>
             </ol></router-link>
-            <router-link  :to="{ path: '/chapter', query: $route.query }"><ol class="">
-            <h1>Course Chapters</h1>
+            <router-link  :to="{ path: '/feedback', query: $route.query }"><ol class="">
+              <h1>Feedback</h1>
             </ol></router-link>
-            <router-link  :to="{ path: '/Quiz', query: $route.query }"><ol class="">
-            <h1>Quizzes</h1>
-            </ol></router-link>
-            <router-link  :to="{ path: '/syllabus', query: $route.query }"><ol class="">
-            <h1>Syllabus</h1>
-            </ol></router-link>
-            <router-link  :to="{ path: '/forum', query: $route.query }"><ol class="">
-            <h1>Discussion Forum</h1>
-            </ol></router-link>
-            <router-link  :to="{ path: '/scores', query: $route.query }"><ol class="">
-            <h1>Scores</h1>
-          </ol></router-link>
-          <router-link  :to="{ path: '/feedback', query: $route.query }"><ol class="">
-            <h1>Feedback</h1>
-          </ol></router-link>
+          </section>  
         </ul>
         </div>
         <div class="col-md-6">
@@ -57,8 +59,9 @@ export default {
   },
   mounted () {
     if (localStorage.getItem('ID')) {
-        axios.get("http://localhost:3001/api/getProgress/", { user_id: localStorage.getItem('ID'), course_id: this.$route.query.id})
+        axios.post("http://localhost:3001/api/getProgress/", { user_id: localStorage.getItem('ID'), course_id: this.$route.query.id})
         .then((res) => {
+          console.log(res)
           if (res && res.data.length > 0) {
             this.toggleEnroll = false
           }
