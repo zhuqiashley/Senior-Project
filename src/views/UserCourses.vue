@@ -57,7 +57,7 @@ export default {
   },
   mounted () {
     if (localStorage.getItem('ID')) {
-        axios.post("http://localhost:3001/api/getProgress/", { user_id: localStorage.getItem('ID'), course_id: this.$route.query.id})
+        axios.get("http://localhost:3001/api/getProgress/", { user_id: localStorage.getItem('ID'), course_id: this.$route.query.id})
         .then((res) => {
           if (res && res.data.length > 0) {
             this.toggleEnroll = false
