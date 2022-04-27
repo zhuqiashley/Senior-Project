@@ -6,7 +6,7 @@
         <h1>Course Chapters</h1>
         <div class="col-lg-12">
           <h4> Course process: </h4> 
-          <progress-bar :progress="this.progress">
+          <progress-bar :progress="courseProgressBar">
             <template>
               {{this.progress}} 
             </template>
@@ -51,10 +51,10 @@
                 data-bs-target="#collapseTwo"
                 aria-expanded="false"
                 aria-controls="collapseTwo"
-                :disabled="this.progress < 20"
+                :disabled="!chapter1Progress"
               >
                 Chapter #2
-                <p v-if="this.progress < 20"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
+                <p v-if="!chapter1Progress"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
               </button>
             </h2>
             <div
@@ -81,10 +81,10 @@
                 data-bs-target="#collapseThree"
                 aria-expanded="false"
                 aria-controls="collapseThree"
-                :disabled="this.progress < 40"
+                :disabled="!chapter2Progress"
               >
                 Chapter #3
-                <p v-if="this.progress < 40"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
+                <p v-if="!chapter2Progress"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
               </button>
             </h2>
             <div
@@ -111,10 +111,10 @@
                 data-bs-target="#collapseFour"
                 aria-expanded="false"
                 aria-controls="collapseFour"
-                :disabled="this.progress < 60"
+                :disabled="!chapter3Progress"
               >
                 Chapter #4
-                <p v-if="this.progress < 60"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
+                <p v-if="!chapter3Progress"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
               </button>
             </h2>
             <div
@@ -142,10 +142,10 @@
                 data-bs-target="#collapseFive"
                 aria-expanded="false"
                 aria-controls="collapseFive"
-                :disabled="this.progress < 80"
+                :disabled="!chapter4Progress"
               >
                 Chapter #5
-                <p v-if="this.progress < 80"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
+                <p v-if="!chapter4Progress"><img src="https://img.icons8.com/material-outlined/24/000000/lock--v1.png"/></p>
               </button>
             </h2>
             <div
@@ -171,9 +171,11 @@
 <script>
 import CustomHeader from "../components/Header.vue";
 import ProgressBar from "../components/ProgressBar.vue";
+import { ref, onBeforeMount } from "vue";
 import axios from 'axios'
 
 let userDB = 'http://localhost:3001/api/completechapter'
+let courseDB = 'http://localhost:3001/api/coursecompletionwithid/'
 
 export default {
   components: {
@@ -211,10 +213,284 @@ export default {
   computed: {
 		titleValue() {
 			return  this.$route.query.title
-		}
+		},
+    courseProgressBar(){
+      let progress = 0;
+      if(this.chapter1Progress)
+      {progress += 20;}
+      if(this.chapter2Progress)
+      {progress += 20;}
+      if(this.chapter3Progress)
+      {progress += 20;}
+      if(this.chapter4Progress)
+      {progress += 20;}
+      if(this.chapter5Progress)
+      {progress += 20;}
+      return progress;
+    },
+    chapter1Progress(){
+      let id = this.$route.query.id;
+      if(id == 1)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 1)
+          {return true;}
+        }
+      }
+      if(id == 2)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 6)
+          {return true;}
+        }
+      }
+      if(id == 3)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 11)
+          {return true;}
+        }
+      }
+      if(id == 4)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 16)
+          {return true;}
+        }
+      }
+      if(id == 5)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 21)
+          {return true;}
+        }
+      }
+      if(id == 6)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 26)
+          {return true;}
+        }
+      }
+      return false;
+    },
+    chapter2Progress(){
+      let id = this.$route.query.id;
+      if(id == 1)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 2)
+          {return true;}
+        }
+      }
+      if(id == 2)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 7)
+          {return true;}
+        }
+      }
+      if(id == 3)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 12)
+          {return true;}
+        }
+      }
+      if(id == 4)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 17)
+          {return true;}
+        }
+      }
+      if(id == 5)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 22)
+          {return true;}
+        }
+      }
+      if(id == 6)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 27)
+          {return true;}
+        }
+      }
+      return false;
+    },
+    chapter3Progress(){
+      let id = this.$route.query.id;
+      if(id == 1)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 3)
+          {return true;}
+        }
+      }
+      if(id == 2)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 8)
+          {return true;}
+        }
+      }
+      if(id == 3)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 13)
+          {return true;}
+        }
+      }
+      if(id == 4)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 18)
+          {return true;}
+        }
+      }
+      if(id == 5)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 23)
+          {return true;}
+        }
+      }
+      if(id == 6)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 28)
+          {return true;}
+        }
+      }
+      return false;
+    },
+    chapter4Progress(){
+      let id = this.$route.query.id;
+      if(id == 1)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 4)
+          {return true;}
+        }
+      }
+      if(id == 2)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 9)
+          {return true;}
+        }
+      }
+      if(id == 3)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 14)
+          {return true;}
+        }
+      }
+      if(id == 4)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 19)
+          {return true;}
+        }
+      }
+      if(id == 5)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 24)
+          {return true;}
+        }
+      }
+      if(id == 6)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 29)
+          {return true;}
+        }
+      }
+      return false;
+    },
+    chapter5Progress(){
+      let id = this.$route.query.id;
+      if(id == 1)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 5)
+          {return true;}
+        }
+      }
+      if(id == 2)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 10)
+          {return true;}
+        }
+      }
+      if(id == 3)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 15)
+          {return true;}
+        }
+      }
+      if(id == 4)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 20)
+          {return true;}
+        }
+      }
+      if(id == 5)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 25)
+          {return true;}
+        }
+      }
+      if(id == 6)
+      {
+        for(let i = 0; i < this.course.length; i++)
+        {
+          if(this.course[i].VideoComplete == 1 && this.course[i].course_id == 30)
+          {return true;}
+        }
+      }
+      return false;
+    }
 	},
   methods: {
-    async completeChapter (course_completion) {
+    /*async completeChapter (course_completion) {
       console.log(localStorage.getItem('ID'))
       if (localStorage.getItem('ID')) {
         axios.post("http://localhost:3001/api/updateProgress/", {user_id: localStorage.getItem('ID'), course_id: this.$route.query.id, course_completion: course_completion})
@@ -257,7 +533,7 @@ export default {
         });
           // const uEData = await userEnrolledData.json();
       }
-    },
+    },*/
   completeChapterOne()
   {
     console.log("inside chapterone");
@@ -281,6 +557,7 @@ export default {
       }).catch(e=>{
         console.error(e);
       });
+      window.location.reload();
   },
   completeChapterTwo()
   {
@@ -305,6 +582,7 @@ export default {
       }).catch(e=>{
         console.error(e);
       });
+      window.location.reload();
   },
   completeChapterThree()
   {
@@ -329,6 +607,7 @@ export default {
       }).catch(e=>{
         console.error(e);
       });
+      window.location.reload();
   },
   completeChapterFour()
   {
@@ -353,6 +632,7 @@ export default {
       }).catch(e=>{
         console.error(e);
       });
+      window.location.reload();
   },
   completeChapterFive()
   {
@@ -377,9 +657,25 @@ export default {
       }).catch(e=>{
         console.error(e);
       });
+      window.location.reload();
   }
   },
-  setup() {},
+  setup() {
+
+    const course = ref([])
+
+    onBeforeMount(async () => {
+        await axios.get(`${courseDB}${localStorage.getItem('ID')}`).then(response => {
+            course.value = response.data;
+            console.log(course);
+          }).catch(err => {
+            console.error(err);
+          });
+    })
+    return{
+      course
+    }
+  },
 };
 </script>
 

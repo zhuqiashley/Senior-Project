@@ -7,21 +7,21 @@
             </div>
       <template #body>
 <div class="container mt-4">
-<h1>Chapter 1</h1>
-<p v-if="chapter1">No Quiz Scores for Chapter 1, visit the Courses page to take Quizzes</p>
+<h1>Cybersecurity</h1>
+<p v-if="chapter1">No Quiz Scores for Cybersecurity, visit the Courses page to take Quizzes</p>
 </div>
   <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
                         <div class="container mt-4">
-                        <p v-if="quizi.ChapterID === 2"> Quiz 2 Score</p>
-                        <p v-if="quizi.ChapterID === 1">Quiz 1 Score</p>
-                        <p v-if="quizi.ChapterID === 3"> Quiz 3 Score</p>
-                        <p v-if="quizi.ChapterID === 4">Quiz 4 Score</p>
-                        <p v-if="quizi.ChapterID === 5">Quiz 5 Score</p>
+                        <p v-if="quizi.ChapterID === 2">Chapter 2 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 1">Chapter 1 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 3">Chapter 3 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 4">Chapter 4 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 5">Chapter 5 Quiz Score</p>
                         <progress-bar v-if="quizi.ChapterID < 6" :progress="quizi.Score"/>
                         </div>
   </div>
   <div class = "container mt-4">
-  <h3>Chapter Completion</h3>
+  <h3>Video Completion</h3>
   <progress-bar :progress="course1completion"/>
   </div>
       </template>
@@ -34,21 +34,21 @@
             </div>
       <template #body>
   <div class="container mt-4">
-  <h1>Chapter 2</h1>
-  <p v-if="chapter2">No Quiz Scores for Chapter 2, visit the Courses page to take Quizzes</p>
+  <h1>Data Science</h1>
+  <p v-if="chapter2">No Quiz Scores for Data Science, visit the Courses page to take Quizzes</p>
   </div>
   <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
                         <div class="container mt-4">
-                        <p v-if="quizi.ChapterID === 7"> Quiz 2 Score</p>
-                        <p v-if="quizi.ChapterID === 6">Quiz 1 Score</p>
-                        <p v-if="quizi.ChapterID === 8"> Quiz 3 Score</p>
-                        <p v-if="quizi.ChapterID === 9">Quiz 4 Score</p>
-                        <p v-if="quizi.ChapterID === 10">Quiz 5 Score</p>
+                        <p v-if="quizi.ChapterID === 7">Chapter 2 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 6">Chapter 1 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 8">Chapter 3 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 9">Chapter 4 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 10">Chapter 5 Quiz Score</p>
                         <progress-bar v-if="quizi.ChapterID < 11 && quizi.ChapterID > 5" :progress="quizi.Score"/>
                         </div>
   </div>
   <div class = "container mt-4">
-  <h3>Chapter Completion</h3>
+  <h3>Video Completion</h3>
   <progress-bar :progress="course2completion"/>
   </div>
       </template>
@@ -61,21 +61,21 @@
             </div>
       <template #body>
   <div class="container mt-4">
-  <h1>Chapter 3</h1>
-  <p v-if="chapter3">No Quiz Scores for Chapter 3, visit the Courses page to take Quizzes</p>
+  <h1>Big Data</h1>
+  <p v-if="chapter3">No Quiz Scores for Big Data, visit the Courses page to take Quizzes</p>
   </div>
   <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
                         <div class="container mt-4">
-                        <p v-if="quizi.ChapterID === 12"> Quiz 2 Score</p>
-                        <p v-if="quizi.ChapterID === 11">Quiz 1 Score</p>
-                        <p v-if="quizi.ChapterID === 13"> Quiz 3 Score</p>
-                        <p v-if="quizi.ChapterID === 14">Quiz 4 Score</p>
-                        <p v-if="quizi.ChapterID === 15">Quiz 5 Score</p>
+                        <p v-if="quizi.ChapterID === 12">Chapter 2 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 11">Chapter 1 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 13">Chapter 3 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 14">Chapter 4 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 15">Chapter 5 Quiz Score</p>
                         <progress-bar v-if="quizi.ChapterID > 10 && quizi.ChapterID <16" :progress="quizi.Score"/>
                         </div>
   </div>
   <div class = "container mt-4">
-  <h3>Chapter Completion</h3>
+  <h3>Video Completion</h3>
   <progress-bar :progress="course3completion"/>
   </div>
       </template>
@@ -88,21 +88,21 @@
             </div>
       <template #body>
   <div class="container mt-4">
-  <h1>Chapter 4</h1>
-  <p v-if="chapter4">No Quiz Scores for Chapter 4, visit the Courses page to take Quizzes</p>
+  <h1>Machine Learning and AI</h1>
+  <p v-if="chapter4">No Quiz Scores for Machine Learning and AI, visit the Courses page to take Quizzes</p>
   </div>
   <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
                         <div class="container mt-4">
-                        <p v-if="quizi.ChapterID === 17"> Quiz 2 Score</p>
-                        <p v-if="quizi.ChapterID === 16">Quiz 1 Score</p>
-                        <p v-if="quizi.ChapterID === 18"> Quiz 3 Score</p>
-                        <p v-if="quizi.ChapterID === 19">Quiz 4 Score</p>
-                        <p v-if="quizi.ChapterID === 20">Quiz 5 Score</p>
+                        <p v-if="quizi.ChapterID === 17">Chapter 2 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 16">Chapter 1 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 18">Chapter 3 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 19">Chapter 4 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 20">Chapter 5 Quiz Score</p>
                         <progress-bar v-if="quizi.ChapterID > 15 && quizi.ChapterID <21" :progress="quizi.Score"/>
                         </div>
   </div>
   <div class = "container mt-4">
-  <h3>Chapter Completion</h3>
+  <h3>Video Completion</h3>
   <progress-bar :progress="course4completion"/>
   </div>
       </template>
@@ -115,36 +115,54 @@
             </div>
       <template #body>
   <div class="container mt-4">
-  <h1>Chapter 5</h1>
-  <p v-if="chapter5">No Quiz Scores for Chapter 5, visit the Courses page to take Quizzes</p>
+  <h1>Web Development</h1>
+  <p v-if="chapter5">No Quiz Scores for Web Development, visit the Courses page to take Quizzes</p>
   </div>
 <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
                         <div class="container mt-4">
-                        <p v-if="quizi.ChapterID === 22"> Quiz 2 Score</p>
-                        <p v-if="quizi.ChapterID === 21">Quiz 1 Score</p>
-                        <p v-if="quizi.ChapterID === 23"> Quiz 3 Score</p>
-                        <p v-if="quizi.ChapterID === 24">Quiz 4 Score</p>
-                        <p v-if="quizi.ChapterID === 25">Quiz 5 Score</p>
+                        <p v-if="quizi.ChapterID === 22">Chapter 2 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 21">Chapter 1 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 23">Chapter 3 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 24">Chapter 4 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 25">Chapter 5 Quiz Score</p>
                         <progress-bar v-if="quizi.ChapterID > 20 && quizi.ChapterID <26" :progress="quizi.Score"/>
                         </div>
   </div>
   <div class = "container mt-4">
-  <h3>Chapter Completion</h3>
+  <h3>Video Completion</h3>
   <progress-bar :progress="course5completion"/>
+  </div>
+  <div class="container mt-4">
+  <h1>Metaverse</h1>
+  <p v-if="chapter5">No Quiz Scores for Metaverse, visit the Courses page to take Quizzes</p>
+  </div>
+<div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
+                        <div class="container mt-4">
+                        <p v-if="quizi.ChapterID === 27">Chapter 2 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 26">Chapter 1 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 28">Chapter 3 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 29">Chapter 4 Quiz Score</p>
+                        <p v-if="quizi.ChapterID === 30">Chapter 5 Quiz Score</p>
+                        <progress-bar v-if="quizi.ChapterID > 20 && quizi.ChapterID <26" :progress="quizi.Score"/>
+                        </div>
+  </div>
+  <div class = "container mt-4">
+  <h3>Video Completion</h3>
+  <progress-bar :progress="course6completion"/>
   </div>
       </template>
   </card>
   </div>
   <div class ="container mt-4">
     <h1>Learning Type</h1>
-    <p v-if="!User.TypeOfLearner">Introductory Quiz has not been completed, please take the Introductory Quiz to receive your learning style.</p>
+    <p v-if="User.TypeOfLearner != 0 && User.TypeOfLearner != 1 && User.TypeOfLearner != 2">Introductory Quiz has not been completed, please take the Introductory Quiz to receive your learning style.</p>
     <p v-if="User.TypeOfLearner === 0">Visual</p>
     <p v-if="User.TypeOfLearner === 1">Auditory</p>
     <p v-if="User.TypeOfLearner === 2">Tactile/Kinesthetic</p>
   </div>
   <div class ="container mt-4">
     <h1>Recommended Area of Study</h1>
-    <p v-if="!User.CourseRecommended">Introductory Quiz has not been completed, please take the Introductory Quiz to receive your recommended course.</p>
+    <p v-if="User.CourseRecommended != 0 && User.CourseRecommended != 1 && User.CourseRecommended != 2 && User.CourseRecommended != 3">Introductory Quiz has not been completed, please take the Introductory Quiz to receive your recommended course.</p>
     <p v-if="User.CourseRecommended === 0">Cybersecurity</p>
     <p v-if="User.CourseRecommended === 1">Data Science / Big Data / Machine Learning (AI)</p>
     <p v-if="User.CourseRecommended === 2">Web Development</p>
@@ -238,6 +256,7 @@ export default {
 
     })
     console.log(id);
+    console.log(User);
 
     let quiz1 = 0, quiz2 = 0, quiz3 = 0;
     let eventID1, eventID2, eventID3, learnerType, areaOfStudy
@@ -313,11 +332,11 @@ export default {
           console.log("inside course 1");
           if(this.course[i].VideoComplete == 1)
           {
-            completion += 10;
+            completion += 20;
           }
           if(this.course[i].QuizComplete == 1)
           {
-            completion += 10;
+            //completion += 10;
           }
         }
       }
@@ -332,11 +351,11 @@ export default {
         {
           if(this.course[i].VideoComplete == 1)
           {
-            completion += 10;
+            completion += 20;
           }
           if(this.course[i].QuizComplete == 1)
           {
-            completion += 10;
+            //completion += 10;
           }
         }
       }
@@ -350,11 +369,11 @@ export default {
         {
           if(this.course[i].VideoComplete == 1)
           {
-            completion += 10;
+            completion += 20;
           }
           if(this.course[i].QuizComplete == 1)
           {
-            completion += 10;
+            //completion += 10;
           }
         }
       }
@@ -368,11 +387,11 @@ export default {
         {
           if(this.course[i].VideoComplete == 1)
           {
-            completion += 10;
+            completion += 20;
           }
           if(this.course[i].QuizComplete == 1)
           {
-            completion += 10;
+            //completion += 10;
           }
         }
       }
@@ -386,11 +405,30 @@ export default {
         {
           if(this.course[i].VideoComplete == 1)
           {
-            completion += 10;
+            completion += 20;
           }
           if(this.course[i].QuizComplete == 1)
           {
-            completion += 10;
+            //completion += 10;
+          }
+        }
+      }
+      console.log(completion);
+      return completion;
+    },
+    course6completion(){
+      let completion = 0;
+      for(let i = 0; i < this.course.length; i++)
+      {
+        if(this.course[i].course_id > 25)
+        {
+          if(this.course[i].VideoComplete == 1)
+          {
+            completion += 20;
+          }
+          if(this.course[i].QuizComplete == 1)
+          {
+            //completion += 10;
           }
         }
       }

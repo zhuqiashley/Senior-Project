@@ -69,8 +69,8 @@ export default {
 				queryURL.id = this.coursess[0].id
 
 
-				const courseData = await fetch("http://localhost:3001/api/getCourseData/"+queryURL.id);
-				const cData = await courseData.json();
+				//const courseData = await fetch("http://localhost:3001/api/getCourseData/"+queryURL.id);
+				//const cData = await courseData.json();
 
 				//const forumData = await fetch("http://localhost:3001/api/getForumData/"+queryURL.id);
 				//const fData = await forumData.json();
@@ -81,8 +81,7 @@ export default {
 				const userEnrolledData = await fetch("http://localhost:3001/api/getUserEnrolledCourses/"+userId);
 				const uEData = await userEnrolledData.json();
 
-				
-				queryURL.course_complete = cData[0].course_completion;
+				//queryURL.course_complete = cData[0].course_completion;
 				queryURL.uEDdata = uEData[0];
 
 				queryURL.user = uData[0].FirstName+ " " +uData[0].LastName;	

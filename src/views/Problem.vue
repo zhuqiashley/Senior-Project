@@ -68,6 +68,9 @@
 <script>
 
 import {getChapterName, getCourseQuizzes, getReference, getVideo, updateQuizScores} from "../api/api";
+//import axios from 'axios';
+
+//let userDB = 'http://localhost:3001/api/completechapter'
 
 export default {
   name: "Problem",
@@ -90,6 +93,11 @@ export default {
       this.score = score
       console.log('id:')
       console.log(localStorage.getItem('ID'))
+      /*axios.post(userDB, {userid:localStorage.getItem('ID'), courseid:this.index}).then(response=>{
+        console.log(response);
+      }).catch(e=>{
+        console.error(e);
+      });*/
       updateQuizScores(localStorage.getItem('ID'), this.index, score)
       this.$store.state.isSubmit = true
       alert("submit success")
