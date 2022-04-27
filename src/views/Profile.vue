@@ -52,10 +52,8 @@ import CustomHeader from '../components/Header.vue'
 import { ref, onBeforeMount, reactive } from "vue";
 import axios from 'axios';
 //import router from "../router"
-
 let userLoginDB = 'http://localhost:3001/api/userprofile/'
 let introQuizDB = 'http://localhost:3001/api/introresult/'
-
 export default {
     components:
     {
@@ -80,7 +78,6 @@ export default {
     onBeforeMount(async () => {
       await axios.get(`${userLoginDB}${localStorage.getItem('ID')}`).then(response => {
             Object.assign(User, response.data);
-
           }).catch(err => {
             console.error(err);
           });
@@ -92,7 +89,6 @@ export default {
             console.error(err);
           });
           })
-
       let firstName = data1.value.FirstName; 
       let lastName, email, role, firstNameLabel, lastNameLabel, emailLabel, roleLabel
       let length = 100;
@@ -100,13 +96,10 @@ export default {
       console.log(id);
       console.log(length);
       console.log(users);
-
-
       return{
         id, firstName, lastName, email, role, firstNameLabel, lastNameLabel, emailLabel, roleLabel, users, data1, User
       }
   },
-
   methods:{
     login: async function(){
       
@@ -132,5 +125,4 @@ export default {
 .login {
   width: 30rem;
 }
-
 </style>

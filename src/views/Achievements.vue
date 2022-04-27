@@ -2,9 +2,10 @@
 <template>
     <custom-header title="Achievements"></custom-header>
     <div class="container mt-4">
+        <!-- Progress Bar -->
         <progress-bar :progress="(unlocked.length / (locked.length + unlocked.length)) * 100" />
 
-
+        <!--Badges for display -->
         <div class="parent">
             <card :horizontal="true" :image="this.achievements[0].image"> 
                     <template #title>
@@ -59,8 +60,24 @@
                     </template>
                 </card>
             </div>
-
-
+            <div class="parent">
+            <card v-if="chapter3Check" :horizontal="true" :image="this.achievements[5].image"> 
+                    <template #title>
+                        {{this.achievements[5].title}}
+                    </template>
+                    <template #body>
+                        {{this.achievements[5].description}}
+                    </template>
+                </card>
+            <card v-if="allcoursescheck" :horizontal="true" :image="this.achievements[7].image"> 
+                    <template #title>
+                        {{this.achievements[7].title}}
+                    </template>
+                    <template #body>
+                        {{this.achievements[7].description}}
+                    </template>
+                </card>
+            </div>
 
         <!--<div class="parent">
             <div v-for="(achievement, index) in achievements" v-bind:key="index">
@@ -76,7 +93,7 @@
         </div>-->
 
 
-
+    <Notification ref="alert"></Notification>
     </div>
 </template>
 
@@ -87,6 +104,7 @@ import CustomHeader from '@/components/Header.vue'
 import Card from '@/components/Card.vue'
 import ProgressBar from '@/components/ProgressBar.vue';
 import axios from 'axios';
+import Notification from '../components/Alert.vue'
 
 let introQuizDB = 'http://localhost:3001/api/introresult/'
 let eventIDDB = 'http://localhost:3001/api/usereventwithid/'
@@ -99,15 +117,15 @@ export default {
         CustomHeader,
         Card,
         ProgressBar,
+        Notification
     },
     setup() {
-
         const User = reactive({});
         const eventID = ref('')
         const quiz = ref([])
         const course = ref([])
 
-
+        //get user data for events, courses, and quizzes
         onBeforeMount(async () => {
         await axios.get(`${introQuizDB}${localStorage.getItem('ID')}`)
           .then(response => {
@@ -115,14 +133,12 @@ export default {
           }).catch(err => {
             console.error(err);
           });
-
           await axios.get(`${eventIDDB}${localStorage.getItem('ID')}`)
           .then(response => {
             eventID.value = response.data;
           }).catch(err => {
             console.error(err);
           });
-
           await axios.get(`${quizIDDB}${localStorage.getItem('ID')}`)
           .then(response => {
             quiz.value = response.data;
@@ -130,7 +146,6 @@ export default {
           }).catch(err => {
             console.error(err);
           });
-
           await axios.get(`${courseDB}${localStorage.getItem('ID')}`).then(response => {
             course.value = response.data;
             console.log(course);
@@ -139,8 +154,7 @@ export default {
           });
         })
         
-
-
+        //acheivement data
         const achievements = [
             {
                 title: "Welcome to the Class",
@@ -149,7 +163,7 @@ export default {
                     src: "img/badges/Cup_Badge_Color.png",
                     alt: "Welcome to the Class",
                 },
-                unlocked: true,
+                unlocked: true, //auto unlocks for every user
             },
             {
                 title: "Event Master!",
@@ -188,8 +202,8 @@ export default {
               unlocked: false,
             },
           {
-            title: "On a Roll!",
-            description: "Earned when you complete 10 lessons.",
+            title: "Big Data!",
+            description: "Earned when you complete all quizzes in Big Data.",
             image: {
                 src: "img/badges/Monitor_Badge_Color.png",
                 alt: "On a Roll",
@@ -215,13 +229,15 @@ export default {
             unlocked: false,
           }
         ];
+
         console.log(achievements);
 
-
+        //Unlocks badge when requirements are satistied
         const unlocked = computed(() => {
             return achievements.filter(achievement => achievement.unlocked);
         });
 
+        //Locks badge until unlocked
         const locked = computed(() => {
             return achievements.filter(achievement => !achievement.unlocked);
         });
@@ -229,21 +245,22 @@ export default {
         return {
             achievements, unlocked, locked, User, eventID, quiz, course
         }
-
         //get user id
         //get achievement
         //check achievement requirements
         //award achievement & update user profile - event triggered  w/ pop-up of badge icon
-
     },
     computed:{
+        //Badge 7
         introQuizCheck(){
             if(this.User.TypeOfLearner === 1 || this.User.TypeOfLearner === 2 || this.User.TypeOfLearner === 3){
             //console.log("inside");
+            //alert.value.addAlert('Success', 'Good Work! You have earned a badge!', 3000); --> DOESN'T WORK 
             return true;
             }
         return false;
         },
+        //Badge 2
         eventCheck(){
             if(this.eventID.length >0 ){
             //console.log("inside");
@@ -251,6 +268,7 @@ export default {
             }
         return false;
         },
+        //Badge 3
         perfectScoreCheck(){
             for(let k = 0; k < this.quiz.length; k++)
             {
@@ -261,6 +279,7 @@ export default {
             }
             return false;
         },
+        //Badge 4
         chapter1Check()
         {
             let none = true;
@@ -283,6 +302,7 @@ export default {
                 return false;
             }
         },
+        //Badge 5
         chapter2Check()
         {
             let none = true;
@@ -307,9 +327,58 @@ export default {
             else{
                 return false;
             }
+        },
+        //Badge 6
+        chapter3Check()
+        {
+            let none = true;
+            for(let i = 0; i < this.course.length; i++)
+            {
+                if(this.course[i].course_id < 16 && this.course[i].course_id > 6)
+                {
+                    console.log("insidechapter3");
+                    none = false;
+                    console.log(this.course[i].QuizComplete);
+                    if(this.course[i].QuizComplete == 0)
+                    {
+                        console.log("insidefalse");
+                        return false;
+                    }
+                }
+            }
+            if(!none)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        },
+        //Badge 8
+        allcoursescheck() 
+        {
+            let none = true;
+            for(let i = 0; i < this.course.length; i++)
+            {
+                if(this.course[i].course_id < 16 && this.course[i].course_id > 6)
+                {
+                    none = false;
+                    console.log(this.course[i].CourseComplete);
+                    if(this.course[i].CourseComplete == 6)
+                    {
+                        console.log("insidefalse");
+                        return false;
+                    }
+                }
+            }
+            if(!none)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
         }
-
-        
     }
 }
 </script>
@@ -319,7 +388,6 @@ export default {
     .card {
         width: 25rem;
     }
-
     .parent {
         display: flex;
         justify-content: space-around;

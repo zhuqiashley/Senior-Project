@@ -49,9 +49,11 @@
 	</div>
 </section>
 
-
 <!-- ======= Team Section ======= -->
 <section class="team section-bg">
+	<div class="section-title">
+		<h3>This project was developed in Spring 2022 as part of the course CS 426 Senior Projects in UNR Computer Science</h3>
+	</div>
 	<div class="section-title">
 	<h2>Team 1 Members</h2>
 	</div>
@@ -59,6 +61,52 @@
 	<div class="container">
 		<div class="parent">
 			<div v-for="(member, index) in team" v-bind:key="index">
+				<card :horizontal="true" :image="member.image" class="mb-4">
+					<template #title>
+						{{member.name}}
+					</template>
+					<template #body>
+						{{member.description}}
+					</template>
+				</card>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<!-- ======= Advisors Section ======= -->
+<section class="Advisors section-bg">
+	<div class="section-title">
+	<h2>Advisors</h2>
+	</div>
+
+	<div class="container">
+		<div class="parent">
+			<div v-for="(member, index) in advisors" v-bind:key="index">
+				<card :horizontal="true" :image="member.image" class="mb-4">
+					<template #title>
+						{{member.name}}
+					</template>
+					<template #body>
+						{{member.description}}
+					</template>
+				</card>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<!-- ======= Instructors Section ======= -->
+<section class="Instructors section-bg">
+	<div class="section-title">
+	<h2>Instructors</h2>
+	</div>
+
+	<div class="container">
+		<div class="parent">
+			<div v-for="(member, index) in instructors" v-bind:key="index">
 				<card :horizontal="true" :image="member.image" class="mb-4">
 					<template #title>
 						{{member.name}}
@@ -124,10 +172,38 @@ export default {
 					src: 'img/team/advisors.jpeg',
 					alt: 'Zhuqi You',
 				},
+			}
+		]
+		const instructors = [
+			{
+				name: 'David Feil-Seifer',
+				description: '',
+				image: {
+					src: 'img/team/advisors.jpeg',
+					alt: 'Instructors'
+				},
 			},
 			{
-				name: 'Advisors',
-				description: 'test',
+				name: 'Devrin Lee',
+				description: '',
+				image: {
+					src: 'img/team/advisors.jpeg',
+					alt: 'Instructors'
+				},
+			}
+		]
+		const advisors = [
+			{
+				name: 'Professor Ben Brown',
+				description: '',
+				image: {
+					src: 'img/team/advisors.jpeg',
+					alt: 'Advisors'
+				},
+			},
+			{
+				name: 'Dr. Bill Doherty',
+				description: '',
 				image: {
 					src: 'img/team/advisors.jpeg',
 					alt: 'Advisors'
@@ -135,7 +211,9 @@ export default {
 			}
 		]
 		return {
-			team
+			team,
+			instructors, 
+			advisors,
 		}
 	},
 }
