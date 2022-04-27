@@ -121,6 +121,29 @@
 
 </section>
 
+<!-- ======= TAs Section ======= -->
+<section class="TAs section-bg">
+	<div class="section-title">
+	<h2>Teaching Assistants</h2>
+	</div>
+
+	<div class="container">
+		<div class="parent">
+			<div v-for="(member, index) in tas" v-bind:key="index">
+				<card :horizontal="true" :image="member.image" class="mb-4">
+					<template #title>
+						{{member.name}}
+					</template>
+					<template #body>
+						{{member.description}}
+					</template>
+				</card>
+			</div>
+		</div>
+	</div>
+
+</section>
+
 </template>
 
 <!-- ======= SCRIPT ======= -->
@@ -135,9 +158,9 @@ export default {
 		const team = [
 			{
 				name: 'Crystal Atoz',
-				description: 'She will be graduating December 2022 with a B.S. in Computer Science & Engineering with a minor in Mathematics.',
+				description: 'She is graduating December 2022 with a B.S. in Computer Science & Engineering with a minor in Math.',
 				image: {
-					src: 'img/team/advisors.jpeg',
+					src: 'img/team/crystal.jpeg',
 					alt: 'Crystal Atoz',
 				},
 			},
@@ -192,10 +215,28 @@ export default {
 				},
 			}
 		]
+		const tas = [
+			{
+				name: 'Vinh Lee',
+				description: '',
+				image: {
+					src: 'img/team/advisors.jpeg',
+					alt: 'TAs'
+				},
+			},
+			{
+				name: 'Yifan Zhang',
+				description: '',
+				image: {
+					src: 'img/team/advisors.jpeg',
+					alt: 'TAs'
+				},
+			}
+		]
 		const advisors = [
 			{
-				name: 'Professor Ben Brown',
-				description: '',
+				name: 'Ben Brown',
+				description: 'Educational Technology Specialist at the Davidson Academy',
 				image: {
 					src: 'img/team/advisors.jpeg',
 					alt: 'Advisors'
@@ -203,7 +244,7 @@ export default {
 			},
 			{
 				name: 'Dr. Bill Doherty',
-				description: '',
+				description: 'Cybersecurity Professor at UNR',
 				image: {
 					src: 'img/team/advisors.jpeg',
 					alt: 'Advisors'
@@ -214,6 +255,7 @@ export default {
 			team,
 			instructors, 
 			advisors,
+			tas,
 		}
 	},
 }
