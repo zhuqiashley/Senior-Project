@@ -13,7 +13,7 @@
 				<template #end>
 					<div class="d-grid gap-2 d-md-flex justify-content-md-right">
 						<button class="btn btn-success" @click="viewCourse(course)"> View Course </button>
-						<button class="btn btn-info" @click="rateCourse(course.title)"> Rate my Course </button>
+						<button class="btn btn-info" v-if="eligibaletoRate(course.id)" @click="rateCourse(course.title)"> Rate my Course </button>
 					</div>
 				</template>
 			</card>
@@ -30,7 +30,8 @@ import axios from 'axios'
 export default {
 	data() {
 		return {
-			courses: null
+			courses: null,
+			enroledCourses: [],
 		}
 	},
 	components:
@@ -38,7 +39,7 @@ export default {
 		CustomHeader,
 		Card
 	},
-	mounted() {
+	async mounted() {
 		axios.get('http://127.0.0.1:3001/api/getAllcourses')
 			.then((res) => {
 				this.courses = res.data
@@ -48,6 +49,15 @@ export default {
 			}).catch(err => {
 				console.error(err)
 			})
+
+		let userId = localStorage.getItem('ID') ?? 1;
+		if (localStorage.getItem('ID') != '0') {
+			axios.get("http://localhost:3001/api/getUserEnrolledCourses/"+userId).then((res) => {
+				console.log(res)
+				this.enroledCourses = 	res.data
+			});
+		}
+		
 	},
 	asyncData() {
         // return {
@@ -58,6 +68,9 @@ export default {
 		async viewCourse(course) {
 			
 			try {
+				if (localStorage.getItem('ID') == '0') {
+					return this.$router.push({ path: 'login', query: ''});	 
+				}
 				let userId = localStorage.getItem('ID') ?? 1;
 
 				const response = await axios.get("http://localhost:3001/api/getcourses/"+course.title);
@@ -69,8 +82,8 @@ export default {
 				queryURL.id = this.coursess[0].id
 
 
-				//const courseData = await fetch("http://localhost:3001/api/getCourseData/"+queryURL.id);
-				//const cData = await courseData.json();
+				// const courseData = await fetch("http://localhost:3001/api/getCourseData/"+queryURL.id);
+				// const cData = await courseData.json();
 
 				//const forumData = await fetch("http://localhost:3001/api/getForumData/"+queryURL.id);
 				//const fData = await forumData.json();
@@ -81,7 +94,8 @@ export default {
 				const userEnrolledData = await fetch("http://localhost:3001/api/getUserEnrolledCourses/"+userId);
 				const uEData = await userEnrolledData.json();
 
-				//queryURL.course_complete = cData[0].course_completion;
+				
+				// queryURL.course_complete = cData[0].course_completion;
 				queryURL.uEDdata = uEData[0];
 
 				queryURL.user = uData[0].FirstName+ " " +uData[0].LastName;	
@@ -94,10 +108,27 @@ export default {
 				
 		},
 		rateCourse (title) {
+			if (localStorage.getItem('ID') == '0') {
+					return this.$router.push({ path: 'login', query: ''});	 
+			}
 			const queryUrl = {}
 			queryUrl.title = title;
 			
 			this.$router.push({ path: 'CourseRating', query: queryUrl});	
+		},
+		eligibaletoRate (id) {
+			let isValid = false
+			if (this.enroledCourses && this.enroledCourses.length) {
+				this.enroledCourses.map((item)=> {
+					console.log(item)
+					if (item.course_id == id) {
+						return isValid = true
+					}
+				})
+			} else {
+				isValid = false
+			}
+			return isValid
 		}
 	}, 
 	
