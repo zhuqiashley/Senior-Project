@@ -2,9 +2,10 @@
 <template>
     <custom-header title="Achievements"></custom-header>
     <div class="container mt-4">
+        <!-- Progress Bar -->
         <progress-bar :progress="(unlocked.length / (locked.length + unlocked.length)) * 100" />
 
-
+        <!--Badges for display -->
         <div class="parent">
             <card :horizontal="true" :image="this.achievements[0].image"> 
                     <template #title>
@@ -123,6 +124,8 @@ export default {
         const eventID = ref('')
         const quiz = ref([])
         const course = ref([])
+
+        //get user data for events, courses, and quizzes
         onBeforeMount(async () => {
         await axios.get(`${introQuizDB}${localStorage.getItem('ID')}`)
           .then(response => {
@@ -151,6 +154,7 @@ export default {
           });
         })
         
+        //acheivement data
         const achievements = [
             {
                 title: "Welcome to the Class",
@@ -225,13 +229,19 @@ export default {
             unlocked: false,
           }
         ];
+
         console.log(achievements);
+
+        //Unlocks badge when requirements are satistied
         const unlocked = computed(() => {
             return achievements.filter(achievement => achievement.unlocked);
         });
+
+        //Locks badge until unlocked
         const locked = computed(() => {
             return achievements.filter(achievement => !achievement.unlocked);
         });
+
         return {
             achievements, unlocked, locked, User, eventID, quiz, course
         }
@@ -326,7 +336,7 @@ export default {
             {
                 if(this.course[i].course_id < 16 && this.course[i].course_id > 6)
                 {
-                    console.log("insidechapter2");
+                    console.log("insidechapter3");
                     none = false;
                     console.log(this.course[i].QuizComplete);
                     if(this.course[i].QuizComplete == 0)
