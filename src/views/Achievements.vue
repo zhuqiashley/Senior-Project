@@ -3,7 +3,8 @@
     <custom-header title="Achievements"></custom-header>
     <div class="container mt-4">
         <!-- Progress Bar -->
-        <progress-bar :progress="(unlocked.length / (locked.length + unlocked.length)) * 100" />
+        <!--<progress-bar :progress="(unlocked.length / (locked.length + unlocked.length)) * 100" /> -->
+        <progress-bar :progress="achievementProgress" />
 
         <!--Badges for display -->
         <div class="parent">
@@ -457,7 +458,7 @@ export default {
         //Badge 8
         allcoursescheck() 
         {
-            let none = true;
+            /*let none = true;
             for(let i = 0; i < this.course.length; i++)
             {
                 if(this.course[i].course_id < 16 && this.course[i].course_id > 6)
@@ -477,7 +478,32 @@ export default {
             }
             else{
                 return false;
-            }
+            }*/
+            return false;
+        }
+        ,
+        achievementProgress()
+        {
+            let progress= 10;
+            if(this.introQuizCheck)
+            {progress += 10;}
+            if(this.eventCheck)
+            {progress += 10;}
+            if(this.perfectScoreCheck)
+            {progress += 10;}
+            if(this.chapter1Check)
+            {progress += 10;}
+            if(this.chapter2Check)
+            {progress += 10;}
+            if(this.chapter3Check)
+            {progress += 10;}
+            if(this.chapter4Check)
+            {progress += 10;}
+            if(this.chapter5Check)
+            {progress += 10;}
+            if(this.chapter6Check)
+            {progress += 10;}
+            return progress;
         }
     }
 }
