@@ -332,12 +332,12 @@ export default {
 		} else {
 			Object.assign(SelectedEvent, {});
 		}
-
+		updateTagsFilter();
 		addEditEventModal.value.toggle();
 	}
 
 	async function register(EventID) {
-		if(!localStorage.getItem('ID')) return false;
+		if(!localStorage.getItem('ID') || localStorage.getItem('ID') == 0) return false;
 		
 		const eventsIndex = events.value.upcomingEvents.findIndex(event => event.EventID === EventID);
 		const regObj = {
@@ -349,6 +349,7 @@ export default {
 			await axios.post(`${eventDB}/register`, regObj).then(() => {
 				
 				events.value.upcomingEvents[eventsIndex].Attendees.push({
+					UserID: localStorage.getItem('ID'),
 					EventID: EventID,
 					FirstName: this.User.FirstName,
 					LastName: this. User.LastName,
@@ -366,11 +367,10 @@ export default {
 	}
 
 	function checkRegistration(EventID) {
-		if(!localStorage.getItem('ID')) return false;
-
-		const eventsIndex = events.value.upcomingEvents.findIndex(event => event.EventID === EventID);
-
-		if(events.value.upcomingEvents[eventsIndex].Attendees.findIndex(attendee => attendee.UserID === User.UserID) > -1) {
+		if(!localStorage.getItem('ID') || localStorage.getItem('ID') == 0) return false;
+		
+		const eventsIndex = events.value.upcomingEvents.findIndex(event => event.EventID == EventID);
+		if(events.value.upcomingEvents[eventsIndex].Attendees.findIndex(attendee => attendee.UserID == User.UserID) > -1) {
 			return true;
 		} else {
 			return false;
@@ -385,7 +385,7 @@ export default {
 		postTime.setHours(postTime.getHours() - 8) // set to PST
 
 		// A required field is not valid, don't submit
-		if(!this.EventTitle || !this.EventDescription || !this.EventInstructor || !postTime || !this.EventSpots || Tags.length === 0) {
+		if(!this.EventTitle || !this.EventDescription || !this.EventInstructor || !postTime || !this.EventSpots || this.EventTags.length === 0) {
 			const errorArray = [];
 			if(!this.EventTitle) errorArray.push('Title');
 			if(!this.EventDescription) errorArray.push('Description');
