@@ -138,7 +138,7 @@
 
 				<template #end v-if="User && User.Role === 'Admin'">
 					<div class="btn-group">
-						<button type="button" class="btn btn-secondary" :disabled="checkValidDate(event.EventDate)">Passed</button>
+						<button type="button" class="btn btn-secondary" disabled>Passed</button>
 						<button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
 							<span class="visually-hidden">Toggle Dropdown</span>
 						</button>
@@ -149,7 +149,7 @@
 					</div>
 				</template>
 				<template #end v-else>
-					<button type="button" class="btn btn-secondary" :disabled="checkValidDate(event.EventDate)">Passed</button>
+					<button type="button" class="btn btn-secondary" disabled>Passed</button>
 				</template>
             </card>
 
@@ -472,7 +472,7 @@ export default {
 
 		if(newEvent) {
 			// Front End error handling goes here
-			await axios.post(eventDB, submitObject)
+			await axios.post(eventDB, {User: User.UserID, Event: submitObject})
 				.then((res) => {
 					submitObject.EventID = res.data.insertId
 
@@ -505,7 +505,7 @@ export default {
 					console.error(err)
 				});
 		} else {
-			await axios.put(`${eventDB}/${this.EventID}`, submitObject)
+			await axios.put(`${eventDB}/${this.EventID}`, {User: User.UserID, Event: submitObject})
 				.then(() => {
 					// Update event in array
 					if(postTime < new Date()) {

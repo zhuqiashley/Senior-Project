@@ -52,9 +52,6 @@
 <!-- ======= Team Section ======= -->
 <section class="team section-bg">
 	<div class="section-title">
-		<h3>This project was developed in Spring 2022 as part of the course CS 426 Senior Projects in UNR Computer Science</h3>
-	</div>
-	<div class="section-title">
 	<h2>Team 1 Members</h2>
 	</div>
 
@@ -99,7 +96,7 @@
 </section>
 
 <!-- ======= Instructors Section ======= -->
-<section class="Instructors section-bg">
+<section class="section-bg">
 	<div class="section-title">
 	<h2>Instructors</h2>
 	</div>
@@ -143,7 +140,9 @@
 	</div>
 
 </section>
-
+<div class="section-title ml-2 mr-2">
+	This project was developed in Spring 2022 as part of the course CS 426 Senior Projects in UNR Computer Science
+</div>
 </template>
 
 <!-- ======= SCRIPT ======= -->
@@ -158,7 +157,7 @@ export default {
 		const team = [
 			{
 				name: 'Crystal Atoz',
-				description: 'She is graduating December 2022 with a B.S. in Computer Science & Engineering with a minor in Math.',
+				description: 'Graduates December 2022 with a B.S. in Computer Science & Engineering with a minor in Math',
 				image: {
 					src: 'img/team/crystal.jpeg',
 					alt: 'Crystal Atoz',
@@ -166,15 +165,15 @@ export default {
 			},
 			{
 				name: 'Kayla Garin',
-				description: 'test',
+				description: 'Graduates May 2022 with a B.S. in Computer Science & Engineering with a minor in Math',
 				image: {
-					src: 'img/team/advisors.jpeg',
+					src: 'img/team/kayla.jpeg',
 					alt: 'Kayla Garin',
 				},
 			},
 			{
 				name: 'Austin Schrage',
-				description: 'test',
+				description: 'Graduates May 2022 with a B.S. in Computer Science & Engineering',
 				image: {
 					src: 'img/team/advisors.jpeg',
 					alt: 'Austin Schrage',
@@ -182,7 +181,7 @@ export default {
 			},
 			{
 				name: 'Yan Shore',
-				description: 'test',
+				description: 'Graduates May 2022 with a B.S. in Computer Science & Engineering',
 				image: {
 					src: 'img/team/advisors.jpeg',
 					alt: 'Yan Shore',
@@ -190,7 +189,7 @@ export default {
 			},
 			{
 				name: 'Zhuqi You',
-				description: 'test',
+				description: 'Graduates May 2022 with a B.S. in Computer Science & Engineering',
 				image: {
 					src: 'img/team/advisors.jpeg',
 					alt: 'Zhuqi You',
@@ -200,7 +199,7 @@ export default {
 		const instructors = [
 			{
 				name: 'David Feil-Seifer',
-				description: '',
+				description: 'Department of Computer Science and Engineering',
 				image: {
 					src: 'img/team/advisors.jpeg',
 					alt: 'Instructors'
@@ -208,7 +207,7 @@ export default {
 			},
 			{
 				name: 'Devrin Lee',
-				description: '',
+				description: 'Department of Computer Science and Engineering',
 				image: {
 					src: 'img/team/advisors.jpeg',
 					alt: 'Instructors'
@@ -217,8 +216,8 @@ export default {
 		]
 		const tas = [
 			{
-				name: 'Vinh Lee',
-				description: '',
+				name: 'Vinh Le',
+				description: 'Department of Computer Science and Engineering',
 				image: {
 					src: 'img/team/advisors.jpeg',
 					alt: 'TAs'
@@ -226,7 +225,7 @@ export default {
 			},
 			{
 				name: 'Yifan Zhang',
-				description: '',
+				description: 'Department of Computer Science and Engineering',
 				image: {
 					src: 'img/team/advisors.jpeg',
 					alt: 'TAs'

@@ -66,7 +66,6 @@ export default {
     height: 6rem;
     width: 6rem;
     object-fit: contain;
-    border-radius: 50%;
     float: left;
     display: block;
     margin: 1rem;
