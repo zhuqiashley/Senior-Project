@@ -557,7 +557,7 @@ export default {
       }).catch(e=>{
         console.error(e);
       });
-      //window.location.reload();
+      window.location.reload();
   },
   completeChapterTwo()
   {
