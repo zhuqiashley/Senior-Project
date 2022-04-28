@@ -7,12 +7,38 @@
 				<h1 class="logo me-auto">Master CS</h1>
 			</router-link>
 			<ul> 
-				<router-link to="/"> Home </router-link>
-				<router-link to="/courses"> Courses </router-link>
-				<router-link to="/events"> Events </router-link>
-				<li v-if="signedIn" class="dropdown">My Profile <i class="bi-chevron-down"></i>
+				<router-link to="/" :class="[path == '/' ? 'active' : null]"> Home </router-link>
+				<router-link to="/courses" :class="[
+                                              path == '/courses' ? 'active' : null, 
+                                              path == '/UserCourses' ? 'active' : null, 
+                                              path == '/homecourse' ? 'active' : null, 
+                                              path == '/announcements' ? 'active' : null,
+                                              path == '/chapter' ? 'active' : null,
+                                              path == '/Quiz' ? 'active' : null,
+                                              path == '/syllabus' ? 'active' : null,
+                                              path == '/forum' ? 'active' : null,
+                                              path == '/scores' ? 'active' : null,
+                                              path == '/feedback' ? 'active' : null,
+                                            ]"> 
+          Courses 
+        </router-link>
+				<router-link to="/events" :class="[path == '/events' ? 'active' : null]"> Events </router-link>
+				<li v-if="signedIn" class="dropdown" :class="[
+                                                        path == '/profile' ? 'active' : null,
+                                                        path == '/EditProfilePasswordCheck' ? 'active' : null,
+                                                        path == '/EditProfile' ? 'active' : null,
+                                                        path == '/Statistics' ? 'active' : null,
+                                                        path == '/ChangePasswordPasswordCheck' ? 'active' : null,
+                                                        path == '/ChangePassword' ? 'active' : null,
+                                                        path == '/achievements' ? 'active' : null,
+                                                        path == '/MyCourses' ? 'active' : null,
+                                                        path == '/achievements' ? 'active' : null,
+                                                      ]"
+          >My Profile 
+        <i class="bi-chevron-down"></i>
 				<ul>
 					<router-link to="/profile"> Profile </router-link>
+          <router-link v-if="User.Role === 'Admin'" to="/admin"> Admin Portal </router-link>
 					<router-link to="/achievements"> Achievements </router-link>
 					<router-link to=/MyCourses> My Courses </router-link>
 					<router-link to=/Introduction> Introduction Quiz </router-link>
@@ -34,11 +60,33 @@
 
 <script>
 //import CustomButton from './components/Button.vue'
+import { useRoute } from 'vue-router';
+import { computed } from 'vue';
+import { onBeforeMount, reactive } from "vue"
+import axios from 'axios';
+
 export default {
 	components: {
 		//CustomButton
 	},
 	setup() {
+    const route = useRoute();
+    const path = computed(() => route.path);
+    const User = reactive({});
+    const userDB = 'http://localhost:3001/api/user/';
+
+    onBeforeMount(async () => {
+      // Get user data
+      if(localStorage.getItem('ID') > 0) {
+        await axios.get(`${userDB}${localStorage.getItem('ID')}`)
+          .then(response => {
+            Object.assign(User, response.data);
+          }).catch(err => {
+            console.error(err);
+          });
+      }
+    });
+
     let signedIn = false;
     let signedOut = true;
     console.log("signedIn = " + localStorage.getItem('signedIn'));
@@ -49,7 +97,7 @@ export default {
       signedOut = false;
     }
 		return {
-			signedIn, signedOut
+			signedIn, signedOut, path, User
 		}
 	},
 }
@@ -101,7 +149,19 @@ export default {
   color: white;
 }
 
+.navbar a.active {
+  color: #59cbffd0;
+}
+
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+  color: #47b2e4;
+}
+
+.dropdown {
+  cursor: pointer;
+}
+
+.dropdown:hover {
   color: #47b2e4;
 }
 

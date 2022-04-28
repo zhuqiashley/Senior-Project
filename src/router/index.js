@@ -5,6 +5,7 @@ import Home from '../views/Home.vue'
 import Courses from '../views/Courses.vue'
 import Achievements from '../views/Achievements.vue'
 import Events from '../views/Events.vue'
+import Admin from '../views/Admin.vue'
 import Login from '../views/Login.vue'
 import Profile from '../views/Profile.vue'
 import MyCourses from '../views/UserEnrollCourses.vue'
@@ -63,6 +64,14 @@ const routes = [
 		component: Events,
 		meta: {
 			title: 'Master CS | Events'
+		}
+	},
+	{
+		path: '/Admin',
+		name: 'Admin',
+		component: Admin,
+		meta: {
+			title: 'Master CS | Admin'
 		}
 	},
 	{

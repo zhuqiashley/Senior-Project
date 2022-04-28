@@ -2,7 +2,7 @@
 <template>
 	<!-- Modal -->
 	<div :id="uid" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="label" aria-hidden="true">
-		<div class="modal-dialog">
+		<div :class="['modal-dialog', size]">
 			<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="title">
@@ -31,6 +31,11 @@ import { ref, onMounted } from 'vue';
 import { Modal } from 'bootstrap';
 
 export default {
+	props: {
+		size: {
+			type: String,
+		}
+	},
 	setup(props, { slots }) {
 		const isModalVisible = ref(false);
 		const uid = "Modal_" + Math.random().toString(16).slice(2)
