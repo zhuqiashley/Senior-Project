@@ -71,10 +71,17 @@ export default {
           window.location.reload();
           return;
         }
-        if(answer == password1)
+        else if(password1 != answer)
+        {
+          console.log("inside failed");
+          this.$router.push('/');
+          
+        }
+        else if(answer == password1)
         {
             localStorage.setItem('fillCheck', 0);
             localStorage.setItem('passwordCheck', 0);
+            localStorage.setItem('signedIn', 1);
             this.$router.push('ChangePassword');
         } 
     }

@@ -86,6 +86,7 @@ export default {
       }).catch(e=>{
         console.error(e);
       })
+      localStorage.setItem('signedIn', 1);
        this.$router.push('Profile');
     }
   }

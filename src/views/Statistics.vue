@@ -134,7 +134,7 @@
   </div>
   <div class="container mt-4">
   <h1>Metaverse</h1>
-  <p v-if="chapter5">No Quiz Scores for Metaverse, visit the Courses page to take Quizzes</p>
+  <p v-if="chapter6">No Quiz Scores for Metaverse, visit the Courses page to take Quizzes</p>
   </div>
 <div class="event-module mt-4 mb-4" v-for="(quizi, index) in quiz" v-bind:key="index" >
                         <div class="container mt-4">
@@ -143,7 +143,7 @@
                         <p v-if="quizi.ChapterID === 28">Chapter 3 Quiz Score</p>
                         <p v-if="quizi.ChapterID === 29">Chapter 4 Quiz Score</p>
                         <p v-if="quizi.ChapterID === 30">Chapter 5 Quiz Score</p>
-                        <progress-bar v-if="quizi.ChapterID > 20 && quizi.ChapterID <26" :progress="quizi.Score"/>
+                        <progress-bar v-if="quizi.ChapterID > 25 && quizi.ChapterID <31" :progress="quizi.Score"/>
                         </div>
   </div>
   <div class = "container mt-4">
@@ -319,6 +319,15 @@ export default {
       for(let i = 0; i < this.quiz.length; i++)
       {
         if(this.quiz[i].ChapterID > 20 && this.quiz[i].ChapterID < 26)
+        {check = false;}
+      }
+      return check;
+    },
+    chapter6(){
+      let check = true;
+      for(let i = 0; i < this.quiz.length; i++)
+      {
+        if(this.quiz[i].ChapterID > 25 && this.quiz[i].ChapterID < 31)
         {check = false;}
       }
       return check;
