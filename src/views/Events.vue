@@ -52,18 +52,55 @@
 
 				<template #end v-if="User && User.Role === 'Admin'">
 					<div class="btn-group">
-						<button type="button" :class="[`btn`, checkRegistration(event.EventID) ? `btn-danger` : `btn-success`]" @click="register(event.EventID)" :disabled="checkValidDate(event.EventDate)">{{ checkRegistration(event.EventID) ? 'Cancel Registration': 'Register'}}</button>
-						<button type="button" :class="[`btn`, checkRegistration(event.EventID) ? `btn-danger` : `btn-success`, `dropdown-toggle dropdown-toggle-split`]" data-bs-toggle="dropdown" aria-expanded="false">
-							<span class="visually-hidden">Toggle Dropdown</span>
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#" @click="editEvent(event)">Edit</a></li>
-							<li><a class="dropdown-item" href="#" @click="deleteEvent(false, event)">Delete</a></li>
-						</ul>
+						<!-- Handle full events -->
+						<template v-if="event.EventSpots - event.Attendees.length <= 0">
+							<template v-if="checkRegistration(event.EventID)">
+								<button type="button" :class="[`btn`, checkRegistration(event.EventID) ? `btn-danger` : `btn-success`]" @click="register(event.EventID)" :disabled="checkValidDate(event.EventDate)">{{ checkRegistration(event.EventID) ? 'Cancel Registration': 'Register'}}</button>
+								<button type="button" :class="[`btn`, checkRegistration(event.EventID) ? `btn-danger` : `btn-success`, `dropdown-toggle dropdown-toggle-split`]" data-bs-toggle="dropdown" aria-expanded="false">
+									<span class="visually-hidden">Toggle Dropdown</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#" @click="editEvent(event)">Edit</a></li>
+									<li><a class="dropdown-item" href="#" @click="deleteEvent(false, event)">Delete</a></li>
+								</ul>
+							</template>
+							<template v-else>
+								<button type="button" :class="[`btn`, `btn-secondary`]" disabled>Full Event</button>
+								<button type="button" :class="[`btn`, `btn-secondary`, `dropdown-toggle dropdown-toggle-split`]" data-bs-toggle="dropdown" aria-expanded="false">
+									<span class="visually-hidden">Toggle Dropdown</span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#" @click="editEvent(event)">Edit</a></li>
+									<li><a class="dropdown-item" href="#" @click="deleteEvent(false, event)">Delete</a></li>
+								</ul>
+							</template>
+						</template>
+						
+						<!-- Handle non-full events -->
+						<template v-else>
+							<button type="button" :class="[`btn`, checkRegistration(event.EventID) ? `btn-danger` : `btn-success`]" @click="register(event.EventID)" :disabled="checkValidDate(event.EventDate)">{{ checkRegistration(event.EventID) ? 'Cancel Registration': 'Register'}}</button>
+							<button type="button" :class="[`btn`, checkRegistration(event.EventID) ? `btn-danger` : `btn-success`, `dropdown-toggle dropdown-toggle-split`]" data-bs-toggle="dropdown" aria-expanded="false">
+								<span class="visually-hidden">Toggle Dropdown</span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#" @click="editEvent(event)">Edit</a></li>
+								<li><a class="dropdown-item" href="#" @click="deleteEvent(false, event)">Delete</a></li>
+							</ul>
+						</template>
 					</div>
 				</template>
 				<template #end v-else>
-					<button type="button" :class="[`btn`, checkRegistration(event.EventID) ? `btn-danger` : `btn-success`]" @click="register(event.EventID)" :disabled="checkValidDate(event.EventDate)">{{ checkRegistration(event.EventID) ? 'Cancel Registration': 'Register'}}</button>
+					<template v-if="event.EventSpots - event.Attendees.length <= 0">
+						<template v-if="checkRegistration(event.EventID)">
+							<button type="button" :class="[`btn`, checkRegistration(event.EventID) ? `btn-danger` : `btn-success`]" @click="register(event.EventID)" :disabled="checkValidDate(event.EventDate)">{{ checkRegistration(event.EventID) ? 'Cancel Registration': 'Register'}}</button>
+						</template>
+						<template v-else>
+							<button type="button" :class="[`btn`, `btn-secondary`]" disabled>Full Event</button>
+						</template>
+					</template>
+					<template v-else>
+						<button type="button" :class="[`btn`, checkRegistration(event.EventID) ? `btn-danger` : `btn-success`]" @click="register(event.EventID)" :disabled="checkValidDate(event.EventDate)">{{ checkRegistration(event.EventID) ? 'Cancel Registration': 'Register'}}</button>
+					</template>
 				</template>
             </card>
 
@@ -101,7 +138,7 @@
 
 				<template #end v-if="User && User.Role === 'Admin'">
 					<div class="btn-group">
-						<button type="button" class="btn btn-secondary" :disabled="checkValidDate(event.EventDate)">Passed</button>
+						<button type="button" class="btn btn-secondary" disabled>Passed</button>
 						<button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
 							<span class="visually-hidden">Toggle Dropdown</span>
 						</button>
@@ -112,7 +149,7 @@
 					</div>
 				</template>
 				<template #end v-else>
-					<button type="button" class="btn btn-secondary" :disabled="checkValidDate(event.EventDate)">Passed</button>
+					<button type="button" class="btn btn-secondary" disabled>Passed</button>
 				</template>
             </card>
 
@@ -159,7 +196,11 @@
 				<template #title> Delete Event <strong>{{SelectedEvent.EventTitle}}</strong>?</template>
 				<template #body>
 					<p>Are you sure you want to delete this event? This Action cannot be undone. </p>
-					<p v-if="SelectedEvent.Attendees && SelectedEvent.Attendees.length > 0"> <strong> Warning: </strong> This will also remove all attendees for this event!</p>
+					<p v-if="SelectedEvent.Attendees && SelectedEvent.Attendees.length > 0"> <strong> Warning: </strong> The following attendees will be removed from the event: 
+						<span v-for="(attendee, index) in SelectedEvent.Attendees" :key="index">
+							{{ attendee.FirstName }} {{ attendee.LastName }}<span v-if="index < SelectedEvent.Attendees.length - 1">, </span>
+						</span>
+					</p>
 				</template>
 				<template #footer>
 					<div class="form-group text-center">
@@ -181,6 +222,24 @@
 				<template #footer>
 					<div class="form-group text-center">
 						<button type="button" class="btn btn-secondary mr-5" data-bs-dismiss="modal" @click="filterModal.toggle()">Close</button>&nbsp;
+					</div>
+				</template>
+			</Modal>
+
+			<!-- Login Modal -->
+			<Modal ref="loginModal">
+				<template #title> Login Required </template>
+				<template #body>
+					<p> Welcome to Master CS! In order to register for events, you must be logged in. Please login or create an account. </p>
+				</template>
+				<template #footer>
+					<div class="form-group text-center">
+						<router-link to="/Signup">
+							<button type="button" class="btn btn-secondary mr-5" data-bs-dismiss="modal" >Signup</button>&nbsp;
+						</router-link>
+						<router-link to="/Login">
+							<button type="button" class="btn btn-primary mr-5" data-bs-dismiss="modal" >Login</button>&nbsp;
+						</router-link>
 					</div>
 				</template>
 			</Modal>
@@ -216,6 +275,7 @@ export default {
 	const deleteEventModal = ref(null); // setup for delete event modal
 	const addEditTags = ref(null);
 	const filterModal = ref(null);
+	const loginModal = ref(null);
 
 	//Event Data to Insert into Database
 	const EventTitle = ref('')
@@ -332,12 +392,15 @@ export default {
 		} else {
 			Object.assign(SelectedEvent, {});
 		}
-		updateTagsFilter();
+
 		addEditEventModal.value.toggle();
 	}
 
 	async function register(EventID) {
-		if(!localStorage.getItem('ID') || localStorage.getItem('ID') == 0) return false;
+		if(!localStorage.getItem('ID') || localStorage.getItem('ID') == 0) {
+			loginModal.value.toggle();
+			return false;
+		}
 		
 		const eventsIndex = events.value.upcomingEvents.findIndex(event => event.EventID === EventID);
 		const regObj = {
@@ -409,7 +472,7 @@ export default {
 
 		if(newEvent) {
 			// Front End error handling goes here
-			await axios.post(eventDB, submitObject)
+			await axios.post(eventDB, {User: User.UserID, Event: submitObject})
 				.then((res) => {
 					submitObject.EventID = res.data.insertId
 
@@ -426,6 +489,8 @@ export default {
 							return new Date(a.EventDate) - new Date(b.EventDate);
 						});
 					}
+					// Update Filters
+					updateTagsFilter();
 
 					// Close Modal
 					addEditEventModal.value.toggle();
@@ -440,7 +505,7 @@ export default {
 					console.error(err)
 				});
 		} else {
-			await axios.put(`${eventDB}/${this.EventID}`, submitObject)
+			await axios.put(`${eventDB}/${this.EventID}`, {User: User.UserID, Event: submitObject})
 				.then(() => {
 					// Update event in array
 					if(postTime < new Date()) {
@@ -448,6 +513,8 @@ export default {
 					} else {
 						events.value.upcomingEvents[events.value.upcomingEvents.findIndex(event => event.EventID === this.EventID)] = submitObject;
 					}
+					// Update Filters
+					updateTagsFilter();
 
 					// Close Modal
 					addEditEventModal.value.toggle();
@@ -519,7 +586,7 @@ export default {
 	return {
 		formatDate, submitForm, deleteEvent, editEvent, checkValidDate,
 		EventTitle, EventDescription, EventInstructor, EventTime, EventSpots, EventID, EventTags, isModalVisible, User,
-		events, alert, addEditEventModal, deleteEventModal, SelectedEvent, clearFields, addEditTags, checkRegistration, 
+		events, alert, addEditEventModal, deleteEventModal, SelectedEvent, clearFields, addEditTags, checkRegistration, loginModal,
 		register, filterModal, filteredTags, updateFilter, getFilteredEvents,
 	}
   },
