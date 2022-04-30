@@ -44,6 +44,7 @@ export default {
     }
   },
   methods: {
+    // Set up for get quiz questions
     toProblem(index) {
       this.$store.state.isSubmit = false
       this.$router.push({

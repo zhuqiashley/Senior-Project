@@ -155,16 +155,19 @@ export default {
         this.$router.push('Profile');
     },
     submit() {
+      // Check user complete questions 1-8
       for (let i = 0; i < this.checkedValue.length; i++) {
         if (this.checkedValue[i] === 3) {
           alert("Please complete all questions!")
           return
         }
       }
+      // Check user complete question 9
       if (this.add === 4) {
         alert("Please complete all questions!")
         return
       }
+      // Count user's choices
       let a = 0, b = 0, c = 0
       for (let i = 0; i < this.checkedValue.length; i++) {
         if (this.checkedValue[i] === 0) {
@@ -178,6 +181,7 @@ export default {
       let max = this.getMax(a, b, c)
       let type = 0
       let recommend = 0
+      // Check what type of learner user is
       if (max === a) {
         this.result = 1
       } else if (max === b) {
@@ -187,6 +191,7 @@ export default {
         this.result = 3
         type = 2
       }
+      // Check what class recommend for user
       if (this.add === 0) {
         this.resource = 'Cyber security'
       } else if (this.add === 1) {
@@ -199,6 +204,7 @@ export default {
         this.resource = 'Metaverse'
         recommend = 3
       }
+      // Store recommend course and type of learner to DB
       updateIntroQuizResult(localStorage.getItem('ID'), type, recommend)
       alert("submit success")
     },

@@ -45,6 +45,7 @@ export default {
   methods: {
     submit() {
       submitFeedback( this.id, this.feedback).then(res => {
+        // Check if submit success
         if (res.data === 'ok') {
           alert("submit success")
         } else {

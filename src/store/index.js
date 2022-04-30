@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 
+// Temp store for quiz
 export default createStore({
     state: {
         current: [],
