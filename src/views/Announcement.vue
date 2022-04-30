@@ -167,9 +167,11 @@ export default{
         }
     },
 	methods: {
+	//  open model function
 		showModal() {
             this.isModalVisible = true;
         },
+	//  delete announcment function
         async deleteAnnouncment(announcmentId){
             axios.delete("http://localhost:3001/api/announcment/"+ announcmentId)
             .then(() => {
@@ -177,6 +179,7 @@ export default{
                 // this.isModalVisible = false;
             })
         },
+	//  checking function for announcment like
         isLiked(likedArr) {
             const newArr  = likedArr.split(",")
             if (newArr.includes(localStorage.getItem('ID'))) {
@@ -186,9 +189,11 @@ export default{
                 return false
             }
         },
+	//  close model function
         closeModal() {
             this.isModalVisible = false;
         },
+	 //  announcment post like functionnapi call
         likeAnnouncment (id) {
             axios.post('http://127.0.0.1:3001/api/like/announcment', {user_id: localStorage.getItem('ID'), id: id})
 			.then(() => {
@@ -197,6 +202,7 @@ export default{
                 console.error(err)
 			})
         },
+	 //  remove like from announcmrnt post function api call
         removelike (id) {
             axios.post('http://127.0.0.1:3001/api/removeLike/announcment', {user_id: localStorage.getItem('ID'), id: id})
 			.then(() => {
@@ -205,6 +211,7 @@ export default{
                 console.error(err)
 			})
         },
+	//  add announcment function
 		addAnnouncment() {
             if (!localStorage.getItem('ID'))  {
                 return this.$router.push({ path: 'login', query: ''});    
@@ -222,10 +229,12 @@ export default{
                 console.error(err)
 			})
         },
+	//  edi announcment model open
         editAnnouncment (id) {
             this.editAnnouncmentId = id
                 this.isModalVisible = true;
         },
+	//  update announcment post function
         updateAnnouncment() {
 
             if (!localStorage.getItem('ID'))  {
@@ -246,6 +255,7 @@ export default{
                 console.error(err)
 			})
         },
+	//  relode data fter cured operation or data change
         reloadData () {
             axios.get(`http://127.0.0.1:3001/api/getAnnouncments/${this.$route.query.id}`)
 			.then((res) => {
@@ -258,6 +268,7 @@ export default{
                 console.error(err)
 			})
         },
+	// add new comment function
         async postComment(id) {
             if (!localStorage.getItem('ID'))  {
                 return this.$router.push({ path: 'login', query: ''});    
@@ -275,7 +286,7 @@ export default{
                 console.error(err)
 			})
         },
-
+	//  file upload function not in working condition
         onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length) return;
