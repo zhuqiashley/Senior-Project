@@ -40,6 +40,7 @@ export default {
 		Card
 	},
 	async mounted() {
+	//  loading intial data
 		axios.get('http://127.0.0.1:3001/api/getAllcourses')
 			.then((res) => {
 				this.courses = res.data
@@ -49,7 +50,8 @@ export default {
 			}).catch(err => {
 				console.error(err)
 			})
-
+			
+		// data for user enrollered courses
 		let userId = localStorage.getItem('ID') ?? 1;
 		if (localStorage.getItem('ID') != '0') {
 			axios.get("http://localhost:3001/api/getUserEnrolledCourses/"+userId).then((res) => {
@@ -65,6 +67,7 @@ export default {
         // }
     },
 	methods: {
+	//  view course route redirection function
 		async viewCourse(course) {
 			
 			try {
@@ -108,6 +111,7 @@ export default {
 				
 		},
 		rateCourse (title) {
+		//  rate my course page redirection function
 			if (localStorage.getItem('ID') == '0') {
 					return this.$router.push({ path: 'login', query: ''});	 
 			}
@@ -116,6 +120,7 @@ export default {
 			
 			this.$router.push({ path: 'CourseRating', query: queryUrl});	
 		},
+		// is enrollered or not checking function for rate course button 
 		eligibaletoRate (id) {
 			let isValid = false
 			if (this.enroledCourses && this.enroledCourses.length) {
