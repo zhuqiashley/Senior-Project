@@ -77,6 +77,7 @@ export default {
   props: ['index', 'id', 'isSubmit'],
   methods: {
     submit() {
+      // Check user complete all questions
       for (let i = 0; i < this.checkedValue.length; i++) {
         if (this.checkedValue[i] === 4) {
           alert("Please complete all questions!")
@@ -84,6 +85,7 @@ export default {
         }
       }
       let score = 0
+      // Check user choices and correct result, and give score, each correct answer 20
       for (let i = 0; i < this.checkedValue.length; i++) {
         console.log(this.checkedValue[i])
         if (this.checkedValue[i] === (this.current[i].CorrectAnswer)) {
@@ -98,10 +100,12 @@ export default {
       }).catch(e=>{
         console.error(e);
       });*/
+      // Update user's quiz score to DB 
       updateQuizScores(localStorage.getItem('ID'), this.index, score)
       this.$store.state.isSubmit = true
       alert("submit success")
     },
+    // Generate another quiz
     getMore() {
       this.$store.state.isSubmit = false
       this.current = this.getRandomArrayElements(this.list, 5)
@@ -109,6 +113,7 @@ export default {
         this.checkedValue[i] = 4
       }
     },
+    // Get 5 questions for quiz
     getRandomArrayElements(arr, count) {
       let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
       while (i-- > min) {
@@ -143,6 +148,7 @@ export default {
     }
   },
   mounted() {
+    // Read info for display
     getCourseQuizzes(this.id, this.index).then(res => {
       this.list = res.data
       this.current = res.data.slice(0, 5)

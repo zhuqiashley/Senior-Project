@@ -30,6 +30,7 @@ export default {
     }
   },
   mounted() {
+    // Get user's score for display
     getScores(localStorage.getItem('ID'), this.id).then(res => {
       this.chapter = res.data
     })
