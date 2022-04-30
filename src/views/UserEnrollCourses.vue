@@ -35,6 +35,7 @@ export default {
 		EnrollCard
 	},
 	methods: {
+	//  redirection of view course pae
 		async viewCourse(course) {
 			
 
@@ -116,6 +117,7 @@ export default {
 			}
 				
 		},
+		//  rate my course page redirection function
 		rateCourse (title) {
 			const queryUrl = {}
 			queryUrl.title = title;
@@ -124,6 +126,7 @@ export default {
 		}
 	}, 
 	setup() {
+	//  intial load data
 		let userId = localStorage.getItem('ID') ?? 1;
 		let courses = ref([]);
 		axios.get("http://localhost:3001/api/getUserEnrolledCourses/"+userId).then((res) => {courses.value = res.data;});
