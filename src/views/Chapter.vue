@@ -189,6 +189,7 @@ export default {
       }
   },
   async mounted () {
+  //  initial data load
     axios.get("http://localhost:3001/api/getcourses/"+this.$route.query.title)
 			.then((res) => {
 				this.chapterData = res.data[0]
@@ -202,6 +203,7 @@ export default {
         axios.get("http://localhost:3001/api/getProgress", { user_id: id, course_id: courseid})
         .then((res) => {
           console.log(res.data);
+	  //  complete chapter function
           this.progress = res.data[0].course_completion
           // this.chapterData = res.data[0]
         }).catch(err => {
@@ -211,6 +213,7 @@ export default {
       }
   },
   computed: {
+  		// for getting title value
 		titleValue() {
 			return  this.$route.query.title
 		},
