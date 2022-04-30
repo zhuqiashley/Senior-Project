@@ -125,6 +125,7 @@ export default{
         }
     },
     async mounted() {
+    // intial data load function
         await axios.get(`http://127.0.0.1:3001/api/getForumData/${this.$route.query.id}`)
         .then((res) => {
             this.posts = res.data
@@ -145,6 +146,7 @@ export default{
         function hasSlot(name) {
             return !!slots[name]
         }
+	//  image path getting function
         function getImage(image) {
             if (image) {
                 return require(`@/assets/${image}`)
@@ -158,17 +160,22 @@ export default{
     },
     methods: {
         showModal() {
+	// model open function
             this.isModalVisible = true;
         },
+	//  delete forum post function
         async deleteForum(forumID){
             axios.delete("http://localhost:3001/api/forum/"+ forumID)
             .then(() => {
+	    	// remove deleted post from current page
                 this.posts = this.posts.filter(item => item.id != forumID);
             });
         },
+	//  model close function
         closeModal() {
             this.isModalVisible = false;
         },
+	 //  checking is liked or not function
         isLiked(likedArr) {
             const newArr  = likedArr.split(",")
             if (newArr.includes(localStorage.getItem('ID'))) {
@@ -178,6 +185,7 @@ export default{
                 return false
             }
         },
+	// like forum post function 
         likeForum (id) {
             axios.post('http://127.0.0.1:3001/api/like/forum', {user_id: localStorage.getItem('ID'), id: id})
 			.then(() => {
@@ -186,6 +194,7 @@ export default{
                 console.error(err)
 			})
         },
+	// remove like from post function
         removelike (id) {
             axios.post('http://127.0.0.1:3001/api/removeLike/forum', {user_id: localStorage.getItem('ID'), id: id})
 			.then(() => {
@@ -194,6 +203,7 @@ export default{
                 console.error(err)
 			})
         },
+	//  add forum post function
         addForumPost() {
 
             axios.post('http://127.0.0.1:3001/api/forum/add', {title: this.forumTitle, description: this.forumDescription, time: this.forumTime, course_id: this.$route.query.id, user_id: localStorage.getItem('ID'), forum_src: 'img/Courses/forum-post.png' })
@@ -210,6 +220,7 @@ export default{
 			})
         },
         reloadData() {
+	//  relode dynamic data after any curd operation
             axios.get(`http://127.0.0.1:3001/api/getForumData/${this.$route.query.id}`)
 			.then((res) => {
 				this.posts = res.data
@@ -221,6 +232,7 @@ export default{
                 console.error(err)
 			})
         },
+	// add new comment function
         async postComment(id) {
             if (!localStorage.getItem('ID'))  {
                 return this.$router.push({ path: 'login', query: ''});    
@@ -237,10 +249,12 @@ export default{
                 console.error(err)
 			})
         },
+	//  edit forum model open function
         editForum (id) {
             this.editForumId = id
                 this.isModalVisible = true;
         },
+	 // update forum post function
         updateForum() {
 
             if (!localStorage.getItem('ID'))  {
