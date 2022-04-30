@@ -58,6 +58,7 @@ export default {
     CustomHeader,
   },
   mounted () {
+   // intial data load api call 
     if (localStorage.getItem('ID')) {
         axios.post("http://localhost:3001/api/getProgress/", { user_id: localStorage.getItem('ID'), course_id: this.$route.query.id})
         .then((res) => {
@@ -80,6 +81,7 @@ export default {
     },
     methods:{
     async Enroll(){
+    //  enrolle in course function
       if(this.toggleEnroll){
         let userId = localStorage.getItem('ID');
         let courseId = this.$route.query.id;
@@ -90,7 +92,7 @@ export default {
           this.toggleEnroll = !this.toggleEnroll
         }
       }
-
+//  unenrolle function code
       else{
         let userId = localStorage.getItem('ID');
         let courseId = this.$route.query.id;
